@@ -5,6 +5,7 @@ timetable: [here](https://docs.google.com/spreadsheets/d/1Cy8vBD6I_no8UPzYPU9bz7
 
 *day 1*
 
-1. General Introduction: 
-2. Data types and formats: 
-3. Description of data: 
+0. Lecture 0	General Introduction / Overview of the course
+1. Lecture 1	Introduction to GWAS: Linkage disequilibrium and Linear Regression c
+2. Lecture 2	Introduction to GWAS: Linkage disequilibrium and Linear Regression
+3. Lecture 3	GWAS: case studies / examples from literature
