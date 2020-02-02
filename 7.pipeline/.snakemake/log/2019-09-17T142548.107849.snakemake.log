@@ -1,0 +1,4 @@
+Building DAG of jobs...
+MissingInputException in line 5 of /home/filippo/Dropbox/cursos/laval2019/introduction_to_gwas/6.pipeline/Snakefile_GWAS_parus:
+Missing input files for rule get_data:
+get_data_parus.sh

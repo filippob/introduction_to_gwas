@@ -1,0 +1,90 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 1
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	1	all
+	1	filter_genotypes
+	1	gwas_kinship
+	1	impute_genotypes
+	1	ped2vcf
+	1	plink_recodeA
+	1	vcf2ped
+	7
+
+[Fri Sep 20 19:39:33 2019]
+rule filter_genotypes:
+    input: data/bracco.map, data/bracco.ped
+    output: steps/bracco_filtered.map, steps/bracco_filtered.ped
+    jobid: 6
+    wildcards: dataset=bracco
+
+[Fri Sep 20 19:39:34 2019]
+Finished job 6.
+1 of 7 steps (14%) done
+
+[Fri Sep 20 19:39:34 2019]
+rule ped2vcf:
+    input: steps/bracco_filtered.ped, steps/bracco_filtered.map
+    output: steps/bracco_filtered.vcf
+    jobid: 5
+    wildcards: dataset=bracco
+
+[Fri Sep 20 19:39:34 2019]
+Finished job 5.
+2 of 7 steps (29%) done
+
+[Fri Sep 20 19:39:34 2019]
+rule impute_genotypes:
+    input: steps/bracco_filtered.vcf
+    output: steps/bracco_imputed.vcf.gz
+    jobid: 4
+    wildcards: dataset=bracco
+
+[Fri Sep 20 19:42:17 2019]
+Finished job 4.
+3 of 7 steps (43%) done
+
+[Fri Sep 20 19:42:17 2019]
+rule vcf2ped:
+    input: steps/bracco_imputed.vcf.gz
+    output: steps/bracco_imputed.ped, steps/bracco_imputed.map
+    jobid: 2
+    wildcards: dataset=bracco
+
+[Fri Sep 20 19:42:17 2019]
+Finished job 2.
+4 of 7 steps (57%) done
+
+[Fri Sep 20 19:42:17 2019]
+rule plink_recodeA:
+    input: steps/bracco_imputed.ped, steps/bracco_imputed.map
+    output: steps/bracco_imputed.raw
+    jobid: 3
+    wildcards: dataset=bracco
+
+[Fri Sep 20 19:42:18 2019]
+Finished job 3.
+5 of 7 steps (71%) done
+
+[Fri Sep 20 19:42:18 2019]
+rule gwas_kinship:
+    input: software/gwas.R, steps/bracco_imputed.map, steps/bracco_imputed.raw, data/bracco_phenotypes.txt
+    output: bracco_imputed.raw_speed_GWAS.results
+    jobid: 1
+    wildcards: dataset=bracco
+
+[Fri Sep 20 19:42:37 2019]
+Finished job 1.
+6 of 7 steps (86%) done
+
+[Fri Sep 20 19:42:37 2019]
+localrule all:
+    input: bracco_imputed.raw_speed_GWAS.results
+    jobid: 0
+
+[Fri Sep 20 19:42:37 2019]
+Finished job 0.
+7 of 7 steps (100%) done
+Complete log: /home/filippo/Dropbox/cursos/laval2019/introduction_to_gwas/6.pipeline/.snakemake/log/2019-09-20T193933.521442.snakemake.log

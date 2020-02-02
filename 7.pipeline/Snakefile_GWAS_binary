@@ -1,0 +1,68 @@
+rule all:
+    input:
+        "dogs_imputed.raw_disease_GWAS.results"
+
+rule filter_genotypes:
+    input:
+        pedfile = "data/dogs.ped",
+        mapfile = "data/dogs.map"
+    output:
+        outped = "steps/dogs_filtered.ped",
+        outmap = "steps/dogs_filtered.map"
+    run:
+        shell("plink --dog --ped {input.pedfile} --map {input.mapfile} --geno 0.05 --mind 0.2 --maf 0.05 --recode --out steps/dogs_filtered")
+	shell("sed -i 's/\_//g' {output.outped}")
+
+rule ped2vcf:
+    input:
+        "steps/dogs_filtered.ped",
+	"steps/dogs_filtered.map"
+    output:
+        "steps/dogs_filtered.vcf"
+    shell:
+        "plink --dog --file steps/dogs_filtered --recode vcf --out steps/dogs_filtered"
+
+rule impute_genotypes:
+    input:
+        "steps/dogs_filtered.vcf"
+    output:
+        "steps/dogs_imputed.vcf.gz"
+    shell:
+        "beagle gt=steps/dogs_filtered.vcf out=steps/dogs_imputed"
+
+rule vcf2ped:
+    input:
+        "steps/dogs_imputed.vcf.gz"
+    output:
+        "steps/dogs_imputed.ped",
+	"steps/dogs_imputed.map"
+    shell:
+        "plink --dog --vcf steps/dogs_imputed.vcf.gz --recode --out steps/dogs_imputed"
+
+rule plink_recodeA:
+    input:
+        "steps/dogs_imputed.ped",
+        "steps/dogs_imputed.map"
+    output:
+        "steps/dogs_imputed.raw"
+    shell:
+        "plink --dog --file steps/dogs_imputed --recode A --out steps/dogs_imputed"
+
+rule gwas_kinship:
+    input:
+        script = "software/gwas.R",
+        genotype = "steps/dogs_imputed.raw",
+        map = "steps/dogs_imputed.map",
+        phenotype = "data/dogs_phenotypes.txt"
+    output:
+        "dogs_imputed.raw_disease_GWAS.results"
+    params:
+        trait = "phenotype",
+        trait_label = "disease"
+    shell:
+        "/home/ubuntu/miniconda3/envs/snake/bin/Rscript --vanilla {input.script} \
+            genotype_file={input.genotype} \
+            snp_map={input.map} \
+            phenotype_file={input.phenotype} \
+            trait={params.trait} \
+            trait_label={params.trait_label}"

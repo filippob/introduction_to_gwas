@@ -1,0 +1,49 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 1
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	1	all
+	1	filter_genotypes
+	1	gwas_kinship
+	1	impute_genotypes
+	1	ped2vcf
+	1	plink_recodeA
+	1	vcf2ped
+	7
+
+[Thu Sep 12 19:17:19 2019]
+rule filter_genotypes:
+    input: data/parus.map, data/parus.ped
+    output: steps/parus_filtered.ped, steps/parus_filtered.map
+    jobid: 6
+
+[Thu Sep 12 19:17:19 2019]
+Finished job 6.
+1 of 7 steps (14%) done
+
+[Thu Sep 12 19:17:19 2019]
+rule ped2vcf:
+    input: steps/parus_filtered.ped, steps/parus_filtered.map
+    output: steps/parus_filtered.vcf
+    jobid: 5
+
+[Thu Sep 12 19:17:19 2019]
+Finished job 5.
+2 of 7 steps (29%) done
+
+[Thu Sep 12 19:17:19 2019]
+rule impute_genotypes:
+    input: steps/parus_filtered.vcf
+    output: steps/parus_imputed.vcf.gz
+    jobid: 4
+
+Waiting at most 5 seconds for missing files.
+MissingOutputException in line 24 of /home/filippo/Dropbox/cursos/laval2019/introduction_to_gwas/6.pipeline/Snakefile_GWAS_parus:
+Missing files after 5 seconds:
+steps/parus_imputed.vcf.gz
+This might be due to filesystem latency. If that is the case, consider to increase the wait time with --latency-wait.
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: /home/filippo/Dropbox/cursos/laval2019/introduction_to_gwas/6.pipeline/.snakemake/log/2019-09-12T191719.217828.snakemake.log

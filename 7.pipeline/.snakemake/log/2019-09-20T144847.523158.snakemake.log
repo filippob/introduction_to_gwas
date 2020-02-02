@@ -1,0 +1,25 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 1
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	1	all
+	1	filter_genotypes
+	1	gwas_kinship
+	1	impute_genotypes
+	1	ped2vcf
+	1	plink_recodeA
+	1	vcf2ped
+	7
+
+[Fri Sep 20 14:48:47 2019]
+rule filter_genotypes:
+    input: data/bracco.ped, data/bracco.map
+    output: steps/bracco_filtered.ped, steps/bracco_filtered.map
+    jobid: 6
+    wildcards: dataset=bracco
+
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: /home/filippo/Dropbox/cursos/laval2019/introduction_to_gwas/6.pipeline/.snakemake/log/2019-09-20T144847.523158.snakemake.log

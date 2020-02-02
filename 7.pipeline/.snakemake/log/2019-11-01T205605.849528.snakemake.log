@@ -1,0 +1,82 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 1
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	1	all
+	1	filter_genotypes
+	1	gwas_kinship
+	1	impute_genotypes
+	1	ped2vcf
+	1	plink_recodeA
+	1	vcf2ped
+	7
+
+[Fri Nov  1 20:56:05 2019]
+rule filter_genotypes:
+    input: data/rice.map, data/rice.ped
+    output: steps/rice_filtered.map, steps/rice_filtered.ped
+    jobid: 6
+
+[Fri Nov  1 20:56:06 2019]
+Finished job 6.
+1 of 7 steps (14%) done
+
+[Fri Nov  1 20:56:06 2019]
+rule ped2vcf:
+    input: steps/rice_filtered.ped, steps/rice_filtered.map
+    output: steps/rice_filtered.vcf
+    jobid: 5
+
+[Fri Nov  1 20:56:06 2019]
+Finished job 5.
+2 of 7 steps (29%) done
+
+[Fri Nov  1 20:56:06 2019]
+rule impute_genotypes:
+    input: steps/rice_filtered.vcf
+    output: steps/rice_imputed.vcf.gz
+    jobid: 4
+
+[Fri Nov  1 20:57:41 2019]
+Finished job 4.
+3 of 7 steps (43%) done
+
+[Fri Nov  1 20:57:41 2019]
+rule vcf2ped:
+    input: steps/rice_imputed.vcf.gz
+    output: steps/rice_imputed.ped, steps/rice_imputed.map
+    jobid: 3
+
+[Fri Nov  1 20:57:41 2019]
+Finished job 3.
+4 of 7 steps (57%) done
+
+[Fri Nov  1 20:57:41 2019]
+rule plink_recodeA:
+    input: steps/rice_imputed.ped, steps/rice_imputed.map
+    output: steps/rice_imputed.raw
+    jobid: 2
+
+[Fri Nov  1 20:57:41 2019]
+Finished job 2.
+5 of 7 steps (71%) done
+
+[Fri Nov  1 20:57:41 2019]
+rule gwas_kinship:
+    input: data/rice_phenotypes.txt, software/gwas.R, steps/rice_imputed.raw, steps/rice_imputed.map
+    output: rice_imputed.raw_PH_GWAS.results
+    jobid: 1
+
+[Fri Nov  1 20:57:41 2019]
+Error in rule gwas_kinship:
+    jobid: 1
+    output: rice_imputed.raw_PH_GWAS.results
+    shell:
+        /home/ubuntu/miniconda3/envs/snake/bin/Rscript --vanilla software/gwas.R             genotype_file=steps/rice_imputed.raw             snp_map=steps/rice_imputed.map             phenotype_file=data/rice_phenotypes.txt             trait=PH             trait_label=PH
+        (exited with non-zero exit code)
+
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: /home/filippo/Dropbox/cursos/berlin2019/gwas_berlin_2019/7.pipeline/.snakemake/log/2019-11-01T205605.849528.snakemake.log

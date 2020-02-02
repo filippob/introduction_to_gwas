@@ -1,0 +1,3 @@
+NameError in line 1 of /home/filippo/Dropbox/cursos/laval2019/introduction_to_gwas/6.pipeline/Snakefile_GWAS_bracco:
+name 'bracco' is not defined
+  File "/home/filippo/Dropbox/cursos/laval2019/introduction_to_gwas/6.pipeline/Snakefile_GWAS_bracco", line 1, in <module>

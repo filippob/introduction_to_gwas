@@ -1,0 +1,5 @@
+Building DAG of jobs...
+MissingInputException in line 5 of /home/filippo/Dropbox/cursos/berlin2019/gwas_berlin_2019/7.pipeline/Snakefile_GWAS_continuous:
+Missing input files for rule filter_genotypes:
+data/rice.map
+data/rice.ped

@@ -1,0 +1,72 @@
+DATASET='bracco'
+PLINK='~/Downloads/plink --dog'
+BEAGLE='java -Xss5m -Xmx4g -jar /home/filippo/Documents/beagle4.1/beagle4.jar'
+TRAIT='speed'
+
+rule all:
+    input:
+        expand("{dataset}_imputed.raw_{trait}_GWAS.results", dataset=DATASET, trait=TRAIT)
+
+rule filter_genotypes:
+    input:
+        pedfile = "data/{dataset}.ped",
+        mapfile = "data/{dataset}.map"
+    output:
+        outped = "steps/{dataset}_filtered.ped",
+        outmap = "steps/{dataset}_filtered.map"
+    run:
+        shell("{PLINK} --ped {input.pedfile} --map {input.mapfile} --geno 0.05 --mind 0.2 --maf 0.05 --bp-space 1 --recode --out steps/{wildcards.dataset}_filtered")
+
+rule ped2vcf:
+    input:
+        "steps/{dataset}_filtered.ped",
+	"steps/{dataset}_filtered.map"
+    output:
+        "steps/{dataset}_filtered.vcf"
+    shell:
+        "{PLINK} --file steps/{wildcards.dataset}_filtered --recode vcf-iid --out steps/{wildcards.dataset}_filtered"
+
+rule impute_genotypes:
+    input:
+        "steps/{dataset}_filtered.vcf"
+    output:
+        "steps/{dataset}_imputed.vcf.gz"
+    shell:
+        "{BEAGLE} gt=steps/{wildcards.dataset}_filtered.vcf out=steps/{wildcards.dataset}_imputed"
+
+rule vcf2ped:
+    input:
+        "steps/{dataset}_imputed.vcf.gz"
+    output:
+        "steps/{dataset}_imputed.ped",
+	"steps/{dataset}_imputed.map"
+    shell:
+        "{PLINK} --vcf steps/{wildcards.dataset}_imputed.vcf.gz --recode --out steps/{wildcards.dataset}_imputed"
+
+rule plink_recodeA:
+    input:
+        "steps/{dataset}_imputed.ped",
+        "steps/{dataset}_imputed.map"
+    output:
+        "steps/{dataset}_imputed.raw"
+    shell:
+        "{PLINK} --file steps/{wildcards.dataset}_imputed --recode A --out steps/{wildcards.dataset}_imputed"
+
+rule gwas_kinship:
+    input:
+        script = "software/gwas.R",
+        genotype = "steps/{dataset}_imputed.raw",
+        map = "steps/{dataset}_imputed.map",
+        phenotype = "data/{dataset}_phenotypes.txt"
+    output:
+        "{dataset}_imputed.raw_speed_GWAS.results"
+    params:
+        trait = {TRAIT},
+        trait_label = {TRAIT}
+    shell:
+        "Rscript --vanilla {input.script} \
+            genotype_file={input.genotype} \
+            snp_map={input.map} \
+            phenotype_file={input.phenotype} \
+            trait={params.trait} \
+            trait_label={params.trait_label}"

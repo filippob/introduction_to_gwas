@@ -1,0 +1,30 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 1
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	1	all
+	1	gwas_kinship
+	2
+
+[Mon Sep 23 12:14:58 2019]
+rule gwas_kinship:
+    input: software/gwas.R, steps/bracco_imputed.raw, data/bracco_phenotypes.txt, steps/bracco_imputed.map
+    output: bracco_imputed.raw_speed_GWAS.results
+    jobid: 1
+    wildcards: dataset=bracco
+
+[Mon Sep 23 12:15:17 2019]
+Error in rule gwas_kinship:
+    jobid: 1
+    output: bracco_imputed.raw_speed_GWAS.results
+    shell:
+        Rscript --vanilla software/gwas.R             genotype_file=steps/bracco_imputed.raw             snp_map=steps/bracco_imputed.map             phenotype_file=data/bracco_phenotypes.txt             trait=speed             trait_label=speed
+        (exited with non-zero exit code)
+
+Removing output files of failed job gwas_kinship since they might be corrupted:
+bracco_imputed.raw_speed_GWAS.results
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: /home/filippo/Dropbox/cursos/laval2019/introduction_to_gwas/6.pipeline/.snakemake/log/2019-09-23T121458.882762.snakemake.log

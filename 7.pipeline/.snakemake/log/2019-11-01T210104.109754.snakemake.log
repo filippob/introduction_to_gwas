@@ -1,0 +1,29 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 1
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	1	all
+	1	gwas_kinship
+	2
+
+[Fri Nov  1 21:01:04 2019]
+rule gwas_kinship:
+    input: steps/rice_imputed.map, data/rice_phenotypes.txt, steps/rice_imputed.raw, software/gwas.R
+    output: rice_imputed.raw_PH_GWAS.results
+    jobid: 1
+
+[Fri Nov  1 21:01:09 2019]
+Finished job 1.
+1 of 2 steps (50%) done
+
+[Fri Nov  1 21:01:09 2019]
+localrule all:
+    input: rice_imputed.raw_PH_GWAS.results
+    jobid: 0
+
+[Fri Nov  1 21:01:09 2019]
+Finished job 0.
+2 of 2 steps (100%) done
+Complete log: /home/filippo/Dropbox/cursos/berlin2019/gwas_berlin_2019/7.pipeline/.snakemake/log/2019-11-01T210104.109754.snakemake.log
