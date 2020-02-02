@@ -1,0 +1,17 @@
+Multiple Testing
+----------------
+Make slides on:
+- issue of multiple testing
+- meaning of p-value
+- Bonferroni correction
+- FDR and q-values (intuition, calculation, interpretation)
+
+Practical session with R
+
+- then, do we really have a multiple testing issue? (from the 2007 paper, box) 
+
+POWER
+-----
+- slides from Catania (restyle)
+- Rmd demo with key factors influencing power and simulations
+
