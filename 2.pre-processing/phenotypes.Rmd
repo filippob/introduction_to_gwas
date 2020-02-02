@@ -1,0 +1,110 @@
+---
+title: "phenotypes"
+author: "Filippo Biscarini"
+date: "October 31, 2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+library("ggplot2")
+library("tidyr")
+library("dplyr")
+library("knitr")
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Phenotypic data
+
+Exploring phenotypes is equally important as it is exploring genotype data, when approaching a GWAS experiment.
+Things to look for are different depending on the type of phenotype e.g. if the trait considered is **continuous** or **binary**.
+
+### Continuous trait
+
+An example is **plant height** (**PH**) from the rice (*Oryza sativa*) dataset.
+In a continuos trait, one first looks at summary statistics: average value, standard deviation, minimum and maximum value: 
+
+```{r cars, echo=FALSE}
+### Continuous trait
+pheno_continuous <- read.table("../data/rice_phenotypes.txt", header = TRUE)
+names(pheno_continuous)[3] <- "phenotype"
+
+D <- pheno_continuous %>%
+  group_by(population) %>%
+  summarise(N=n(), avgPH=mean(phenotype), stdPH=sd(phenotype), minPH=min(phenotype),
+            maxPH=max(phenotype))
+
+kable(D)
+```
+
+The distribution of a continuos trait is an important aspect: this may give indications as to the best way to model the trait in the GWAS analysis.
+
+We see now a series of density plots: i) overall density plot (all data together)
+
+```{r}
+p <- ggplot(pheno_continuous, aes(x=phenotype)) + geom_density()
+p <- p + xlab("plant height")
+p
+```
+
+We add now a vertical line for the average plant height
+
+```{r}
+p <- ggplot(pheno_continuous, aes(x=phenotype)) + geom_density()
+p <- p + geom_vline(aes(xintercept=mean(phenotype)), color="blue", linetype="dashed", size=1)
+p <- p + xlab("plant height")
+p
+```
+
+Now, we can plot different densities for ech population
+
+```{r}
+p <- ggplot(pheno_continuous, aes(x=phenotype)) + geom_density(aes(fill=population), alpha=0.4)
+p <- p + scale_fill_manual(values=c("#999999", "#E69F00", "#56B4E9","#FFE4B5"))
+p <- p + xlab("plant height")
+p
+```
+
+And add histograms
+
+```{r}
+p <- ggplot(pheno_continuous, aes(x=phenotype, color=population, fill=population))
+p <- p + geom_histogram(aes(y=..density..), alpha=0.5, position="identity")
+p <- p + geom_density(alpha=.2) + xlab("plant height")
+p
+```
+
+Boxplots are another effective way to visualize distributions: median, IQR, max, min, outliers
+
+```{r}
+p <- ggplot(pheno_continuous, aes(x=population,y=phenotype)) + geom_boxplot(aes(fill=population))
+p <- p + xlab("population") + ylab("plant height")
+p
+```
+
+
+### Binary trait
+
+Binary (or categorical) traits call for different exploratory statistics.
+For instance, the distribution of cases and controls overall and per covariable (when available).
+Here we see we have three classes: one is unknown status, which we will remove when filtering phenotypic data before GWAS.
+
+```{r binary, echo=FALSE}
+pheno_binary <- read.table("../data/dogs_phenotypes.txt", header = TRUE)
+
+D <- pheno_binary %>%
+  group_by(family, phenotype) %>%
+  summarise(N=n()) %>%
+  spread(key = phenotype, value = N)
+
+kable(D)
+```
+
+Barplot of phenotype categories:
+
+```{r pressure, echo=FALSE}
+pheno_binary$phenotype <- as.factor(pheno_binary$phenotype)
+p <- ggplot(pheno_binary, aes(x=phenotype)) + geom_bar(aes(fill=phenotype))
+p <- p + xlab("malformation")
+p
+```
+
