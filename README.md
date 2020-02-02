@@ -11,7 +11,7 @@ timetable: [here](https://docs.google.com/spreadsheets/d/1Cy8vBD6I_no8UPzYPU9bz7
 3. Lecture 3	GWAS: case studies / examples from literature
 
 
-# organization of the code for the practical sessions
+## organization of the code for the practical sessions
 
 1. preparatory_steps: download and prepare the data
 2. preprocessing: filter the data
