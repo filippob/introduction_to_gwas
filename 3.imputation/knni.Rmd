@@ -1,0 +1,278 @@
+---
+title: "Genotype imputation with KNN: a demonstration"
+author: "Filippo Biscarini"
+date: "October 25, 2019"
+output: html_document
+---
+
+# KNN: K-Nearest Neighbors (for classification)
+
+K-nearest neighbors (KNN) is a classification method that attempts to estimate the conditional distribution of the observations (e.g. vector $Y$) given a set of features (matrix $\mathbf{X}$):
+
+$$
+Pr(Y=j|X=x_0) = \frac{1}{K} \sum_{i \in \mathcal{N}_0} I(y_i=j)
+$$
+
+Let's look at this: 
+
+- $K$ is the chosen **number of neighbors** to consider
+- $x_0$ is the **observation** we want to classify (we have features but not know the class it belongs to)
+- $\mathcal{N}_0$ is the neighborhood around $x_0$
+- $I(y_i=j)$ is the number of neighbors in $\mathcal{N}_0$ belonging to class $j$
+
+The observation $x_0$ is then classified to the class with the largest probability ("Bayes rule").
+
+## Distance function
+
+A crucial aspect in KNN classification is of course how you *define the distance* between observations. A common choice is the Euclidean distance, which basically takes the square root of the sum of **squared differences in feature values** between any two points: 
+
+1. Euclidean distance:
+
+$$
+D_E(x_i,x_j) = \sqrt{ \sum_{m=1}^M (x_{i,m}-x_{j,m})^2 }
+$$
+
+The Euclidean distance, though, is designed for **continuous features**, and is therefore not very suited for categorical features. Luckily, other distance functions exist for **categorical features**, like the Hamming distance function:
+
+2. Hamming distance (categorical features):
+
+$$
+D_H(x_i,x_j) = \frac{1}{M} \sum_{m=1}^M I(x_{i,m} \neq x_{j,m})
+$$
+
+In this brief practical/demonstration, we'll go through an illustration of how to apply KNN to the problem of imputing missing SNP genotypes in rice (*Oryza sativa*).
+
+1. Raw data
+2. Introduce (artificial) missing genotypes
+3. Imputation with R package
+4. Step by step KNN imputation: write our own code!
+
+```{r,echo=FALSE,results='hide'}
+
+#Demonstrating the use of KNN to impute missing SNP genotypes
+library("DMwR") #for kNN imputation
+
+start.time <- Sys.time()
+```
+
+Start time was: `r start.time`
+
+### The dataset
+
+We'll be using SNP genotype data from 12 samples genotyped with the "**GeneChip Rice 44K SNP**".
+A summary of the real missing rate in the data is given below:
+
+```{r, echo=FALSE}
+## cd ../data
+## wget http://www.jackdellequerce.com/data/GenRiz44.txt
+
+rice44 <- read.table("../data/GenRiz44.txt",header=TRUE)
+oldcode <- c("AA","BB","--")
+neucode <- c(-1,1,NA)
+
+M <- apply(rice44[,5:ncol(rice44)],2,function(x) neucode[match(x,oldcode)])
+missingRate <- apply(M,1,function(x) length(x[is.na(x)])/length(x))
+summary(missingRate)
+M <- M[missingRate==0,]
+colnames(M) <- paste("sample",seq(1:ncol(M)),sep="_")
+```
+
+All real missing data are edited out of the dataset. This leavs `r nrow(M)` SNP. For the sake of the exercise, initially a much smaller subset with 100 SNPs is extracted.
+
+```{r}
+#M <- read.table("rice.dat",header=TRUE)
+Mreduced <- t(M[1:100,])
+```
+
+Now, we randomly introduce 10\% artificially missing SNP genotypes. In this way, we will be able to measure the accuracy of our imputation method.
+
+```{r}
+nSNP <- ncol(Mreduced)
+nInd <- nrow(Mreduced)
+schwellenWert <- 0.1 # 10% missing data
+
+missing_matrix = matrix(runif(nInd*nSNP), ncol=nSNP) 
+missing_matrix[missing_matrix < schwellenWert] = NA
+missing_matrix[!is.na(missing_matrix)] = 0
+injected_data = Mreduced + missing_matrix
+
+actualMissingRate <- length(injected_data[is.na(injected_data)])/(nInd*nSNP) 
+
+missing_map = missing_matrix
+```
+
+The actual missing rate is `r actualMissingRate`.
+
+### Imputation with the R package
+
+We'll now impute missing genotypes using the **DMwR** *R package*. 
+In this package there is the *knnImputation()* function, which uses by default the *Euclidean distance*, and allows the user to specify the number of neighbors $K$ and the measure of ``probability'' of belonging to any given class (either **(weighted) average** or **median**).
+
+```{r}
+Mimp <- knnImputation(t(injected_data),k=3,meth="median")
+Mimp <- t(Mimp)
+
+#Accuracy of imputation
+results <- Mimp[is.na(missing_map)]==Mreduced[is.na(missing_map)]
+accuracy <- length(results[results==TRUE])/length(results)
+
+```
+
+<span style="background-color:yellow">The accuracy of imputation with the R function *knnImputation()* from the *DMwR* package is:<strong> `r accuracy`</strong></span>
+
+### Step-by-step KNN implementation
+
+Let's have some fun!!
+
+We'll now write our own code. Instead of the Euclidean distance function, we will use the **Hamming distance** function, which is better suited for categorical features. SNP genotypes are categorical features (e.g. **AA/AB/BB**).
+
+First, here's the Hamming distance function:
+
+```{r}
+#calculate distance matrix and nearest neighbours
+Hamming <- function(ssr_data) {
+  
+  z <- matrix(0, nrow = nrow(ssr_data), ncol = nrow(ssr_data))
+  
+  for (k in 1:(nrow(ssr_data) - 1)) {
+    for (l in (k + 1):nrow(ssr_data)) {
+      z[k, l] <- sum(ssr_data[k, ] != ssr_data[l, ], na.rm=TRUE)
+      z[l, k] <- z[k, l]
+    }
+  }
+  
+  return(z)
+}
+```
+
+Again, we choose a small value of $K$ ($K=3$), given the small size of the exercise (and being sure of avoiding the "*curse of dimensionality*" :-)).
+The objective is to impute missing SNP genotypes at one SNP locus, using all remaining available information (except the target SNP locus).
+
+```{r,echo=FALSE}
+k <- 3
+
+y <- 0
+while(length(y[is.na(y)])<2) {
+  
+  i <- sample(1:ncol(injected_data),1)
+  X <- as.matrix(injected_data[,-i]) #global matrix of features (train + test sets)
+  y <- injected_data[,i]
+}
+  
+D <- Hamming(X)
+#D <- 2-gVanRaden(X)
+row.names(D) <- names(y)
+colnames(D) <- names(y)
+```
+
+Let's have a look at the first elements of the matrix of Hamming distances:
+
+```{r,echo=FALSE}
+print(D[1:6,1:6])
+```
+
+This is the vector of SNP genotypes to be imputed: `r y`.
+
+Non-missing genotypes at this SNP locus are the "*training*" observations, to be used for the imputation of the missing data points. The subset of distances for the missing observations is extracted and ordered by reverse distance
+
+```{r}
+testIDS <- names(y[is.na(y)])
+trainIDS <- names(y[!is.na(y)])
+
+NN <- apply(D[as.character(testIDS),as.character(trainIDS)],1,order)
+NN <- t(NN)
+
+print(NN)
+```
+
+We'll now use KNN to impute the missing genotypes, based on the most frequent genotype in the $K$ neighbors.
+
+```{r}
+ergebnisse <- apply(NN[,1:k, drop=F], 1, function(nn) {
+    tab <- table(y[trainIDS][nn]); 
+    maxClass <- names(which.max(tab))
+    prob <- tab[maxClass]/k; 
+    pred <- as.integer(maxClass); 
+    return(c(pred,prob)) 
+})
+
+```
+
+And these are the results for one single SNP locus:
+
+```{r}
+ergebnisse <- as.data.frame(t(ergebnisse))
+names(ergebnisse) <- c("pred","prob")
+ergebnisse[ergebnisse$pred==0,]$prob <- 1-ergebnisse[ergebnisse$pred==0,]$prob
+print(ergebnisse)
+```
+
+Now we can apply this code to the entire dataset, to impute missing genotypes at all SNP loci.
+
+```{r}
+imputedM <- matrix(rep(NA,nInd*nSNP),nrow=nInd)
+
+for(i in 1:ncol(injected_data)) {
+  
+  X <- as.matrix(injected_data[,-i]) #global matrix of features (train + test sets)
+  y <- injected_data[,i]
+  k <- 3
+  
+  if(length(y[is.na(y)])<1) {
+    
+    imputedM[,i] <- y
+  } else {
+    
+    D <- Hamming(X)
+    row.names(D) <- names(y)
+    colnames(D) <- names(y)
+    
+    testIDS <- names(y[is.na(y)])
+    trainIDS <- names(y[!is.na(y)])
+    
+    if(length(testIDS)!=1) {
+      
+      NN <- apply(D[as.character(testIDS),as.character(trainIDS)],1,order)
+      NN <- t(NN)
+      ids <- row.names(NN) #for the output file
+      
+      ergebnisse <- apply(NN[,1:k, drop=F], 1, function(nn) {
+        tab <- table(y[trainIDS][nn]); 
+        maxClass <- names(which.max(tab))
+        pred <- as.integer(maxClass); 
+        return(pred)
+      })
+      y[testIDS] <- ergebnisse[testIDS]
+    } else {
+      
+      n <- order(D[testIDS,trainIDS])[1:k]
+      tab <- table(y[trainIDS][n]); 
+      maxClass <- names(which.max(tab))
+      prob <- tab[maxClass]/k; 
+      pred <- as.integer(maxClass); 
+      y[testIDS] <- pred
+    }
+
+    imputedM[,i] <- y
+  }
+}
+
+#Accuracy of imputation
+results <- imputedM[is.na(missing_map)]==Mreduced[is.na(missing_map)]
+accuracy <- length(results[results==TRUE])/length(results)
+```
+
+<span style="background-color:yellow">The accuracy of imputation with our R code is:<strong> `r accuracy`</strong></span>
+
+This is expected to be higher than the accuracy obtained with the native *knnImputation()* function, since we used the Hamming distance which is more appropriate for SNP genotype data.
+
+```{r}
+end.time <- Sys.time()
+time.taken <- end.time - start.time
+print("Total time taken below")
+print(time.taken)
+```
+
+NB: important caveat: the R code shown here is intended for demonstration only, and has not been optimized nor tested for applications.
+
+

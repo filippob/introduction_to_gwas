@@ -1,0 +1,135 @@
+---
+title: "The G Matrix"
+author: "Filippo Biscarini"
+date: "10/30/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+# install.packages("../software/gMatrix_0.2.tar.gz", type = "source", repos = NULL)
+library("knitr")
+library("plotly")
+library("gMatrix")
+library("ggplot2")
+library("data.table")
+```
+
+## Building the matrix of genomic relationships
+
+Two methods (out of many possible) to calculate genomic relationships between individuals based on genetic variants data:
+
+- Van Raden
+- Astle & Balding
+
+Let's have a look at the functions:
+
+
+```{r vanraden, results='hold'}
+gVanRaden.2
+```
+
+```{r astle}
+gAstleBalding.2
+```
+
+### Preparing the data
+
+```{r rice}
+data <- fread("rice_imputed.raw")
+```
+
+```{r gmatrix}
+X <- data[,-c(1,2)] ## remove non-numeric columns
+G <- gMatrix::gVanRaden.2(X) ## building the G-matrix
+```
+
+```{r}
+kable(G[1:10,1:10])
+```
+
+### Visualising the G matrix
+
+Heatmap:
+
+```{r}
+heatmap(G,col=rev(heat.colors(75)))
+```
+
+Multidimensional scaling plot of the distance matrix:
+
+```{r}
+D <- (1-G) # first convert relationships to distances
+data.mds <- cmdscale(D, k = 3, eig = TRUE)
+coords <- as.data.frame(data.mds$points)
+
+p <- ggplot(coords, aes(V1,V2))
+p <- p + geom_point()
+p
+```
+
+Now we add information on the population (metadata):
+
+```{r}
+pheno <- fread("../data/rice_phenotypes.txt")
+coords$population <- pheno$population[match(data$IID,pheno$id)]
+
+p <- ggplot(coords, aes(V1,V2))
+p <- p + geom_point(aes(colour=population))
+p
+```
+
+### Astle & Balding
+
+```{r, echo=FALSE}
+G <- gMatrix::gAstleBalding.2(X)
+```
+
+```{r}
+kable(G[1:10,1:10])
+```
+
+```{r}
+heatmap(G,col=rev(heat.colors(75)))
+```
+
+```{r}
+D <- (1-G) # first convert relationships to distances
+data.mds <- cmdscale(D, k = 3, eig = TRUE)
+coords <- as.data.frame(data.mds$points)
+
+pheno <- fread("../data/rice_phenotypes.txt")
+coords$population <- pheno$population[match(data$IID,pheno$id)]
+
+p <- ggplot(coords, aes(V1,V2))
+p <- p + geom_point(aes(colour=population))
+p
+```
+
+3-D plot:
+
+```{r 3dplot}
+p <- plot_ly(data = coords, 
+        x = ~V1, y = ~V2, z = ~V3,
+        type = "scatter3d",
+        color = ~population) %>%
+  add_markers() %>%
+  layout(scene = list(xaxis = list(title = 'NMDS1'),
+                      yaxis = list(title = 'NMDS2'),
+                      zaxis = list(title = 'NMDS3')),
+         annotations = list(
+           x = 0.005,
+           y = 0.01,
+           text = 'Treatment',
+           xref = 'paper',
+           yref = 'paper',
+           showarrow = FALSE
+         ))
+
+p
+
+```
+
+## Exercise
+
+Build and visualize the matrix of genomic relationships using the dog dataset
