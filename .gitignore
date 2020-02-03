@@ -41,6 +41,9 @@ vignettes/*.pdf
 # data
 data/*
 
+# temporary material
+temp/*
+
 # output
 */*.pdf
 */*.results
