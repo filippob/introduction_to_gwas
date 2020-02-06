@@ -51,4 +51,7 @@ temp/*
 */*.png
 */*.html
 */*.log
+*/*.ped
+*/*.map
+*/*.kinship
 

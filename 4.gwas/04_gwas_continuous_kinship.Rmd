@@ -8,7 +8,7 @@ output: html_document
 ```{r setup, include=FALSE}
 ### KINSHIP matrix
 source("../software/gwas.r")
-source("..//software/emma.r")
+source("../software/emma.r")
 
 library("qqman")
 library("gMatrix") ## own-made package
