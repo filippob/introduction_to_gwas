@@ -26,10 +26,10 @@ p\_value \cdot m \leq \alpha
 $$
 
 ```{r cars}
-results <- fread("../4.gwas/PH.txt")
+results <- fread("../4.gwas/rice_imputed.raw_PH_GWAS.results")
 
 results <- results %>%
-  arrange(`p-value`)
+  arrange(P)
 
 results %>%
   head() %>%
@@ -37,7 +37,7 @@ results %>%
 ```
 
 ```{r}
-p_adjusted <- p.adjust(p = results$`p-value`, method = "bonferroni")
+p_adjusted <- p.adjust(p = results$P, method = "bonferroni")
 
 p_adjusted %>%
   head() %>%
@@ -45,7 +45,7 @@ p_adjusted %>%
 ```
 
 ```{r}
-p <- results$`p-value`
+p <- results$P
 m <- length(p)
 p_adjusted = (p*m)
 p_adjusted %>%
@@ -61,9 +61,9 @@ p_adjusted %>%
 
 ```{r pressure}
 results <- results %>%
-  arrange(`p-value`)
+  arrange(P)
 
-qobj <- qvalue(results$`p-value`)
+qobj <- qvalue(results$P)
 
 qvalues <- qobj$qvalues
 pi0 <- qobj$pi0
