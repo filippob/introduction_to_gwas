@@ -54,4 +54,11 @@ temp/*
 */*.ped
 */*.map
 */*.kinship
-
+*/*.bim
+*/*.bed
+*/*.fam
+*/*.vcf
+*/*.gz
+*/*.tped
+*/*.tfam
+*/*.raw
