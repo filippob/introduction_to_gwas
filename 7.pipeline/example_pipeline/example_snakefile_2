@@ -1,0 +1,31 @@
+## samples
+DATASETS = ['snp.map', 'snp_reshuffled.map']
+
+## target rule: files that we want to generate 
+## as final output of the pipeline
+rule targets:
+    input:
+        expand("{dataset}.sorted.gz", dataset=DATASETS)
+
+## step 2
+## rule to compress the sorted map file
+rule gzip:
+    input:
+        "{dataset}.sorted"
+    output:
+        "{dataset}.sorted.gz"
+    shell:
+        "gzip {input}"
+
+## step 1
+## rule to sort the map file
+rule sort:
+    input:
+        "{dataset}"
+    output:
+        "{dataset}.sorted"
+    shell:
+        "sort -n -k1 {input} > {output}"
+
+
+

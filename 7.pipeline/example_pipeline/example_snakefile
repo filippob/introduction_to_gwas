@@ -1,0 +1,28 @@
+## target rule: files that we want to generate 
+## as final output of the pipeline
+rule targets:
+    input:
+        "snp_sorted.map.gz"
+
+## step 2
+## rule to compress the sorted map file
+rule gzip:
+    input:
+        "snp_sorted.map"
+    output:
+        "snp_sorted.map.gz"
+    shell:
+        "gzip {input}"
+
+## step 1
+## rule to sort the map file
+rule sort:
+    input:
+        "snp.map"
+    output:
+        "snp_sorted.map"
+    shell:
+        "sort -n -k1 {input} > {output}"
+
+
+
