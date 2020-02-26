@@ -7,10 +7,11 @@
 # biocLite("clusterProfiler")
 
 if (!requireNamespace("BiocManager", quietly = TRUE)) install.packages("BiocManager")
-BiocManager::install("ReactomePA")
+# avail <- BiocManager::available()
+BiocManager::version()
+BiocManager::install("ReactomePA", lib="/home/filippo/R/x86_64-pc-linux-gnu-library/3.4")
 
-.libPaths()
-
+library("plyr")
 require("DOSE")
 library("biomaRt")
 library("ggplot2")
@@ -18,29 +19,37 @@ library("KEGG.db")
 library("ReactomePA")
 library("clusterProfiler")
 
+#############
+# PARAMETERS
+#############
+ensembl_dataset = "btaurus_gene_ensembl"
+window = 250000 # number of bases to search upstream and downstream the SNP position
 
 ####################################################
 ## READ DATA AND FIND GENES CLOSE TO SNP (FROM GWAS)
 ####################################################
-## ensembl=useMart("ensembl")
-## listDatasets(ensembl) # show all the possible databases on Ensembl
-
-ensembl = useEnsembl(biomart="ensembl",dataset="btaurus_gene_ensembl")
+ensembl=biomaRt::useMart("ensembl")
+datasets <- listDatasets(ensembl, verbose = TRUE) # show all the possible databases on Ensembl
+ensembl = biomaRt::useEnsembl(biomart="ensembl",dataset=ensembl_dataset)
 
 ## listAttributes(ensembl) # show the attributes of the database
-
-window = 250000 # number of bases to search upstream and downstream the SNP position
+attributes <- listAttributes(ensembl)  # show the attributes of the database
 
 # ch4 = read.table("Significant_snp_CH4.txt",sep="\t",header=T,row.names=1,colClasses = c("character","character","integer","character","character","integer","numeric"))
-
-ch4 <- data.frame("SNP"="BTA-46780-no-rs","CHROM"=2,"BP"=21670549)
+ch4 <- data.frame("SNP"=c("BTA-46780-no-rs","snp2"),"CHROM"=c(2,2),"BP"=c(21670549,31670549))
 rownames(ch4) <- ch4$SNP
 
 genes_ch4 = list()
 
 for (snp_name in rownames(ch4)) {
   snp = ch4[snp_name,]
-  genes_ch4[[snp_name]] = getBM(c('ensembl_gene_id','entrezgene','external_gene_name','start_position','end_position','uniprot_sptrembl','uniprot_swissprot'),  
+  genes_ch4[[snp_name]] = getBM(c('ensembl_gene_id',
+                                  'entrezgene_id',
+                                  'external_gene_name',
+                                  'start_position',
+                                  'end_position',
+                                  'uniprotsptrembl',
+                                  'uniprotswissprot'),  
                                 filters = c("chromosome_name","start","end"),
                                 values=list(snp$CHROM,snp$BP-window,snp$BP+window),
                                 mart=ensembl)
@@ -48,7 +57,13 @@ for (snp_name in rownames(ch4)) {
 
 genes_ch4[[ch4$SNP]] # genes etc. retrieved for each SNP
 
-#gene names
+#convert list to dataframe
+gwas_genes <- ldply(genes_ch4, function(x) {
+  rbind.data.frame(x)
+  })
+
+
+fwrite(gwas_genes,)
 gwas_genes <- genes_ch4[[ch4$SNP]]$external_gene_name
 gwas_genes <- gwas_genes[!is.na(gwas_genes)]
 gwas_genes <- gwas_genes[!duplicated(gwas_genes)]
