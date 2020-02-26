@@ -7,6 +7,7 @@
 plink=/home/filippo/Downloads/plink
 
 ## Download data (rice, continuous)
+echo "Downloading rice data ..."
 
 ### Check for dir, if not found create it using the mkdir ##
 [ ! -d "../data" ] && mkdir -p "../data"
@@ -49,6 +50,9 @@ rm rice.log rice.nosex
 ###################################
 
 ## Download data
+
+echo "Downloading dog data ..."
+
 wget http://www.jackdellequerce.com/data/UCD_2014.tfam
 wget http://www.jackdellequerce.com/data/UCD_2014.tped
 #wget https://datadryad.org/bitstream/handle/10255/dryad.77584/UCD_2014.tfam
