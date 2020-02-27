@@ -12,6 +12,8 @@ if (length(args)==0) {
   stop("At least one argument must be supplied (input file).n", call.=FALSE)
 }
 
+
+## Assign the arguments passed on from the bash script
 # phenotype_file = "plantgrainPhenotypes.txt"
 # group_reference_file = "../introduction_to_gwas/cross_reference/rice_group.reference"
 # trait = "PH"
@@ -23,7 +25,7 @@ print(paste("rice groups reference file:",group_reference_file))
 trait= args[3]
 print(paste("selected trait:",trait))
 
-
+## read in files
 phenotypes = fread(phenotype_file)
 ref_group = fread(group_reference_file)
 ## select trait
