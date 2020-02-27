@@ -7,6 +7,7 @@ install.packages(c("knitr", "tidyr", "dplyr", "ggplot2", "ggfortify",
 
 
 install.packages("../software/gMatrix_0.2.tar.gz", repos = NULL, type = "source")
+install.packages("../software/ldDesign_2.0-1.tar.gz", repos = NULL, type = "source")
 
 source("http://bioconductor.org/biocLite.R")
 
