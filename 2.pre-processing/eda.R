@@ -4,7 +4,8 @@ library("reshape2")
 library("data.table")
 
 setwd("2.pre-processing/")
-## ALLELE FREQUENCY
+
+## go to PLINK (terminal) - allele frequency commands
 
 rice.frq <- fread("rice.frq")
 rice.frq = na.omit(rice.frq)
@@ -34,7 +35,7 @@ rice_crossref <- rice_crossref %>%
 
 fwrite(x = rice_crossref, file = "update.ids", col.names = FALSE, sep = "\t")
 
-## go to PLINK (terminal)
+## go to PLINK - stratified allele frequency commands
 
 rice.frq <- fread("rice_pop.frq.strat")
 # trait_label = "disease"
@@ -97,6 +98,8 @@ p
 #####################################################
 
 ## MISSING RATE
+
+## go to PLINK - missing rate commands
 
 ## exercise: write R code to make your own summary tables and plots on missing-rate in the rice or dogs datasets
 
