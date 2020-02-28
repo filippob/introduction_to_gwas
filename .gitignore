@@ -76,4 +76,7 @@ temp/*
 */*.csv
 */*.counts
 
+# java files
+*/*.jar
+
 .Rproj.user
