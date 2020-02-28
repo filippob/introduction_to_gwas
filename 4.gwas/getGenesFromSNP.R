@@ -13,15 +13,17 @@ library("ggplot2")
 # PARAMETERS
 #############
 ensembl_dataset = "btaurus_gene_ensembl"
+ensembl_dataset = "cfamiliaris_gene_ensembl"
 window = 250000 # number of bases to search upstream and downstream the SNP position
 input_file_name = "gwas_results.csv"
 
 ####################################################
 ## READ DATA AND FIND GENES CLOSE TO SNP (FROM GWAS)
 ####################################################
-ensembl=biomaRt::useMart("ensembl")
+# ensembl=biomaRt::useMart("ensembl")
 datasets <- biomaRt::listDatasets(ensembl, verbose = TRUE) # show all the possible databases on Ensembl
-ensembl = biomaRt::useEnsembl(biomart="ensembl",dataset=ensembl_dataset)
+# ensembl = biomaRt::useEnsembl(biomart="ensembl",dataset=ensembl_dataset)
+ensembl = biomaRt::useMart("ensembl",dataset=ensembl_dataset)
 
 ## listAttributes(ensembl) # show the attributes of the database
 attributes <- listAttributes(ensembl)  # show the attributes of the database
