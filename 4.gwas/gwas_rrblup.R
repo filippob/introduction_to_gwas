@@ -40,11 +40,11 @@ for (p in args){
   stop(paste('bad parameter:', pieces[1]))
 }
 
-genotype_file = "../3.imputation/rice_imputed.raw"
-snp_map = "../3.imputation/rice_imputed.map"
-phenotype_file = "../data/rice_phenotypes.txt"
-trait = "PH"
-trait_label = "PH"
+# genotype_file = "../3.imputation/rice_imputed.raw"
+# snp_map = "../3.imputation/rice_imputed.map"
+# phenotype_file = "../data/rice_phenotypes.txt"
+# trait = "PH"
+# trait_label = "PH"
 
 print(paste("genotype file name:",genotype_file))
 print(paste("SNP map:",snp_map))
