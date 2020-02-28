@@ -8,6 +8,7 @@
 library("plyr")
 library("biomaRt")
 library("ggplot2")
+library("data.table")
 
 #############
 # PARAMETERS
