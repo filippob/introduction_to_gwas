@@ -40,11 +40,11 @@ for (p in args){
   stop(paste('bad parameter:', pieces[1]))
 }
 
-# genotype_file = "../3.imputation/dogs_imputed.raw"
-# snp_map = "../3.imputation/dogs_imputed.map"
-# phenotype_file = "../data/dogs_phenotypes.txt"
-# trait = "phenotype"
-# trait_label = "cleft_lip"
+genotype_file = "../3.imputation/dogs_imputed.raw"
+snp_map = "../3.imputation/dogs_imputed.map"
+phenotype_file = "../data/dogs_phenotypes.txt"
+trait = "phenotype"
+trait_label = "cleft_lip"
 
 print(paste("genotype file name:",genotype_file))
 print(paste("SNP map:",snp_map))
@@ -120,7 +120,8 @@ model1_x <- GWAS(
 ### RESULTS
 ###########
 print("writing out results and figures ...")
-gwasResults <- model1_x[,c("SNP","Chr","Pos","PH")]
+names(model1_x)[length(model1_x)] <- trait
+gwasResults <- model1_x[,c("SNP","Chr","Pos",trait)]
 names(gwasResults) <- c("SNP","CHR","BP","P")
 
 fname <- paste(dataset,trait_label,"GWAS_rrBLUP.results", sep="_")
