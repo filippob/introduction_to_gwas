@@ -40,11 +40,11 @@ for (p in args){
   stop(paste('bad parameter:', pieces[1]))
 }
 
-# genotype_file = "../3.imputation/rice_imputed.raw"
-# snp_map = "../3.imputation/rice_imputed.map"
-# phenotype_file = "../data/rice_phenotypes.txt"
-# trait = "PH"
-# trait_label = "PH"
+# genotype_file = "../3.imputation/dogs_imputed.raw"
+# snp_map = "../3.imputation/dogs_imputed.map"
+# phenotype_file = "../data/dogs_phenotypes.txt"
+# trait = "phenotype"
+# trait_label = "cleft_lip"
 
 print(paste("genotype file name:",genotype_file))
 print(paste("SNP map:",snp_map))
@@ -79,6 +79,7 @@ if ((ncol(snp_matrix)-6) != nrow(SNP_INFO)) {
 
 ### phenotypes
 phenotypes <- fread(phenotype_file)
+names(phenotypes)[2] <- "population"
 print(paste(nrow(phenotypes),"records read from the phenotype file",sep=" "))
 
 phenotypes <- phenotypes[phenotypes$id %in% snp_matrix$IID,]
@@ -125,7 +126,7 @@ names(gwasResults) <- c("SNP","CHR","BP","P")
 fname <- paste(dataset,trait_label,"GWAS_rrBLUP.results", sep="_")
 fwrite(x = gwasResults, file = fname)
 
-png(paste(dataset,trait_label,"manhattan_rrBLUP.png",sep="_"),)
+png(paste(dataset,trait_label,"manhattan_rrBLUP.png",sep="_"))
 manhattan(gwasResults, suggestiveline = FALSE, col = c("red","blue"),
           logp = FALSE, width = 800, height = 600, res = 100)
 dev.off()
