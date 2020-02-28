@@ -13,10 +13,11 @@ library("data.table")
 #############
 # PARAMETERS
 #############
-ensembl_dataset = "btaurus_gene_ensembl"
-# ensembl_dataset = "cfamiliaris_gene_ensembl"
+# ensembl_dataset = "btaurus_gene_ensembl"
+ensembl_dataset = "cfamiliaris_gene_ensembl"
 window = 250000 # number of bases to search upstream and downstream the SNP position
-input_file_name = "gwas_results.csv"
+input_file_name = "dogs_imputed.raw_cleft_lip_GWAS_rrBLUP.results"
+threshold = 0.01 #p-value threshold
 
 print("Current parameters:")
 print(paste("ensembl dataset:",ensembl_dataset))
@@ -40,10 +41,19 @@ attributes <- listAttributes(ensembl)  # show the attributes of the database
 ## text file with snp name/id, chromosome, position (bps)
 
 print("reading the input data")
-# ch4 = fread(input_file_name)
-ch4 <- data.frame("SNP"=c("BTA-46780-no-rs","snp2"),"CHROM"=c(2,2),"BP"=c(21670549,31670549))
+ch4 = fread(input_file_name)
+
+# subset ch4
+m = nrow(ch4) # n. of tests
+alpha = threshold/m # bonferroni corrected significance threshold
+ch4 <- ch4[P<alpha]
+
+ch4 <- as.data.frame(ch4)
+# ch4 <- data.frame("SNP"=c("BTA-46780-no-rs","snp2"),"CHR"=c(2,2),"BP"=c(21670549,31670549))
 rownames(ch4) <- ch4$SNP
 
+## sample subset (top 5)
+ch4 <- ch4[1:5,]
 
 ## GET GENES
 print("querying the database to get genes details (this can take a while ...)")
@@ -59,7 +69,7 @@ for (snp_name in rownames(ch4)) {
                                   'uniprotsptrembl',
                                   'uniprotswissprot'),  
                                 filters = c("chromosome_name","start","end"),
-                                values=list(snp$CHROM,snp$BP-window,snp$BP+window),
+                                values=list(snp$CHR,snp$BP-window,snp$BP+window),
                                 mart=ensembl)
 }
 
