@@ -9,9 +9,6 @@ if (length(args)==0) {
   stop("At least one argument must be supplied (input file).n", call.=FALSE)
 }
 
-# phenotype_file = "plantgrainPhenotypes.txt"
-# group_reference_file = "rice_group.reference"
-# trait = "PH"
 
 phenotype_file= args[1]
 print(paste("phenotype file name:",phenotype_file))

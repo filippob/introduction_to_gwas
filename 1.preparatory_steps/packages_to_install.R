@@ -1,30 +1,19 @@
 
 ## general packages for data handling
-library("knitr")
-library("tidyr")
-library("dplyr")
-library("ggplot2")
-library("ggfortify")
-library("doParallel")
-library("data.table")
+install.packages(c("knitr", "tidyr", "dplyr", "ggplot2", "ggfortify", 
+                   "doParallel", "data.table", "msm", "doMC", "nadiv",
+                   "qqman", "snpStats", "rrBLUP","reshape2", "genetics",
+                   "DMwR", "plotly", "RColorBrewer", "qvalue","patchwork"))
 
-## For the script gwas.r (GWAS with the kinship matrix)
-library("msm")
-library("doMC")
-library("nadiv")
 
-## own-made R package for G-matrix
-library("gMatrix")
+install.packages("../software/gMatrix_0.2.tar.gz", repos = NULL, type = "source")
+install.packages("../software/ldDesign_2.0-1.tar.gz", repos = NULL, type = "source")
 
-## GWAS and plots
-library("qqman")
-library("snpStats")
-
-install.packages("doParallel")
-install.packages("software/gMatrix_0.1.tar.gz", repos = NULL, type = "source")
-
-source("http://bioconducor.org/biocLite.R")
+source("http://bioconductor.org/biocLite.R")
 
 if (!requireNamespace("BiocManager", quietly = TRUE))
   install.packages("BiocManager")
 BiocManager::install()
+
+BiocManager::install("biomaRt")
+
