@@ -80,3 +80,7 @@ temp/*
 */*.jar
 
 .Rproj.user
+
+# snakefiles (temporary)
+*/snakefile*
+*/Snakefile*
