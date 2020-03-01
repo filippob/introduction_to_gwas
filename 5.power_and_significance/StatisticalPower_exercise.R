@@ -2,9 +2,10 @@
 #Rodercik D. Ball (Genome wide Assocition analyses book)
 
 #Dependencies
-library(ldDesign) #Install source from https://cran.r-project.org/src/contrib/Archive/ldDesign/ (v2.0-1)
-library(ggplot2)
-library(patchwork)
+# install.packages("../software/ldDesign_2.0-1.tar.gz", type = "source", repos = NULL)
+library("ldDesign") #Install source from https://cran.r-project.org/src/contrib/Archive/ldDesign/ (v2.0-1)
+library("ggplot2")
+library("patchwork")
 
 
 #find.n <- function(b, n.min, n.max, group.proportions= c(0.5,0.5),  alpha, n.interp=20, power=0.8){
@@ -70,6 +71,7 @@ qtl.freq<-0.05
 marker.freq<-0.05
 ppower0.0475<-ld.power(B=BayesFactor, D=0.0475, p=marker.freq, q=qtl.freq,n=n1, h= h2, phi=0)[,2]
 ppower0.03<-ld.power(B=BayesFactor, D=0.03, p=marker.freq, q=qtl.freq,n=n1, h= h2, phi=0)[,2]
+ppower0.02<-ld.power(B=BayesFactor, D=0.02, p=marker.freq, q=qtl.freq,n=n1, h= h2, phi=0)[,2]
 ppower0.01<-ld.power(B=BayesFactor, D=0.01, p=marker.freq, q=qtl.freq,n=n1, h= h2, phi=0)[,2]
 
 df4<-data.frame(n1,ppower0.0475,rep(0.0475,length(n1)));names(df4)<-c("n","power","D")
