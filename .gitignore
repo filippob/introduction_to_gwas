@@ -84,3 +84,6 @@ temp/*
 # snakefiles (temporary)
 */snakefile*
 */Snakefile*
+*/.snakemake/*
+*/.snakemake/metadata/*
+
