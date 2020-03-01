@@ -75,6 +75,7 @@ temp/*
 */*.irem
 */*.csv
 */*.counts
+*/*.svg
 
 # java files
 */*.jar
