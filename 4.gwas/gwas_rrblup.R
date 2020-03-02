@@ -79,7 +79,7 @@ if ((ncol(snp_matrix)-6) != nrow(SNP_INFO)) {
 
 ### phenotypes
 phenotypes <- fread(phenotype_file)
-names(phenotypes)[2] <- "population"
+phenotypes <- phenotypes[,c(1,3)]
 print(paste(nrow(phenotypes),"records read from the phenotype file",sep=" "))
 
 phenotypes <- phenotypes[phenotypes$id %in% snp_matrix$IID,]
@@ -96,6 +96,9 @@ K <- gVanRaden.2(X)
 vec <- colnames(K) %in% phenotypes$id
 K <- K[vec,vec]
 
+SNP_INFO <- as.data.frame(SNP_INFO)
+SNP_INFO <- SNP_INFO[,c(TRUE,TRUE,TRUE,vec)]
+
 print("writing out the kinship matrix ...")
 fname = paste(dataset,".kinship",sep="")
 write.table(K, file=fname, quote = FALSE, row.names = FALSE)
@@ -111,7 +114,7 @@ dev.off()
 model1_x <- GWAS(
   pheno = phenotypes,
   geno = SNP_INFO,
-  fixed = "population",
+  # fixed = "population",
   K = K,
   plot = FALSE
 )

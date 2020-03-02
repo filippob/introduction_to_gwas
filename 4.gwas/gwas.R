@@ -12,8 +12,8 @@ library("data.table")
 ## include common functions
 # source("~/Dropbox/cursos/laval2019/GWAS/software/gwas.r")
 # source("~/Dropbox/cursos/laval2019/GWAS/software/emma.r")
-source("../software/gwas.r")
-source("../software/emma.r")
+source("software/gwas.r")
+source("software/emma.r")
 
 ###################################
 ## read arguments from command line
@@ -44,11 +44,11 @@ for (p in args){
   stop(paste('bad parameter:', pieces[1]))
 }
 
-# genotype_file = "../6.pipeline/steps/bracco_imputed.raw"
-# snp_map = "../6.pipeline/steps/bracco_imputed.map"
-# phenotype_file = "../data/bracco_phenotypes.txt"
-# trait = "game"
-# trait_label = "game"
+# genotype_file = "steps/parus_imputed.raw"
+# snp_map = "steps/parus_imputed.map"
+# phenotype_file = "data/parus_phenotypes.txt"
+# trait = "clutch"
+# trait_label = "clutch"
 
 print(paste("genotype file name:",genotype_file))
 print(paste("SNP map:",snp_map))
