@@ -1,0 +1,86 @@
+PLINK='/home/filippo/Downloads/plink'
+BEAGLE='java -Xss5m -Xmx4g -jar /home/filippo/Documents/beagle4.1/beagle4.jar'
+SPECIES='rice'
+
+## remember to first set up the environment
+## command lines in README / slides
+
+rule targets:
+    input:
+        "rice_imputed.raw_PH_GWAS_rrBLUP.results"
+
+rule get_data:
+    input:
+        script = "software/get_rice_data.sh"
+    output:
+        "data/rice.ped",
+        "data/rice.map",
+        "data/rice_phenotypes.txt"
+    shell:
+        "bash {input.script}"
+
+rule filter_genotypes:
+    input:
+        pedfile = "data/rice.ped",
+        mapfile = "data/rice.map"
+    output:
+        outped = "steps/rice_filtered.ped",
+        outmap = "steps/rice_filtered.map"
+    run:
+        shell("{PLINK} --ped {input.pedfile} --map {input.mapfile} --geno 0.05 --mind 0.2 --maf 0.05 --recode --out steps/rice_filtered")
+
+rule ped2vcf:
+    input:
+        "steps/rice_filtered.ped",
+	"steps/rice_filtered.map"
+    output:
+        "steps/rice_filtered.vcf"
+    shell:
+        "{PLINK} --file steps/rice_filtered --recode vcf --out steps/rice_filtered"
+
+rule impute_genotypes:
+    input:
+        "steps/rice_filtered.vcf"
+    output:
+        "steps/rice_imputed.vcf.gz"
+    shell:
+        "{BEAGLE} gt=steps/rice_filtered.vcf out=steps/rice_imputed"
+
+rule vcf2ped:
+    input:
+        "steps/rice_imputed.vcf.gz"
+    output:
+        "steps/rice_imputed.ped",
+	"steps/rice_imputed.map"
+    shell:
+        "{PLINK} --vcf steps/rice_imputed.vcf.gz --recode --out steps/rice_imputed"
+
+rule plink_recodeA:
+    input:
+        "steps/rice_imputed.ped",
+        "steps/rice_imputed.map"
+    output:
+        "steps/rice_imputed.raw"
+    shell:
+        "{PLINK} --file steps/rice_imputed --recode A --out steps/rice_imputed"
+
+rule gwas_kinship:
+    input:
+        script = "software/gwas_rrblup.R",
+        genotype = "steps/rice_imputed.raw",
+        map = "steps/rice_imputed.map",
+        phenotype = "data/rice_phenotypes.txt"
+    output:
+        "rice_imputed.raw_PH_GWAS_rrBLUP.results"
+    params:
+        trait = "PH",
+        trait_label = "PH"
+    shell:
+        "Rscript --vanilla {input.script} \
+            genotype_file={input.genotype} \
+            snp_map={input.map} \
+            phenotype_file={input.phenotype} \
+            trait={params.trait} \
+            trait_label={params.trait_label}"
+
+
