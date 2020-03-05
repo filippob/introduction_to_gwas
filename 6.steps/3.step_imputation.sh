@@ -21,8 +21,8 @@ else
         java -Xss5m -Xmx4g -jar $beagle gt=dogs_filtered.vcf out=dogs_imputed
 fi
 
-beagle gt=rice_filtered.vcf out=rice_imputed
-beagle gt=dogs_filtered.vcf out=dogs_imputed
+#beagle gt=rice_filtered.vcf out=rice_imputed
+#beagle gt=dogs_filtered.vcf out=dogs_imputed
 
 ## convert back to ped/map
 $plink --vcf rice_imputed.vcf.gz --recode --out rice_imputed
