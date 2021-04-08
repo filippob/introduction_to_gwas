@@ -2,7 +2,7 @@
 
 Material for the course "Introduction to GWAS"
 
-Instructors: Filippo Biscarini, Oscar Gonzalez-Recio, Christian Werner
+Instructors: *Filippo Biscarini, Oscar Gonzalez-Recio, Christian Werner*
 
 timetable: [here](https://docs.google.com/spreadsheets/d/1Cy8vBD6I_no8UPzYPU9bz7ASWyI3bc4Y9vcdr5S1TBw/edit#gid=0)
 
