@@ -11,7 +11,8 @@ timetable: [here](https://docs.google.com/spreadsheets/d/1Cy8vBD6I_no8UPzYPU9bz7
 **day 1**
 
 - Lecture 0	General Introduction / Overview of the course [Filippo, Oscar, Christian]
-    -   [slides 1.General Introduction] (Filippo, Oscar, Christian)
+    - [slides 1.General Introduction (draft)](slides/1.General Introduction.pdf) [Filippo, Oscar, Christian]
+    - [slides 0.Introduction to ML](slides/0.introduction_to_machine_learning.pdf)
 - Lecture 1	Introduction to GWAS: Linkage disequilibrium and Linear Regression [Oscar]
 - Lecture 2	GWAS: case studies / examples from literature [Oscar]
 - Lab 1 - Practicalities and set-up (server, github repo, conda envs, etc) and description of datasets [Christian]
