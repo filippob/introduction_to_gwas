@@ -46,7 +46,6 @@ data/*
 temp/*
 
 # output
-*/*.pdf
 */*.results
 */*.png
 */*.html
