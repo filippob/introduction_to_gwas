@@ -28,12 +28,12 @@ timetable: [here](https://docs.google.com/spreadsheets/d/1Cy8vBD6I_no8UPzYPU9bz7
 - Lab 5 data preprocessing: practice
 - Lecture 6	Imputation of missing genotypes: theory
 - Lab 6 - part 1 practical session on imputation (Beagle)
-- Lecture 8 GWAS: experimental design and statistical power
+- Lecture 7 GWAS: experimental design and statistical power
 
 **day 3**
 
 - Lab 7 (demonstration) KNNI imputation [Filippo]
-- Lecture 7 GWAS, the full model (all SNPs)
+- Lecture 8 GWAS, the full model (all SNPs)
 - Lab 9 (demonstration)  a few steps in the past (GenABEL)
 - Lab 10 GWAS: the stand-alone script(s) for the full model
 - Lecture 9 The multiple testing issue?
@@ -46,7 +46,7 @@ timetable: [here](https://docs.google.com/spreadsheets/d/1Cy8vBD6I_no8UPzYPU9bz7
 - Lab 12 The GWAS pipeline for continuous phenotype [Filippo]
 - Lab 13 The GWAS pipeline for binary phenotype [Filippo]
 - Lab 14 Introducing the exercise (+ light touch on RMarkdown) [Filippo]
-- Collaborative exercise Let's build our own GWAS pipeline on new data [Filippo]
+- Collaborative exercise: Let's build our own GWAS pipeline on new data [Filippo]
 - Discussion Q&A on building pipelines for GWAS
 
 **day 5**
