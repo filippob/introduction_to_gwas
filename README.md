@@ -14,7 +14,7 @@ timetable: [here](https://docs.google.com/spreadsheets/d/1Cy8vBD6I_no8UPzYPU9bz7
     - [slides 1.General Introduction - draft](slides/1.General_Introduction.pdf) [Filippo, Oscar, Christian]
 - Lecture 1	Introduction to GWAS: Linkage disequilibrium and Linear Regression [Oscar]
     - [R code. Exercise on simple linear regression](basic_model/1.Basis_of_linear_regression.R) [Oscar]
-- Lecture 2	GWAS: case studies / examples from literature [Oscar]
+- Lecture 2	GWAS overview: case studies / examples from literature [Oscar]
 - Lab 1 - Practicalities and set-up (server, github repo, conda envs, etc) and description of datasets [Christian]
 - Lab 2 - part 1 basic Linux and advanced R libraries [Christian]
 - Lab 2 - part 2 basic Linux and advanced R libraries [Christian]
@@ -30,6 +30,7 @@ timetable: [here](https://docs.google.com/spreadsheets/d/1Cy8vBD6I_no8UPzYPU9bz7
 - Lecture 6	Imputation of missing genotypes: theory
 - Lab 6 - part 1 practical session on imputation (Beagle)
 - Lecture 7 GWAS: experimental design and statistical power
+    - [R code. Exercise on statistical power](5.power_and_significance/StatisticalPower_exercise.R) [Oscar]
 
 **day 3**
 
