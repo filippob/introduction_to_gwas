@@ -13,6 +13,7 @@ timetable: [here](https://docs.google.com/spreadsheets/d/1Cy8vBD6I_no8UPzYPU9bz7
 - Lecture 0	General Introduction / Overview of the course [Filippo, Oscar, Christian]
     - [slides 1.General Introduction - draft](slides/1.General_Introduction.pdf) [Filippo, Oscar, Christian]
 - Lecture 1	Introduction to GWAS: Linkage disequilibrium and Linear Regression [Oscar]
+    - [R code. Exercise on simple linear regression](basic_model/1.Basis_of_linear_regression.R) [Oscar]
 - Lecture 2	GWAS: case studies / examples from literature [Oscar]
 - Lab 1 - Practicalities and set-up (server, github repo, conda envs, etc) and description of datasets [Christian]
 - Lab 2 - part 1 basic Linux and advanced R libraries [Christian]
