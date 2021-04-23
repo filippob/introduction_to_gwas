@@ -5,7 +5,7 @@
 
 ## command lines (and instruction) for data filtering, imputation and preparation (for GWAS)
 plink=/home/filippo/Downloads/plink
-beagle=/home/filippo/Documents/beagle4.1/beagle.27Jan18.7e1.jar
+beagle=/home/filippo/Documents/jody/software/beagle.24Mar20.5f5.jar
 
 #########################
 ## IMPUTATION
