@@ -44,24 +44,25 @@ for (p in args){
   stop(paste('bad parameter:', pieces[1]))
 }
 
-# genotype_file = "introduction_to_gwas/3.imputation/dogs_imputed.raw"
-# snp_map = "introduction_to_gwas/3.imputation/dogs_imputed.map"
-# phenotype_file = "introduction_to_gwas/data/dogs_phenotypes.txt"
+# genotype_file = "introduction_to_gwas/8.collaborative_exercise/pigs_imputed.raw"
+# snp_map = "introduction_to_gwas/8.collaborative_exercise/pigs_imputed.map"
+# phenotype_file = "introduction_to_gwas/data/pigs_phenotypes.txt"
 # trait = "phenotype"
-# trait_label = "cleft_lip"
-# systematic_effects = "age,gender,n_comorbidities"
+# trait_label = "stump_tail_sperm"
+# systematic_effects = NULL
 
 print(paste("genotype file name:",genotype_file))
 print(paste("SNP map:",snp_map))
 print(paste("phenotype file name:",phenotype_file))
 print(paste("trait:",trait))
 print(paste("trait label:",trait_label))
+systematic_effects = if(exists(x = "systematic_effects")) systematic_effects else NULL
 print(paste("systematic effects:",systematic_effects))
 
-if(systematic_effects != "") {
+if(!is.null(systematic_effects) ) {
   
   systematic_effects_vec = strsplit(systematic_effects, split = ",")[[1]]
-}
+} else systematic_effects_vec = NULL
 
 dataset = basename(genotype_file)
 
@@ -78,6 +79,7 @@ phenos <- fread(phenotype_file)
 gc()
 
 ## prepare for gData
+print("prepare object of class gData ... ")
 snpfile <- as.data.frame(snpfile)
 rownames(snpfile) <- snpfile[["IID"]]
 vec <- colnames(snpfile) != "IID"
@@ -90,58 +92,61 @@ colnames(mapfile)[match(c("Chromosome", "Position"), colnames(mapfile))] <- c("c
 
 
 ## create gData object
-gDataDrops <- createGData(geno = snpfile, map = mapfile)
+gData_gwas <- createGData(geno = snpfile, map = mapfile)
 
 gc()
 
 ## add phenotypes and covariates
+print("read phenotype file ...")
 phenotypes <- phenos[,c("id",trait), with = FALSE]
 names(phenotypes)[1] <- "genotype"
 phenotypes <- as.data.frame(phenotypes)
 phenotypes[,trait] <- as.numeric(phenotypes[,trait])
 
-if(systematic_effects != "") {
+if(!is.null(systematic_effects)) {
 
   covariates <- select(phenos, all_of(systematic_effects_vec))
   covariates <- as.data.frame(covariates)
   rownames(covariates) <- phenos$sample_id ## !! careful with the name of the sample ID column !!
 } else covariates = NULL
 
-gDataDrops <- createGData(gData = gDataDrops, pheno = phenotypes, covar = covariates)
-# gDataDrops <- createGData(gData = gDataDrops, pheno = phenotypes)
+## create gData with both genotype and phenotype
+gData_gwas <- createGData(gData = gData_gwas, pheno = phenotypes, covar = covariates)
 
 gc()
 
 ##### recoding and cleaning
-gDataDropsDedup <- codeMarkers(gDataDrops, impute = FALSE, verbose = TRUE, MAF = 0.01) 
+gData_gwas_clean <- codeMarkers(gData_gwas, impute = FALSE, verbose = TRUE, MAF = 0.01) 
 gc()
 
 #############
 ## GWAS
 #############
-GWASDrops <- runSingleTraitGwas(gData = gDataDropsDedup,
+GWAS_res <- runSingleTraitGwas(gData = gData_gwas_clean,
                                 kinshipMethod = "astle",
                                 traits = trait,
                                 covar = systematic_effects_vec,
                                 thrType = "fdr",
                                 pThr = 0.01)
 
-print(head(GWASDrops$GWAResult), row.names = FALSE)
-# GWASDrops$signSnp
-# GWASDrops$kinship[1:10,1:10]
-# GWASDrops$thr
-print(GWASDrops$GWASInfo)
+print(head(GWAS_res$GWAResult), row.names = FALSE)
+print(GWAS_res$GWASInfo)
 
-fname <- paste(output_path,"/",dataset,"_",trait_label,"_GWAS_statgenGWAS.results", sep="")
-fwrite(x = GWASDrops$GWAResult, file = fname)
+fname <- paste(dataset,trait_label,"GWAS_statgengwas.results", sep="_")
+fwrite(x = GWAS_res$GWAResult, file = fname)
 gzip(fname, destname=sprintf("%s.gz", fname), overwrite = TRUE, remove = TRUE, BFR.SIZE = 1e+06)
 
 gc()
 
 ## summary and plots
-summary(GWASDrops)
+summary(GWAS_res)
 
-plot(GWASDrops, plotType = "qq", trait = "phenotype")
-plot(GWASDrops, plotType = "manhattan", trait = "phenotype", yThr = 3)
+png(paste(dataset,trait_label,"qq_statgen.png",sep="_"))
+plot(GWAS_res, plotType = "qq", trait = "phenotype")
+dev.off()
+
+png(paste(dataset,trait_label,"manhattan_statgen.png",sep="_"))
+plot(GWAS_res, plotType = "manhattan", trait = "phenotype", yThr = 3)
+dev.off()
 
 gc()
