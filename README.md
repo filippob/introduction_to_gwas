@@ -48,14 +48,14 @@ timetable: [here](https://docs.google.com/spreadsheets/d/1Cy8vBD6I_no8UPzYPU9bz7
 - Lab 12 The GWAS pipeline for continuous phenotype [Filippo]
 - Lab 13 The GWAS pipeline for binary phenotype [Filippo]
 - Lab 14 Introducing the exercise (+ light touch on RMarkdown) [Filippo]
-- Collaborative exercise: Let's build our own GWAS pipeline on new data [Filippo]
-- Discussion Q&A on building pipelines for GWAS
+- Collaborative exercise: Let's build our own GWAS pipeline on new data [Filippo, Oscar, Christian]
+- Discussion Q&A on building pipelines for GWAS [Filippo, Oscar, Christian]
 
 **day 5**
 
-- Lecture 11 GWAS models for categorical traits (a primer) 
-- Lecture 12 GWAS models for longitudinal data (a primer)
-- Lecture 13 A light touch on post-GWAS analysis
+- Lecture 11 GWAS models for categorical traits (a primer) [Filippo]
+- Lecture 12 GWAS models for longitudinal data (a primer) [Filippo]
+- Lecture 13 A light touch on post-GWAS analysis [Oscar]
 - Lecture 14 A glimpse on ROH-based alternative [Filippo]
 - Kahoot quiz on what we learned about GWAS! [Filippo, Oscar, Christian]
 - Wrap-up discussion on GWAS [Filippo, Oscar, Christian]
