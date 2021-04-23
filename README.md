@@ -69,3 +69,4 @@ timetable: [here](https://docs.google.com/spreadsheets/d/1Cy8vBD6I_no8UPzYPU9bz7
 5. power_and_significance: designing GWAS experiments
 6. steps: identifying the individual steps involved in a GWAS study
 7. pipeline: assembling the individual steps into a bioinformatics pipeline for GWAS
+8. collaborative exercise: trying out what we learnt on new data
