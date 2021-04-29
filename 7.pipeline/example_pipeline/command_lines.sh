@@ -1,5 +1,5 @@
 ## activate the conda env with snakemake
-source activate base
+conda activate snakemake
 
 ## visualize the help manual for snakemake
 snakemake --help
