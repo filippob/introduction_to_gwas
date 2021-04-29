@@ -50,7 +50,8 @@ In this brief practical/demonstration, we'll go through an illustration of how t
 ```{r,echo=FALSE,results='hide'}
 
 #Demonstrating the use of KNN to impute missing SNP genotypes
-library("DMwR") #for kNN imputation
+library("tidymodels") #for kNN imputation
+library("data.table")
 
 start.time <- Sys.time()
 ```
@@ -66,7 +67,7 @@ A summary of the real missing rate in the data is given below:
 ## cd ../data
 ## wget http://www.jackdellequerce.com/data/GenRiz44.txt
 
-rice44 <- read.table("../data/GenRiz44.txt",header=TRUE)
+rice44 <- fread("~/Documents/arroz/GenRiz44.txt",header=TRUE)
 oldcode <- c("AA","BB","--")
 neucode <- c(-1,1,NA)
 
@@ -105,11 +106,23 @@ The actual missing rate is `r actualMissingRate`.
 
 ### Imputation with the R package
 
-We'll now impute missing genotypes using the **DMwR** *R package*. 
+We'll now impute missing genotypes using the **tidymodels** *R package*. 
 In this package there is the *knnImputation()* function, which uses by default the *Euclidean distance*, and allows the user to specify the number of neighbors $K$ and the measure of ``probability'' of belonging to any given class (either **(weighted) average** or **median**).
 
 ```{r}
-Mimp <- knnImputation(t(injected_data),k=3,meth="median")
+missing_data <- as.data.frame(injected_data)
+
+imputation_recipe <- recipe(missing_data) %>% 
+  update_role(all_numeric(), new_role = "predictor") %>%
+  step_zv(all_numeric(), -all_outcomes()) %>%
+  step_knnimpute(all_predictors(), neighbors = 3)
+
+imputation_recipe_prep <- imputation_recipe %>%
+  prep(strings_as_factors = FALSE)
+
+imputed <- bake(imputation_recipe_prep, missing_data)
+imputed2 = juice(imputation_recipe_prep)
+
 Mimp <- t(Mimp)
 
 #Accuracy of imputation
