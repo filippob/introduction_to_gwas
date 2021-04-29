@@ -38,7 +38,7 @@ timetable: [here](https://docs.google.com/spreadsheets/d/1Cy8vBD6I_no8UPzYPU9bz7
 - Lab 7 (demonstration) KNNI imputation [Filippo]
 - Lecture 9 GWAS, the full model (all SNPs) [Oscar]
 - Lab 9 (demonstration)  a few steps in the past (GenABEL) [Oscar]
-- Lab 10 GWAS: the stand-alone script(s) for the full model [Oscar]
+- Lab 10 GWAS: the stand-alone script(s) for the full model [Filippo]
 - Lab 10 revising the steps involved in GWAS [Filippo]
 
 **day 4**
