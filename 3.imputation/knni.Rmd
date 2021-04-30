@@ -1,7 +1,7 @@
 ---
 title: "Genotype imputation with KNN: a demonstration"
 author: "Filippo Biscarini"
-date: "October 25, 2019"
+date: "April 25, 2021"
 output: html_document
 ---
 
@@ -47,7 +47,7 @@ In this brief practical/demonstration, we'll go through an illustration of how t
 3. Imputation with R package
 4. Step by step KNN imputation: write our own code!
 
-```{r,echo=FALSE,results='hide'}
+```{r,echo=FALSE,results='hide', message=FALSE}
 
 #Demonstrating the use of KNN to impute missing SNP genotypes
 library("tidymodels") #for kNN imputation
@@ -67,7 +67,7 @@ A summary of the real missing rate in the data is given below:
 ## cd ../data
 ## wget http://www.jackdellequerce.com/data/GenRiz44.txt
 
-rice44 <- fread("~/Documents/arroz/GenRiz44.txt",header=TRUE)
+rice44 <- fread("../data/GenRiz44.txt",header=TRUE)
 oldcode <- c("AA","BB","--")
 neucode <- c(-1,1,NA)
 
@@ -81,8 +81,13 @@ colnames(M) <- paste("sample",seq(1:ncol(M)),sep="_")
 All real missing data are edited out of the dataset. This leavs `r nrow(M)` SNP. For the sake of the exercise, initially a much smaller subset with 100 SNPs is extracted.
 
 ```{r}
-#M <- read.table("rice.dat",header=TRUE)
-Mreduced <- t(M[1:100,])
+df <- M %>% as.tibble() %>% rowwise()
+M <- df %>% mutate(m = sd(c_across(everything()))) %>% filter(m > 0) ## remove monomorphic SNP
+rm(df)
+
+M <- M %>% select(-m) %>% as.matrix()
+vec <- sample(x = nrow(M), size = 100)
+Mreduced <- t(M[vec,])
 ```
 
 Now, we randomly introduce 10\% artificially missing SNP genotypes. In this way, we will be able to measure the accuracy of our imputation method.
@@ -109,29 +114,39 @@ The actual missing rate is `r actualMissingRate`.
 We'll now impute missing genotypes using the **tidymodels** *R package*. 
 In this package there is the *knnImputation()* function, which uses by default the *Euclidean distance*, and allows the user to specify the number of neighbors $K$ and the measure of ``probability'' of belonging to any given class (either **(weighted) average** or **median**).
 
-```{r}
+```{r, warning=FALSE, message=FALSE}
 missing_data <- as.data.frame(injected_data)
 
-imputation_recipe <- recipe(missing_data) %>% 
-  update_role(all_numeric(), new_role = "predictor") %>%
-  step_zv(all_numeric(), -all_outcomes()) %>%
-  step_knnimpute(all_predictors(), neighbors = 3)
+# imputation_recipe <- recipe(missing_data) %>% 
+#   update_role(all_numeric(), new_role = "predictor") %>%
+#   step_zv(all_numeric(), -all_outcomes()) %>%
+#   step_knnimpute(all_predictors(), neighbors = 3)
+# 
+# imputation_recipe_prep <- imputation_recipe %>%
+#   prep(strings_as_factors = FALSE)
+# 
+# imputed <- bake(imputation_recipe_prep, missing_data)
+# imputed2 = juice(imputation_recipe_prep)
 
-imputation_recipe_prep <- imputation_recipe %>%
-  prep(strings_as_factors = FALSE)
 
-imputed <- bake(imputation_recipe_prep, missing_data)
-imputed2 = juice(imputation_recipe_prep)
+rec <- recipe(missing_data) %>% 
+  update_role(all_numeric(), new_role = "predictor")
 
-Mimp <- t(Mimp)
+ratio_recipe <- rec %>%
+  step_impute_knn(all_predictors(), neighbors = 3)
+
+ratio_recipe2 <- prep(ratio_recipe, training = missing_data, verbose = FALSE)
+imputed = juice(ratio_recipe2)
+imputed2 = bake(ratio_recipe2, missing_data)
+
+imputed == imputed2
 
 #Accuracy of imputation
-results <- Mimp[is.na(missing_map)]==Mreduced[is.na(missing_map)]
+results <- imputed[is.na(missing_map)]==Mreduced[is.na(missing_map)]
 accuracy <- length(results[results==TRUE])/length(results)
-
 ```
 
-<span style="background-color:yellow">The accuracy of imputation with the R function *knnImputation()* from the *DMwR* package is:<strong> `r accuracy`</strong></span>
+<span style="background-color:yellow">The accuracy of imputation with the R function *step_impute_knn()* from the *tidymodels* package is:<strong> `r accuracy`</strong></span>
 
 ### Step-by-step KNN implementation
 
