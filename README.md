@@ -37,7 +37,7 @@ timetable: [here](https://docs.google.com/spreadsheets/d/1Cy8vBD6I_no8UPzYPU9bz7
 
 - Lab 6 - part 1 practical session on imputation (Beagle) [Christian]
 - Lab 7 (demonstration) KNNI imputation [Filippo]
-    - [slides 7.2.KNN Imputation]
+    - [slides 7.2 KNN Imputation]
     - [R code. knni.Rmd]
 - Lecture 9 GWAS, the full model (all SNPs) [Oscar]
 - Lab 9 (demonstration)  a few steps in the past (GenABEL) [Oscar]
