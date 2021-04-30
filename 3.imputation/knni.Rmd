@@ -139,7 +139,7 @@ ratio_recipe2 <- prep(ratio_recipe, training = missing_data, verbose = FALSE)
 imputed = juice(ratio_recipe2)
 imputed2 = bake(ratio_recipe2, missing_data)
 
-imputed == imputed2
+rowSums(imputed == imputed2)/ncol(imputed) ## identity between the two imputed matrices (juice and bake)
 
 #Accuracy of imputation
 results <- imputed[is.na(missing_map)]==Mreduced[is.na(missing_map)]
