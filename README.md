@@ -29,9 +29,10 @@ timetable: [here](https://docs.google.com/spreadsheets/d/1Cy8vBD6I_no8UPzYPU9bz7
 - Lecture 5 data preprocessing: theory
 - Lab 5 data preprocessing: practice
 - Lecture 6	Imputation of missing genotypes: theory
-- Lecture 7 GWAS: experimental design and statistical power
+- Lecture 7 The multiple testing issue? [Oscar]
+- Lecture 8 GWAS: experimental design and statistical power
     - [R code. Exercise on statistical power](5.power_and_significance/StatisticalPower_exercise.R) [Oscar]
-- Lecture 8 The multiple testing issue? [Oscar]
+
 
 **day 3**
 
