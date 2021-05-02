@@ -13,14 +13,14 @@ timetable: [here](https://docs.google.com/spreadsheets/d/1Cy8vBD6I_no8UPzYPU9bz7
 - Lecture 0	General Introduction / Overview of the course [Filippo, Oscar, Christian]
     - [slides 1.General Introduction - draft](slides/1.General_Introduction.pdf) [Filippo, Oscar, Christian]
 - Lecture 1	Introduction to GWAS: Linkage disequilibrium and Linear Regression [Oscar]
-    - [R code. Exercise on simple linear regression](basic_model/1.Basis_of_linear_regression.R) [Oscar]
-    - [Rmarkdown code. Exercise on simple logistic regression](basic_model/2.exercise.Basis_of_logistic_regression.Rmd) [Oscar]
 - Lecture 2	GWAS overview: case studies / examples from literature [Oscar]
 - Lab 1 - Practicalities and set-up (server, github repo, conda envs, etc) and description of datasets [Christian]
 - Lab 2 - part 1 basic Linux and advanced R libraries [Christian]
 - Lab 2 - part 2 basic Linux and advanced R libraries [Christian]
 - Lab 3	GWAS: basic models [Oscar]
 - Lab 3 (demonstration) GWAS: basic models (linear and logistic regression, population structure, etc.) [Oscar]
+    - [R code. Exercise on simple linear regression](basic_model/1.Basis_of_linear_regression.R) [Oscar]
+    - [Rmarkdown code. Exercise on simple logistic regression](basic_model/2.exercise.Basis_of_logistic_regression.Rmd) [Oscar]
 
 **day 2**
 
