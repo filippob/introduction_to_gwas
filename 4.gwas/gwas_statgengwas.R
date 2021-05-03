@@ -1,7 +1,8 @@
 ## R script to carry out a GWAS analysis with the package statgenGWAS
 ## kinship matrix used to account for population structure in the data
 ## input: Plink .raw and .map files + phenotype file
-# run as Rscript --vanilla gwas_statgengwas.R genotype_file=path_to_genotypes snp_map=path_to_map phenotype_file=path_to_phenotypes trait=trait_name_in_phenotype_file trait_label=label_to_use_for_trait
+# run as Rscript --vanilla gwas_statgengwas.R genotype_file=path_to_genotypes snp_map=path_to_map phenotype_file=path_to_phenotypes 
+# trait=trait_name_in_phenotype_file trait_label=label_to_use_for_trait systematic_effects=population
 
 memory.limit(size = 8000)
 
@@ -44,12 +45,12 @@ for (p in args){
   stop(paste('bad parameter:', pieces[1]))
 }
 
-# genotype_file = "introduction_to_gwas/8.collaborative_exercise/pigs_imputed.raw"
-# snp_map = "introduction_to_gwas/8.collaborative_exercise/pigs_imputed.map"
-# phenotype_file = "introduction_to_gwas/data/pigs_phenotypes.txt"
-# trait = "phenotype"
-# trait_label = "stump_tail_sperm"
-# systematic_effects = NULL
+# genotype_file = "introduction_to_gwas/3.imputation/rice_imputed.raw"
+# snp_map = "introduction_to_gwas/3.imputation/rice_imputed.map"
+# phenotype_file = "introduction_to_gwas/data/rice_phenotypes.txt"
+# trait = "PH"
+# trait_label = "PH"
+# systematic_effects = "population"
 
 print(paste("genotype file name:",genotype_file))
 print(paste("SNP map:",snp_map))
@@ -107,7 +108,7 @@ if(!is.null(systematic_effects)) {
 
   covariates <- select(phenos, all_of(systematic_effects_vec))
   covariates <- as.data.frame(covariates)
-  rownames(covariates) <- phenos$sample_id ## !! careful with the name of the sample ID column !!
+  rownames(covariates) <- phenos$id ## !! careful with the name of the sample ID column !!
 } else covariates = NULL
 
 ## create gData with both genotype and phenotype
@@ -116,7 +117,7 @@ gData_gwas <- createGData(gData = gData_gwas, pheno = phenotypes, covar = covari
 gc()
 
 ##### recoding and cleaning
-gData_gwas_clean <- codeMarkers(gData_gwas, impute = FALSE, verbose = TRUE, MAF = 0.01) 
+gData_gwas_clean <- codeMarkers(gData_gwas, impute = FALSE, verbose = TRUE, MAF = 0.05) 
 gc()
 
 #############
@@ -126,8 +127,9 @@ GWAS_res <- runSingleTraitGwas(gData = gData_gwas_clean,
                                 kinshipMethod = "astle",
                                 traits = trait,
                                 covar = systematic_effects_vec,
-                                thrType = "fdr",
-                                pThr = 0.01)
+                                thrType = "fdr", ## fixed, fdr, bonf, small
+                                pThr = 0.05,
+                               LODThr = 3)
 
 print(head(GWAS_res$GWAResult), row.names = FALSE)
 print(GWAS_res$GWASInfo)
@@ -142,11 +144,11 @@ gc()
 summary(GWAS_res)
 
 png(paste(dataset,trait_label,"qq_statgen.png",sep="_"))
-plot(GWAS_res, plotType = "qq", trait = "phenotype")
+plot(GWAS_res, plotType = "qq", trait = trait)
 dev.off()
 
 png(paste(dataset,trait_label,"manhattan_statgen.png",sep="_"))
-plot(GWAS_res, plotType = "manhattan", trait = "phenotype", yThr = 3)
+plot(GWAS_res, plotType = "manhattan", trait = trait, yThr = 3)
 dev.off()
 
 gc()

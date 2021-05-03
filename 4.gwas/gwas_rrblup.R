@@ -1,7 +1,7 @@
 ## R script to carry out a GWAS analysis with the package rrBLUP
 ## kinship matrix used to account for population structure in the data
 ## input: Plink .raw and .map files + phenotype file
-# run as Rscript --vanilla gwas.R genotype_file=path_to_genotypes snp_map=path_to_map phenotype_file=path_to_phenotypes trait=trait_name_in_phenotype_file trait_label=label_to_use_for_trait
+# run as Rscript --vanilla gwas_rrblup.R genotype_file=path_to_genotypes snp_map=path_to_map phenotype_file=path_to_phenotypes trait=trait_name_in_phenotype_file trait_label=label_to_use_for_trait
 
 library("qqman")
 library("dplyr")
@@ -41,10 +41,10 @@ for (p in args){
 }
 
 # genotype_file = "../3.imputation/rice_imputed.raw"
-# snp_map = "../3.imputation/rice_imputed.map"
-# phenotype_file = "../data/rice_phenotypes.txt"
+# snp_map = "../3.imputation//rice_imputed.map"
+# phenotype_file = "data/rice_phenotypes.txt"
 # trait = "phenotype"
-# trait_label = "cleft_lip"
+# trait_label = "PH"
 
 print(paste("genotype file name:",genotype_file))
 print(paste("SNP map:",snp_map))
