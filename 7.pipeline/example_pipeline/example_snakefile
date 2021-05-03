@@ -22,7 +22,7 @@ rule sort:
     output:
         "snp_sorted.map"
     shell:
-        "sort -n -k1 {input} > {output}"
+        "sort -n -k1 -k4 {input} > {output}" ## sort by chromosome, then bps
 
 
 

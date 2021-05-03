@@ -25,7 +25,7 @@ rule sort:
     output:
         "{dataset}.sorted"
     shell:
-        "sort -n -k1 {input} > {output}"
+        "sort -n -k1 -k4 {input} > {output}"
 
 
 

@@ -12,6 +12,7 @@ snakemake --dryrun --snakefile example_snakefile
 snakemake -n -s example_snakefile
 
 ## dry run to produce a DAG of the pipeline
+man dot ## from the graphviz package (apt install graphviz)
 snakemake --dag --dryrun --snakefile example_snakefile | dot -Tsvg > dag_example.svg
 
 ## actual run of the first example pipeline
