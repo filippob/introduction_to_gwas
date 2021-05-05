@@ -17,4 +17,5 @@ Then, we log in [FUMA](https://fuma.ctglab.nl/gene2func).
 </p>
 
 The results from the R program is the input file *gwas_genesCfamiliaris.txt*, that contains GENES from significant SNPs (’Gene’ column) in the *Genes of interest* option, whereas the background genes must be used as input in the corresponding option.
+Then, click submit.
 
