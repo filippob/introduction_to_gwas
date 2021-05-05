@@ -41,7 +41,7 @@ timetable: [here](https://docs.google.com/spreadsheets/d/1Cy8vBD6I_no8UPzYPU9bz7
     - [slides 7.2 KNN Imputation]
     - [R code. knni.Rmd]
 - Lecture 9 GWAS, the full model (all SNPs) [Oscar]
-- Lab 9 (demonstration)  a few steps in the past (GenABEL) [Oscar]
+- Lab 9 (demonstration)  a few steps in the past (GenABEL) []
 - Lab 10 GWAS: the stand-alone script(s) for the full model [Filippo]
 - Lab 10 revising the steps involved in GWAS [Filippo]
 
@@ -59,7 +59,8 @@ timetable: [here](https://docs.google.com/spreadsheets/d/1Cy8vBD6I_no8UPzYPU9bz7
 
 - Lecture 11 GWAS models for categorical traits (a primer) [Filippo]
 - Lecture 12 GWAS models for longitudinal data (a primer) [Filippo]
-- Lecture 13 A light touch on post-GWAS analysis [Oscar]
+- Lecture 13 A light touch on post-GWAS analysis. Inferring functionality [Oscar]
+    - [R code. Exercise on R, and FUMA](x./getGenesFromSNP.R) [Oscar]
 - Lecture 14 A glimpse on ROH-based alternative [Filippo]
 - Kahoot quiz on what we learned about GWAS! [Filippo, Oscar, Christian]
 - Wrap-up discussion on GWAS [Filippo, Oscar, Christian]
