@@ -8,9 +8,8 @@ Download [bkg genes](https://www.ensembl.org/info/data/ftp/index.html):  [https:
 
 We run the R code *[getGenesFromSNP](getGenesFromSNP.R)* to obtain the candidate genes that host the SNPs resulted significant in the GWAS. The output is saved in the file *gwas_genesCfamiliaris.csv*.
 
-Then, we log in [FUMA](https://fuma.ctglab.nl/snp2gene).
+Then, we log in [FUMA](https://fuma.ctglab.nl/gene2func).
 
-And select the option GENE2FUNC in the upper menu.
 
 
 <p align="center">
