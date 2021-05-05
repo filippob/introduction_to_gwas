@@ -1,19 +1,21 @@
-*Functional Analysis*
+# Functional Analysis
 
-This tutorial explains how to extract the genes from statistcally associated SNPs from the GWAS, and infer their functionality.
+**This tutorial explains how to extract the genes from statistcally associated SNPs from the GWAS, and infer their functionality.**
 
 First we need to download the background genes from our specie of study. These are the known genes that are carried by the specie. In our case, we are going to use the dog data. so we download the genes from the Canis familiaris specie.
 
-Download bkg genes:  [https://www.ensembl.org/info/data/ftp/index.html] 
+Download [bkg genes](https://www.ensembl.org/info/data/ftp/index.html):  [https://www.ensembl.org/info/data/ftp/index.html] 
+
+We run the R code *[getGenesFromSNP](getGenesFromSNP.R)* to obtain the candidate genes that host the SNPs resulted significant in the GWAS. The output is saved in the file *gwas_genesCfamiliaris.csv*.
+
+Then, we log in [FUMA](https://fuma.ctglab.nl/snp2gene).
+
+And select the option GENE2FUNC in the upper menu.
 
 
-Results overview in FUMA
-https://fuma.ctglab.nl/snp2gene
-Input file: GWASresults.txt
-Variant Effect Prediction in Ensembl
-https://www.ensembl.org/Multi/Tools/VEP
-Input file (significant SNPs): Map.selected.rs
-Output file (Functional Info): Select ‘Gene’ column
-Enrichment analysis
-https://fuma.ctglab.nl/gene2func
-Input files: GENES from significant SNPs (’Gene’ column from VEP) Background genes from the specie (Canis_familiaris.bkg_genes)
+<p align="center">
+  <img width="800" height="200" src="menu.PNG">
+</p>
+
+The results from the R program is the input file *gwas_genesCfamiliaris.txt*, that contains GENES from significant SNPs (’Gene’ column) in the *Genes of interest* option, whereas the background genes must be used as input in the corresponding option.
+
