@@ -40,7 +40,7 @@ timetable: [here](https://docs.google.com/spreadsheets/d/1Cy8vBD6I_no8UPzYPU9bz7
 - Lab 7 (demonstration) KNNI imputation [Filippo]
     - [slides 7.2 KNN Imputation]
     - [R code. knni.Rmd]
-- Lecture 9 GWAS, the full model (all SNPs) [Oscar]
+- Lecture 9 GWAS, the full model (all SNPs) [?]
 - Lab 9 (demonstration)  a few steps in the past (GenABEL) []
 - Lab 10 GWAS: the stand-alone script(s) for the full model [Filippo]
 - Lab 10 revising the steps involved in GWAS [Filippo]
