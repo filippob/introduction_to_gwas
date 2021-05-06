@@ -6,8 +6,11 @@
 
 #<rstudio> knni.Rmd
 
+## command lines (and instruction) for data filtering, imputation and preparation (for GWAS)
+plink=/home/filippo/Downloads/plink
+
 # subset data
-plink --dog --file ../2.pre-processing/dogs_filtered --chr 25 --thin 0.05 --recode --out dogs_chr25
+$plink --dog --file ../2.pre-processing/dogs_filtered --chr 25 --thin 0.025 --recode --out dogs_chr25
 
 # make the matrix of Hamming distances
 Rscript --vanilla hamming.R dogs_chr25.ped
