@@ -9,6 +9,7 @@ install.packages("knitr")
 install.packages("qqman")
 install.packages("plotly")
 install.packages("qvalue")
+install.packages("R.utils")
 install.packages("genetics")
 install.packages("snpStats")
 install.packages("reshape2")
@@ -18,6 +19,7 @@ install.packages("patchwork")
 install.packages("data.table")
 install.packages("doParallel")
 install.packages("tidymodels")
+install.packages("statgenGWAS")
 install.packages("RColorBrewer")
 
 
@@ -25,6 +27,8 @@ install.packages("RColorBrewer")
 ## from the github repository
 install.packages("../software/gMatrix_0.2.tar.gz", repos = NULL, type = "source")
 install.packages("../software/ldDesign_2.0-1.tar.gz", repos = NULL, type = "source")
+install.packages("../software/GenABEL.data_1.0.0.tar.gz", repos = NULL, type = "source")
+install.packages("../software/software/GenABEL_1.8-0.tar.gz", repos = NULL, type = "source")
 
 ## from Bioconductor
 source("http://bioconductor.org/biocLite.R")
