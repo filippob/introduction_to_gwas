@@ -4,7 +4,7 @@
 
 First, we need to download the background genes from our specie of study. These are the known genes that are carried by the specie. In our case, we are going to use the dog data. so we download the genes from the Canis familiaris specie.
 
-Download [bkg genes](https://www.ensembl.org/info/data/ftp/index.html):  [https://www.ensembl.org/info/data/ftp/index.html] 
+Download [bkg genes](https://www.ensembl.org/info/data/ftp/index.html)
 
 We run the R code *[getGenesFromSNP](getGenesFromSNP.R)* to obtain the candidate genes that host the SNPs resulted significant in the GWAS. The output is saved in the file *gwas_genesCfamiliaris.csv*.
 
