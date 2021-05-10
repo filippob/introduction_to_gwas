@@ -11,16 +11,17 @@ timetable: [here](https://docs.google.com/spreadsheets/d/1Cy8vBD6I_no8UPzYPU9bz7
 **day 1**
 
 - Lecture 0	General Introduction / Overview of the course [Filippo, Oscar, Christian]
-    - [slides 1.General Introduction - draft](slides/1.General_Introduction.pdf) [Filippo, Oscar, Christian]
+    - [slides 0.General Introduction - draft](slides/1.General_Introduction.pdf) [Filippo, Oscar, Christian]
 - Lecture 1	Introduction to GWAS: Linkage disequilibrium and Linear Regression [Oscar]
+    - [slides 1.Intro to GWAS](slides/1.Introduction_to_GWAS.pdf)
 - Lecture 2	GWAS overview: case studies / examples from literature [Oscar]
+    - [slides 2.Overview](slides/2.GWAS_overview.pdf)
 - Lab 1 - Practicalities and set-up (server, github repo, conda envs, etc) and description of datasets [Christian]
 - Lab 2 - part 1 basic Linux and advanced R libraries [Christian]
 - Lab 2 - part 2 basic Linux and advanced R libraries [Christian]
-- Lab 3	GWAS: basic models [Oscar]
 - Lab 3 (demonstration) GWAS: basic models (linear and logistic regression, population structure, etc.) [Oscar]
-    - [R code. Exercise on simple linear regression](basic_model/1.Basis_of_linear_regression.R) [Oscar]
-    - [Rmarkdown code. Exercise on simple logistic regression](basic_model/2.exercise.Basis_of_logistic_regression.Rmd) [Oscar]
+    - [R code. Exercise on simple linear regression](basic_model/1.Basis_of_linear_regression.R) 
+    - [Rmarkdown code. Exercise on simple logistic regression](basic_model/2.exercise.Basis_of_logistic_regression.Rmd)
 
 **day 2**
 
@@ -30,8 +31,8 @@ timetable: [here](https://docs.google.com/spreadsheets/d/1Cy8vBD6I_no8UPzYPU9bz7
 - Lab 5 data preprocessing: practice
 - Lecture 6	Imputation of missing genotypes: theory
 - Lecture 7 The multiple testing issue? [Oscar]
-- Lecture 8 GWAS: experimental design and statistical power
-    - [R code. Exercise on statistical power](5.power_and_significance/StatisticalPower_exercise.R) [Oscar]
+- Lecture 8 GWAS: experimental design and statistical power [Oscar]
+    - [R code. Exercise on statistical power](5.power_and_significance/StatisticalPower_exercise.R)
 
 
 **day 3**
@@ -60,7 +61,7 @@ timetable: [here](https://docs.google.com/spreadsheets/d/1Cy8vBD6I_no8UPzYPU9bz7
 - Lecture 11 GWAS models for categorical traits (a primer) [Filippo]
 - Lecture 12 GWAS models for longitudinal data (a primer) [Filippo]
 - Lecture 13 A light touch on post-GWAS analysis. Inferring functionality [Oscar]
-    - [R code. Exercise on R, and FUMA](functional_analysis/getGenesFromSNP.R) [Oscar]
+    - [R code. Exercise on R, and FUMA](functional_analysis/getGenesFromSNP.R)
 - Lecture 14 A glimpse on ROH-based alternative [Filippo]
 - Kahoot quiz on what we learned about GWAS! [Filippo, Oscar, Christian]
 - Wrap-up discussion on GWAS [Filippo, Oscar, Christian]
