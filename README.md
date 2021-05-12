@@ -19,7 +19,7 @@ timetable: [here](https://docs.google.com/spreadsheets/d/1Cy8vBD6I_no8UPzYPU9bz7
 - Lab 1 - Practicalities and set-up (server, github repo, conda envs, etc) and description of datasets [Christian]
 - Lab 2 - part 1 basic Linux and advanced R libraries [Christian]
 - Lab 2 - part 2 basic Linux and advanced R libraries [Christian]
-- Lab 3 (demonstration) GWAS: basic models (linear and logistic regression, population structure, etc.) [Oscar]
+- Lab 3 (demonstration) GWAS: basic models (linear and logistic regression) [Oscar]
     - [R code. Exercise on simple linear regression](basic_model/1.Basis_of_linear_regression.R) 
     - [Rmarkdown code. Exercise on simple logistic regression](basic_model/2.exercise.Basis_of_logistic_regression.Rmd)
 
