@@ -12,10 +12,11 @@ timetable: [here](https://docs.google.com/spreadsheets/d/1Cy8vBD6I_no8UPzYPU9bz7
 
 - Lecture 0	General Introduction / Overview of the course [Filippo, Oscar, Christian]
     - [slides 0.General Introduction - draft](slides/1.General_Introduction.pdf) [Filippo, Oscar, Christian]
-- Lecture 1	Introduction to GWAS: Linkage disequilibrium and Linear Regression [Oscar]
-    - [slides 1.Intro to GWAS](slides/1.Introduction_to_GWAS.pdf)
-- Lecture 2	GWAS overview: case studies / examples from literature [Oscar]
-    - [slides 2.Overview](slides/2.GWAS_overview.pdf)
+- Lecture 1	GWAS overview: case studies / examples from literature [Oscar]
+    - [slides 1.Overview](slides/1.GWAS_overview.pdf)
+- Lecture 2	Introduction to GWAS: Linkage disequilibrium and Linear Regression [Oscar]
+    - [slides 2.Intro to GWAS](slides/2.Introduction_to_GWAS.pdf)
+
 - Lab 1 - Practicalities and set-up (server, github repo, conda envs, etc) and description of datasets [Christian]
 - Lab 2 - part 1 basic Linux and advanced R libraries [Christian]
 - Lab 2 - part 2 basic Linux and advanced R libraries [Christian]
@@ -30,7 +31,7 @@ timetable: [here](https://docs.google.com/spreadsheets/d/1Cy8vBD6I_no8UPzYPU9bz7
 - Lecture 5 data preprocessing: theory
 - Lab 5 data preprocessing: practice
 - Lecture 6	Imputation of missing genotypes: theory
-- Lecture 7 The multiple testing issue? [Oscar]
+- Lecture 7 The multiple testing issue [Oscar]
     - [slides 7. Multiple_testing](slides/7.MultipleTesting.pdf)
 - Lecture 8 GWAS: experimental design and statistical power [Oscar]
     - [slides 8. Design and power](slides/8.Experimental_design_and_statistical_power.pdf)
