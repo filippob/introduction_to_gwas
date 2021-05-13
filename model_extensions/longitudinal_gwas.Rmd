@@ -11,9 +11,10 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## GWAS for longitudinal traits (a primer)
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+### Cox models
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+Let's start from Cox models.
+The Cox proportional-hazards model (Cox, 1972) is essentially a regression model commonly used in medical research for investigating the association between the survival time of patients and one or more predictor variables.
 
 ```{r cars}
 summary(cars)

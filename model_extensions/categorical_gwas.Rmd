@@ -1,0 +1,79 @@
+---
+title: "Categorical GWAS"
+author: "Filippo"
+date: "5/12/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+library("knitr")
+library("readxl")
+library("tidyverse")
+
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Categorical traits
+
+1. ordered categories
+2. unordered categories
+
+## Multinomial logistic regression
+
+**Breast Tissue Dataset** (from: https://archive.ics.uci.edu/ml/datasets/)
+
+- 6 categories: three are grouped together $\rightarrow$ 4 categories:
+  - `adi`: adipose 
+  - `car`: carcinoma
+  - `con`: connective 
+  - `other`
+- 9 features: electrical impedance measurements of freshly excised tissue samples from the breast (all quantitative, continuous)
+
+```{r breast}
+# odata <- read_dta("https://stats.idre.ucla.edu/stat/data/ologit.dta")
+tissue <- read_excel("../data/BreastTissue.xls", sheet = 2)
+tissue <- tissue[, -1]
+tissue$Class <- as.factor(tissue$Class)
+levels(tissue$Class)[levels(tissue$Class) %in% c("fad", "gla", "mas")] <- "other"
+levels(tissue$Class)
+```
+
+```{r labels, echo = FALSE}
+p <- ggplot(tissue, aes(x = Class)) + geom_bar(aes(fill=Class))
+p
+```
+
+
+```{r descriptives, echo=FALSE}
+tissue %>%
+  select(-Class) %>%
+  gather(key = "variable", value = "value") %>%
+  group_by(variable) %>%
+  summarise(across(value, list(mean = mean, std = sd, min = min, max = max),
+                   .names = "{fn}")) %>%
+  kable()
+```
+
+### Fit the multinomial logistic regression model
+
+We use the R package `nnet`
+
+```{r}
+library("nnet")
+
+tissue$Class <- relevel(tissue$Class, ref = "other")
+tissue$Class
+```
+
+```{r}
+OIM <- multinom(Class ~ 1, data = tissue)
+summary(OIM)
+```
+```{r}
+multi_mo <- multinom(Class ~ ., data = tissue, model=TRUE)
+```
+
+```{r}
+summary(multi_mo)
+```
+
