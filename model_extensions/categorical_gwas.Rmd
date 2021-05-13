@@ -77,3 +77,79 @@ multi_mo <- multinom(Class ~ ., data = tissue, model=TRUE)
 summary(multi_mo)
 ```
 
+```{r}
+library("lmtest")
+lrtest(multi_mo, "P") # Chi-Square=12.922,p=0.01166*
+```
+## Ordinal logistic regression
+
+Ordinal Logistic Regression is used when there are three or more categories with a natural ordering to the levels, but the ranking of the levels do not necessarily mean the intervals between them are equal.
+
+Examples of ordinal responses could be:
+
+- The effectiveness rating of a college course on a scale of 1-5
+- Levels of flavors for hot wings
+- Medical condition (e.g., good, stable, serious, critical)
+- Diseases can be graded on scales from least severe to most severe
+- Survey respondents choose answers on scales from strongly agree to strongly disagree
+- Students are graded on scales from A to F
+
+When response categories are ordered, the logits can utilize the ordering. You can modify the binary logistic regression model to incorporate the ordinal nature of a dependent variable by defining the probabilities differently.
+
+Instead of considering the probability of an individual event, you consider the probabilities of that event and all events that are ordered before it.
+
+A cumulative probability for $Y$ is the probability that $Y$ falls at or below a particular point. For outcome category $j$, the cumulative probability is:
+
+$$
+P(Y \leq j) = \pi_1 + \ldots + \pi_j, [j=1, \ldots, J]
+$$
+
+where $\pi_j$ is the probability to choose category $j$
+
+Probit and logit models are reasonable choices when the changes in the cumulative probabilities are gradual. If there are abrupt changes, other link functions should be used.
+
+```{r}
+## data from : https://zenodo.org/record/4723941#.YJ0xGKIzZhE
+covid <- read_excel("../data/Race_clincial_trial_Spreadsheet_de-identified__noagegender_final.xlsx", sheet = 1)
+covid <- covid[,-c(1:3,12,13,15:18,ncol(covid))]
+covid <- na.omit(covid)
+names(covid)[ncol(covid)] <- "disease_score"
+
+table(covid$disease_score) ## remove 0 and 7, too few
+covid <- covid %>%
+  filter(disease_score > 0 & disease_score < 7)
+
+covid <- covid %>% mutate(across(everything(), as.numeric))
+
+## make it "more" ordinal
+covid$disease_score = covid$disease_score-2
+covid$disease_score <- factor(covid$disease_score, levels = c(1,2,3,4), labels = c("mild","moderate","impaired","severe"))
+```
+
+```{r}
+p <- ggplot(covid, aes(x = disease_score)) + geom_bar(aes(fill=disease_score))
+p
+```
+
+```{r}
+library("MASS")
+OLRmodel <- polr(disease_score ~ . , data = covid, Hess = TRUE, method = "probit")
+summary(OLRmodel)
+```
+```{r}
+# Run a "only intercept" model
+OIM <- polr(disease_score ~ 1, data = covid)
+summary(OIM)
+```
+
+```{r}
+anova(OIM,OLRmodel)
+```
+
+```{r}
+(OLRestimates <- coef(summary(OLRmodel)))
+p <- pnorm(abs(OLRestimates[, "t value"]), lower.tail = FALSE) * 2
+p
+```
+
+
