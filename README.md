@@ -6,7 +6,10 @@ Instructors: *Filippo Biscarini, Oscar Gonzalez-Recio, Christian Werner*
 
 This course will introduce students, researchers and professionals to the steps needed to build an analysis pipeline for Genome-Wide Association Studies (GWAS). The course will describe all the necessary steps involved in a typical GWAS study, which will then be used to build a reusable and reproducible bioinformatics pipeline.
 
-timetable: [here](https://docs.google.com/spreadsheets/d/1Cy8vBD6I_no8UPzYPU9bz7ASWyI3bc4Y9vcdr5S1TBw/edit#gid=0)
+Each day the course will start at **14:00** and end at **20:00** (CET).
+As a general rule, we'll have a longer break (30 minutes) at 16:00 and two shorter breaks (10-15 minutes) later on during the day (to be decided flexibly depending on the sessions). 
+
+<!-- timetable: [here](https://docs.google.com/spreadsheets/d/1Cy8vBD6I_no8UPzYPU9bz7ASWyI3bc4Y9vcdr5S1TBw/edit#gid=0) -->
 
 **day 1**
 
@@ -26,11 +29,11 @@ timetable: [here](https://docs.google.com/spreadsheets/d/1Cy8vBD6I_no8UPzYPU9bz7
 
 **day 2**
 
-- Lecture 4 EDA theory
-- Lab 4 EDA practice
-- Lecture 5 data preprocessing: theory
-- Lab 5 data preprocessing: practice
-- Lecture 6	Imputation of missing genotypes: theory
+- Lecture 4 EDA theory [Christian]
+- Lab 4 EDA practice [Christian]
+- Lecture 5 data preprocessing: theory [Christian]
+- Lab 5 data preprocessing: practice [Christian]
+- Lecture 6	Imputation of missing genotypes: theory [Christian]
 - Lecture 7 The multiple testing issue [Oscar]
     - [slides 7. Multiple_testing](slides/7.MultipleTesting.pdf)
 - Lecture 8 GWAS: experimental design and statistical power [Oscar]
@@ -41,27 +44,27 @@ timetable: [here](https://docs.google.com/spreadsheets/d/1Cy8vBD6I_no8UPzYPU9bz7
 **day 3**
 
 - Lab 6 - part 1 practical session on imputation (Beagle) [Christian]
-- Lab 7 (demonstration) KNNI imputation [Filippo]
+- Lecture 9: KNN Imputation 
     - [slides 7.2 KNN Imputation]
+- Lab 7 (demonstration) KNNI imputation [Filippo]
     - [R code. knni.Rmd]
-- Lecture 9 GWAS, the full model (all SNPs) [?]
-- Lab 9 (demonstration)  a few steps in the past (GenABEL) []
-- Lab 10 GWAS: the stand-alone script(s) for the full model [Filippo]
-- Lab 10 revising the steps involved in GWAS [Filippo]
+- Lab 8 GWAS: the stand-alone script(s) for the full model [Filippo]
+- Lab 9 revising the steps involved in GWAS [Filippo]
+- Lecture 10 Bioinformatics pipelines: a super-elementary introduction [Filippo]
+- Lab 10 Building a pipeline with Snakemake [Filippo]
 
 **day 4**
 
-- Lecture 10 Bioinformatics pipelines: a super-elementary introduction [Filippo]
-- Lab 11 Building a pipeline with Snakemake [Filippo]
-- Lab 12 The GWAS pipeline for continuous phenotype [Filippo]
-- Lab 13 The GWAS pipeline for binary phenotype [Filippo]
-- Lab 14 Introducing the exercise (+ light touch on RMarkdown) [Filippo]
+- Lab 11 The GWAS pipeline for continuous phenotype [Filippo]
+- Lab 12 The GWAS pipeline for binary phenotype [Filippo]
+- Lab 13 Introducing the exercise (+ light touch on RMarkdown) [Filippo]
 - Collaborative exercise: Let's build our own GWAS pipeline on new data [Filippo, Oscar, Christian]
 - Discussion Q&A on building pipelines for GWAS [Filippo, Oscar, Christian]
+- Lecture 11 (part 1) GWAS model extensions: a primer on categorical traits and longitudinal data [Filippo]
 
 **day 5**
 
-- Lecture 11 GWAS model extensions: a primer on categorical traits and longitudinal data [Filippo]
+- Lecture 11 (part 2) GWAS model extensions: a primer on categorical traits and longitudinal data [Filippo]
 - Lecture 12 A light touch on post-GWAS analysis. Inferring functionality [Oscar]
     - [R code. Exercise on R, and FUMA](functional_analysis/getGenesFromSNP.R)
 - Lecture 13 A glimpse on ROH-based alternative [Filippo]
