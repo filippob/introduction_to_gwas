@@ -15,10 +15,20 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Categorical traits
 
-1. ordered categories
-2. unordered categories
+1. unordered categories $\rightarrow$ `multinomial logistic regression`
+2. ordered categories $\rightarrow$ `ordinal logistic regression`
 
 ## Multinomial logistic regression
+
+**Multinomial logistic regression** reports the odds of being in the different outcome categories in reference to some base group. If we have three classes (A, B, C) there will be two different sets of regression results corresponding to the following two models (the reference class is arbitrary):
+
+$$
+log(\frac{P(Y=B)}{P(Y=A)}) = \beta_0 + \beta_1x_1 + \ldots + \beta_mx_m
+$$
+
+$$
+log(\frac{P(Y=C)}{P(Y=A)}) = \beta_0 + \beta_1x_1 + \ldots + \beta_mx_m
+$$
 
 **Breast Tissue Dataset** (from: https://archive.ics.uci.edu/ml/datasets/)
 
@@ -29,20 +39,22 @@ knitr::opts_chunk$set(echo = TRUE)
   - `other`
 - 9 features: electrical impedance measurements of freshly excised tissue samples from the breast (all quantitative, continuous)
 
-```{r breast}
+```{r breast_data}
 # odata <- read_dta("https://stats.idre.ucla.edu/stat/data/ologit.dta")
 tissue <- read_excel("../data/BreastTissue.xls", sheet = 2)
-tissue <- tissue[, -1]
-tissue$Class <- as.factor(tissue$Class)
+tissue <- tissue[, -1] ## remove sequential numbering of records
+tissue$Class <- as.factor(tissue$Class) ## convert classes to factor
 levels(tissue$Class)[levels(tissue$Class) %in% c("fad", "gla", "mas")] <- "other"
 levels(tissue$Class)
 ```
+Below, the barplot of the frequencies of breast tissue categories:
 
 ```{r labels, echo = FALSE}
 p <- ggplot(tissue, aes(x = Class)) + geom_bar(aes(fill=Class))
 p
 ```
 
+**Descriptive statistics**
 
 ```{r descriptives, echo=FALSE}
 tissue %>%
@@ -70,16 +82,16 @@ OIM <- multinom(Class ~ 1, data = tissue)
 summary(OIM)
 ```
 ```{r}
-multi_mo <- multinom(Class ~ ., data = tissue, model=TRUE)
+multinom_mod <- multinom(Class ~ ., data = tissue, model=TRUE)
 ```
 
 ```{r}
-summary(multi_mo)
+summary(multinom_mod)
 ```
 
 ```{r}
 library("lmtest")
-lrtest(multi_mo, "P") # Chi-Square=12.922,p=0.01166*
+lrtest(multinom_mod, "P") # Chi-Square=12.922,p=0.01166*
 ```
 ## Ordinal logistic regression
 
@@ -87,8 +99,6 @@ Ordinal Logistic Regression is used when there are three or more categories with
 
 Examples of ordinal responses could be:
 
-- The effectiveness rating of a college course on a scale of 1-5
-- Levels of flavors for hot wings
 - Medical condition (e.g., good, stable, serious, critical)
 - Diseases can be graded on scales from least severe to most severe
 - Survey respondents choose answers on scales from strongly agree to strongly disagree
@@ -111,7 +121,7 @@ Probit and logit models are reasonable choices when the changes in the cumulativ
 ```{r}
 ## data from : https://zenodo.org/record/4723941#.YJ0xGKIzZhE
 covid <- read_excel("../data/Race_clincial_trial_Spreadsheet_de-identified__noagegender_final.xlsx", sheet = 1)
-covid <- covid[,-c(1:3,12,13,15:18,ncol(covid))]
+covid <- covid[,-c(1:3,12,13,15:18,ncol(covid))] ## select some variables
 covid <- na.omit(covid)
 names(covid)[ncol(covid)] <- "disease_score"
 
@@ -130,25 +140,68 @@ covid$disease_score <- factor(covid$disease_score, levels = c(1,2,3,4), labels =
 p <- ggplot(covid, aes(x = disease_score)) + geom_bar(aes(fill=disease_score))
 p
 ```
+We use the `polr` function from the `MASS` package: `polr` stands for **proportional odds logistic regression**
 
 ```{r}
 library("MASS")
 OLRmodel <- polr(disease_score ~ . , data = covid, Hess = TRUE, method = "probit")
 summary(OLRmodel)
 ```
-```{r}
-# Run a "only intercept" model
-OIM <- polr(disease_score ~ 1, data = covid)
-summary(OIM)
-```
+By exponentiating model coefficients (on the logit scale), we get the **odds ratios** for each variable in the model (relative to a one-unit increase for that variable):
 
 ```{r}
-anova(OIM,OLRmodel)
+coefs <- coef(OLRmodel)
+exp(coefs) ## OR
 ```
+#### p-values
+
+There are multiple ways to get `p-values` from generalised linear models (GLMs):
+
+1. from `t-values`
+
+- take the absolute value of the `t-value`
+- calculate the degrees of freedom as $N−K$ (number of observations in the model minus the number of independent variables)
+- find the upper tail probability, on a *t-distribution* with $N−K$ d.f., associated with that `t-value` (We can do this with the pt() function, using the lower.tail=FALSE argument.)
+- Double it.
+
 
 ```{r}
-(OLRestimates <- coef(summary(OLRmodel)))
+OLRestimates <- coef(summary(OLRmodel))
+n = nrow(covid)
+k = ncol(covid)-1
+p <- pt(abs(OLRestimates[, "t value"]), lower.tail = FALSE, df = n-k) * 2
 p <- pnorm(abs(OLRestimates[, "t value"]), lower.tail = FALSE) * 2
+kable(p)
+```
+2. from the likelihood ratio test
+
+#### add a SNP effect
+
+```{r}
+covid$SNP <- sample(c(0,1,2), nrow(covid), replace = TRUE)
+OLRmodel_snp <- polr(disease_score ~ . , data = covid, Hess = TRUE, method = "logistic")
+```
+
+```{r}
+anova(OLRmodel,OLRmodel_snp)
+```
+
+```{r}
+library("lmtest")
+lrtest(OLRmodel, OLRmodel_snp)
+```
+
+Double-check with the t-test:
+
+```{r}
+OLRestimate <- coef(summary(OLRmodel_snp))["SNP","t value"]
+coef_snp <- coef(OLRmodel_snp)["SNP"]
+exp(coef_snp) ##OR
+
+n = nrow(covid)
+k = ncol(covid)-1
+
+p <- pnorm(abs(OLRestimate), lower.tail = FALSE) * 2
 p
 ```
 
