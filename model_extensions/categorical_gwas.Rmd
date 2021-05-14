@@ -195,7 +195,7 @@ lrtest(multinom_snp, "SNP")
 
 ## Ordinal logistic regression
 
-Ordinal Logistic Regression is used when there are three or more categories with a natural ordering to the levels, but the ranking of the levels do not necessarily mean the intervals between them are equal.
+Ordinal Logistic Regression is used when there are three or more categories with a natural ordering to the levels (the ranking of the levels doesn't necessarily mean the intervals between them are equal)
 
 Examples of ordinal responses could be:
 
@@ -226,6 +226,11 @@ covid <- na.omit(covid)
 names(covid)[ncol(covid)] <- "disease_score"
 
 table(covid$disease_score) ## remove 0 and 7, too few
+```
+
+We remove categories `0' and `7` because there are too few observations; then we recode the categories from 1 to 4
+
+```{r}
 covid <- covid %>%
   filter(disease_score > 0 & disease_score < 7)
 
@@ -240,6 +245,8 @@ covid$disease_score <- factor(covid$disease_score, levels = c(1,2,3,4), labels =
 p <- ggplot(covid, aes(x = disease_score)) + geom_bar(aes(fill=disease_score))
 p
 ```
+### Fit the ordinal logistic regression model
+
 We use the `polr` function from the `MASS` package: `polr` stands for **proportional odds logistic regression**
 
 ```{r}
@@ -247,11 +254,12 @@ library("MASS")
 OLRmodel <- polr(disease_score ~ . , data = covid, Hess = TRUE, method = "probit")
 summary(OLRmodel)
 ```
-By exponentiating model coefficients (on the logit scale), we get the **odds ratios** for each variable in the model (relative to a one-unit increase for that variable):
+
+By exponentiating model coefficients (on the logit scale), we get the **odds** (risk rations, relative risks) for each variable in the model (odds of belonging to that category for one-unit increase for that variable):
 
 ```{r}
 coefs <- coef(OLRmodel)
-exp(coefs) ## OR
+exp(coefs) ## odds
 ```
 #### p-values
 
