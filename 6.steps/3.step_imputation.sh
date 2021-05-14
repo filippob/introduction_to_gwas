@@ -3,8 +3,10 @@
 #--------------------------------------
 
 ## set paths to executables
-plink=/home/filippo/Downloads/plink
-beagle=/home/filippo/Documents/jody/software/beagle.24Mar20.5f5.jar
+# plink=/home/filippo/Downloads/plink
+# beagle=/home/filippo/Documents/software/beagle5/beagle.28Sep18.793.jar
+plink=plink
+beagle=beagle
 
 ## convert to vcf
 $plink --file rice_filtered --recode vcf --out rice_filtered
