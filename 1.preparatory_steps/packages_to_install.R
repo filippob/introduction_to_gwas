@@ -2,10 +2,12 @@
 ## (some additional packages may still be needed during the course)
 
 ## from CRAN
+install.packages("AER")
 install.packages("msm")
 install.packages("doMC")
 install.packages("nnet")
 install.packages("MASS")
+install.packages("afex")
 install.packages("dplyr")
 install.packages("nadiv")
 install.packages("knitr")
