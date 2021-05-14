@@ -59,6 +59,8 @@ As a general rule, we'll have a longer break (30 minutes) at 16:00 and two short
 - Lab 12 The GWAS pipeline for binary phenotype [Filippo]
 - Lab 13 Introducing the exercise (+ light touch on RMarkdown) [Filippo]
 - Collaborative exercise: Let's build our own GWAS pipeline on new data [Filippo, Oscar, Christian]
+    - part 1: individual/group break-out sessions to give it a try independetly
+    - part 2: whole-group revision of the exercise
 - Discussion Q&A on building pipelines for GWAS [Filippo, Oscar, Christian]
 - Lecture 11 (part 1) GWAS model extensions: a primer on categorical traits and longitudinal data [Filippo]
 
