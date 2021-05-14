@@ -42,7 +42,7 @@ install.packages("RColorBrewer")
 install.packages("../software/gMatrix_0.2.tar.gz", repos = NULL, type = "source")
 install.packages("../software/ldDesign_2.0-1.tar.gz", repos = NULL, type = "source")
 install.packages("../software/GenABEL.data_1.0.0.tar.gz", repos = NULL, type = "source")
-install.packages("../software/software/GenABEL_1.8-0.tar.gz", repos = NULL, type = "source")
+install.packages("../software/GenABEL_1.8-0.tar.gz", repos = NULL, type = "source")
 
 ## from Bioconductor
 source("http://bioconductor.org/biocLite.R")
