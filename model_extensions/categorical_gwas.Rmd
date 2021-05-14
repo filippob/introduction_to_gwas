@@ -88,6 +88,35 @@ multinom_mod <- multinom(Class ~ ., data = tissue, model=TRUE)
 ```{r}
 summary(multinom_mod)
 ```
+#### p-values
+
+**Wald test**
+
+$$
+W=\frac{(\hat{p}-p_0)^2}{Var(\hat{p})}
+$$
+
+$p_0$: parameter value under $H_0$
+
+```{r}
+coefs = summary(multinom_mod)$coefficients
+std_errs = summary(multinom_mod)$standard.errors
+z <- coefs/std_errs
+# 2-tailed Wald z tests to test significance of coefficients
+p <- (1 - pnorm(abs(z), 0, 1))*2
+p
+```
+
+
+```{r}
+library("AER")
+coeftest(multinom_mod)
+```
+**Likelihood ratio test**
+
+$$
+LR = 2\{L(y,\hat{p}) - L(y,p_0)\}
+$$
 
 ```{r}
 library("lmtest")
