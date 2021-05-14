@@ -11,7 +11,7 @@ timetable: [here](https://docs.google.com/spreadsheets/d/1Cy8vBD6I_no8UPzYPU9bz7
 **day 1**
 
 - Lecture 0	General Introduction / Overview of the course [Filippo, Oscar, Christian]
-    - [slides 0.General Introduction - draft](slides/1.General_Introduction.pdf) [Filippo, Oscar, Christian]
+    - [slides 0.General Introduction - draft](slides/1.General_Introduction.pdf)
 - Lecture 1	GWAS overview: case studies / examples from literature [Oscar]
     - [slides 1.Overview](slides/1.GWAS_overview.pdf)
 - Lecture 2	Introduction to GWAS: Linkage disequilibrium and Linear Regression [Oscar]
@@ -61,11 +61,10 @@ timetable: [here](https://docs.google.com/spreadsheets/d/1Cy8vBD6I_no8UPzYPU9bz7
 
 **day 5**
 
-- Lecture 11 GWAS models for categorical traits (a primer) [Filippo]
-- Lecture 12 GWAS models for longitudinal data (a primer) [Filippo]
-- Lecture 13 A light touch on post-GWAS analysis. Inferring functionality [Oscar]
+- Lecture 11 GWAS model extensions: a primer on categorical traits and longitudinal data [Filippo]
+- Lecture 12 A light touch on post-GWAS analysis. Inferring functionality [Oscar]
     - [R code. Exercise on R, and FUMA](functional_analysis/getGenesFromSNP.R)
-- Lecture 14 A glimpse on ROH-based alternative [Filippo]
+- Lecture 13 A glimpse on ROH-based alternative [Filippo]
 - Kahoot quiz on what we learned about GWAS! [Filippo, Oscar, Christian]
 - Wrap-up discussion on GWAS [Filippo, Oscar, Christian]
 
