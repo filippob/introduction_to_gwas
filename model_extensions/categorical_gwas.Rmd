@@ -68,26 +68,39 @@ tissue %>%
 
 ### Fit the multinomial logistic regression model
 
-We use the R package `nnet`
+We use the R package `nnet`:
 
 ```{r}
 library("nnet")
 
 tissue$Class <- relevel(tissue$Class, ref = "other")
-tissue$Class
+levels(tissue$Class)
 ```
+Let's first try to fit a *NULL* model (intercept only)
 
-```{r}
+```{r, results='hide'}
 OIM <- multinom(Class ~ 1, data = tissue)
 summary(OIM)
 ```
+Let's now fit a **multinomial logistic regression model** with all the variables in the dataset:
+
 ```{r}
 multinom_mod <- multinom(Class ~ ., data = tissue, model=TRUE)
 ```
 
+We see that we have different sets of coefficients for each class (the multiple logistic regression models):
+
 ```{r}
 summary(multinom_mod)
 ```
+The model coefficients can be interpreted as risk ratios (odds) relative to the reference class (for one unit increase of the independent variable):
+
+```{r}
+coef_DR_car <- coef(multinom_mod)["car","DR"]
+exp(coef_DR_car)
+```
+The **odds** (**relative risk**) for the tissue of being `carcinomatous` rather than `other` increase by 13.1 with one unit increase in the variable DR.
+
 #### p-values
 
 **Wald test**
@@ -96,32 +109,90 @@ $$
 W=\frac{(\hat{p}-p_0)^2}{Var(\hat{p})}
 $$
 
-$p_0$: parameter value under $H_0$
+- $p_0$: parameter value under $H_0$
+- $W$ is distributed as a `chi-square` random variable with 1 d.f. (this is equivalent to the square of a $N(0,1)$ random variable)
 
 ```{r}
+## Wald test
 coefs = summary(multinom_mod)$coefficients
 std_errs = summary(multinom_mod)$standard.errors
+chisq_stats = (coefs^2)/(std_errs^2)
+p <- 1-pchisq(q = chisq_stats, df = 1)
+print(p)
+```
+
+```{r, label='normal_wald'}
+## Gaussian equivalence
 z <- coefs/std_errs
 # 2-tailed Wald z tests to test significance of coefficients
 p <- (1 - pnorm(abs(z), 0, 1))*2
 p
 ```
+Instead of writing out all the steps on our own, we can use a R package (`AER`) to carry out the Wald test:
 
-
-```{r}
+```{r, message=FALSE}
 library("AER")
 coeftest(multinom_mod)
 ```
 **Likelihood ratio test**
 
+As an alternative to the Wald test, we can use the (log)likelihood ratio test:
+
 $$
 LR = 2\{L(y,\hat{p}) - L(y,p_0)\}
 $$
 
-```{r}
+We fit a reduced multinomial logistic regression model without the variable of interest, in this case the variable `P`:
+
+```{r, results='hide'}
 library("lmtest")
-lrtest(multinom_mod, "P") # Chi-Square=12.922,p=0.01166*
+## remove variable P from the model 
+multinom_mod_red <- multinom(Class ~ ., data = tissue[,-ncol(tissue)], model=TRUE)
+lrtest(multinom_mod,multinom_mod_red)
 ```
+
+```{r, results='hide'}
+## alternatively, with the lrtest function we can specify the variable for which we want to run the LRT
+lrtest(multinom_mod, "P") 
+```
+The function `anova` can also be used to compare models (as it is done in linear regression models):
+
+```{r}
+anova(multinom_mod,multinom_mod_red)
+```
+
+The R package `afex` allows to run multiple model comparisons on all the variables included in the full model:
+
+```{r, message=FALSE}
+library("afex")
+Anova(multinom_mod, type = "III")
+```
+### Adding a SNP effect
+
+In the **breast tissue** dataset we don't have any SNP data: we can add a fictitious (randomly sampled) SNP genotype column to the data, and see how we would use a **multinomial logistic regression model** to run a **GWAS** analysis for **unordered (nominal) categorical phenotypes**.
+
+```{r, results='hide'}
+tissue$SNP <- sample(c(0,1,2), nrow(tissue), replace = TRUE)
+ggplot(tissue, aes(x=SNP)) + geom_bar(aes(fill=as.factor(SNP))) + guides(fill=guide_legend(title="SNP")) +
+  facet_wrap(~Class)
+```
+
+#### Running the model
+
+```{r, results='hide'}
+multinom_snp <- multinom(Class ~ ., data = tissue, model=TRUE)
+```
+
+```{r}
+## alternatively, with the lrtest function we can specify the variable for which we want to run the LRT
+summary(multinom_snp)
+```
+
+```{r}
+## alternatively, with the lrtest function we can specify the variable for which we want to run the LRT
+lrtest(multinom_snp, "SNP") 
+```
+
 ## Ordinal logistic regression
 
 Ordinal Logistic Regression is used when there are three or more categories with a natural ordering to the levels, but the ranking of the levels do not necessarily mean the intervals between them are equal.
