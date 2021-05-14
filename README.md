@@ -14,7 +14,7 @@ As a general rule, we'll have a longer break (30 minutes) at 16:00 and two short
 **day 1**
 
 - Lecture 0	General Introduction / Overview of the course [Filippo, Oscar, Christian]
-    - [slides 0.General Introduction - draft](slides/1.General_Introduction.pdf)
+    - [slides 0.General Introduction](slides/1.General_Introduction.pdf)
 - Lecture 1	GWAS overview: case studies / examples from literature [Oscar]
     - [slides 1.Overview](slides/1.GWAS_overview.pdf)
 - Lecture 2	Introduction to GWAS: Linkage disequilibrium and Linear Regression [Oscar]
