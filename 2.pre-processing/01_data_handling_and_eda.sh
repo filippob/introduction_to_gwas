@@ -3,7 +3,8 @@
 ## data handling
 #############################################
 
-plink=/home/filippo/Downloads/plink
+# plink=/home/filippo/Downloads/plink
+plink=plink
 
 ## basic Plink commands
 

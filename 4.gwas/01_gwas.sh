@@ -2,7 +2,8 @@
 
 ## prepare data for GWAS (Arthur Korte)
 
-plink=/home/filippo/Downloads/plink
+# plink=/home/filippo/Downloads/plink
+plink=plink
 
 $plink --file ../3.imputation/rice_imputed --recode A --out rice_imputed
 $plink --dog --file ../3.imputation/dogs_imputed --recode A --out dogs_imputed
