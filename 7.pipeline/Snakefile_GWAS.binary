@@ -1,8 +1,9 @@
 ## pipeline to run GWAS for binary traits
 ## dogs dataset
-
-PLINK='/home/filippo/Downloads/plink'
-BEAGLE='java -Xss5m -Xmx4g -jar /home/filippo/Documents/software/beagle5/beagle.28Sep18.793.jar'
+PLINK='plink'
+BEAGLE='beagle'
+# PLINK='/home/filippo/Downloads/plink'
+# BEAGLE='java -Xss5m -Xmx4g -jar /home/filippo/Documents/software/beagle5/beagle.28Sep18.793.jar'
 SPECIES='dog'
 
 rule targets:
