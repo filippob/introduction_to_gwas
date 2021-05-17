@@ -218,6 +218,28 @@ where $\pi_j$ is the probability to choose category $j$
 
 Probit and logit models are reasonable choices when the changes in the cumulative probabilities are gradual. If there are abrupt changes, other link functions should be used.
 
+**proportional odds logistic regression**: highlights the proportional odds assumption in our model
+
+- $y$: ordinal outcome variable with $J$ categories
+- $P(y \leq j)$: cumulative probability of $y$ less (or equal) than a specific category $j$ ($j = 1, \ldots, J-1$)
+
+The **odds** of being lass than or equal to a specific category is:
+
+$$
+\frac{P(y \leq j)}{P(y > j)}
+$$
+
+for $j = 1, \ldots, J-1$ (since $P>J = 0$, division by 0 is undefined).
+We can now take the **log(odds)** (the **logit**!):
+
+$$
+log\left( \frac{P(y \leq j)}{P(y > j)} \right) = logit(P(y \leq j)) = \beta_{j0} + \beta_1x_1 + \ldots + \beta_px_p
+$$
+
+(PS: high values of $\eta = \beta_{j0}+\mathbf{x^T\beta}$ correspond to low values of $y$: this is why sometimes the **proportional odds logistic regression model** is parameterised as $logit(P(y \leq j)) = \beta_{j0}-\mathbf{x^T\beta}$)
+
+This model has a different intercept term for each category in the output variable, but each explanatory variable has only one single coefficient (fewer terms compared to the multinomial logisti regression model for nominal categorical traits)
+
 ```{r}
 ## data from : https://zenodo.org/record/4723941#.YJ0xGKIzZhE
 covid <- read_excel("../data/Race_clincial_trial_Spreadsheet_de-identified__noagegender_final.xlsx", sheet = 1)
