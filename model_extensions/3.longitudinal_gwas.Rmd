@@ -6,26 +6,86 @@ output: html_document
 ---
 
 ```{r setup, include=FALSE}
+library("knitr")
+library("tidyverse")
+
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
 ## GWAS for longitudinal traits (a primer)
 
-### Cox models
+## Cox models
 
-Let's start from Cox models.
 The Cox proportional-hazards model (Cox, 1972) is essentially a regression model commonly used in medical research for investigating the association between the survival time of patients and one or more predictor variables.
 
-```{r cars}
-summary(cars)
+### Time-to-event data
+
+**time-to-event data (survival analysis)**:
+
+Examples of types of events:
+
+- Relapse
+- Progression
+- Death
+
+Characteristics of time events:
+
+- subjects enter at different times and have different duration of follow-up
+- entire survival experience, not just the percentages who remain alive at the end of the study
+- the survival distributions may differ even though the five-year survival rates are similar
+
+
+## Survival analysis
+```{r}
+library("survival")
+library("survminer")
+
+data("lung")
+head(lung)
 ```
 
-## Including Plots
+- a survival object created using the function `Surv()`: survival time (time from enrollment to end of study), status at the end of study (dead/censored)
+- the data set containing the variables: covariates (e.g. sex)
 
-You can also embed plots, for example:
-
-```{r pressure, echo=FALSE}
-plot(pressure)
+```{r}
+fit <- survfit(Surv(time, status) ~ sex, data = lung)
+print(fit)
+```
+```{r, label='kaplar-meier-curve', fig.height=10, fig.width=10}
+# Change color, linetype by strata, risk.table color by strata
+ggsurvplot(fit,
+          pval = TRUE, conf.int = TRUE,
+          pval.method = TRUE,
+          risk.table = TRUE, # Add risk table
+          risk.table.col = "strata", # Change risk table color by groups
+          linetype = "strata", # Change line type by groups
+          surv.median.line = "hv", # Specify median survival
+          ncensor.plot = TRUE,
+          ggtheme = theme_bw(), # Change ggplot2 theme
+          palette = c("#E7B800", "#2E9FDF"))
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+```{r}
+ggsurvplot(fit,
+          conf.int = TRUE,
+          risk.table.col = "strata", # Change risk table color by groups
+          ggtheme = theme_bw(), # Change ggplot2 theme
+          palette = c("#E7B800", "#2E9FDF"),
+          fun = "event")
+```
+
+#### Cummulative hazard 
+
+It is defined as $H(t)=−log(survivalfunction)=−log(S(t))$
+
+The cumulative hazard ($H(t)$) corresponds to the number of events that would be expected for each individual by time `t` if the event were a repeatable process
+
+```{r}
+ggsurvplot(fit,
+          conf.int = TRUE,
+          risk.table.col = "strata", # Change risk table color by groups
+          ggtheme = theme_bw(), # Change ggplot2 theme
+          palette = c("#E7B800", "#2E9FDF"),
+          fun = "cumhaz")
+```
+
