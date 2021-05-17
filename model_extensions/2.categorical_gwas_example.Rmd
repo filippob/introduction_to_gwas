@@ -1,0 +1,103 @@
+---
+title: "GWAS for categorical traits - example"
+author: "Filippo"
+date: "5/17/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+library("AER")
+library("MASS")
+library("knitr")
+library("readxl")
+library("tidyverse")
+library("data.table")
+
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+### sheep data
+
+Data from: "**Genome‐wide association reveals the locus responsible for four‐horned ruminant**", *Kijas et al.*, (2016) [https://onlinelibrary.wiley.com/doi/full/10.1111/age.12409]
+
+- `0`: polled (no horns)
+- `1`: two horns
+- `2`: four horns
+
+```{r sheep}
+sheep <- fread("../../categorical_gwas/data/sheep_reduced.raw")
+sheep <- dplyr::select(sheep, -c(FID,PAT,MAT,SEX,PHENOTYPE))
+phenotypes <- fread("../../categorical_gwas/data/sheep_phenotypes.txt", header = TRUE)
+sheep$phenotype <- phenotypes$pheno_2[match(sheep$IID,phenotypes$IID)]
+sheep$breed <- phenotypes$Breed[match(sheep$IID,phenotypes$IID)]
+sheep$phenotype <- factor(sheep$phenotype)
+```
+
+
+```{r distribution, echo=FALSE}
+p <- ggplot(sheep, aes(x = phenotype)) + geom_bar(aes(fill=phenotype))
+p <- p + facet_wrap(~breed)
+p
+```
+#### A little preprocessing
+
+```{r}
+maf <- function(x) { 
+  
+    n_bb = sum(x == 0)
+    n_ab = sum(x == 1)
+    freq = (n_bb+0.5*n_ab)/length(x)
+    return(freq)
+}
+
+maf_vec <- sheep %>%
+  summarise(across(where(is.numeric), maf)) %>%
+  gather(key = "snp", value = "maf")
+
+maf_vec <- filter(maf_vec, maf < 0.95 & maf > 0.05)
+
+sheep <- sheep[,-1] ## remove IDs
+
+vec <- names(sheep) %in% maf_vec$snp
+vec[length(vec)-1] = TRUE ## phenotype
+vec[length(vec)] = TRUE ## breed
+
+## removing SNP with low MAF
+sheep <- sheep[,vec,with=FALSE]
+```
+
+### Fit the ordered logistic regression model
+
+```{r}
+dataset <- sheep[,c("phenotype","breed")]
+snps <- dplyr::select(sheep, -c(phenotype,breed))
+
+results = data.frame("SNP"=NULL,"P"=NULL)
+
+for (i in 1:ncol(snps)) {
+  
+  dataset$snp <- snps[,i,with=FALSE]
+  snp_name <- gsub("_[A-Z]$","",names(snps)[i])
+  OLRmodel <- polr(phenotype ~ . , data = dataset, Hess = TRUE, method = "logistic") ## you can select logistic or probit as method
+  p_value <- coeftest(OLRmodel)["snp","Pr(>|z|)"]
+  results = rbind.data.frame(results,data.frame("SNP"=snp_name,"P"=p_value))
+}
+
+```
+
+We now retrieve information on SNP position and plot the results:
+
+```{r}
+snp_map <- fread("../../categorical_gwas/data/sheep_reduced.map")
+names(snp_map) <- c("CHR","SNP","cM","BP")
+snp_map <- dplyr::select(snp_map, -cM)
+results <- results %>% inner_join(snp_map, by = "SNP") %>% dplyr::select(SNP,CHR,BP,P)
+```
+
+
+```{r}
+library("qqman")
+manhattan(results, suggestiveline = FALSE, col = c("red","blue"), logp = TRUE)
+```
+
+

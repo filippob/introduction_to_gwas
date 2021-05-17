@@ -193,7 +193,7 @@ summary(multinom_snp)
 lrtest(multinom_snp, "SNP") 
 ```
 
-## Ordinal logistic regression
+## Ordered logistic regression
 
 Ordinal Logistic Regression is used when there are three or more categories with a natural ordering to the levels (the ranking of the levels doesn't necessarily mean the intervals between them are equal)
 
@@ -216,7 +216,7 @@ $$
 
 where $\pi_j$ is the probability to choose category $j$
 
-Probit and logit models are reasonable choices when the changes in the cumulative probabilities are gradual. If there are abrupt changes, other link functions should be used.
+Probit and logit models are reasonable choices when the changes in the cumulative probabilities are gradual. If there are abrupt changes, other link functions can be used.
 
 **proportional odds logistic regression**: highlights the proportional odds assumption in our model
 
@@ -236,9 +236,11 @@ $$
 log\left( \frac{P(y \leq j)}{P(y > j)} \right) = logit(P(y \leq j)) = \beta_{j0} + \beta_1x_1 + \ldots + \beta_px_p
 $$
 
-(PS: high values of $\eta = \beta_{j0}+\mathbf{x^T\beta}$ correspond to low values of $y$: this is why sometimes the **proportional odds logistic regression model** is parameterised as $logit(P(y \leq j)) = \beta_{j0}-\mathbf{x^T\beta}$)
+(PS: high values of $\eta = \beta_{j0}+\mathbf{x^T\beta}$ correspond to low values of $y$: this is why sometimes the **proportional odds logistic regression model** is parameterised as $logit(P(y \leq j)) = \beta_{j0}-\mathbf{x^T\beta}$. This is the way the R function `polr` parameterizes the model)
 
-This model has a different intercept term for each category in the output variable, but each explanatory variable has only one single coefficient (fewer terms compared to the multinomial logisti regression model for nominal categorical traits)
+This model has a different intercept term for each category in the output variable, but each explanatory variable has only one single coefficient (fewer terms compared to the multinomial logistic regression model for nominal categorical traits). The intercepts indicate where the latent variable is cut to make the *j* groups that we observe in our data. Note that this latent variable is continuous.
+
+#### Illustration with a Covid-19 dataset
 
 ```{r}
 ## data from : https://zenodo.org/record/4723941#.YJ0xGKIzZhE
@@ -267,15 +269,22 @@ covid$disease_score <- factor(covid$disease_score, levels = c(1,2,3,4), labels =
 p <- ggplot(covid, aes(x = disease_score)) + geom_bar(aes(fill=disease_score))
 p
 ```
-### Fit the ordinal logistic regression model
+
+### Fit the ordered logistic regression model
 
 We use the `polr` function from the `MASS` package: `polr` stands for **proportional odds logistic regression**
 
 ```{r}
 library("MASS")
-OLRmodel <- polr(disease_score ~ . , data = covid, Hess = TRUE, method = "probit")
+OLRmodel <- polr(disease_score ~ . , data = covid, Hess = TRUE, method = "logistic") ## you can select logistic or probit as method
 summary(OLRmodel)
 ```
+
+For instance, for the mild/moderate categories:
+
+$$
+logit(P(y \leq 1)) = 8.33 - 0.14 \cdot \text{highest temp first 24 hrs (F)} - (-0.008 \cdot \text{lowest Systolic BP 1st 24 hrs}) - \\ \ldots -0.598 \cdot \text{Peak O2 requirement in first 24 hrs of admission since time arriving to  ED (see tab 2 for scale)}
+$$
 
 By exponentiating model coefficients (on the logit scale), we get the **odds** (risk rations, relative risks) for each variable in the model (odds of belonging to that category for one-unit increase for that variable):
 
@@ -285,25 +294,51 @@ exp(coefs) ## odds
 ```
 #### p-values
 
-There are multiple ways to get `p-values` from generalised linear models (GLMs):
+As usual, there are multiple ways to get `p-values` from generalised linear models (GLMs):
 
-1. from `t-values`
-
-- take the absolute value of the `t-value`
-- calculate the degrees of freedom as $N−K$ (number of observations in the model minus the number of independent variables)
-- find the upper tail probability, on a *t-distribution* with $N−K$ d.f., associated with that `t-value` (We can do this with the pt() function, using the lower.tail=FALSE argument.)
-- Double it.
+1. **Wald test**
 
 
 ```{r}
 OLRestimates <- coef(summary(OLRmodel))
-n = nrow(covid)
-k = ncol(covid)-1
-p <- pt(abs(OLRestimates[, "t value"]), lower.tail = FALSE, df = n-k) * 2
-p <- pnorm(abs(OLRestimates[, "t value"]), lower.tail = FALSE) * 2
+# n = nrow(covid)
+# k = ncol(covid)-1
+# p <- pt(abs(OLRestimates[, "t value"]), lower.tail = FALSE, df = n-k) * 2
+# p <- pnorm(abs(OLRestimates[, "t value"]), lower.tail = FALSE) * 2
+
+## Wald test
+coefs = OLRestimates[,"Value"]
+std_errs = OLRestimates[,"Std. Error"]
+chisq_stats = (coefs^2)/(std_errs^2)
+p <- 1-pchisq(q = chisq_stats, df = 1)
 kable(p)
 ```
-2. from the likelihood ratio test
+
+```{r}
+# coeftest(OLRmodel)
+```
+
+2. **likelihood ratio test**
+
+```{r}
+names(covid)[ncol(covid)-1] <- "peak_o2"
+covid_reduced <- covid %>% dplyr::select(-peak_o2)
+OLRmodel_reduced <- polr(disease_score ~ . , data = covid_reduced, Hess = TRUE, method = "logistic") ## you can select logistic or probit as method
+
+lrtest(OLRmodel,OLRmodel_reduced)
+# anova(OLRmodel,OLRmodel_reduced)
+```
+
+```{r}
+OLRestimates <- coef(summary(OLRmodel))[10,]
+
+## Wald test
+coefs = OLRestimates["Value"]
+std_errs = OLRestimates["Std. Error"]
+chisq_stats = (coefs^2)/(std_errs^2)
+p <- 1-pchisq(q = chisq_stats, df = 1)
+print(p)
+```
 
 #### add a SNP effect
 
@@ -321,18 +356,16 @@ library("lmtest")
 lrtest(OLRmodel, OLRmodel_snp)
 ```
 
-Double-check with the t-test:
+Double-check with the the Wald test:
 
 ```{r}
-OLRestimate <- coef(summary(OLRmodel_snp))["SNP","t value"]
-coef_snp <- coef(OLRmodel_snp)["SNP"]
-exp(coef_snp) ##OR
+OLRestimates <- coef(summary(OLRmodel_snp))["SNP",]
 
-n = nrow(covid)
-k = ncol(covid)-1
-
-p <- pnorm(abs(OLRestimate), lower.tail = FALSE) * 2
-p
+## Wald test
+coefs = OLRestimates["Value"]
+std_errs = OLRestimates["Std. Error"]
+chisq_stats = (coefs^2)/(std_errs^2)
+p <- 1-pchisq(q = chisq_stats, df = 1)
+print(p)
 ```
-
 
