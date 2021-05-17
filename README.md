@@ -20,7 +20,7 @@ As a general rule, we'll have a longer break (30 minutes) at 16:00 and two short
 - Lecture 2	Introduction to GWAS: Linkage disequilibrium and Linear Regression [Oscar]
     - [slides 2.Intro to GWAS](slides/Lecture2.pdf)
 - Lab 1 - Practicalities and set-up (server, github repo, conda envs, etc) and description of datasets [Christian]
-    - [slides 3.Description of Datasets](slides/Description of datasets.pdf)
+    - [slides 3.Description of Datasets](slides/Description_of_datasets.pdf)
 - Lab 2 - part 1 basic Linux and advanced R libraries [Christian]
 - Lab 2 - part 2 basic Linux and advanced R libraries [Christian]
 - Lab 3 (demonstration) GWAS: basic models (linear and logistic regression) [Oscar]
