@@ -89,3 +89,65 @@ ggsurvplot(fit,
           fun = "cumhaz")
 ```
 
+#### Kaplan-Meier life table: summary of survival curves
+
+```{r}
+res.sum <- surv_summary(fit)
+head(res.sum)
+```
+
+#### Log-Rank test comparing survival curves: survdiff()
+
+```{r}
+surv_diff <- survdiff(Surv(time, status) ~ sex, data = lung)
+surv_diff
+```
+
+## From Kaplan-Meier curves to Cox models
+
+Kaplan-Meier curves and log-rank tests are useful for univariate analysis, describing survival in terms of one factor under investigation, and typically work only with categorical predictors (e.g. sex, treatment A vs treatment B etc.)
+
+This is where **Cox proportional hazards regression analysis** comes in handy: it works for both quantitative predictor variables and for categorical variables. Furthermore, the Cox regression model extends survival analysis methods to assess simultaneously the effect of several risk factors on survival time.
+
+Cox models examine how specified factors (**covariates**) influence the rate (**hazard rate**) of a particular event happening (e.g., infection, death) at a particular point in time
+
+The Cox model is expressed by the **hazard function** denoted by $h(t)$, interpretable as the risk of dying at time `t`:
+
+$$
+h(t)=h_0(t) \cdot exp(\beta_1x_1 + \beta_2x_2 + \ldots + beta_kx_k)
+$$
+
+```{r}
+res.cox <- coxph(Surv(time, status) ~ sex, data = lung)
+res.cox
+```
+
+#### Multiple Cox regression model
+
+```{r}
+res.cox <- coxph(Surv(time, status) ~ age + sex + ph.ecog, data =  lung)
+summary(res.cox)
+```
+```{r}
+library("lmtest")
+lrtest(res.cox,"ph.ecog")
+```
+
+### Adding a SNP effect
+
+```{r}
+lung$SNP <- sample(c(0,1,2), nrow(lung), replace = TRUE)
+```
+
+```{r}
+res.cox_snp <- coxph(Surv(time, status) ~ age + sex + ph.ecog + SNP, data =  lung)
+summary(res.cox_snp)
+```
+
+```{r}
+lrtest(res.cox_snp,"SNP")
+```
+```{r}
+lrtest(res.cox_snp, res.cox)
+```
+
