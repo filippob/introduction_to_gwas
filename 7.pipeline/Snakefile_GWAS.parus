@@ -1,8 +1,10 @@
 ## pipeline to run GWAS for the assignment
 ## parus dataset
 
-PLINK='/home/filippo/Downloads/plink'
-BEAGLE='java -Xss5m -Xmx4g -jar /home/filippo/Documents/beagle4.1/beagle4.jar'
+#PLINK='/home/filippo/Downloads/plink'
+#BEAGLE='java -Xss5m -Xmx4g -jar /home/filippo/Documents/software/beagle5/beagle.28Sep18.793.jar'
+PLINK='plink'
+BEAGLE='beagle'
 SPECIES='parus'
 
 rule targets:

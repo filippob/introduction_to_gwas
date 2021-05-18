@@ -20,9 +20,12 @@ As a general rule, we'll have a longer break (30 minutes) at 16:00 and two short
 - Lecture 2	Introduction to GWAS: Linkage disequilibrium and Linear Regression [Oscar]
     - [slides 2.Intro to GWAS](slides/Lecture2.pdf)
 - Lab 1 - Practicalities and set-up (server, github repo, conda envs, etc) and description of datasets [Christian]
-    - [slides 3.Description of Datasets](slides/Description of datasets.pdf)
+    - [slides 3.Description of datasets](slides/Description_of_datasets.pdf)
 - Lab 2 - part 1 basic Linux and advanced R libraries [Christian]
+    - [slides 4.Linux and the Shell](slides/4.Linux_and_the_Shell.pdf)
 - Lab 2 - part 2 basic Linux and advanced R libraries [Christian]
+    - [Linux cheatsheet](slides/Linux_cheatsheet.pdf)
+    - [Introduction to the tidyverse](slides/Tidyverse_Intro.html)
 - Lab 3 (demonstration) GWAS: basic models (linear and logistic regression) [Oscar]
     - [R code. Exercise on simple linear regression](basic_model/1.Basis_of_linear_regression.R) 
     - [Rmarkdown code. Exercise on simple logistic regression](basic_model/2.exercise.Basis_of_logistic_regression.Rmd)
@@ -34,12 +37,12 @@ As a general rule, we'll have a longer break (30 minutes) at 16:00 and two short
 - Lab 4 EDA practice [Christian]
 - Lecture 5 data preprocessing: theory [Christian]
 - Lab 5 data preprocessing: practice [Christian]
-- Lecture 6	Imputation of missing genotypes: theory [Christian]
-- Lecture 7 The multiple testing issue [Oscar]
-    - [slides 7. Multiple_testing](slides/7.MultipleTesting.pdf)
-- Lecture 8 GWAS: experimental design and statistical power [Oscar]
-    - [slides 8. Design and power](slides/8.Experimental_design_and_statistical_power.pdf)
+- Lecture 6 The multiple testing issue [Oscar]
+    - [slides 6. Multiple_testing](slides/7.MultipleTesting.pdf)
+- Lecture 7 GWAS: experimental design and statistical power [Oscar]
+    - [slides 7. Design and power](slides/8.Experimental_design_and_statistical_power.pdf)
     - [R code. Exercise on statistical power](5.power_and_significance/StatisticalPower_exercise.R)
+- Lecture 8	Imputation of missing genotypes: theory [Christian]
 
 
 **day 3**

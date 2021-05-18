@@ -53,7 +53,7 @@ In this brief practical/demonstration, we'll go through an illustration of how t
 library("tidymodels") #for kNN imputation
 library("data.table")
 
-start.time <- Sys.time()
+# start.time <- Sys.time()
 ```
 
 Start time was: `r start.time`
@@ -72,10 +72,14 @@ oldcode <- c("AA","BB","--")
 neucode <- c(-1,1,NA)
 
 M <- apply(rice44[,5:ncol(rice44)],2,function(x) neucode[match(x,oldcode)])
+print(paste("number of SNPs before filtering:", nrow(M)))
+
 missingRate <- apply(M,1,function(x) length(x[is.na(x)])/length(x))
 summary(missingRate)
+
 M <- M[missingRate==0,]
 colnames(M) <- paste("sample",seq(1:ncol(M)),sep="_")
+print(paste("n. of SNPs after filtering:",nrow(M)))
 ```
 
 All real missing data are edited out of the dataset. This leavs `r nrow(M)` SNP. For the sake of the exercise, initially a much smaller subset with 100 SNPs is extracted.
@@ -88,6 +92,7 @@ rm(df)
 M <- M %>% select(-m) %>% as.matrix()
 vec <- sample(x = nrow(M), size = 100)
 Mreduced <- t(M[vec,])
+head(Mreduced)
 ```
 
 Now, we randomly introduce 10\% artificially missing SNP genotypes. In this way, we will be able to measure the accuracy of our imputation method.
@@ -105,6 +110,7 @@ injected_data = Mreduced + missing_matrix
 actualMissingRate <- length(injected_data[is.na(injected_data)])/(nInd*nSNP) 
 
 missing_map = missing_matrix
+print(actualMissingRate)
 ```
 
 The actual missing rate is `r actualMissingRate`.
@@ -112,7 +118,7 @@ The actual missing rate is `r actualMissingRate`.
 ### Imputation with the R package
 
 We'll now impute missing genotypes using the **tidymodels** *R package*. 
-In this package there is the *knnImputation()* function, which uses by default the *Euclidean distance*, and allows the user to specify the number of neighbors $K$ and the measure of ``probability'' of belonging to any given class (either **(weighted) average** or **median**).
+In this package there is the *step_impute_knn()* function, which uses by default the *Gower distance*, and allows the user to specify the number of neighbors $K$. The measure of ``probability'' of belonging to any given class is the **average** (continuous variables) or the **mode** (**majority vote**, categorical variables).
 
 ```{r, warning=FALSE, message=FALSE}
 missing_data <- as.data.frame(injected_data)
@@ -144,6 +150,7 @@ rowSums(imputed == imputed2)/ncol(imputed) ## identity between the two imputed m
 #Accuracy of imputation
 results <- imputed[is.na(missing_map)]==Mreduced[is.na(missing_map)]
 accuracy <- length(results[results==TRUE])/length(results)
+(print(accuracy))
 ```
 
 <span style="background-color:yellow">The accuracy of imputation with the R function *step_impute_knn()* from the *tidymodels* package is:<strong> `r accuracy`</strong></span>
@@ -196,7 +203,8 @@ colnames(D) <- names(y)
 Let's have a look at the first elements of the matrix of Hamming distances:
 
 ```{r,echo=FALSE}
-print(D[1:6,1:6])
+print(D)
+print(y)
 ```
 
 This is the vector of SNP genotypes to be imputed: `r y`.
@@ -288,6 +296,7 @@ for(i in 1:ncol(injected_data)) {
 #Accuracy of imputation
 results <- imputedM[is.na(missing_map)]==Mreduced[is.na(missing_map)]
 accuracy <- length(results[results==TRUE])/length(results)
+print(accuracy)
 ```
 
 <span style="background-color:yellow">The accuracy of imputation with our R code is:<strong> `r accuracy`</strong></span>
@@ -295,10 +304,10 @@ accuracy <- length(results[results==TRUE])/length(results)
 This is expected to be higher than the accuracy obtained with the native *knnImputation()* function, since we used the Hamming distance which is more appropriate for SNP genotype data.
 
 ```{r}
-end.time <- Sys.time()
-time.taken <- end.time - start.time
-print("Total time taken below")
-print(time.taken)
+# end.time <- Sys.time()
+# time.taken <- end.time - start.time
+# print("Total time taken below")
+# print(time.taken)
 ```
 
 NB: important caveat: the R code shown here is intended for demonstration only, and has not been optimized nor tested for applications.

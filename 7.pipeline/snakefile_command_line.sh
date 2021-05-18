@@ -5,6 +5,7 @@ mkdir data 2>/dev/null
 mkdir steps 2>/dev/null
 cp -r ../software .
 cp ../4.gwas/gwas_rrblup.R software
+cp ../4.gwas/gwas_statgengwas.R software
 cp ../1.preparatory_steps/prep_dogpheno.R software
 
 ## dry run
