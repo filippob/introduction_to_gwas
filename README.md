@@ -34,8 +34,10 @@ As a general rule, we'll have a longer break (30 minutes) at 16:00 and two short
 **day 2**
 
 - Lecture 4 EDA theory [Christian]
+    - [slides 5.1 Data Pre-Processing & EDA](slides/Data_Pre-Processing_&_EDA.pdf)
 - Lab 4 EDA practice [Christian]
 - Lecture 5 data preprocessing: theory [Christian]
+    - [slides 5.2 Data Types & Formats](slides/Data_Types_&_Formats.pdf)
 - Lab 5 data preprocessing: practice [Christian]
 - Lecture 6 The multiple testing issue [Oscar]
     - [slides 6. Multiple_testing](slides/7.MultipleTesting.pdf)
