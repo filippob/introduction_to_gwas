@@ -37,12 +37,12 @@ As a general rule, we'll have a longer break (30 minutes) at 16:00 and two short
 - Lab 4 EDA practice [Christian]
 - Lecture 5 data preprocessing: theory [Christian]
 - Lab 5 data preprocessing: practice [Christian]
-- Lecture 6	Imputation of missing genotypes: theory [Christian]
-- Lecture 7 The multiple testing issue [Oscar]
-    - [slides 7. Multiple_testing](slides/7.MultipleTesting.pdf)
-- Lecture 8 GWAS: experimental design and statistical power [Oscar]
-    - [slides 8. Design and power](slides/8.Experimental_design_and_statistical_power.pdf)
+- Lecture 6 The multiple testing issue [Oscar]
+    - [slides 6. Multiple_testing](slides/7.MultipleTesting.pdf)
+- Lecture 7 GWAS: experimental design and statistical power [Oscar]
+    - [slides 7. Design and power](slides/8.Experimental_design_and_statistical_power.pdf)
     - [R code. Exercise on statistical power](5.power_and_significance/StatisticalPower_exercise.R)
+- Lecture 8	Imputation of missing genotypes: theory [Christian]
 
 
 **day 3**
