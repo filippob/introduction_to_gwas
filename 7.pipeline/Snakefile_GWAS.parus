@@ -68,7 +68,7 @@ rule plink_recodeA:
 
 rule gwas_kinship:
     input:
-        script = "software/gwas_statgengwas.R",
+        script = "software/gwas_rrblup.R",
         genotype = "steps/parus_imputed.raw",
         map = "steps/parus_imputed.map",
         phenotype = "data/parus_phenotypes.txt"
