@@ -9,7 +9,7 @@ SPECIES='parus'
 
 rule targets:
     input:
-        "parus_imputed.raw_clutch_GWAS_statgengwas.results"
+        "parus_imputed.raw_clutch_GWAS_rrBLUP.results"
 
 rule get_data:
     input:
@@ -73,7 +73,7 @@ rule gwas_kinship:
         map = "steps/parus_imputed.map",
         phenotype = "data/parus_phenotypes.txt"
     output:
-        "parus_imputed.raw_clutch_GWAS_statgengwas.results"
+        "parus_imputed.raw_clutch_GWAS_rrBLUP.results"
     params:
         trait = "clutch",
         trait_label = "clutch"
