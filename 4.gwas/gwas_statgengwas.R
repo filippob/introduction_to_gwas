@@ -135,7 +135,8 @@ print(head(GWAS_res$GWAResult), row.names = FALSE)
 print(GWAS_res$GWASInfo)
 
 fname <- paste(dataset,trait_label,"GWAS_statgengwas.results", sep="_")
-fwrite(x = GWAS_res$GWAResult, file = fname)
+res <- GWAS_res$GWAResult$phenotypes
+fwrite(x = res, file = fname)
 gzip(fname, destname=sprintf("%s.gz", fname), overwrite = TRUE, remove = TRUE, BFR.SIZE = 1e+06)
 
 gc()
