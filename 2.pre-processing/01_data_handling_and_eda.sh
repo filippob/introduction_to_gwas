@@ -27,7 +27,7 @@ cd ../2.pre-processing
 ## explore_genotypes:
 #---------------------
 
-## allele frequency
+## allele frequency - 3 different levels of detail
 
 $plink --file ../data/rice --freq --out rice
 $plink --file ../data/rice --freq counts --out rice
