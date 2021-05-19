@@ -44,14 +44,15 @@ As a general rule, we'll have a longer break (30 minutes) at 16:00 and two short
 - Lecture 7 GWAS: experimental design and statistical power [Oscar]
     - [slides 7. Design and power](slides/Lecture7.pdf)
     - [R code. Exercise on statistical power](5.power_and_significance/StatisticalPower_exercise.R)
-- Lecture 8	Imputation of missing genotypes: theory [Christian]
 
 
 **day 3**
 
+- Lecture 8	Imputation of missing genotypes: theory [Christian]
+    - [slides 8.Imputation](slides/Imputation.pdf)
 - Lab 6 - part 1 practical session on imputation (Beagle) [Christian]
 - Lecture 9: KNN Imputation 
-    - [slides 8.KNN Imputation](slides/8.KNN_imputation.pdf)
+    - [slides 9.KNN Imputation](slides/8.KNN_imputation.pdf)
 - Lab 7 (demonstration) KNNI imputation [Filippo]
     - [R code. knni.Rmd](3.imputation/knni.Rmd)
 - Lab 8 GWAS: the stand-alone script(s) for the full model [Filippo]
