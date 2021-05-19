@@ -184,7 +184,6 @@ multinom_snp <- multinom(Class ~ ., data = tissue, model=TRUE)
 ```
 
 ```{r}
-## alternatively, with the lrtest function we can specify the variable for which we want to run the LRT
 summary(multinom_snp)
 ```
 
