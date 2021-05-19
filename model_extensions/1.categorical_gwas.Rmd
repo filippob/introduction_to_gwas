@@ -30,7 +30,7 @@ $$
 log(\frac{P(Y=C)}{P(Y=A)}) = \beta_0 + \beta_1x_1 + \ldots + \beta_mx_m
 $$
 
-**Breast Tissue Dataset** (from: https://archive.ics.uci.edu/ml/datasets/)
+**Breast Tissue Dataset** (from: https://archive.ics.uci.edu/ml/datasets/Breast+Tissue)
 
 - 6 categories: three are grouped together $\rightarrow$ 4 categories:
   - `adi`: adipose 
