@@ -56,7 +56,9 @@ As a general rule, we'll have a longer break (30 minutes) at 16:00 and two short
     - [R code. knni.Rmd](3.imputation/knni.Rmd)
 - Lab 8 GWAS: the stand-alone script(s) for the full model [Filippo]
 - Lab 9 revising the steps involved in GWAS [Filippo]
+    - [slides 9. Revising the steps]  
 - Lecture 10 Bioinformatics pipelines: a super-elementary introduction [Filippo]
+    - [slides 10. A bioinformatics pipeline for GWAS]
 - Lab 10 Building a pipeline with Snakemake [Filippo]
 
 **day 4**
@@ -69,10 +71,11 @@ As a general rule, we'll have a longer break (30 minutes) at 16:00 and two short
     - part 2: whole-group revision of the exercise
 - Discussion Q&A on building pipelines for GWAS [Filippo, Oscar, Christian]
 - Lecture 11 (part 1) GWAS model extensions: a primer on categorical traits and longitudinal data [Filippo]
-
+ 
 **day 5**
 
 - Lecture 11 (part 2) GWAS model extensions: a primer on categorical traits and longitudinal data [Filippo]
+    - - [slides 11.GWAS model extensions]
 - Lecture 12 A light touch on post-GWAS analysis. Inferring functionality [Oscar]
     - [R code. Exercise on R, and FUMA](functional_analysis/getGenesFromSNP.R)
 - Lecture 13 A glimpse on ROH-based alternative [Filippo]
