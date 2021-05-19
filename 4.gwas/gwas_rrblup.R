@@ -40,11 +40,11 @@ for (p in args){
   stop(paste('bad parameter:', pieces[1]))
 }
 
-# genotype_file = "../3.imputation/rice_imputed.raw"
-# snp_map = "../3.imputation//rice_imputed.map"
-# phenotype_file = "data/rice_phenotypes.txt"
-# trait = "phenotype"
-# trait_label = "PH"
+genotype_file = "introduction_to_gwas/3.imputation/rice_imputed.raw"
+snp_map = "introduction_to_gwas/3.imputation/rice_imputed.map"
+phenotype_file = "introduction_to_gwas/data/rice_phenotypes.txt"
+trait = "phenotype"
+trait_label = "PH"
 
 print(paste("genotype file name:",genotype_file))
 print(paste("SNP map:",snp_map))
@@ -127,16 +127,20 @@ names(model1_x)[length(model1_x)] <- trait
 gwasResults <- model1_x[,c("SNP","Chr","Pos",trait)]
 names(gwasResults) <- c("SNP","CHR","BP","P")
 
-fname <- paste(dataset,trait_label,"GWAS_rrBLUP.results", sep="_")
-fwrite(x = gwasResults, file = fname)
-
 png(paste(dataset,trait_label,"manhattan_rrBLUP.png",sep="_"))
-manhattan(gwasResults, suggestiveline = FALSE, col = c("red","blue"),
-          logp = FALSE, width = 800, height = 600, res = 100)
+manhattan(gwasResults, suggestiveline = TRUE, col = c("red","blue"), 
+          genomewideline = FALSE, logp = FALSE, width = 800, height = 600, res = 100)
 dev.off()
 
 # convert -log(p) back to p-values
 p <- 10^((-gwasResults$P))
+
+names(gwasResults)[4] <- "log_p"
+gwasResults$P <- p
+
+fname <- paste(dataset,trait_label,"GWAS_rrBLUP.results", sep="_")
+fwrite(x = gwasResults, file = fname)
+
 png(paste(dataset,trait_label,"qqplot_rrBLUP.png",sep="_"), width = 600, height = 600)
 qq(p)
 dev.off()
