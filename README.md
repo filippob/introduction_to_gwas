@@ -57,7 +57,7 @@ As a general rule, we'll have a longer break (30 minutes) at 16:00 and two short
     - [R code. knni.Rmd](3.imputation/knni.Rmd)
 - Lab 8 GWAS: the stand-alone script(s) for the full model [Filippo]
 - Lab 9 revising the steps involved in GWAS [Filippo]
-    - [slides 9. Revising the steps]  
+    - [slides 9. Revising the steps](slides/9.Revising_the_steps.pdf)  
 - Lecture 10 Bioinformatics pipelines: a super-elementary introduction [Filippo]
     - [slides 10. A bioinformatics pipeline for GWAS]
 - Lab 10 Building a pipeline with Snakemake [Filippo]
