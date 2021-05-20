@@ -14,7 +14,7 @@ library("ggplot2")
 #############
 ensembl_dataset = "clfamiliaris_gene_ensembl"
 window = 100000 # number of bases to search upstream and downstream the SNP position
-input_file_name = "dogs_imputed.raw_cleft_lip_GWAS.results.txt"
+input_file_name = "dogs_imputed.raw_cleft_lip_GWAS.results"
 
 ####################################################
 ## READ DATA AND FIND GENES CLOSE TO SNP (FROM GWAS)
@@ -30,7 +30,10 @@ attributes <- listAttributes(ensembl)  # show the attributes of the database
 ## text file with snp name/id, chromosome, position (bps)
 results = read.table(input_file_name,sep=",",header=T,colClasses = c("character","integer","integer","numeric"))
 rownames(results) <- results$SNP
-results <- results[results$P<0.0001,]
+##Calculate FDR and filter SNPs
+results$Padj<-p.adjust( results$P, method="fdr" )
+
+results <- results[results$Padj<0.025,]
 genes = list()
 
 for (snp_name in rownames(results)) {
@@ -58,7 +61,6 @@ gwas_genes <- ldply(genes, function(x) {
 })
 
 gwas_genes <- gwas_genes[!is.na(gwas_genes$external_gene_name) & gwas_genes$external_gene_name != "",]
-write.table(gwas_genes,file = "gwas_snpCfamiliaris.csv", sep = ",", col.names = FALSE,row.names = FALSE, quote=FALSE)
 
 gwas_genes <- do.call(rbind,genes)$external_gene_name
 
