@@ -40,7 +40,7 @@ $plink --file data/pigs --missing --out pigs
 avg_miss_rate=`awk '{ total += $6; count++ } END { print total/count }' pigs.imiss`
 
 ## preprocess phenotypic data
-echo -e "fam id phenotype" | cat - data/raw_data/pheno | awk '{print $2,$1,$3 = $3 -1}' > data/pigs_phenotypes.txt
+echo -e "fam id phenotype" | cat - data/raw_data/pheno | awk '{print $2,$1,$3}' > data/pigs_phenotypes.txt
 
 ## clean repo
 rm pigs.imiss pigs.lmiss pigs.log pigs.nosex 
