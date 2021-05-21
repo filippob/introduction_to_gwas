@@ -82,7 +82,7 @@ As a general rule, we'll have a longer break (30 minutes) at 16:00 and two short
     - [R code. Exercise on R, and FUMA](functional_analysis/getGenesFromSNP.R)
 - Lecture 13 A glimpse on ROH-based alternative [Filippo, optional]
 - Kahoot quiz on what we learned about GWAS! [Filippo, Oscar, Christian]
-- Wrap-up discussion on GWAS [Filippo, Oscar, Christian]
+- Conclusions and wrap-up discussion on GWAS [Filippo, Oscar, Christian]
 
 ## organization of the code for the practical sessions
 
