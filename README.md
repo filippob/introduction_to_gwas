@@ -20,7 +20,7 @@ As a general rule, we'll have a longer break (30 minutes) at 16:00 and two short
 - Lecture 2	Introduction to GWAS: Linkage disequilibrium and Linear Regression [Oscar]
     - [slides 2.Intro to GWAS](slides/Lecture2.pdf)
 - Lab 1 - Practicalities and set-up (server, github repo, conda envs, etc) and description of datasets [Christian]
-    - [slides 3.Description of datasets](slides/Description_of_datasets.pdf)
+    - [slides 3.Description of datasets](slides/3.Description_of_datasets.pdf)
 - Lab 2 - part 1 basic Linux and advanced R libraries [Christian]
     - [slides 4.Linux and the Shell](slides/4.Linux_and_the_Shell.pdf)
 - Lab 2 - part 2 basic Linux and advanced R libraries [Christian]
@@ -52,14 +52,14 @@ As a general rule, we'll have a longer break (30 minutes) at 16:00 and two short
     - [slides 8.Imputation](slides/Imputation.pdf)
 - Lab 6 - part 1 practical session on imputation (Beagle) [Christian]
 - Lecture 9: KNN Imputation 
-    - [slides 9.KNN Imputation](slides/8.KNN_imputation.pdf)
+    - [slides 9.KNN Imputation](slides/9.KNN_imputation.pdf)
 - Lab 7 (demonstration) KNNI imputation [Filippo]
     - [R code. knni.Rmd](3.imputation/knni.Rmd)
 - Lab 8 GWAS: the stand-alone script(s) for the full model [Filippo]
 - Lab 9 revising the steps involved in GWAS [Filippo]
     - [slides 10.1 Revising the steps](slides/10.1.Revising_the_steps.pdf)
 - Lecture 10 Bioinformatics pipelines: a super-elementary introduction [Filippo]
-    - [slides 10.2 A bioinformatics pipeline for GWAS]
+    - [slides 10.2 A bioinformatics pipeline for GWAS](slides/10.2.A_bioinformatics_pipeline_for_GWAS.pdf)
 - Lab 10 Building a pipeline with Snakemake [Filippo]
 
 **day 4**
@@ -82,7 +82,7 @@ As a general rule, we'll have a longer break (30 minutes) at 16:00 and two short
     - [R code. Exercise on R, and FUMA](functional_analysis/getGenesFromSNP.R)
 - Lecture 13 A glimpse on ROH-based alternative [Filippo, optional]
 - Kahoot quiz on what we learned about GWAS! [Filippo, Oscar, Christian]
-- Wrap-up discussion on GWAS [Filippo, Oscar, Christian]
+- Conclusions and wrap-up discussion on GWAS [Filippo, Oscar, Christian]
 
 ## organization of the code for the practical sessions
 

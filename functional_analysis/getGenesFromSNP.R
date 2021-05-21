@@ -32,22 +32,30 @@ results = read.table(input_file_name,sep=",",header=T,colClasses = c("character"
 rownames(results) <- results$SNP
 ##Calculate FDR and filter SNPs
 results$Padj<-p.adjust( results$P, method="fdr" )
+#results$Padj<-p.adjust( results$P, method="bonferroni" )
 
+##Calculate Bonferroni correction P-value
+Bonf<-0.05/dim(results)[1]
+print(paste("The significant p-value after Bonferroni correction is",Bonf,sep=" "))
+
+#Filter significant SNPs based on Bonferroni
+ ##results <- results[results$P<Bonf,]
+#Filter significant SNPs based on FDR
 results <- results[results$Padj<0.025,]
 genes = list()
 
 for (snp_name in rownames(results)) {
     snp = results[snp_name,]
     genes[[snp_name]] = biomaRt::getBM(c('ensembl_gene_id',
-    'entrezgene_id',
-    'external_gene_name',
-    'start_position',
-    'end_position',
-    'uniprotsptrembl',
-    'uniprotswissprot'),  
-    filters = c("chromosome_name","start","end"),
-    values=list(snp$CHR,snp$BP-window,snp$BP+window),
-    mart=ensembl)
+                                         'entrezgene_id',
+                                         'external_gene_name',
+                                         'start_position',
+                                         'end_position',
+                                         'uniprotsptrembl',
+                                         'uniprotswissprot'),  
+                                       filters = c("chromosome_name","start","end"),
+                                       values=list(snp$CHR,snp$BP-window,snp$BP+window),
+                                       mart=ensembl)
 }
 
 
