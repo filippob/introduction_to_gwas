@@ -32,6 +32,7 @@ results = read.table(input_file_name,sep=",",header=T,colClasses = c("character"
 rownames(results) <- results$SNP
 ##Calculate FDR and filter SNPs
 results$Padj<-p.adjust( results$P, method="fdr" )
+#results$Padj<-p.adjust( results$P, method="bonferroni" )
 
 ##Calculate Bonferroni correction P-value
 Bonf<-0.05/dim(results)[1]
