@@ -25,9 +25,9 @@ Data from: "**Genome‚Äêwide association reveals the locus responsible for four‚Ä
 - `2`: four horns
 
 ```{r sheep}
-sheep <- fread("../../categorical_gwas/data/sheep_reduced.raw")
+sheep <- fread("../model_extensions_data/sheep_reduced.raw")
 sheep <- dplyr::select(sheep, -c(FID,PAT,MAT,SEX,PHENOTYPE))
-phenotypes <- fread("../../categorical_gwas/data/sheep_phenotypes.txt", header = TRUE)
+phenotypes <- fread("../model_extensions_data/sheep_phenotypes.txt", header = TRUE)
 sheep$phenotype <- phenotypes$pheno_2[match(sheep$IID,phenotypes$IID)]
 sheep$breed <- phenotypes$Breed[match(sheep$IID,phenotypes$IID)]
 sheep$phenotype <- factor(sheep$phenotype)
@@ -88,7 +88,7 @@ for (i in 1:ncol(snps)) {
 We now retrieve information on SNP position and plot the results:
 
 ```{r}
-snp_map <- fread("../../categorical_gwas/data/sheep_reduced.map")
+snp_map <- fread("../model_extensions_data/sheep_reduced.map")
 names(snp_map) <- c("CHR","SNP","cM","BP")
 snp_map <- dplyr::select(snp_map, -cM)
 results <- results %>% inner_join(snp_map, by = "SNP") %>% dplyr::select(SNP,CHR,BP,P)
