@@ -52,7 +52,7 @@ As a general rule, we'll have a longer break (30 minutes) at 16:00 and two short
     - [slides 8.Imputation](slides/Imputation.pdf)
 - Lab 6 - part 1 practical session on imputation (Beagle) [Christian]
 - Lecture 9: KNN Imputation 
-    - [slides 9.KNN Imputation](slides/8.KNN_imputation.pdf)
+    - [slides 9.KNN Imputation](slides/9.KNN_imputation.pdf)
 - Lab 7 (demonstration) KNNI imputation [Filippo]
     - [R code. knni.Rmd](3.imputation/knni.Rmd)
 - Lab 8 GWAS: the stand-alone script(s) for the full model [Filippo]
