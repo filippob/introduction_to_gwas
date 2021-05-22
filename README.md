@@ -68,6 +68,7 @@ As a general rule, we'll have a longer break (30 minutes) at 16:00 and two short
 - Lab 12 The GWAS pipeline for binary phenotype [Filippo]
 - Lab 13 Introducing the exercise (+ light touch on RMarkdown, optional) [Filippo]
     - [slides: Collaborative exercise](slides/Collaborative%20exercise.pdf)
+    - [R code PCA & population strucutre(4.gwas/PCA_Screeplots.R)
 - Collaborative exercise: Let's build our own GWAS pipeline on new data [Filippo, Oscar, Christian]
     - part 1: individual/group break-out sessions to give it a try independetly
     - part 2: whole-group revision of the exercise
@@ -77,7 +78,8 @@ As a general rule, we'll have a longer break (30 minutes) at 16:00 and two short
 **day 5**
 
 - Lecture 11 (part 2) GWAS model extensions: a primer on categorical traits and longitudinal data [Filippo]
-    - - [slides 11.GWAS model extensions]
+    - [slides 11.GWAS model extensions]
+    - [R code GWASpoly example for polyploid species](model_extensions/4.polyploid_gwas.R)
 - Lecture 12 A light touch on post-GWAS analysis. Inferring functionality [Oscar]
     - [R code. Exercise on R, and FUMA](functional_analysis/getGenesFromSNP.R)
 - Lecture 13 A glimpse on ROH-based alternative [Filippo, optional]
