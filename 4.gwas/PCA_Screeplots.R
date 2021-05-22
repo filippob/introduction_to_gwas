@@ -1,0 +1,79 @@
+
+### Library
+library(data.table)
+library(factoextra)
+library(rrBLUP)
+library(tidyverse)
+
+### Genoype marker matrix
+genotypes <- fread(file = "rice_imputed.raw")
+str(genotypes)
+genotypes[1:5, 1:10]
+
+rownames(genotypes) <- as.matrix(genotypes[,2])
+genotypes <- genotypes[, -c(1:6)]
+genotypes <- genotypes - 1
+genotypes[1:5, 1:10]
+
+### Calculate genomic relationship matrix (rrBLUP)
+### Requires -1, 0, 1 coding (as done above)
+grm <- A.mat(genotypes)
+
+### Principal Component Analysis
+pca <- prcomp(grm, scale = TRUE, center = TRUE)
+
+### Extract eigenvalues from PCA
+eigenvalues <- pca$sdev^2
+
+### Variances explained by first 8 principal components, respectively
+round((eigenvalues/sum(eigenvalues)*100), 2)[1:8]
+
+### Total variance explained by the first 1 - 8 principal components
+for(i in 1:8){
+  varExp <- (eigenvalues/sum(eigenvalues)*100)[1:i]
+  print(paste0("Var explained by first ", i, " PCs: ", round(sum(varExp), 2), "%"))
+}
+
+### Scree plot
+fviz_eig(pca, ncp = 8)
+
+### Extract first X principal components which explain ~80% of the total variance
+pc <- pca$rotation[,1:4]
+
+
+### K-means clustering and comparison of within-cluster sum of squares
+### to identify sub-populations (eyeball method)
+
+clusters <- 15 # max. number of clusters to compare
+withinSS <- data.frame(nClusters = seq(1:clusters),
+                       wss = NA)
+for(i in 1:clusters){
+  withinSS[i,2] <- sum(kmeans(pc, centers=i, nstart=25)$withinss)
+} 
+
+### The strongest bend in the graph indicates a suitable number of clusters 
+### (eyeball method)
+withinSS %>%
+  ggplot(aes(x=nClusters,y=wss, group=1))+
+  geom_point(size=2)+
+  geom_line()+
+  labs(title="Scree plot: within-cluster sum of squares")
+
+
+# K-means clusters showing the group of each individual
+kCluster <- kmeans(pc, 5, nstart = 25)
+kCluster$cluster
+
+### Clusters based on first 2 principal components
+fviz_cluster(kCluster, data = pc[, 1:2],
+             #palette = c("#2E9FDF", "#00AFBB", "#E7B800"), 
+             geom = "point",
+             ellipse = FALSE,
+             #ellipse.type = "convex", 
+             ggtheme = theme_bw()
+)
+
+
+
+
+
