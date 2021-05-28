@@ -18,17 +18,17 @@ As a general rule, we'll have a longer break (30 minutes) at 16:00 and two short
 - Lecture 1	GWAS overview: case studies / examples from literature [Oscar]
     - [slides 1.Overview]<!-- (slides/Lecture1.pdf) -->
 - Lecture 2	Introduction to GWAS: Linkage disequilibrium and Linear Regression [Oscar]
-    - [slides 2.Intro to GWAS](slides/Lecture2.pdf)
+    - [slides 2.Intro to GWAS]<!-- (slides/Lecture2.pdf) -->
 - Lab 1 - Practicalities and set-up (server, github repo, conda envs, etc) and description of datasets [Christian]
-    - [slides 3.Description of datasets](slides/3.Description_of_datasets.pdf)
+    - [slides 3.Description of datasets]<!-- (slides/3.Description_of_datasets.pdf) -->
 - Lab 2 - part 1 basic Linux and advanced R libraries [Christian]
-    - [slides 4.Linux and the Shell](slides/4.Linux_and_the_Shell.pdf)
+    - [slides 4.Linux and the Shell]<!-- (slides/4.Linux_and_the_Shell.pdf) -->
 - Lab 2 - part 2 basic Linux and advanced R libraries [Christian]
-    - [Linux cheatsheet](slides/Linux_cheatsheet.pdf)
-    - [Introduction to the tidyverse](slides/Tidyverse_Intro.html)
+    - [Linux cheatsheet]<!-- (slides/Linux_cheatsheet.pdf) -->
+    - [Introduction to the tidyverse]<!-- (slides/Tidyverse_Intro.html) -->
 - Lab 3 (demonstration) GWAS: basic models (linear and logistic regression) [Oscar]
-    - [R code. Exercise on simple linear regression](basic_model/1.Basis_of_linear_regression.R) 
-    - [Rmarkdown code. Exercise on simple logistic regression](basic_model/2.exercise.Basis_of_logistic_regression.Rmd)
+    - [R code. Exercise on simple linear regression]<!-- (basic_model/1.Basis_of_linear_regression.R) -->
+    - [Rmarkdown code. Exercise on simple logistic regression]<!-- (basic_model/2.exercise.Basis_of_logistic_regression.Rmd) -->
 
 
 **day 2**
