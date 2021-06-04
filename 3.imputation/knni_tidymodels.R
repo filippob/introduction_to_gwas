@@ -1,7 +1,7 @@
 ## R script to carry out KNN imputation using tidymodels
 ## kinship matrix used to account for population structure in the data
 ## input: Plink .raw file (matrix of 0s, 1s, 2s)
-# run as Rscript --vanilla knni.R genotype_file=path_to_genotypes k=k
+# run as Rscript --vanilla knni_tidymodels.R genotype_file=path_to_genotypes k=k
 
 library("tidymodels") #for kNN imputation
 library("data.table")
