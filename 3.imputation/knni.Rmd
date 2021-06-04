@@ -221,6 +221,9 @@ NN <- t(NN)
 print(NN)
 ```
 
+We see here the indexes of the neighbors for the "test" observations (samples with missing data to impute), ordered from closest to farthest (mind you, missing elements from `y` are skipped).
+
+
 We'll now use KNN to impute the missing genotypes, based on the most frequent genotype in the $K$ neighbors.
 
 ```{r}
