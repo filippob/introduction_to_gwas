@@ -1,0 +1,76 @@
+## cp ../3.imputation/knni_tidymodels.R software/
+
+# PLINK='plink'
+KNNI='software/knni_tidymodels.R'
+SPECIES='rice'
+PLINK='/home/filippo/Downloads/plink'
+
+## remember to first set up the environment
+## command lines in README / slides
+
+rule targets:
+    input:
+        "rice_filtered_imputed.raw_PH_GWAS_rrBLUP.results"
+
+rule get_data:
+    input:
+        script = "software/get_rice_data.sh"
+    output:
+        "data/rice.ped",
+        "data/rice.map",
+        "data/rice_phenotypes.txt"
+    shell:
+        "bash {input.script}"
+
+rule filter_genotypes:
+    input:
+        pedfile = "data/rice.ped",
+        mapfile = "data/rice.map"
+    output:
+        outped = "steps/rice_filtered.ped",
+        outmap = "steps/rice_filtered.map"
+    run:
+        shell("{PLINK} --{SPECIES} --ped {input.pedfile} --map {input.mapfile} --geno 0.05 --mind 0.2 --maf 0.05 --thin 0.05 --recode --out steps/rice_filtered")
+
+rule ped2raw:
+    input:
+        "steps/rice_filtered.ped",
+	"steps/rice_filtered.map"
+    output:
+        "steps/rice_filtered.raw"
+    shell:
+        "{PLINK} --{SPECIES} --file steps/rice_filtered --recode A --out steps/rice_filtered"
+
+rule knn_impute_genotypes:
+    input:
+        genotype_file = "steps/rice_filtered.raw"
+    params:
+        k = 3
+    output:
+        "steps/rice_filtered_imputed.raw"
+    shell:
+        "Rscript --vanilla {KNNI} \
+        genotype_file={input.genotype_file} \
+        k={params.k}"
+
+
+rule gwas_kinship:
+    input:
+        script = "software/gwas_rrblup.R",
+        genotype = "steps/rice_filtered_imputed.raw",
+        map = "steps/rice_filtered.map",
+        phenotype = "data/rice_phenotypes.txt"
+    output:
+        "rice_filtered_imputed.raw_PH_GWAS_rrBLUP.results"
+    params:
+        trait = "PH",
+        trait_label = "PH"
+    shell:
+        "Rscript --vanilla {input.script} \
+            genotype_file={input.genotype} \
+            snp_map={input.map} \
+            phenotype_file={input.phenotype} \
+            trait={params.trait} \
+            trait_label={params.trait_label}"
+
+
