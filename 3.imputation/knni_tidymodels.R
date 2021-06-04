@@ -66,7 +66,7 @@ imputed <- fam %>% bind_cols(imputed)
 ## try out different k values
 print("WRITING OUT RESULTS ...")
 fname  <- paste(gsub("\\..*$","",basename(genotype_file)),"_imputed.raw", sep="")
-fwrite(imputed, file=fname, sep = "\t")
+fwrite(imputed, file=fname, sep = " ")
 
 print("DONE!")
 
