@@ -4,6 +4,10 @@
 KNNI='software/knni_tidymodels.R'
 SPECIES='rice'
 PLINK='/home/filippo/Downloads/plink'
+MAF=0.05
+MISS_SAMPLE=0.2
+MISS_LOCUS=0.05
+THINNING=0.05
 
 ## remember to first set up the environment
 ## command lines in README / slides
@@ -30,7 +34,7 @@ rule filter_genotypes:
         outped = "steps/rice_filtered.ped",
         outmap = "steps/rice_filtered.map"
     run:
-        shell("{PLINK} --{SPECIES} --ped {input.pedfile} --map {input.mapfile} --geno 0.05 --mind 0.2 --maf 0.05 --thin 0.05 --recode --out steps/rice_filtered")
+        shell("{PLINK} --{SPECIES} --ped {input.pedfile} --map {input.mapfile} --geno {MISS_LOCUS} --mind {MISS_SAMPLE} --maf {MAF} --thin {THINNING} --recode --out steps/rice_filtered")
 
 rule ped2raw:
     input:
@@ -48,10 +52,11 @@ rule knn_impute_genotypes:
         k = 3
     output:
         "steps/rice_filtered_imputed.raw"
-    shell:
-        "Rscript --vanilla {KNNI} \
+    run:
+        shell("Rscript --vanilla {KNNI} \
         genotype_file={input.genotype_file} \
-        k={params.k}"
+        k={params.k}")
+	shell("mv rice_filtered_imputed.raw steps/")
 
 
 rule gwas_kinship:
