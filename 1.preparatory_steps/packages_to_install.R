@@ -19,6 +19,7 @@ install.packages("doMC", repos="http://R-Forge.R-project.org")
 
 
 ## from CRAN
+install.packages("car")
 install.packages("AER")
 install.packages("msm")
 install.packages("nnet")
