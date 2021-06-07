@@ -80,9 +80,9 @@ if ((ncol(snp_matrix)-6) != nrow(SNP_INFO)) {
 ################
 ## subsampling
 ################
-vec <- sample(1:ncol(matg),1000)
-matg <- matg[,vec]
-SNP_INFO <- SNP_INFO[vec,]
+#vec <- sample(1:ncol(matg),1000)
+#matg <- matg[,vec]
+#SNP_INFO <- SNP_INFO[vec,]
 ####
 
 ### phenotypes

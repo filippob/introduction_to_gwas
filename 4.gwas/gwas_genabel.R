@@ -93,7 +93,7 @@ dev.off()
 ## Running the GWAS
 ###################
 ## Use of the kinship matrix to model population structure
-mod_genabel <- polygenic(phenotype, data=df, kin=K, trait.type = "binomial", llfun = "polylik")
+mod_genabel <- polygenic(phenotype, data=df, kin=K, trait.type = "binomial")
 df.mm <- mmscore(mod_genabel, df)
 
 ###########
