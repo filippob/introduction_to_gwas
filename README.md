@@ -58,12 +58,13 @@ As a general rule, we'll have a longer break (30 minutes) at 16:00 and two short
 - Lab 8 GWAS: the stand-alone script(s) for the full model [Filippo]
 - Lab 9 revising the steps involved in GWAS [Filippo]
     - [slides 10.1 Revising the steps]<!-- (slides/10.1.Revising_the_steps.pdf) -->
-    - [R code PCA & population strucutre]<!--(4.gwas/PCA_Screeplots.R) -->
 - Lab 10 Introducing the exercise (+ light touch on RMarkdown, optional) [Filippo]
     - [slides: Collaborative exercise]<!-- (slides/Collaborative%20exercise.pdf) -->
 - Collaborative exercise: Let's build our own GWAS workflow on new data [Filippo, Oscar, Christian]
     - part 1: individual/group break-out sessions to give it a try independetly
     - part 2: whole-group revision of the exercise
+- Brief intermission:
+    - [R code PCA & population strucutre]<!--(4.gwas/PCA_Screeplots.R) -->
 
 **day 4**
 - Lecture 10 Bioinformatics pipelines: a super-elementary introduction [Filippo]
