@@ -74,15 +74,15 @@ As a general rule, we'll have a longer break (30 minutes) at 16:00 and two short
     - plug-in for mean or KNN imputation
 - Lab 13 Let's build together the GWAS pipeline for binary phenotype (guided exercise) [Filippo]
 - Discussion Q&A on building pipelines for GWAS [Filippo, Oscar, Christian]
-- Lecture 11 (part 1) GWAS model extensions: a primer on categorical traits and longitudinal data [Filippo]
- 
+- Lecture 11 A light touch on post-GWAS analysis. Inferring functionality [Oscar]
+    - [R code. Exercise on R, and FUMA]<!-- (functional_analysis/getGenesFromSNP.R) -->
+    
 **day 5**
 
-- Lecture 11 (part 2) GWAS model extensions: a primer on categorical traits and longitudinal data [Filippo]
+- Lecture 12 GWAS model extensions: a primer on categorical traits and longitudinal data [Filippo]
     - [slides 11.GWAS model extensions]
     - [R code GWASpoly example for polyploid species]<!-- (model_extensions/4.polyploid_gwas.R) -->
-- Lecture 12 A light touch on post-GWAS analysis. Inferring functionality [Oscar]
-    - [R code. Exercise on R, and FUMA]<!-- (functional_analysis/getGenesFromSNP.R) -->
+
 - Lecture 13 A glimpse on ROH-based alternative [Filippo, optional]
 - Kahoot quiz on what we learned about GWAS! [Filippo, Oscar, Christian]
 - Conclusions and wrap-up discussion on GWAS [Filippo, Oscar, Christian]
