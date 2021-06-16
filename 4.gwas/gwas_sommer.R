@@ -132,7 +132,7 @@ dev.off()
 ## rename P to log_p (as it is) and add the column with p-values
 names(mapf)[4] <- "log_p"
 fname <- paste(dataset,trait_label,"GWAS_sommer.results", sep="_")
-fwrite(x = gwasResults, file = fname)
+fwrite(x = mapf, file = fname)
 
 ## qq-plot
 png(paste(dataset,trait_label,"qqplot_sommer.png",sep="_"), width = 600, height = 600)
