@@ -7,7 +7,6 @@ library(tidyverse)
 
 ### Genoype marker matrix
 genotypes <- fread(file = "rice_imputed.raw")
-str(genotypes)
 genotypes[1:5, 1:10]
 
 rownames(genotypes) <- as.matrix(genotypes[,2])
@@ -37,8 +36,8 @@ for(i in 1:8){
 ### Scree plot
 fviz_eig(pca, ncp = 8)
 
-### Extract first X principal components which explain ~80% of the total variance
-pc <- pca$rotation[,1:4]
+### Extract first 3 principal components which explain ~80% of the total variance
+pc <- pca$rotation[,1:3]
 
 
 ### K-means clustering and comparison of within-cluster sum of squares
@@ -61,7 +60,7 @@ withinSS %>%
 
 
 # K-means clusters showing the group of each individual
-kCluster <- kmeans(pc, 5, nstart = 25)
+kCluster <- kmeans(pc, 4, nstart = 25)
 kCluster$cluster
 
 ### Clusters based on first 2 principal components
@@ -72,8 +71,3 @@ fviz_cluster(kCluster, data = pc[, 1:2],
              #ellipse.type = "convex", 
              ggtheme = theme_bw()
 )
-
-
-
-
-
