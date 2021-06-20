@@ -4,9 +4,6 @@
 #########################
 
 ## command lines (and instruction) for data filtering, imputation and preparation (for GWAS)
-# plink=/home/filippo/Downloads/plink
-# beagle=/home/filippo/Documents/jody/software/beagle.24Mar20.5f5.jar
-
 plink=plink
 beagle=beagle
 
@@ -28,15 +25,13 @@ $plink --dog --file ../2.pre-processing/dogs_filtered --recode vcf --out dogs_fi
 ## option 2) directly handle sample labels with Plink
 $plink --dog --file ../2.pre-processing/dogs_filtered --recode vcf-iid --out dogs_filtered
 
-#java -Xss5m -Xmx4g -jar ~/Documents/beagle4.1/beagle.27Jan18.7e1.jar gt=rice_filtered.vcf out=rice_imputed
-#java -Xss5m -Xmx4g -jar ~/Documents/beagle4.1/beagle.27Jan18.7e1.jar gt=dogs_filtered.vcf out=dogs_imputed
 
 if [ $beagle = beagle ]; then
 	beagle gt=rice_filtered.vcf out=rice_imputed
 	beagle gt=dogs_filtered.vcf out=dogs_imputed
 else
-	java -Xss5m -Xmx4g -jar $beagle gt=rice_filtered.vcf out=rice_imputed
-        java -Xss5m -Xmx4g -jar $beagle gt=dogs_filtered.vcf out=dogs_imputed
+	java -Xmx4g -jar $beagle gt=rice_filtered.vcf out=rice_imputed
+        java -Xmx4g -jar $beagle gt=dogs_filtered.vcf out=dogs_imputed
 fi
 
 $plink  --vcf rice_imputed.vcf.gz --recode --out rice_imputed

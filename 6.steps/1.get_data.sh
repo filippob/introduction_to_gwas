@@ -4,16 +4,15 @@
 ###################################
 
 ## set resources
-# plink=/home/filippo/Downloads/plink  # directory with plink binary
-plink=plink
+plink=plink  # directory with plink binary
 
 ## Download data (rice, continuous)
 echo "Downloading rice data ..."
 
 ### Check for dir, if not found create it using the mkdir ##
-[ ! -d "data" ] && mkdir -p "data"  # mkdir = make directory called data in relative path ".."
+[ ! -d "../data" ] && mkdir -p "../data"  # mkdir = make directory called data in relative path ".."
 
-cd data
+cd ../data
 
 wget https://zenodo.org/record/50803/files/GBSgenotypes.tar.gz   # wget - retrieve content from web servers
 wget https://zenodo.org/record/50803/files/plantgrainPhenotypes.txt
@@ -24,18 +23,14 @@ wc -l GBSnew.ped # wc = word count, -l = count lines: Number of genotypes in ped
 wc -l GBSnew.map # Number of markers in map file
 
 wc -l plantgrainPhenotypes.txt # Number of phenotypic records
-#less -S plantgrainPhenotypes.txt
 
 ## retrieve group information
 ## create new phenotypes file and ids file for Plink subsetting
 ## Run R script "prep_rice_data.R" from terminal and submit the arguments "plantgrainPhenotypes.txt", "rice_group.reference" and "PH" to the script 
-Rscript ../../1.preparatory_steps/prep_rice_data.R plantgrainPhenotypes.txt ../../cross_reference/rice_group.reference PH
+Rscript ../1.preparatory_steps/prep_rice_data.R plantgrainPhenotypes.txt ../1.preparatory_steps/rice_group.reference PH
 
 wc -l rice_phenotypes.txt
-#less rice_phenotypes.txt
-
 wc -l ids
-#less ids
 
 
 ## this is to match ids between files
@@ -57,11 +52,9 @@ echo "Downloading dog data ..."
 
 wget http://www.jackdellequerce.com/data/UCD_2014.tfam
 wget http://www.jackdellequerce.com/data/UCD_2014.tped
-#wget https://datadryad.org/bitstream/handle/10255/dryad.77584/UCD_2014.tfam
-#wget https://datadryad.org/bitstream/handle/10255/dryad.77585/UCD_2014.tped
 
 ## prep phenotypes
-Rscript --vanilla ../../1.preparatory_steps/prep_dogpheno.R UCD_2014.tfam
+Rscript --vanilla ../1.preparatory_steps/prep_dogpheno.R UCD_2014.tfam
 
 ## subset genotypes
 $plink --dog --tfile UCD_2014 --chr 25,26,27,28,29 --recode --out dogs

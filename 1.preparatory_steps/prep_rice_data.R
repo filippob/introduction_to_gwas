@@ -54,3 +54,12 @@ fwrite(x = phenotypes[ , c("id", "population", eval(target)), with=FALSE],
 ## write out ids file for Plink subset
 phenotypes$fam <- rep("NF1", nrow(phenotypes))
 fwrite(x = phenotypes[, c("fam","id")], file = "ids", sep="\t", col.names = FALSE)
+
+
+## used in 2. pre-processing
+ref_group$oldfam <- rep("NF1", nrow(ref_group))
+ref_group$oldid <- ref_group$id
+ref_group <- ref_group %>%
+  select(oldfam, oldid, population, id)
+
+fwrite(x = ref_group, file = "../2.pre-processing/update.ids", col.names = FALSE, sep = "\t")

@@ -4,6 +4,7 @@ library("ggplot2")
 
 ### Continuous trait
 pheno_continuous <- read.table("../data/rice_phenotypes.txt", header = TRUE)
+names(pheno_continuous)[3] <- "phenotype"
 
 D <- pheno_continuous %>%
   group_by(population) %>%

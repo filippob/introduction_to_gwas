@@ -3,24 +3,11 @@
 ## data handling
 #############################################
 
-# plink=/home/filippo/Downloads/plink
 plink=plink
 
-## basic Plink commands
-
-cd ../data
-$plink --dog --file dogs --recode vcf --out dogs
-$plink --dog --file dogs --recode vcf-iid --out dogs
-
-## basic vcftools commands
-#$vcftools --vcf dogs.vcf --plink --out dogs_plink
-
-## exercise: try out the basic commands with the rice dataset, too
-
-cd ../2.pre-processing
 
 #################
-## EDA
+## IDA / EDA
 #################
 
 #---------------------
@@ -58,15 +45,17 @@ $plink --dog --file ../data/dogs --hardy --out dogs
 $plink --file ../data/rice --het --out rice
 
 
-## summarise genotype stats
+####### In RStudio 
 
+#----------------------------
+## summarise genotype stats:
+#----------------------------
 # - <rstudio> eda.R ## EDA
 # - <rstudio> hwe.R ## demonstration on HWE testing
-
 
 #----------------------
 ## explore_phenotypes:
 #----------------------
-
 # - <rstudio> phenotypes.R ## EDA
 # - <rstudio> phenotypes.Rmd ## markdown report
+
