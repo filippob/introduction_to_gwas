@@ -1,5 +1,6 @@
 ## run as: Rscript --vanilla retrieve_data.R plantgrainPhenotypes.txt rice_group.reference PH
 library("data.table")
+library("dplyr")
 
 # -------------------------------------
 # Reading File 1, and creating the subsets df and df.red
