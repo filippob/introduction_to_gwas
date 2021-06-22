@@ -26,13 +26,14 @@ As a general rule, we'll have a longer break (30 minutes) at 16:00 and two short
 - Lab 2 - part 2 basic Linux and advanced R libraries [Christian]
     - [Linux cheatsheet]<!-- (slides/Linux_cheatsheet.pdf) -->
     - [Introduction to the tidyverse]<!-- (slides/Tidyverse_Intro.html) -->
-- Lab 3 (demonstration) GWAS: basic models (linear and logistic regression) [Oscar]
-    - [R code. Exercise on simple linear regression]<!-- (basic_model/1.Basis_of_linear_regression.R) -->
-    - [Rmarkdown code. Exercise on simple logistic regression]<!-- (basic_model/2.exercise.Basis_of_logistic_regression.Rmd) -->
+
 
 
 **day 2**
 
+- Lab 3 (demonstration) GWAS: basic models (linear and logistic regression) [Oscar]
+    - [R code. Exercise on simple linear regression]<!-- (basic_model/1.Basis_of_linear_regression.R) -->
+    - [Rmarkdown code. Exercise on simple logistic regression]<!-- (basic_model/2.exercise.Basis_of_logistic_regression.Rmd) -->
 - Lecture 4 EDA theory [Christian]
     - [slides 5.1 Data Pre-Processing & EDA]<!-- (slides/Data_Pre-Processing_&_EDA.pdf) -->
 - Lab 4 EDA practice [Christian]
