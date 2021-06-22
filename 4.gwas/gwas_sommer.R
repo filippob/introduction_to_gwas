@@ -42,11 +42,12 @@ for (p in args){
   stop(paste('bad parameter:', pieces[1]))
 }
 
-# genotype_file = "introduction_to_gwas/6.steps/dogs_imputed.raw"
-# snp_map = "introduction_to_gwas/6.steps/dogs_imputed.map"
-# phenotype_file = "introduction_to_gwas/6.steps/data/dogs_phenotypes.txt"
-# trait = "phenotype"
-# trait_label = "cleft_lip"
+# genotype_file = "introduction_to_gwas/3.imputation/rice_imputed.raw"
+# snp_map = "introduction_to_gwas/3.imputation/rice_imputed.map"
+# phenotype_file = "introduction_to_gwas/data/rice_phenotypes.txt"
+# trait = "PH"
+# trait_label = "plant_height"
+# covariates="population"
 
 print(paste("genotype file name:",genotype_file))
 print(paste("SNP map:",snp_map))
@@ -83,7 +84,7 @@ if ((ncol(snp_matrix)-6) != nrow(SNP_INFO)) {
 
 ### phenotypes
 phenotypes <- fread(phenotype_file)
-phenotypes <- phenotypes[,c(1,3)]
+# phenotypes <- phenotypes[,c(1,3)]
 print(paste(nrow(phenotypes),"records read from the phenotype file",sep=" "))
 
 phenotypes <- phenotypes[phenotypes$id %in% snp_matrix$IID,]
