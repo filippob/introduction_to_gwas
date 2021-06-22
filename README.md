@@ -35,8 +35,8 @@ As a general rule, we'll have a longer break (30 minutes) at 16:00 and two short
 **day 2**
 
 - Lab 3 (demonstration) GWAS: basic models (linear and logistic regression) [Oscar]
-    - [R code. Exercise on simple linear regression]<!-- (basic_model/1.Basis_of_linear_regression.R) -->
-    - [Rmarkdown code. Exercise on simple logistic regression]<!-- (basic_model/2.exercise.Basis_of_logistic_regression.Rmd) -->
+    - [R code. Exercise on simple linear regression] (basic_model/1.Basis_of_linear_regression.R) 
+    - [Rmarkdown code. Exercise on simple logistic regression] (basic_model/2.exercise.Basis_of_logistic_regression.Rmd)
 - Lecture 4 EDA theory [Christian]
     - [slides 4 Data Pre-Processing & EDA]<!-- (slides/Data_Pre-Processing_&_EDA.pdf) -->
 - Lab 4 EDA practice [Christian]
