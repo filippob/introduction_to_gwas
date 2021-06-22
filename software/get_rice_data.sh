@@ -4,8 +4,8 @@
 ###################################
 
 ## set resources
-#plink=/home/filippo/Downloads/plink  # directory with plink binary
-plink=plink  # directory with plink binary
+plink=/home/filippo/Downloads/plink  # directory with plink binary
+#plink=plink  # directory with plink binary
 trait=PH
 
 ## Download data (rice, continuous)
@@ -30,7 +30,7 @@ wc -l plantgrainPhenotypes.txt # Number of phenotypic records
 ## retrieve group information
 ## create new phenotypes file and ids file for Plink subsetting
 ## Run R script "prep_rice_data.R" from terminal and submit the arguments "plantgrainPhenotypes.txt", "rice_group.reference" and "PH" to the script 
-Rscript ../software/prep_rice_data.R plantgrainPhenotypes.txt ../software/rice_group.reference $trait
+Rscript ../software/prep_rice_data_pipeline.R plantgrainPhenotypes.txt ../software/rice_group.reference $trait
 
 
 ## this is to match ids between files

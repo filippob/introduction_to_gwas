@@ -1,7 +1,7 @@
-PLINK='plink'
-BEAGLE='beagle'
-# PLINK='/home/filippo/Downloads/plink'
-# BEAGLE='java -Xss5m -Xmx4g -jar /home/filippo/Documents/software/beagle5/beagle.28Sep18.793.jar'
+#PLINK='plink'
+#BEAGLE='beagle'
+PLINK='/home/filippo/Downloads/plink'
+BEAGLE='java -Xss5m -Xmx4g -jar /home/filippo/Documents/software/beagle5/beagle.28Sep18.793.jar'
 SPECIES='rice'
 
 ## remember to first set up the environment
@@ -9,7 +9,7 @@ SPECIES='rice'
 
 rule targets:
     input:
-        "rice_imputed.raw_PH_GWAS_rrBLUP.results"
+        "rice_imputed.raw_plant_height_GWAS_rrBLUP.results"
 
 rule get_data:
     input:
@@ -73,10 +73,10 @@ rule gwas_kinship:
         map = "steps/rice_imputed.map",
         phenotype = "data/rice_phenotypes.txt"
     output:
-        "rice_imputed.raw_PH_GWAS_rrBLUP.results"
+        "rice_imputed.raw_plant_height_GWAS_rrBLUP.results"
     params:
         trait = "PH",
-        trait_label = "PH"
+        trait_label = "plant_height"
     shell:
         "Rscript --vanilla {input.script} \
             genotype_file={input.genotype} \
