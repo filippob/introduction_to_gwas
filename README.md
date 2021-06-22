@@ -21,9 +21,9 @@ As a general rule, we'll have a longer break (30 minutes) at 16:00 and two short
 - Lecture 2	Introduction to GWAS: Linkage disequilibrium and linear Regression [Oscar]
     - [2. Introduction to GWAS](slides/2_GWAS_LD_and_LR.pdf)
 - Lab 1 - Practicalities and set-up (server, github repo, R, etc) and description of datasets [Christian]
-    - [Description of datasets](slides/3_Dataset_description.pdf)
+    - [Description of datasets](slides/Dataset_description.pdf)
 - Lecture 3 - part 1 basic Linux and advanced R libraries [Christian]
-    - [3. Linux and the Shell](slides/4_Basic_shell.pdf)
+    - [3. Linux and the Shell](slides/3_Basic_shell.pdf)
 - Lab 2 - part 2 basic Linux and advanced R libraries [Christian]
     - [Linux cheatsheet](slides/Linux_cheatsheet.pdf)
     - [Introduction to the tidyverse]<!-- (slides/Tidyverse_Intro.html) -->
@@ -37,11 +37,11 @@ As a general rule, we'll have a longer break (30 minutes) at 16:00 and two short
 - Lab 3 (demonstration) GWAS: basic models (linear and logistic regression) [Oscar]
     - [R code. Exercise on simple linear regression](basic_model/1.Basis_of_linear_regression.R) 
     - [Rmarkdown code. Exercise on simple logistic regression](basic_model/2.exercise.Basis_of_logistic_regression.Rmd)
-- Lecture 4 EDA theory [Christian]
-    - [slides 4 Data Pre-Processing & EDA]<!-- (slides/Data_Pre-Processing_&_EDA.pdf) -->
+- Lecture 4 Exploratory Data Analysis & Data Pre-Processing [Christian]
+    - [4. EDA & Data Pre-Processing](slides/4_ Data Pre-Processing.pdf)
 - Lab 4 EDA practice [Christian]
-- Lecture 5 data preprocessing: theory [Christian]
-    - [slides 5 Data Types & Formats]<!-- (slides/Data_Types_&_Formats.pdf) -->
+- Lecture 5 Data Types & Formats [Christian]
+    - [slides 5 Data Types & Formats](slides/5_Data Types and Formats.pdf)
 - Lab 5 data preprocessing: practice [Christian]
 - Lecture 6 The multiple testing issue [Oscar]
     - [slides 6. Multiple_testing]<!-- (slides/Lecture6.pdf) -->
