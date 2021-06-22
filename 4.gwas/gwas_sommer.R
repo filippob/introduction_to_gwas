@@ -8,6 +8,8 @@ library("sommer")
 library("tidyverse")
 library("data.table")
 
+trim <- function (x) gsub("^\\s+|\\s+$", "", x)
+
 print("GWAS using the sommer package")
 
 ###################################
@@ -18,7 +20,8 @@ allowed_parameters = c(
   'snp_map',
   'phenotype_file',
   'trait',
-  'trait_label'
+  'trait_label',
+  'covariates'
 )
 
 args <- commandArgs(trailingOnly = TRUE)
@@ -50,6 +53,8 @@ print(paste("SNP map:",snp_map))
 print(paste("phenotype file name:",phenotype_file))
 print(paste("trait:",trait))
 print(paste("trait label:",trait_label))
+covariates = if(exists(x = "covariates")) covariates else 1
+print(paste("covariates:",covariates))
 
 dataset = basename(genotype_file)
 
@@ -104,7 +109,12 @@ dev.off()
 ###################
 phenotypes <- phenotypes %>% dplyr::rename(phenotype = !!as.name(trait))
 
-mix_mod <- GWAS(phenotype ~ 1,
+fmod <- as.formula(
+  paste("phenotype",
+        gsub(",","+",covariates),
+        sep = " ~ "))
+
+mix_mod <- GWAS(fmod,
                 random = ~vs(id, Gu=K),
                 rcov = ~units,
                 data = phenotypes,
