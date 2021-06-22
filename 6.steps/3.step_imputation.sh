@@ -14,16 +14,16 @@ beagle=beagle
 ## imputation of missing genotypes
 
 ## prepare rice data
-$plink --file ../2.pre-processing/rice_filtered --recode vcf --out rice_filtered
+$plink --file rice_filtered --recode vcf --out rice_filtered
 
 ## prepare dogs data
 ## option 1)
 
-sed -i 's/\_//g' ../2.pre-processing/dogs_filtered.ped ## this is to solve the issue with multiple underscores (Plink doesn't handle it well)
-$plink --dog --file ../2.pre-processing/dogs_filtered --recode vcf --out dogs_filtered
+sed -i 's/\_//g' dogs_filtered.ped ## this is to solve the issue with multiple underscores (Plink doesn't handle it well)
+$plink --dog --file dogs_filtered --recode vcf --out dogs_filtered
 
 ## option 2) directly handle sample labels with Plink
-$plink --dog --file ../2.pre-processing/dogs_filtered --recode vcf-iid --out dogs_filtered
+$plink --dog --file dogs_filtered --recode vcf-iid --out dogs_filtered
 
 
 if [ $beagle = beagle ]; then
