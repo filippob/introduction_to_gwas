@@ -228,7 +228,7 @@ Below we can see, for the first "test" sample (sample whose missing genotype we 
 ```{r}
 neighbs <- NN[1,1:k] ## first k neighbors for first "test" sample
 print(neighbs)
-print(y[trainIDS][c(3,2,7)]) ## neighbor genotypes of first k samples 
+print(y[trainIDS][neighbs]) ## neighbor genotypes of first k samples 
 ```
 
 
