@@ -17,7 +17,7 @@ As a general rule, we'll have a longer break (30 minutes) at 16:00 and two short
     - [0. General Introduction](slides/0_General_Introduction.pdf)
     - [GWAS workflow (short)](slides/GWAS_Workflow_short.pdf)
 - Lecture 1	GWAS overview: case studies / examples from literature [Oscar]
-    - [1. GWAS Overview](slides/GWAS_overview_case_studies_and_examples.pdf)
+    - [1. GWAS Overview](slides/1_GWAS_overview_case_studies_and_examples.pdf)
 - Lecture 2	Introduction to GWAS: Linkage disequilibrium and linear Regression [Oscar]
     - [2. Introduction to GWAS](slides/2_GWAS_LD_and_LR.pdf)
 - Lab 1 - Practicalities and set-up (server, github repo, R, etc) and description of datasets [Christian]
