@@ -14,35 +14,38 @@ As a general rule, we'll have a longer break (30 minutes) at 16:00 and two short
 **day 1**
 
 - Lecture 0	General Introduction / Overview of the course [Filippo, Oscar, Christian]
-    - [slides 0.General Introduction]<!-- (slides/1.General_Introduction.pdf) -->
+    - [0. General Introduction](slides/0_General_Introduction.pdf)
+    - [GWAS workflow (short)](slides/GWAS_Workflow_short.pdf)
 - Lecture 1	GWAS overview: case studies / examples from literature [Oscar]
-    - [slides 1.Overview]<!-- (slides/Lecture1.pdf) -->
-- Lecture 2	Introduction to GWAS: Linkage disequilibrium and Linear Regression [Oscar]
-    - [slides 2.Intro to GWAS]<!-- (slides/Lecture2.pdf) -->
-- Lab 1 - Practicalities and set-up (server, github repo, conda envs, etc) and description of datasets [Christian]
-    - [slides 3.Description of datasets]<!-- (slides/3.Description_of_datasets.pdf) -->
-- Lab 2 - part 1 basic Linux and advanced R libraries [Christian]
-    - [slides 4.Linux and the Shell]<!-- (slides/4.Linux_and_the_Shell.pdf) -->
+    - [1. GWAS Overview](slides/1_GWAS_overview_case_studies_and_examples.pdf)
+- Lecture 2	Introduction to GWAS: Linkage disequilibrium and linear Regression [Oscar]
+    - [2. Introduction to GWAS](slides/2_GWAS_LD_and_LR.pdf)
+- Lab 1 - Practicalities and set-up (server, github repo, R, etc) and description of datasets [Christian]
+    - [Description of datasets](slides/3_Dataset_description.pdf)
+- Lecture 3 - part 1 basic Linux and advanced R libraries [Christian]
+    - [3. Linux and the Shell](slides/4_Basic_shell.pdf)
 - Lab 2 - part 2 basic Linux and advanced R libraries [Christian]
-    - [Linux cheatsheet]<!-- (slides/Linux_cheatsheet.pdf) -->
+    - [Linux cheatsheet](slides/Linux_cheatsheet.pdf)
     - [Introduction to the tidyverse]<!-- (slides/Tidyverse_Intro.html) -->
+ - [Course manual](slides/Introduction_to_GWAS_manual.pdf)
+ - [GWAS workflow](slides/GWAS_Workflow.pdf)
 
 
 
 **day 2**
 
 - Lab 3 (demonstration) GWAS: basic models (linear and logistic regression) [Oscar]
-    - [R code. Exercise on simple linear regression]<!-- (basic_model/1.Basis_of_linear_regression.R) -->
-    - [Rmarkdown code. Exercise on simple logistic regression]<!-- (basic_model/2.exercise.Basis_of_logistic_regression.Rmd) -->
+    - [R code. Exercise on simple linear regression](basic_model/1.Basis_of_linear_regression.R) 
+    - [Rmarkdown code. Exercise on simple logistic regression](basic_model/2.exercise.Basis_of_logistic_regression.Rmd)
 - Lecture 4 EDA theory [Christian]
-    - [slides 5.1 Data Pre-Processing & EDA]<!-- (slides/Data_Pre-Processing_&_EDA.pdf) -->
+    - [slides 4 Data Pre-Processing & EDA]<!-- (slides/Data_Pre-Processing_&_EDA.pdf) -->
 - Lab 4 EDA practice [Christian]
 - Lecture 5 data preprocessing: theory [Christian]
-    - [slides 5.2 Data Types & Formats]<!-- (slides/Data_Types_&_Formats.pdf) -->
+    - [slides 5 Data Types & Formats]<!-- (slides/Data_Types_&_Formats.pdf) -->
 - Lab 5 data preprocessing: practice [Christian]
 - Lecture 6 The multiple testing issue [Oscar]
     - [slides 6. Multiple_testing]<!-- (slides/Lecture6.pdf) -->
-- Lecture 7 GWAS: experimental design and statistical power [Oscar]
+- Lecture 7 GWAS: Statistical power and Experimental design [Oscar]
     - [slides 7. Design and power]<!-- (slides/Lecture7.pdf) -->
     - [R code. Exercise on statistical power]<!-- (5.power_and_significance/StatisticalPower_exercise.R) -->
 
