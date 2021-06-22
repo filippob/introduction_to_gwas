@@ -45,8 +45,8 @@ As a general rule, we'll have a longer break (30 minutes) at 16:00 and two short
 - Lab 5 data preprocessing: practice [Christian]
 - Lecture 6 The multiple testing issue [Oscar]
     - [slides 6. Multiple_testing](slides/6.MultipleTesting.pdf)
-- Lecture 7 GWAS: Statistical power and Experimental design [Oscar] 
-    - [slides 7. Design and power](slides/7.GWAS_ experimental design and statistical power.pdf)
+- Lecture 7 GWAS: Statistical power, Population stratification and Experimental design [Oscar] 
+    - [slides 7. Power and PopStrat](slides/7.GWAS_ experimental design and statistical power.pdf)
     - [R code. Exercise on statistical power](5.power_and_significance/StatisticalPower_exercise.R)
 
 
