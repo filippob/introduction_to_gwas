@@ -150,7 +150,7 @@ rowSums(imputed == imputed2)/ncol(imputed) ## identity between the two imputed m
 #Accuracy of imputation
 results <- imputed[is.na(missing_map)]==Mreduced[is.na(missing_map)]
 accuracy <- length(results[results==TRUE])/length(results)
-(print(accuracy))
+print(accuracy)
 ```
 
 <span style="background-color:yellow">The accuracy of imputation with the R function *step_impute_knn()* from the *tidymodels* package is:<strong> `r accuracy`</strong></span>
@@ -222,6 +222,14 @@ print(NN)
 ```
 
 We see here the indexes of the neighbors for the "test" observations (samples with missing data to impute), ordered from closest to farthest (mind you, missing elements from `y` are skipped).
+
+Below we can see, for the first "test" sample (sample whose missing genotype we want to impute) the genotypes for the first `k` neighbors (that will be used for KNN-imputation by majority vote):
+
+```{r}
+neighbs <- NN[1,1:k] ## first k neighbors for first "test" sample
+print(neighbs)
+print(y[trainIDS][c(3,2,7)]) ## neighbor genotypes of first k samples 
+```
 
 
 We'll now use KNN to impute the missing genotypes, based on the most frequent genotype in the $K$ neighbors.
