@@ -28,7 +28,7 @@ As a general rule, we'll have a longer break (30 minutes) at 16:00 and two short
     - [Linux cheatsheet](slides/Linux_cheatsheet.pdf)
     - [Introduction to the tidyverse]<!-- (slides/Tidyverse_Intro.html) -->
  
- - Course manual(slides/Introduction_to_GWAS_manual.pdf)
+ - [Course manual](slides/Introduction_to_GWAS_manual.pdf)
 
 
 
