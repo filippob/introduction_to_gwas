@@ -27,7 +27,7 @@ wc -l plantgrainPhenotypes.txt # Number of phenotypic records
 ## retrieve group information
 ## create new phenotypes file and ids file for Plink subsetting
 ## Run R script "prep_rice_data.R" from terminal and submit the arguments "plantgrainPhenotypes.txt", "rice_group.reference" and "PH" to the script 
-Rscript ../../1.preparatory_steps/prep_rice_data.R plantgrainPhenotypes.txt ../../1.preparatory_steps/rice_group.reference PH
+Rscript ../../1.preparatory_steps/prep_rice_data_pipeline.R plantgrainPhenotypes.txt ../../1.preparatory_steps/rice_group.reference PH
 
 wc -l rice_phenotypes.txt
 wc -l ids
