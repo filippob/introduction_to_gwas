@@ -86,6 +86,9 @@ As a general rule, we'll have a longer break (30 minutes) at 16:00 and two short
 
 - Lecture 12 GWAS model extensions: a primer on categorical traits and longitudinal data [Filippo]
     - [11. GWAS model extensions]
+    - [R code GWAS for categorical traits]<!-- (model_extensions/1.categorical_gwas.R) -->
+    - [R code GWAS for categorical traits - examples]<!-- (model_extensions/2.categorical_gwas_example.Rmd) -->
+    - [R code GWAS for longitudinal traits]<!-- (model_extensions/3.longitudinal_gwas.Rmd) -->
     - [R code GWASpoly example for polyploid species]<!-- (model_extensions/4.polyploid_gwas.R) -->
 
 - Lecture 13 A glimpse on ROH-based alternative [Filippo, optional]
