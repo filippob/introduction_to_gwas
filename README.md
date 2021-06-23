@@ -44,28 +44,28 @@ As a general rule, we'll have a longer break (30 minutes) at 16:00 and two short
     - [5. Data Types & Formats](slides/5_Data_Types_and_Formats.pdf)
 - Lab 5 data preprocessing: practice [Christian]
 - Lecture 6 The multiple testing issue [Oscar]
-    - [slides 6. Multiple_testing](slides/6.MultipleTesting.pdf)
+    - [6. Multiple_testing](slides/6_MultipleTesting.pdf)
 - Lecture 7 GWAS: Statistical power, Population stratification and Experimental design [Oscar] 
-    - [slides 7. Power and PopStrat](slides/7.GWAS_experimental design and statistical power.pdf)
+    - [7. Power and PopStrat](slides/7_GWAS_experimental_design_and_statistical_power.pdf)
     - [R code. Exercise on statistical power](5.power_and_significance/StatisticalPower_exercise.R)
 
 
 **day 3**
 
 - Lecture 8	Imputation of missing genotypes: theory [Christian]
-    - [slides 8.Imputation]<!-- (slides/Imputation.pdf) -->
+    - [8. Imputation]<!-- (slides/Imputation.pdf) -->
 - Lab 6 - part 1 practical session on imputation (Beagle) [Christian]
 - Lecture 9: KNN Imputation 
-    - [slides 9.KNN Imputation]<!-- (slides/9.KNN_imputation.pdf) -->
+    - [9. KNN Imputation]<!-- (slides/9.KNN_imputation.pdf) -->
 - Lab 7 (demonstration) KNNI imputation [Filippo]
     - [R code. knni.Rmd]<!-- (3.imputation/knni.Rmd) -->
 - Lab 8 GWAS: the stand-alone script(s) for the full model [Filippo]
 - Lab 9 revising the steps involved in GWAS [Filippo]
-    - [slides 10.1 Revising the steps]<!-- (slides/10.1.Revising_the_steps.pdf) -->
+    - [10.1 Revising the steps]<!-- (slides/10.1.Revising_the_steps.pdf) -->
 - Brief intermission:
     - [R code PCA & population strucutre]<!--(4.gwas/PCA_Screeplots.R) -->
 - Lab 10 Introducing the exercise (+ light touch on RMarkdown, optional) [Filippo]
-    - [slides: Collaborative exercise]<!-- (slides/Collaborative%20exercise.pdf) -->
+    - [Collaborative exercise]<!-- (slides/Collaborative%20exercise.pdf) -->
 - Collaborative exercise: Let's build our own GWAS workflow on new data [Filippo, Oscar, Christian]
     - part 1: individual/group break-out sessions to give it a try independetly
     - part 2: whole-group revision of the exercise
@@ -73,7 +73,7 @@ As a general rule, we'll have a longer break (30 minutes) at 16:00 and two short
 
 **day 4**
 - Lecture 10 Bioinformatics pipelines: a super-elementary introduction [Filippo]
-    - [slides 10.2 A bioinformatics pipeline for GWAS]<!-- (slides/10.2.A_bioinformatics_pipeline_for_GWAS.pdf) -->
+    - [10.2 A bioinformatics pipeline for GWAS]<!-- (slides/10.2.A_bioinformatics_pipeline_for_GWAS.pdf) -->
 - Lab 11 Building a pipeline with Snakemake [Filippo]
 - Lab 12 The GWAS pipeline for continuous phenotype [Filippo]
     - plug-in for mean or KNN imputation
@@ -85,7 +85,7 @@ As a general rule, we'll have a longer break (30 minutes) at 16:00 and two short
 **day 5**
 
 - Lecture 12 GWAS model extensions: a primer on categorical traits and longitudinal data [Filippo]
-    - [slides 11.GWAS model extensions]
+    - [11. GWAS model extensions]
     - [R code GWASpoly example for polyploid species]<!-- (model_extensions/4.polyploid_gwas.R) -->
 
 - Lecture 13 A glimpse on ROH-based alternative [Filippo, optional]
