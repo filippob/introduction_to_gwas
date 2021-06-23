@@ -61,7 +61,7 @@ As a general rule, we'll have a longer break (30 minutes) at 16:00 and two short
     - [R code. knni.Rmd](3.imputation/knni.Rmd)
 - Lab 8 GWAS: the stand-alone script(s) for the full model [Filippo]
 - Lab 9 revising the steps involved in GWAS [Filippo]
-    - [10.1 Revising the steps]<!-- (slides/10.1.Revising_the_steps.pdf) -->
+    - [10.1 Revising the steps](slides/10.1_Revising_the_steps.pdf)
 - Brief intermission:
     - [R code PCA & population strucutre]<!--(4.gwas/PCA_Screeplots.R) -->
 - Lab 10 Introducing the exercise (+ light touch on RMarkdown, optional) [Filippo]
