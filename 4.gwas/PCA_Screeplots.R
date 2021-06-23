@@ -6,7 +6,7 @@ library(rrBLUP)
 library(tidyverse)
 
 ### Genoype marker matrix
-genotypes <- fread(file = "rice_imputed.raw")
+genotypes <- fread(file = "introduction_to_gwas/3.imputation/rice_imputed.raw")
 genotypes[1:5, 1:10]
 
 rownames(genotypes) <- as.matrix(genotypes[,2])
@@ -71,3 +71,30 @@ fviz_cluster(kCluster, data = pc[, 1:2],
              #ellipse.type = "convex", 
              ggtheme = theme_bw()
 )
+
+
+################# 3D PLOT ########################
+pc_3 <- as.data.frame(pc)
+pc_3$cluster <- as.factor(kCluster$cluster)
+
+## 3D plot
+library("plotly")
+
+p <- plot_ly(data = pc_3, 
+             x = ~PC1, y = ~PC2, z = ~PC3,
+             type = "scatter3d",
+             color = ~cluster) %>%
+  add_markers() %>%
+  layout(scene = list(xaxis = list(title = 'PC1'),
+                      yaxis = list(title = 'PC2'),
+                      zaxis = list(title = 'PC3')),
+         annotations = list(
+           x = 0.005,
+           y = 0.01,
+           text = 'Cluster',
+           xref = 'paper',
+           yref = 'paper',
+           showarrow = FALSE
+         ))
+
+htmlwidgets::saveWidget(as_widget(p), "pca_plot_3d.html")
