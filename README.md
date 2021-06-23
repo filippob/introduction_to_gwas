@@ -58,7 +58,7 @@ As a general rule, we'll have a longer break (30 minutes) at 16:00 and two short
 - Lecture 9: KNN Imputation 
     - [9. KNN Imputation]<!-- (slides/9.KNN_imputation.pdf) -->
 - Lab 7 (demonstration) KNNI imputation [Filippo]
-    - [R code. knni.Rmd]<!-- (3.imputation/knni.Rmd) -->
+    - [R code. knni.Rmd](3.imputation/knni.Rmd)
 - Lab 8 GWAS: the stand-alone script(s) for the full model [Filippo]
 - Lab 9 revising the steps involved in GWAS [Filippo]
     - [10.1 Revising the steps]<!-- (slides/10.1.Revising_the_steps.pdf) -->
