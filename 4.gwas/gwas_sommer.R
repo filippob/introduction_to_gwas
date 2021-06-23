@@ -137,7 +137,7 @@ mapf <-merge(SNP_INFO, ms, by="snp", all.x = TRUE);
 mapf$pvalue <- p
 mapf <- filter(mapf, phenotype < Inf)
 png(paste(dataset,trait_label,"manhattan_sommer.png",sep="_"))
-sommer::manhattan(mapf, pch=20,cex=.5, PVCN = "phenotype")
+sommer::manhattan(mapf, pch=20,cex=.75, PVCN = "phenotype")
 dev.off()
 
 ## rename P to log_p (as it is) and add the column with p-values
