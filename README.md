@@ -80,11 +80,13 @@ As a general rule, we'll have a longer break (30 minutes) at 16:00 and two short
 - Lab 13 Let's build together the GWAS pipeline for binary phenotype (guided exercise) [Filippo]
 - Discussion Q&A on building pipelines for GWAS [Filippo, Oscar, Christian]
 - Lecture 12 A light touch on post-GWAS analysis. Inferring functionality [Oscar]
-    - [R code. Exercise on R, and FUMA]<!-- (functional_analysis/getGenesFromSNP.R) -->
+    - [slides](slides/12.Exploring_Functionality.pdf)
+    - [R code. Exercise on R, and FUMA](functional_analysis/getGenesFromSNP.R) 
     
 **day 5**
 
 - Lecture 13 GWAS model extensions: a primer on categorical traits and longitudinal data [Filippo]
+    - [13. GWAS model extensions_Dominance](slides/13.GWAS_model_extensions_DOMINANCE.pdf)
     - [13. GWAS model extensions]
     - [R code GWAS for categorical traits]<!-- (model_extensions/1.categorical_gwas.R) -->
     - [R code GWAS for categorical traits - examples]<!-- (model_extensions/2.categorical_gwas_example.Rmd) -->
