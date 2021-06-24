@@ -65,33 +65,33 @@ As a general rule, we'll have a longer break (30 minutes) at 16:00 and two short
 - Brief intermission:
     - [R code PCA & population strucutre]<!--(4.gwas/PCA_Screeplots.R) -->
 - Lab 10 Introducing the exercise (+ light touch on RMarkdown, optional) [Filippo]
-    - [Collaborative exercise](slides/10.0_Collaborative_exercise.pdf)
+    - [10.2 Collaborative exercise](slides/10.2_Collaborative_exercise.pdf)
 - Collaborative exercise: Let's build our own GWAS workflow on new data [Filippo, Oscar, Christian]
     - part 1: individual/group break-out sessions to give it a try independetly
     - part 2: whole-group revision of the exercise
 
 
 **day 4**
-- Lecture 10 Bioinformatics pipelines: a super-elementary introduction [Filippo]
+- Lecture 11 Bioinformatics pipelines: a super-elementary introduction [Filippo]
     - [10.2 A bioinformatics pipeline for GWAS]<!-- (slides/10.2.A_bioinformatics_pipeline_for_GWAS.pdf) -->
 - Lab 11 Building a pipeline with Snakemake [Filippo]
 - Lab 12 The GWAS pipeline for continuous phenotype [Filippo]
     - plug-in for mean or KNN imputation
 - Lab 13 Let's build together the GWAS pipeline for binary phenotype (guided exercise) [Filippo]
 - Discussion Q&A on building pipelines for GWAS [Filippo, Oscar, Christian]
-- Lecture 11 A light touch on post-GWAS analysis. Inferring functionality [Oscar]
+- Lecture 12 A light touch on post-GWAS analysis. Inferring functionality [Oscar]
     - [R code. Exercise on R, and FUMA]<!-- (functional_analysis/getGenesFromSNP.R) -->
     
 **day 5**
 
-- Lecture 12 GWAS model extensions: a primer on categorical traits and longitudinal data [Filippo]
-    - [11. GWAS model extensions]
+- Lecture 13 GWAS model extensions: a primer on categorical traits and longitudinal data [Filippo]
+    - [13. GWAS model extensions]
     - [R code GWAS for categorical traits]<!-- (model_extensions/1.categorical_gwas.R) -->
     - [R code GWAS for categorical traits - examples]<!-- (model_extensions/2.categorical_gwas_example.Rmd) -->
     - [R code GWAS for longitudinal traits]<!-- (model_extensions/3.longitudinal_gwas.Rmd) -->
     - [R code GWASpoly example for polyploid species]<!-- (model_extensions/4.polyploid_gwas.R) -->
 
-- Lecture 13 A glimpse on ROH-based alternative [Filippo, optional]
+- Lecture 14 A glimpse on ROH-based alternative [Filippo, optional]
 - Kahoot quiz on what we learned about GWAS! [Filippo, Oscar, Christian]
 - Conclusions and wrap-up discussion on GWAS [Filippo, Oscar, Christian]
 
