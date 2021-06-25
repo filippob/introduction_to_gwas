@@ -95,6 +95,7 @@ As a general rule, we'll have a longer break (30 minutes) at 16:00 and two short
     - [R code GWASpoly example for polyploid species](model_extensions/4.polyploid_gwas.R)
 
 - Lecture 14 A glimpse on ROH-based alternative [Filippo, optional]
+    - [14.ROH-based and resampling methods as alternative approaches](slides/14.ROH-based_and_resampling_methods_as_alternative_approaches.pdf) 
 - Kahoot quiz on what we learned about GWAS! [Filippo, Oscar, Christian]
 - Conclusions and wrap-up discussion on GWAS [Filippo, Oscar, Christian]
 
