@@ -73,7 +73,7 @@ As a general rule, we'll have a longer break (30 minutes) at 16:00 and two short
 
 **day 4**
 - Lecture 11 Bioinformatics pipelines: a super-elementary introduction [Filippo]
-    - [10.2 A bioinformatics pipeline for GWAS]<!-- (slides/10.2.A_bioinformatics_pipeline_for_GWAS.pdf) -->
+    - [11 A bioinformatics pipeline for GWAS](slides/11.A_bioinformatics_pipeline_for_GWAS.pdf)
 - Lab 11 Building a pipeline with Snakemake [Filippo]
 - Lab 12 The GWAS pipeline for continuous phenotype [Filippo]
     - plug-in for mean or KNN imputation
@@ -88,9 +88,9 @@ As a general rule, we'll have a longer break (30 minutes) at 16:00 and two short
 - Lecture 13 GWAS model extensions: a primer on categorical traits and longitudinal data [Filippo]
     - [13. GWAS model extensions_Dominance](slides/13.GWAS_model_extensions_DOMINANCE.pdf)
     - [13. GWAS model extensions]
-    - [R code GWAS for categorical traits]<!-- (model_extensions/1.categorical_gwas.R) -->
-    - [R code GWAS for categorical traits - examples]<!-- (model_extensions/2.categorical_gwas_example.Rmd) -->
-    - [R code GWAS for longitudinal traits]<!-- (model_extensions/3.longitudinal_gwas.Rmd) -->
+    - [R code GWAS for categorical traits](model_extensions/1.categorical_gwas.R)
+    - [R code GWAS for categorical traits - examples](model_extensions/2.categorical_gwas_example.Rmd)
+    - [R code GWAS for longitudinal traits](model_extensions/3.longitudinal_gwas.Rmd)
     - [R code GWASpoly example for polyploid species]<!-- (model_extensions/4.polyploid_gwas.R) -->
 
 - Lecture 14 A glimpse on ROH-based alternative [Filippo, optional]
