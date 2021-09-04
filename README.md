@@ -14,58 +14,58 @@ As a general rule, we'll have a longer break (30 minutes) at 16:00 and two short
 **day 1**
 
 - Lecture 0	General Introduction / Overview of the course [Filippo, Oscar, Christian]
-    - [0. General Introduction](slides/0_General_Introduction.pdf)
-    - [GWAS workflow (short)](slides/GWAS_Workflow_short.pdf)
+    - [0. General Introduction]
+    - [GWAS workflow (short)]
 - Lecture 1	GWAS overview: case studies / examples from literature [Oscar]
-    - [1. GWAS Overview](slides/1_GWAS_overview_case_studies_and_examples.pdf)
+    - [1. GWAS Overview]
 - Lecture 2	Introduction to GWAS: Linkage disequilibrium and linear Regression [Oscar]
-    - [2. Introduction to GWAS](slides/2_GWAS_LD_and_LR.pdf)
+    - [2. Introduction to GWAS]
 - Lab 1 - Practicalities and set-up (server, github repo, R, etc) and description of datasets [Christian]
-    - [Description of datasets](slides/Dataset_description.pdf)
+    - [Description of datasets]
 - Lecture 3 - part 1 basic Linux and advanced R libraries [Christian]
-    - [3. Linux and the Shell](slides/3_Basic_shell.pdf)
+    - [3. Linux and the Shell]
 - Lab 2 - part 2 basic Linux and advanced R libraries [Christian]
-    - [Linux cheatsheet](slides/Linux_cheatsheet.pdf)
+    - [Linux cheatsheet]
     - [Introduction to the tidyverse]<!-- (slides/Tidyverse_Intro.html) -->
- - [Course manual](slides/Introduction_to_GWAS_manual.pdf)
- - [GWAS workflow](slides/GWAS_Workflow.pdf)
+ - [Course manual]
+ - [GWAS workflow]
 
 
 
 **day 2**
 
 - Lab 3 (demonstration) GWAS: basic models (linear and logistic regression) [Oscar]
-    - [R code. Exercise on simple linear regression](basic_model/1.Basis_of_linear_regression.R) 
-    - [Rmarkdown code. Exercise on simple logistic regression](basic_model/2.exercise.Basis_of_logistic_regression.Rmd)
+    - [R code. Exercise on simple linear regression]
+    - [Rmarkdown code. Exercise on simple logistic regression]
 - Lecture 4 Exploratory Data Analysis & Data Pre-Processing [Christian]
-    - [4. EDA & Data Pre-Processing](slides/4_Data_Pre-Processing.pdf)
+    - [4. EDA & Data Pre-Processing]
 - Lab 4 EDA practice [Christian]
 - Lecture 5 Data Types & Formats [Christian]
-    - [5. Data Types & Formats](slides/5_Data_Types_and_Formats.pdf)
+    - [5. Data Types & Formats]
 - Lab 5 data preprocessing: practice [Christian]
 - Lecture 6 The multiple testing issue [Oscar]
-    - [6. Multiple_testing](slides/6_MultipleTesting.pdf)
+    - [6. Multiple_testing]
 - Lecture 7 GWAS: Statistical power, Population stratification and Experimental design [Oscar] 
-    - [7. Power and PopStrat](slides/7_GWAS_experimental_design_and_statistical_power.pdf)
-    - [R code. Exercise on statistical power](5.power_and_significance/StatisticalPower_exercise.R)
+    - [7. Power and PopStrat]
+    - [R code. Exercise on statistical power]
 
 
 **day 3**
 
 - Lecture 8	Imputation of missing genotypes: theory [Christian]
-    - [8. Imputation](slides/8_Imputation.pdf)
+    - [8. Imputation]
 - Lab 6 - part 1 practical session on imputation (Beagle) [Christian]
 - Lecture 9: KNN Imputation 
-    - [9. KNN Imputation](slides/9_KNN_imputation.pdf)
+    - [9. KNN Imputation]
 - Lab 7 (demonstration) KNNI imputation [Filippo]
-    - [R code. knni.Rmd](3.imputation/knni.Rmd)
+    - [R code. knni.Rmd]
 - Lab 8 GWAS: the stand-alone script(s) for the full model [Filippo]
 - Lab 9 revising the steps involved in GWAS [Filippo]
-    - [10.1 Revising the steps](slides/10.1_Revising_the_steps.pdf)
+    - [10.1 Revising the steps]
 - Brief intermission:
     - [R code PCA & population strucutre]<!--(4.gwas/PCA_Screeplots.R) -->
 - Lab 10 Introducing the exercise (+ light touch on RMarkdown, optional) [Filippo]
-    - [10.2 Collaborative exercise](slides/10.2_Collaborative_exercise.pdf)
+    - [10.2 Collaborative exercise]
 - Collaborative exercise: Let's build our own GWAS workflow on new data [Filippo, Oscar, Christian]
     - part 1: individual/group break-out sessions to give it a try independetly
     - part 2: whole-group revision of the exercise
@@ -73,29 +73,29 @@ As a general rule, we'll have a longer break (30 minutes) at 16:00 and two short
 
 **day 4**
 - Lecture 11 Bioinformatics pipelines: a super-elementary introduction [Filippo]
-    - [11 A bioinformatics pipeline for GWAS](slides/11.A_bioinformatics_pipeline_for_GWAS.pdf)
+    - [11 A bioinformatics pipeline for GWAS]
 - Lab 11 Building a pipeline with Snakemake [Filippo]
 - Lab 12 The GWAS pipeline for continuous phenotype [Filippo]
     - plug-in for mean or KNN imputation
 - Lab 13 Let's build together the GWAS pipeline for binary phenotype (guided exercise) [Filippo]
 - Discussion Q&A on building pipelines for GWAS [Filippo, Oscar, Christian]
 - Lecture 12 A light touch on post-GWAS analysis. Inferring functionality [Oscar]
-    - [slides](slides/12.Exploring_Functionality.pdf)
-    - [R code. Exercise on R, and FUMA](functional_analysis/getGenesFromSNP.R) 
+    - [slides]
+    - [R code. Exercise on R, and FUMA]
     
 **day 5**
 
 - Lecture 13 GWAS model extensions: a primer on categorical traits and longitudinal data [Filippo]
-    - [13. GWAS model extensions](slides/13.GWAS_model_extensions.pdf)
-    - [13.1 GWAS model extensions_Dominance](slides/13.GWAS_model_extensions_DOMINANCE.pdf)
-    - [13.2 GWAS model extensions_Polyploids](slides/13.2GWAS_model_extensions_polyploids.pdf)
-    - [R code GWAS for categorical traits](model_extensions/1.categorical_gwas.Rmd)
-    - [R code GWAS for categorical traits - examples](model_extensions/2.categorical_gwas_example.Rmd)
-    - [R code GWAS for longitudinal traits](model_extensions/3.longitudinal_gwas.Rmd)
-    - [R code GWASpoly example for polyploid species](model_extensions/4.polyploid_gwas.R)
+    - [13. GWAS model extensions]
+    - [13.1 GWAS model extensions_Dominance]
+    - [13.2 GWAS model extensions_Polyploids]
+    - [R code GWAS for categorical traits]
+    - [R code GWAS for categorical traits - examples]
+    - [R code GWAS for longitudinal traits]
+    - [R code GWASpoly example for polyploid species]
 
 - Lecture 14 A glimpse on ROH-based alternative [Filippo, optional]
-    - [14.ROH-based and resampling methods as alternative approaches](slides/14.ROH-based_and_resampling_methods_as_alternative_approaches.pdf) 
+    - [14.ROH-based and resampling methods as alternative approaches]
 - Kahoot quiz on what we learned about GWAS! [Filippo, Oscar, Christian]
 - Conclusions and wrap-up discussion on GWAS [Filippo, Oscar, Christian]
 
