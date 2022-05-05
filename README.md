@@ -65,7 +65,7 @@ As a general rule, we'll have a longer break (30 minutes) at 16:00 and two short
     - [10.1 Revising the steps]
 - Brief intermission:
     - [R code PCA & population strucutre]<!--(4.gwas/PCA_Screeplots.R) -->
-- Lab 10 Introducing the exercise (+ light touch on RMarkdown, optional) [Filippo]
+- Lab 10 Introducing the exercise [Filippo]
     - [10.2 Collaborative exercise]
 - Collaborative exercise: Let's build our own GWAS workflow on new data [Filippo, Oscar, Christian]
     - part 1: individual/group break-out sessions to give it a try independetly
