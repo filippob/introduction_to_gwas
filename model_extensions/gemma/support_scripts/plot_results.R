@@ -12,7 +12,7 @@ if (length(args)==0) {
 }
 
 # phenotype_file = "../introduction_to_gwas/6.steps/data/rice_phenotypes.txt"
-resf = "extensions/prova/res.assoc.txt"
+#resf = "extensions/prova/res.assoc.txt"
 resf = args[1]
 
 print(paste("The GWAS results file to be read is:", basename(resf)))
