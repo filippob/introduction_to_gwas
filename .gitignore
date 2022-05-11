@@ -87,3 +87,6 @@ temp/*
 */.snakemake/*
 */.snakemake/metadata/*
 
+# model extensions
+model_extensions/gemma/rice/*
+model_extensions/multi_trait/rice/*
