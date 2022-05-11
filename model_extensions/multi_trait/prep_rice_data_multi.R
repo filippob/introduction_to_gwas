@@ -1,4 +1,5 @@
-## run as: Rscript --vanilla retrieve_data.R plantgrainPhenotypes.txt rice_group.reference PH
+## run as: Rscript --vanilla prep_rice_multi.R plantgrainPhenotypes.txt rice_group.reference 'PH,PL'
+
 library("data.table")
 library("dplyr")
 
@@ -15,9 +16,9 @@ if (length(args)==0) {
 
 
 # Assign the arguments passed on from the bash script
-phenotype_file = "introduction_to_gwas/6.steps/data/plantgrainPhenotypes.txt"
-group_reference_file = "introduction_to_gwas/cross_reference/rice_group.reference"
-traits = 'SL,SW'
+#phenotype_file = "introduction_to_gwas/6.steps/data/plantgrainPhenotypes.txt"
+#group_reference_file = "introduction_to_gwas/cross_reference/rice_group.reference"
+#traits = 'SL,SW'
 
 phenotype_file= args[1]
 print(paste("phenotype file name:",phenotype_file))
