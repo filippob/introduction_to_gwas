@@ -15,11 +15,15 @@ BiocManager::install("qvalue")
 ## doMC
 install.packages("doMC", repos="http://R-Forge.R-project.org")
 
+## from github
+library("devtools")
+devtools::install_github("YaoZhou89/BLINK")
 
 ## from CRAN
 install.packages("car")
 install.packages("AER")
 install.packages("msm")
+install.packages("here")
 install.packages("nnet")
 install.packages("MASS")
 install.packages("afex")
