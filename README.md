@@ -25,7 +25,7 @@ As a general rule, we'll have a longer break (30 minutes) at 16:00 and two short
 - Lecture 3 - part 1 basic Linux and advanced R libraries [Christian]
     - [3. Linux and the Shell](slides/3_Linux_intro.pdf)
 - Lab 2 - part 2 basic Linux and advanced R libraries [Christian]
-    - [Linux cheatsheet]
+    - [Linux cheatsheet](slides/Unix_cheatsheet.pdf)
     - [Introduction to the tidyverse]<!-- (slides/Tidyverse_Intro.html) -->
  - [Course manual](slides/gwasManual.pdf)
  - [GWAS workflow](slides/GWAS_Workflow.pdf)
