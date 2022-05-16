@@ -38,16 +38,16 @@ As a general rule, we'll have a longer break (30 minutes) at 16:00 and two short
     - [R code. Exercise on simple linear regression]
     - [Rmarkdown code. Exercise on simple logistic regression]
 - Lecture 4 Exploratory Data Analysis & Data Pre-Processing [Christian]
-    - [4. EDA & Data Pre-Processing]
+    - [4. EDA & Data Pre-Processing](slides/4_Data_pre-processing.pdf)
 - Lab 4 EDA practice [Christian]
-- Lecture 5 Data Types & Formats [Christian]
+- Lecture 5 Data Types & Formats [Christian](slides/5_Data_types.pdf)
     - [5. Introducing the exercise (+ light touch on RMarkdown, optional) [Filippo]
 [10.2 Collaborative exercise]]
 - Lab 5 data preprocessing: practice [Christian]
 - Lecture 6 The multiple testing issue [Oscar]
-    - [6. Multiple_testing]
+    - [6. Multiple_testing](slides/6_Multiple_testing.pdf)
 - Lecture 7 GWAS: Statistical power, Population stratification and Experimental design [Oscar] 
-    - [7. Power and PopStrat]
+    - [7. Power and PopStrat](slides/7_Experimental_design.pdf)
     - [R code. Exercise on statistical power]
 
 
