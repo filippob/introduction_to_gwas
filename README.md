@@ -43,7 +43,7 @@ As a general rule, we'll have a longer break (30 minutes) at 16:00 and two short
 - Lab 3 EDA & IDA [Christian]
 - Lab 4 Data Pre-Processing [Christian]
 - Lecture 6 The Multiple Testing Issue [Oscar]
-    - [Multiple_Testing](slides/6_Multiple_testing.pdf)
+    - [Multiple Testing](slides/6_Multiple_testing.pdf)
 - Lecture 7 Statistical Power, Population Stratification and Experimental Design [Oscar] 
     - [Statistical Power and Population Stratification](slides/7_Experimental_design.pdf)
     - [R code. Exercise on statistical power]
