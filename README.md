@@ -14,7 +14,7 @@ As a general rule, we'll have a longer break (30 minutes) at 16:00 and two short
 **day 1**
 
 - Lecture 0	General Introduction / Overview of the course [Filippo, Oscar, Christian]
-    - [0. General Introduction]
+    - [0. General Introduction](slides/0_General_Introduction.pdf)
     - [GWAS workflow (short)]
 - Lecture 1	GWAS overview: case studies / examples from literature [Oscar]
     - [1. GWAS Overview]
