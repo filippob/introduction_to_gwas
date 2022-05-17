@@ -5,6 +5,21 @@ date: "April 25, 2021"
 output: html_document
 ---
 
+!! remember to **download the data** for this practical sessions: http://www.jackdellequerce.com/data/GenRiz44.txt !!
+
+```{r}
+## FROM THE COMMAND LINE
+## cd ../data
+## wget http://www.jackdellequerce.com/data/GenRiz44.txt
+
+## USING SYSTEM CALLS
+setwd("../data")
+system2("wget", "http://www.jackdellequerce.com/data/GenRiz44.txt")
+setwd("../3.imputation")
+```
+
+
+
 # KNN: K-Nearest Neighbors (for classification)
 
 K-nearest neighbors (KNN) is a classification method that attempts to estimate the conditional distribution of the observations (e.g. vector $Y$) given a set of features (matrix $\mathbf{X}$):
@@ -56,7 +71,7 @@ library("data.table")
 # start.time <- Sys.time()
 ```
 
-Start time was: `r start.time`
+<!-- Start time was: `r start.time` -->
 
 ### The dataset
 
