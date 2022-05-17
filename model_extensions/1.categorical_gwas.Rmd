@@ -13,6 +13,11 @@ library("tidyverse")
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+```{r, label='set_up'}
+ext_data_folder = "model_extensions_data"
+```
+
+
 ## Categorical traits
 
 1. unordered categories $\rightarrow$ `multinomial logistic regression`
@@ -41,7 +46,8 @@ $$
 
 ```{r breast_data}
 # odata <- read_dta("https://stats.idre.ucla.edu/stat/data/ologit.dta")
-tissue <- read_excel("../data/BreastTissue.xls", sheet = 2)
+fname = file.path("..", ext_data_folder, "BreastTissue.xls")
+tissue <- read_excel(fname, sheet = 2)
 tissue <- tissue[, -1] ## remove sequential numbering of records
 tissue$Class <- as.factor(tissue$Class) ## convert classes to factor
 levels(tissue$Class)[levels(tissue$Class) %in% c("fad", "gla", "mas")] <- "other"
@@ -243,7 +249,8 @@ This model has a different intercept term for each category in the output variab
 
 ```{r}
 ## data from : https://zenodo.org/record/4723941#.YJ0xGKIzZhE
-covid <- read_excel("../data/Race_clincial_trial_Spreadsheet_de-identified__noagegender_final.xlsx", sheet = 1)
+fname = file.path("..",ext_data_folder,"Race_clincial_trial_Spreadsheet_de-identified__noagegender_final.xlsx")
+covid <- read_excel(fname, sheet = 1)
 covid <- covid[,-c(1:3,12,13,15:18,ncol(covid))] ## select some variables
 covid <- na.omit(covid)
 names(covid)[ncol(covid)] <- "disease_score"
