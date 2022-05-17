@@ -36,10 +36,10 @@ As a general rule, we'll have a longer break (30 minutes) at 16:00 and two short
 - Lab 2 (Demonstration) GWAS: Basic Models (Linear and Logistic Regression) [Oscar]
     - [R code. Exercise on Simple Linear Regression]
     - [Rmarkdown Code. Exercise on Simple Logistic Regression]
-- Lecture 4 Initial Data Analysis, Exploratory Data Analysis and Data Pre-Processing [Christian]
-    - [IDA, EDA & Data Pre-Processing](slides/4_Data_pre-processing.pdf)
-- Lecture 5 Data Types & Formats [Christian]
-    - [Common Data Types and Formats](slides/5_Data_types.pdf)
+- Lecture 4 Data Types & Formats [Christian]
+    - [Common Data Types and Formats](slides/4_Data_types.pdf)
+- Lecture 5 Initial Data Analysis, Exploratory Data Analysis and Data Pre-Processing [Christian]
+    - [IDA, EDA & Data Pre-Processing](slides/5_Data_pre-processing.pdf)
 - Lab 3 EDA & IDA [Christian]
 - Lab 4 Data Pre-Processing [Christian]
 - Lecture 6 The Multiple Testing Issue [Oscar]
