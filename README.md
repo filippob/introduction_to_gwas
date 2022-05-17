@@ -62,6 +62,9 @@ As a general rule, we'll have a longer break (30 minutes) at 16:00 and two short
     - [knni.R](3.imputation/knni.R)
     - [knni.sh](3.imputation/knni.sh)
 - Lab 7 GWAS: The Stand-Alone Script(s) for the Full Model [Filippo]
+    - [gwas_rrblup.R]
+    - [gwas_statgengwas.R]
+    - [gwas_sommer.R]
 - Lab 8 Revising the Steps involved in GWAS [Filippo]
     - [Revising the Steps]
 - Brief Intermission:
