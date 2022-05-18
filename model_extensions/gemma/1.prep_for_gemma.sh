@@ -33,7 +33,7 @@ echo " - preparing the covariates file"
 Rscript --vanilla support_scripts/prep_covs_for_gemma.R $phenotypef $outdir/ids.keep
 
 ## house cleaning
-rm $outdir/*.hh $outdir/*.nosex $outdir/*.log
+rm $outdir/*.log
 
 echo "DONE!"
 
