@@ -52,7 +52,7 @@ As a general rule, we'll have a longer break (30 minutes) at 16:00 and two short
 **Day 3**
 
 - Lecture 8	Imputation of Missing Genotypes [Christian]
-    - [Imputation](slides/8_Imputation)
+    - [Imputation](slides/8_Imputation.pdf)
 - Lab 5 Imputation of Missing Genotypes using Beagle [Christian]
 - Lecture 9 KNN Imputation 
     - [KNN Imputation]
