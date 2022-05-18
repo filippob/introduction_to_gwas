@@ -1,9 +1,9 @@
 #!/bin/bash
 
 plink="$HOME/Downloads/plink"
-genotypef="../../introduction_to_gwas/6.steps/rice_imputed"
-phenotypef="../../introduction_to_gwas/6.steps/data/rice_phenotypes.txt"
-groupref="../../introduction_to_gwas/cross_reference/rice_group.reference"
+genotypef="../../6.steps/rice_imputed"
+phenotypef="../../6.steps/data/rice_phenotypes.txt"
+groupref="../../cross_reference/rice_group.reference"
 fid="NF1"
 outdir="rice"
 fname="rice_regenie"
