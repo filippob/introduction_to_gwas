@@ -8,12 +8,14 @@ output: html_document
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 # install.packages("../software/gMatrix_0.2.tar.gz", type = "source", repos = NULL)
+library("here")
 library("knitr")
 library("plotly")
 library("gMatrix")
 library("ggplot2")
 library("data.table")
 ```
+
 
 ## Building the matrix of genomic relationships
 
