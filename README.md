@@ -68,6 +68,8 @@ As a general rule, we'll have a longer break (30 minutes) at 16:00 and two short
 - Lab 8 Revising the Steps involved in GWAS [Filippo]
     - [1.get_data.sh](6.steps/1.get_data.sh)
     - [2.step_filtering.sh](6.steps/2.step_filtering.sh)
+    - [3.step_imputation.sh](6.steps/3.step_imputation.sh)
+    - [4.gwas.sh](6.steps/4.gwas.sh)
 - Brief Intermission:
     - [R code PCA & Population Structure]<!--(4.gwas/PCA_Screeplots.R) -->
 - Lab 9 Introducing the Exercise [Filippo]
