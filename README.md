@@ -62,11 +62,12 @@ As a general rule, we'll have a longer break (30 minutes) at 16:00 and two short
     - [knni.R](3.imputation/knni.R)
     - [knni.sh](3.imputation/knni.sh)
 - Lab 7 GWAS: The Stand-Alone Script(s) for the Full Model [Filippo]
-    - [gwas_rrblup.R]
-    - [gwas_statgengwas.R]
-    - [gwas_sommer.R]
+    - [gwas_rrblup.R](4.gwas/gwas_rrblup.R)
+    - [gwas_statgengwas.R](4.gwas/gwas_statgengwas.R)
+    - [gwas_sommer.R](4.gwas/gwas_sommer.R)
 - Lab 8 Revising the Steps involved in GWAS [Filippo]
-    - [Revising the Steps]
+    - [1.get_data.sh](6.steps/1.get_data.sh)
+    - [2.step_filtering.sh](6.steps/2.step_filtering.sh)
 - Brief Intermission:
     - [R code PCA & Population Structure]<!--(4.gwas/PCA_Screeplots.R) -->
 - Lab 9 Introducing the Exercise [Filippo]
