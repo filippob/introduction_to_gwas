@@ -1,0 +1,85 @@
+---
+title: "gwasurvivr: an R package for GWAS with survival data"
+author: "Filippo"
+date: "18/05/2022"
+output: html_document
+---
+
+```{r}
+# BiocManager::install("gwasurvivr")
+library("gwasurvivr")
+options("gwasurvivr.cores"=4) ## set n. of cores to be used by gwasurvivr (GWAS for survival data can be computationally intensive)
+```
+`gwasurvivr` performs GWAS for survival data using **Cox proportional hazard** (Cox PH) models which are fitted to each SNP including other covariates (as any).
+Results will be saved as a text file.
+
+## input files
+
+- vcf.file: path to genotype data file (impute.file for IMPUTE2; b.file for PLINK)
+- covariate.file: data frame with sample IDs (that link to the genotype data samples), phenotype (time, event) and additional covariate data
+- id.column: the sample ID column name in covariate.file
+- time.to.event: the time column name in covariate.file
+- event: the event column name in covariate.file
+- covariates: column names in covariate.file of covariates to include in model
+- out.file: output file name
+
+**IMPORTANT**: in the covariate.file, categorical variables need to be converted to indicator (dummy) variables (OHE) . Ordinal variables, e.g. "low, medium and high" must be converted to appropriate numeric values as well.
+
+### Illustration data
+
+Example data obtained with the Michigan Imputation Server (https://imputationserver.sph.umich.edu/index.html):
+
+- vcf format
+- simulated phenotypes
+
+```{r}
+vcf.file <- system.file(package="gwasurvivr",
+                        "extdata", 
+                        "michigan.chr14.dose.vcf.gz")
+pheno.fl <- system.file(package="gwasurvivr",
+                        "extdata", 
+                        "simulated_pheno.txt")
+pheno.file <- read.table(pheno.fl,
+                         sep=" ", 
+                         header=TRUE,
+                         stringsAsFactors = FALSE)
+head(pheno.file)
+```
+
+We see that sex is coded as character variable: since this is a covariate that we want to include in our cox regression model, we need to one-hot-encode it:
+
+```{r}
+# recode sex column and remove first column 
+pheno.file$SexFemale <- ifelse(pheno.file$sex=="female", 1L, 0L)
+```
+
+In this example, we select samples from the experimental group and will test survival only on these patients. T
+he first column in the pheno.file is the sample ID, which links the phenotype file to the imputation file. 
+We include **age**, **DrugTxYes**, and **sex** (recoded) in the survival model as covariates.
+
+```{r}
+# select only experimental group sample.ids
+sample.ids <- pheno.file[pheno.file$group=="experimental",]$ID_2
+head(sample.ids)
+```
+### Running the GWAS - survival model
+
+```{r, warning=FALSE, message=FALSE}
+michiganCoxSurv(vcf.file=vcf.file,
+                covariate.file=pheno.file,
+                id.column="ID_2",
+                sample.ids=sample.ids,
+                time.to.event="time",
+                event="event",
+                covariates=c("age", "SexFemale", "DrugTxYes"),
+                inter.term=NULL,
+                print.covs="only",
+                out.file="michigan_only",
+                r2.filter=0.3,
+                maf.filter=0.005,
+                chunk.size=100,
+                verbose=TRUE,
+                clusterObj=NULL)
+```
+
+Remember: the output is directly written out in a text file (for later parsing, plotting etc.)
