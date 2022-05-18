@@ -55,7 +55,7 @@ As a general rule, we'll have a longer break (30 minutes) at 16:00 and two short
     - [Imputation](slides/8_Imputation.pdf)
 - Lab 5 Imputation of Missing Genotypes using Beagle [Christian]
 - Lecture 9 KNN Imputation 
-    - [KNN Imputation](slides/KNN_imputation.pdf)
+    - [KNN Imputation](slides/9.KNN_imputation.pdf)
 - Lab 6 (Demonstration) KNNI Imputation [Filippo]
     - [knni.Rmd](3.imputation/knni.Rmd)
     - [hamming.R](3.imputation/hamming.R)
