@@ -84,7 +84,7 @@ As a general rule, we'll have a longer break (30 minutes) at 16:00 and two short
 - Lecture 10 Bioinformatics Pipelines: a super-elementary Introduction [Filippo]
     - [A bioinformatics pipeline for GWAS](slides/11.bioinformatic_pipeline_for_GWAS.pdf)
 - Lab 10 Building a Pipeline with Snakemake [Filippo]
-- Lab 11 The GWAS pipeline for Continuous Chenotypes [Filippo]
+- Lab 11 The GWAS pipeline for Continuous Phenotypes [Filippo]
     - Plug-In for Mean or KNN Imputation
 - Lab 12 The GWAS pipeline for Binary Phenotypes (Guided Exercise) [Filippo]
 - Q&A on building Pipelines for GWAS [Filippo, Oscar, Christian]
