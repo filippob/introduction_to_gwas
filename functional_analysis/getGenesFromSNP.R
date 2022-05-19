@@ -41,7 +41,10 @@ print(paste("The significant p-value after Bonferroni correction is",Bonf,sep=" 
 #Filter significant SNPs based on Bonferroni
  ##results <- results[results$P<Bonf,]
 #Filter significant SNPs based on FDR
-results <- results[results$Padj<0.025,]
+fdr<-max(results$P[which(results$Padj<0.05)])
+print(paste("The significant p-value after FDR correction is",fdr,sep=" "))
+
+results <- results[results$Padj<fdr,]
 genes = list()
 
 for (snp_name in rownames(results)) {
