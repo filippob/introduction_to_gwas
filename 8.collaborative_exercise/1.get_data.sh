@@ -4,8 +4,8 @@
 ###################################
 
 ## set resources
-# plink=plink
-plink=/home/filippo/Downloads/plink  # directory with plink binary
+plink=plink
+#plink=/home/filippo/Downloads/plink  # directory with plink binary
 
 ## Download data (rice, continuous)
 echo "Downloading pigs data ..."
