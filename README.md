@@ -86,7 +86,7 @@ As a general rule, we'll have a longer break (30 minutes) at 16:00 and two short
 - Lab 10 Building a Pipeline with Snakemake [Filippo]
 - Lab 11 The GWAS pipeline for Continuous Phenotypes [Filippo]
     - Plug-In for Mean or KNN Imputation
-- Lab 12 The GWAS pipeline for Binary Phenotypes (Guided Exercise) [Filippo]
+    - The GWAS pipeline for Binary Phenotypes (Guided Exercise) [Filippo]
 - Q&A on building Pipelines for GWAS [Filippo, Oscar, Christian]
 - Lecture 11 A light Touch on Post-GWAS Analysis: Inferring Functionality [Oscar]
     - [slides](slides/Functional_Analysis.FUMA.pdf)
