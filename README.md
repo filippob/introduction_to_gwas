@@ -107,6 +107,7 @@ As a general rule, we'll have a longer break (30 minutes) at 16:00 and two short
 
 - Lecture 13 A Glimpse on ROH-based Alternative [Filippo, optional]
     - [ROH-based and Resampling Methods as alternative Approaches]
+    - [Other gene actions](slides/13.1.GWAS_model_extensions_genotype_codification.pdf)
 - Kahoot Quiz on what we learned about GWAS! [Filippo, Oscar, Christian]
 - Conclusions and Wrap-Up Discussion on GWAS [Filippo, Oscar, Christian]
 
