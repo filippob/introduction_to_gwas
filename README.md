@@ -102,7 +102,7 @@ As a general rule, we'll have a longer break (30 minutes) at 16:00 and two short
     - [R code GWASpoly Example for polyploid Species, optional]
     - [R code GWAS for categorical Traits](model_extensions/1.categorical_gwas.Rmd)
     - [R code GWAS for categorical Traits - Examples](model_extensions/2.categorical_gwas_example.Rmd)
-    - [R code GWAS for longitudinal Traits]
+    - [R code GWAS for longitudinal Traits](model_extensions/3.longitudinal_gwas.Rmd)
     - [R code GWAS for multi-trait and multi-locus Models]
 
 - Lecture 13 A Glimpse on ROH-based Alternative [Filippo, optional]
