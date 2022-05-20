@@ -84,19 +84,19 @@ As a general rule, we'll have a longer break (30 minutes) at 16:00 and two short
 - Lecture 10 Bioinformatics Pipelines: a super-elementary Introduction [Filippo]
     - [A bioinformatics pipeline for GWAS](slides/11.bioinformatic_pipeline_for_GWAS.pdf)
 - Lab 10 Building a Pipeline with Snakemake [Filippo]
-- Lab 11 The GWAS pipeline for Continuous Chenotypes [Filippo]
+- Lab 11 The GWAS pipeline for Continuous Phenotypes [Filippo]
     - Plug-In for Mean or KNN Imputation
 - Lab 12 The GWAS pipeline for Binary Phenotypes (Guided Exercise) [Filippo]
 - Q&A on building Pipelines for GWAS [Filippo, Oscar, Christian]
 - Lecture 11 A light Touch on Post-GWAS Analysis: Inferring Functionality [Oscar]
-    - [slides]
-    - [R code. Exercise on R, and FUMA]
+    - [slides](slides/Functional_Analysis.FUMA.pdf)
+    - [R code. Exercise on R, and FUMA](functional_analysis/getGenesFromSNP.R)
     
 **Day 5**
 
 - Lecture 12 GWAS Model Extensions: a Primer on Categorical Traits and Longitudinal Data [Filippo]
     - [12.1 GWAS Model Extensions_Dominance]
-    - [12.2 GWAS Model Extensions_Polyploids, optional]
+    - [12.2 GWAS Model Extensions_Polyploids, optional](slides/12_2_GWAS_model_extensions_polyploids.pdf)
     - [12.3 GWAS Model Extensions_Trait_Types]
     - [12.4 GWAS Model Extensions_Multi-Trait-Locus, software]
     - [R code GWASpoly Example for polyploid Species, optional]
@@ -107,6 +107,7 @@ As a general rule, we'll have a longer break (30 minutes) at 16:00 and two short
 
 - Lecture 13 A Glimpse on ROH-based Alternative [Filippo, optional]
     - [ROH-based and Resampling Methods as alternative Approaches]
+    - [Other gene actions](slides/13.1.GWAS_model_extensions_genotype_codification.pdf)
 - Kahoot Quiz on what we learned about GWAS! [Filippo, Oscar, Christian]
 - Conclusions and Wrap-Up Discussion on GWAS [Filippo, Oscar, Christian]
 

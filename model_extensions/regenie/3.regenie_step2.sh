@@ -1,6 +1,6 @@
 #!/bin/bash
 #########################
-## REGENIE - step 1
+## REGENIE - step 2
 #########################
 
 ## command lines (and instruction) to run regenie step 1
