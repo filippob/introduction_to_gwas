@@ -4,7 +4,7 @@
 ###################################
 
 ## set resources
-plink=plink  # directory with plink binary
+plink=~/Downloads/plink  # directory with plink binary
 
 ## Download data (rice, continuous)
 echo "Downloading rice data ..."
