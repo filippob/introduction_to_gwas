@@ -90,7 +90,7 @@ As a general rule, we'll have a longer break (30 minutes) at 16:00 and two short
 - Q&A on building Pipelines for GWAS [Filippo, Oscar, Christian]
 - Lecture 11 A light Touch on Post-GWAS Analysis: Inferring Functionality [Oscar]
     - [slides]<!--(slides/Functional_Analysis.FUMA.pdf)-->
-    - [R code. Exercise on R, and FUMA]<!--(functional_analysis/getGenesFromSNP.R)
+    - [R code. Exercise on R, and FUMA]<!--(functional_analysis/getGenesFromSNP.R)-->
     
 **Day 5**
 
