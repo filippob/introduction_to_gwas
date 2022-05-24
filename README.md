@@ -52,29 +52,29 @@ As a general rule, we'll have a longer break (30 minutes) at 16:00 and two short
 **Day 3**
 
 - Lecture 8	Imputation of Missing Genotypes [Christian]
-    - [Imputation](slides/8_Imputation.pdf)
+    - [Imputation]<!--(slides/8_Imputation.pdf)-->
 - Lab 5 Imputation of Missing Genotypes using Beagle [Christian]
 - Lecture 9 KNN Imputation 
-    - [KNN Imputation](slides/9.KNN_imputation.pdf)
+    - [KNN Imputation]<!--(slides/9.KNN_imputation.pdf)-->
 - Lab 6 (Demonstration) KNNI Imputation [Filippo]
-    - [knni.Rmd](3.imputation/knni.Rmd)
-    - [hamming.R](3.imputation/hamming.R)
-    - [knni.R](3.imputation/knni.R)
-    - [knni.sh](3.imputation/knni.sh)
+    - [knni.Rmd]<!--(3.imputation/knni.Rmd)-->
+    - [hamming.R]<!--(3.imputation/hamming.R)-->
+    - [knni.R]<!--(3.imputation/knni.R)-->
+    - [knni.sh]<!--(3.imputation/knni.sh)-->
 - Lab 7 GWAS: The Stand-Alone Script(s) for the Full Model [Filippo]
-    - [gwas_rrblup.R](4.gwas/gwas_rrblup.R)
-    - [gwas_statgengwas.R](4.gwas/gwas_statgengwas.R)
-    - [gwas_sommer.R](4.gwas/gwas_sommer.R)
+    - [gwas_rrblup.R]<!--(4.gwas/gwas_rrblup.R)-->
+    - [gwas_statgengwas.R]<!--(4.gwas/gwas_statgengwas.R)-->
+    - [gwas_sommer.R]<!--(4.gwas/gwas_sommer.R)-->
 - Lab 8 Revising the Steps involved in GWAS [Filippo]
-    - [slides](slides/10.1.Revising_steps.pdf)
-    - [1.get_data.sh](6.steps/1.get_data.sh)
-    - [2.step_filtering.sh](6.steps/2.step_filtering.sh)
-    - [3.step_imputation.sh](6.steps/3.step_imputation.sh)
-    - [4.gwas.sh](6.steps/4.gwas.sh)
+    - [slides]<!--(slides/10.1.Revising_steps.pdf)-->
+    - [1.get_data.sh]<!--(6.steps/1.get_data.sh)-->
+    - [2.step_filtering.sh](<!--6.steps/2.step_filtering.sh)-->
+    - [3.step_imputation.sh]<!--(6.steps/3.step_imputation.sh)-->
+    - [4.gwas.sh]<!--(6.steps/4.gwas.sh)-->
 - Brief Intermission:
-    - [R code PCA & Population Structure](4.gwas/PCA_Screeplots.R)
+    - [R code PCA & Population Structure]<!--(4.gwas/PCA_Screeplots.R)-->
 - Lab 9 Introducing the Exercise [Filippo]
-    - [Collaborative Exercise](slides/10.2.Collaborative_exercise.pdf)
+    - [Collaborative Exercise]<!--(slides/10.2.Collaborative_exercise.pdf)-->
 - Collaborative Exercise: let's build our own GWAS workflow on new data [Filippo, Oscar, Christian]
     - Part 1: Individual/Group Break-Out Sessions to give it a try independetly
     - Part 2: Whole-Group Revision of the Exercise
