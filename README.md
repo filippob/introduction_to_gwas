@@ -28,7 +28,6 @@ As a general rule, we'll have a longer break (30 minutes) at 16:00 and two short
     - [Introduction to the Tidyverse]<!-- (slides/Tidyverse_Intro.html) -->
  - [Course Manual]<!--(slides/gwasManual.pdf)-->
  - [GWAS Workflow]<!--(slides/GWAS_Workflow.pdf)-->
- - [prova](literature/plantgenome2015.08.0073.pdf)
 
 
 
