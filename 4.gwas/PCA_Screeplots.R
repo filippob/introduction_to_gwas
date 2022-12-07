@@ -1,9 +1,9 @@
 
 ### Library
-library(data.table)
-library(factoextra)
-library(rrBLUP)
-library(tidyverse)
+library("data.table")
+library("factoextra")
+library("rrBLUP")
+library("tidyverse")
 
 ### Genoype marker matrix
 genotypes <- fread(file = "introduction_to_gwas/3.imputation/rice_imputed.raw")
