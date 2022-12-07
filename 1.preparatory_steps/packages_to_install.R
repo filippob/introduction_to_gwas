@@ -16,6 +16,7 @@ BiocManager::install()
 BiocManager::install("biomaRt")
 BiocManager::install("snpStats")
 BiocManager::install("qvalue")
+# BiocManager::install("gwasurvivr")
 
 
 ## doMC
@@ -52,7 +53,6 @@ install.packages("prettydoc")
 install.packages("patchwork")
 install.packages("ggfortify") ## OK (filippo)
 install.packages("tidyverse")
-install.packages("patchwork")
 install.packages("survminer") ## OK (filippo)
 install.packages("data.table") ## OK (filippo) 
 install.packages("doParallel")
