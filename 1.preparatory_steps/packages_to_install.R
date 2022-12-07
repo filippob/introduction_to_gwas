@@ -22,8 +22,8 @@ BiocManager::install("qvalue")
 install.packages("doMC", repos="http://R-Forge.R-project.org")
 
 ## from github
-library("devtools")
-devtools::install_github("YaoZhou89/BLINK")
+library("devtools") ## OK (filippo)
+devtools::install_github("YaoZhou89/BLINK") ## OK (filippo)
 
 ## from CRAN
 install.packages("car")
