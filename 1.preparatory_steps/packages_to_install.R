@@ -21,6 +21,7 @@ if (!require("readxl")) install.packages("readxl")
 if (!require("lattice")) install.packages("lattice")
 if (!require("farver")) install.packages("farver")
 if (!require("labeling")) install.packages("labeling")
+if (!require("crayon")) install.packages("crayon")
 
 ## from the github repository (to be installed after cloning the repo)
 install.packages("../software/gMatrix_0.2.tar.gz", repos = NULL, type = "source") ## OK (filippo): the source file is in software/
@@ -34,21 +35,21 @@ if (!requireNamespace("BiocManager", quietly = TRUE))
   install.packages("BiocManager") ## OK (Oscar):
 BiocManager::install()
 
-BiocManager::install("biomaRt") ## OK (Oscar)
-BiocManager::install("snpStats")
+if (!require("biomaRt")) BiocManager::install("biomaRt") ## OK (Oscar)
+if (!require("snpStats")) BiocManager::install("snpStats")
 BiocManager::install("qvalue")
 # BiocManager::install("gwasurvivr")
 
 
 ## doMC
-install.packages("doMC", repos="http://R-Forge.R-project.org")
+if (!require("doMC")) install.packages("doMC", repos="http://R-Forge.R-project.org")
 
 ## from github
-library("devtools") ## OK (filippo)
-devtools::install_github("YaoZhou89/BLINK") ## OK (filippo)
+if (!require("devtools")) library("devtools") ## OK (filippo)
+# if (!require("BLINK")) devtools::install_github("YaoZhou89/BLINK") ## OK (filippo)
 
 ## from CRAN
-install.packages("car")
+if (!require("car")) install.packages("car")
 install.packages("AER") ## OK (filippo)
 install.packages("msm")
 install.packages("here") ## OK (filippo)
