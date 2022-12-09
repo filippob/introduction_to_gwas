@@ -3,17 +3,17 @@
 
 ## from the github repository (to be installed after cloning the repo)
 install.packages("../software/gMatrix_0.2.tar.gz", repos = NULL, type = "source") ## OK (filippo): the source file is in software/
-install.packages("../software/ldDesign_2.0-1.tar.gz", repos = NULL, type = "source")
+install.packages("../software/ldDesign_2.0-1.tar.gz", repos = NULL, type = "source") ## OK (Oscar): the source file is in software/
 install.packages("../software/nloptr_1.2.2.tar.gz", type = "source", repos = NULL)
 #install.packages("../software/GenABEL.data_1.0.0.tar.gz", repos = NULL, type = "source")
 #install.packages("../software/GenABEL_1.8-0.tar.gz", repos = NULL, type = "source")
 
 ## from Bioconductor
 if (!requireNamespace("BiocManager", quietly = TRUE))
-  install.packages("BiocManager")
+  install.packages("BiocManager") ## OK (Oscar):
 BiocManager::install()
 
-BiocManager::install("biomaRt")
+BiocManager::install("biomaRt") ## OK (Oscar)
 BiocManager::install("snpStats")
 BiocManager::install("qvalue")
 # BiocManager::install("gwasurvivr")
@@ -49,10 +49,11 @@ install.packages("R.utils") ## OK (filippo)
 install.packages("genetics")
 install.packages("survival") ## OK (filippo)
 install.packages("reshape2")
-install.packages("prettydoc")
-install.packages("patchwork")
+install.packages("prettydoc") # OK (Oscar)
+install.packages("patchwork") # OK (Oscar)
+install.packages("plyr") ## OK (Oscar)
 install.packages("ggfortify") ## OK (filippo)
-install.packages("tidyverse")
+install.packages("tidyverse") 
 install.packages("survminer") ## OK (filippo)
 install.packages("data.table") ## OK (filippo) 
 install.packages("doParallel")
