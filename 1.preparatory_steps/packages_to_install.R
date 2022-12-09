@@ -4,9 +4,9 @@
 ### dependencies to catch-up from R3 to R4
 install.packages("ps")
 install.packages("fs")
+install.packages("colorspace")
 install.packages("fansi")
 install.packages("Rcpp")
-install.packages("colorspace")
 install.packages("munsell")
 install.packages("scales")
 install.packages("utf8")
