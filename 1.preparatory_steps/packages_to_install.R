@@ -1,6 +1,28 @@
 ## list of R packages to install for the course
 ## (some additional packages may still be needed during the course)
 
+### dependencies to catch-up from R3 to R4
+if (!require("ps")) install.packages("ps")
+if (!require("fs")) install.packages("fs")
+if (!require("colorspace")) install.packages("colorspace")
+if (!require("fansi")) install.packages("fansi")
+if (!require("Rcpp")) install.packages("Rcpp")
+if (!require("R6")) install.packages("R6")
+if (!require("munsell")) install.packages("munsell")
+if (!require("scales")) install.packages("scales")
+if (!require("utf8")) install.packages("utf8")
+if (!require("generics")) install.packages("generics")
+if (!require("assertthat")) install.packages("assertthat")
+if (!require("gtable")) install.packages("gtable")
+if (!require("cellranger")) install.packages("cellranger")
+if (!require("stringr")) install.packages("stringr")
+if (!require("backports")) install.packages("backports")
+if (!require("readxl")) install.packages("readxl")
+if (!require("lattice")) install.packages("lattice")
+if (!require("farver")) install.packages("farver")
+if (!require("labeling")) install.packages("labeling")
+if (!require("crayon")) install.packages("crayon")
+
 ## from the github repository (to be installed after cloning the repo)
 install.packages("../software/gMatrix_0.2.tar.gz", repos = NULL, type = "source") ## OK (filippo): the source file is in software/
 install.packages("../software/ldDesign_2.0-1.tar.gz", repos = NULL, type = "source") ## OK (Oscar): the source file is in software/
@@ -13,21 +35,21 @@ if (!requireNamespace("BiocManager", quietly = TRUE))
   install.packages("BiocManager") ## OK (Oscar):
 BiocManager::install()
 
-BiocManager::install("biomaRt") ## OK (Oscar)
-BiocManager::install("snpStats")
+if (!require("biomaRt")) BiocManager::install("biomaRt") ## OK (Oscar)
+if (!require("snpStats")) BiocManager::install("snpStats")
 BiocManager::install("qvalue")
 # BiocManager::install("gwasurvivr")
 
 
 ## doMC
-install.packages("doMC", repos="http://R-Forge.R-project.org")
+if (!require("doMC")) install.packages("doMC", repos="http://R-Forge.R-project.org")
 
 ## from github
-library("devtools") ## OK (filippo)
-devtools::install_github("YaoZhou89/BLINK") ## OK (filippo)
+if (!require("devtools")) library("devtools") ## OK (filippo)
+# if (!require("BLINK")) devtools::install_github("YaoZhou89/BLINK") ## OK (filippo)
 
 ## from CRAN
-install.packages("car")
+if (!require("car")) install.packages("car")
 install.packages("AER") ## OK (filippo)
 install.packages("msm")
 install.packages("here") ## OK (filippo)
@@ -60,21 +82,3 @@ install.packages("doParallel")
 install.packages("tidymodels") ## OK (filippo)
 install.packages("statgenGWAS") ## OK (filippo)
 install.packages("RColorBrewer")
-
-
-### dependencies to catch-up from R3 to R4
-install.packages("ps")
-install.packages("fs")
-install.packages("fansi")
-install.packages("Rcpp")
-install.packages("munsell")
-install.packages("scales")
-install.packages("utf8")
-install.packages("generics")
-install.packages("assertthat")
-install.packages("gtable")
-install.packages("readxl")
-install.packages("stringr")
-install.packages("backports")
-install.packages("cellranger")
-install.packages("lattice")
