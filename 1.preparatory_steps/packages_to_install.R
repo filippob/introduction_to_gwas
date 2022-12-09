@@ -1,6 +1,25 @@
 ## list of R packages to install for the course
 ## (some additional packages may still be needed during the course)
 
+### dependencies to catch-up from R3 to R4
+install.packages("ps")
+install.packages("fs")
+install.packages("fansi")
+install.packages("Rcpp")
+install.packages("munsell")
+install.packages("scales")
+install.packages("utf8")
+install.packages("generics")
+install.packages("assertthat")
+install.packages("gtable")
+install.packages("readxl")
+install.packages("stringr")
+install.packages("backports")
+install.packages("cellranger")
+install.packages("lattice")
+install.packages("farver")
+install.packages("labeling")
+
 ## from the github repository (to be installed after cloning the repo)
 install.packages("../software/gMatrix_0.2.tar.gz", repos = NULL, type = "source") ## OK (filippo): the source file is in software/
 install.packages("../software/ldDesign_2.0-1.tar.gz", repos = NULL, type = "source") ## OK (Oscar): the source file is in software/
@@ -60,23 +79,3 @@ install.packages("doParallel")
 install.packages("tidymodels") ## OK (filippo)
 install.packages("statgenGWAS") ## OK (filippo)
 install.packages("RColorBrewer")
-
-
-### dependencies to catch-up from R3 to R4
-install.packages("ps")
-install.packages("fs")
-install.packages("fansi")
-install.packages("Rcpp")
-install.packages("munsell")
-install.packages("scales")
-install.packages("utf8")
-install.packages("generics")
-install.packages("assertthat")
-install.packages("gtable")
-install.packages("readxl")
-install.packages("stringr")
-install.packages("backports")
-install.packages("cellranger")
-install.packages("lattice")
-install.packages("farver")
-install.packages("labeling")
