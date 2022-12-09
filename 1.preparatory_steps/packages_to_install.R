@@ -16,14 +16,15 @@ BiocManager::install()
 BiocManager::install("biomaRt")
 BiocManager::install("snpStats")
 BiocManager::install("qvalue")
+# BiocManager::install("gwasurvivr")
 
 
 ## doMC
 install.packages("doMC", repos="http://R-Forge.R-project.org")
 
 ## from github
-library("devtools")
-devtools::install_github("YaoZhou89/BLINK")
+library("devtools") ## OK (filippo)
+devtools::install_github("YaoZhou89/BLINK") ## OK (filippo)
 
 ## from CRAN
 install.packages("car")
@@ -52,7 +53,6 @@ install.packages("prettydoc")
 install.packages("patchwork")
 install.packages("ggfortify") ## OK (filippo)
 install.packages("tidyverse")
-install.packages("patchwork")
 install.packages("survminer") ## OK (filippo)
 install.packages("data.table") ## OK (filippo) 
 install.packages("doParallel")
