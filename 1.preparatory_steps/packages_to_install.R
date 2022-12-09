@@ -77,4 +77,4 @@ install.packages("readxl")
 install.packages("stringr")
 install.packages("backports")
 install.packages("cellranger")
-
+install.packages("lattice")
