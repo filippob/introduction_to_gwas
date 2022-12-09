@@ -5,7 +5,7 @@
 
 ## command lines (and instruction) to run regenie step 1
 plink=$HOME/software/plink/plink
-regenie=$HOME/Documents/software/regenie_v3.1.1.gz_x86_64_Linux
+regenie=$HOME/Documents/software/regenie_v3.2.2.gz_x86_64_Linux
 #regenie=regenie
 thinning=0.01
 genotypef=rice/rice_regenie
