@@ -4,7 +4,7 @@
 ###################################
 
 ## set resources
-plink=~/Downloads/plink  # directory with plink binary
+plink=plink  # directory with plink binary
 
 ## Download data (rice, continuous)
 echo "Downloading rice data ..."
@@ -60,12 +60,3 @@ Rscript --vanilla ../1.preparatory_steps/prep_dogpheno.R UCD_2014.tfam
 $plink --dog --tfile UCD_2014 --chr 25,26,27,28,29 --recode --out dogs
 
 echo "DONE!"
-
-###################################
-## Some useful commands in plink
-#use --bfile option for files in binary format
-#plink --bfile setName --freq --out freq  #get allele frequency for each marker
-#plink --bfile setName --recode --out setName
-#plink --bfile setName --chr 9,10,11,12,13 --recode --out setName #extract only few chromosomes from the data set
-#plink --file setName --missing --out setName #extract missing rate for record
-###################################

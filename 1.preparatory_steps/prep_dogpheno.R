@@ -2,7 +2,7 @@
 library("data.table")
 
 ## read from command line
-args = commandArgs(trailingOnly=TRUE)
+args <- commandArgs(trailingOnly=TRUE)
 
 # test if there is at least one argument: if not, return an error
 if (length(args)==0) {
@@ -10,7 +10,7 @@ if (length(args)==0) {
 }
 
 
-phenotype_file= args[1]
+phenotype_file <- args[1]
 print(paste("phenotype file name:",phenotype_file))
 
 
