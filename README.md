@@ -25,7 +25,7 @@ As a general rule, we'll have a longer break (30 minutes) at 16:00 and two short
 - Lab 1 - Practicalities and Set-up (Server, github repo, R, etc) and Description of Datasets [Christian]
     - [Description of Datasets](slides/Description_of_datasets.pdf)
     - [Unix Cheatsheet](slides/Unix_cheatsheet.pdf)
- - [Course Manual](slides/course_manual.pdf)
+ - [Course Manual](slides/Course_manual.pdf)
  - [GWAS Workflow](slides/GWAS_workflow.pdf)
 
 
