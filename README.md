@@ -25,9 +25,8 @@ As a general rule, we'll have a longer break (30 minutes) at 16:00 and two short
 - Lab 1 - Practicalities and Set-up (Server, github repo, R, etc) and Description of Datasets [Christian]
     - [Description of Datasets]<!--(slides/Description_of_datasets.pdf)-->
     - [Linux Cheatsheet]<!--(slides/Unix_cheatsheet.pdf)-->
-    - [Introduction to the Tidyverse]<!-- (slides/Tidyverse_Intro.html) -->
- - [Course Manual]<!--(slides/gwasManual.pdf)-->
- - [GWAS Workflow]<!--(slides/GWAS_Workflow.pdf)-->
+ - [Course Manual]<!--(slides/course_manual.pdf)-->
+ - [GWAS Workflow]<!--(slides/GWAS_workflow.pdf)-->
 
 
 
