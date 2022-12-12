@@ -24,7 +24,7 @@ As a general rule, we'll have a longer break (30 minutes) at 16:00 and two short
     - [Linux and the Shell](slides/3_Linux_intro.pdf)
 - Lab 1 - Practicalities and Set-up (Server, github repo, R, etc) and Description of Datasets [Christian]
     - [Description of Datasets](slides/Description_of_datasets.pdf)
-    - [Linux Cheatsheet](slides/Unix_cheatsheet.pdf)
+    - [Linux Cheatsheet](slides/Linux_cheatsheet.pdf)
  - [Course Manual](slides/course_manual.pdf)
  - [GWAS Workflow](slides/GWAS_workflow.pdf)
 
