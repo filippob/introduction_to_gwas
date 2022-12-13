@@ -100,7 +100,7 @@ print(paste("n. of SNPs after filtering:",nrow(M)))
 All real missing data are edited out of the dataset. This leavs `r nrow(M)` SNP. For the sake of the exercise, initially a much smaller subset with 100 SNPs is extracted.
 
 ```{r}
-df <- M %>% as.tibble() %>% rowwise()
+df <- M %>% as_tibble() %>% rowwise()
 M <- df %>% mutate(m = sd(c_across(everything()))) %>% filter(m > 0) ## remove monomorphic SNP
 rm(df)
 
@@ -201,6 +201,7 @@ The objective is to impute missing SNP genotypes at one SNP locus, using all rem
 ```{r,echo=FALSE}
 k <- 3
 
+## take one SNP locus to impute e use the m-1 SNPs to train
 y <- 0
 while(length(y[is.na(y)])<2) {
   
