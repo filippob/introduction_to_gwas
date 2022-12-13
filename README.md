@@ -36,15 +36,15 @@ As a general rule, we'll have a longer break (30 minutes) at 16:00 and two short
     - [R code. Exercise on Simple Linear Regression]basic_model/1.Basis_of_linear_regression.R)
     - [Rmarkdown Code. Exercise on Simple Logistic Regression](basic_model/2.exercise.Basis_of_logistic_regression.Rmd)
 - Lecture 4 Data Types & Formats [Christian]
-    - [Common Data Types and Formats]<!--(slides/4_Data_types.pdf)-->
+    - [Common Data Types and Formats](slides/4_Data_types.pdf)
 - Lecture 5 Initial Data Analysis, Exploratory Data Analysis and Data Pre-Processing [Christian]
-    - [IDA, EDA & Data Pre-Processing]<!--(slides/5_Data_pre-processing.pdf)-->
+    - [IDA, EDA & Data Pre-Processing](slides/5_Data_pre-processing.pdf)
 - Lab 3 EDA & IDA [Christian]
 - Lab 4 Data Pre-Processing [Christian]
 - Lecture 6 The Multiple Testing Issue [Oscar]
-    - [Multiple Testing]<!--(slides/6_Multiple_testing.pdf)-->
+    - [Multiple Testing](slides/6_Multiple_testing.pdf)
 - Lecture 7 Statistical Power, Population Stratification and Experimental Design [Oscar] 
-    - [Statistical Power and Population Stratification]<!--(slides/7_Experimental_design.pdf)-->
+    - [Statistical Power and Population Stratification](slides/7_Experimental_design.pdf)
     - [R code. Exercise on statistical power](5.power_and_significance/StatisticalPower_exercise.R)
 
 
