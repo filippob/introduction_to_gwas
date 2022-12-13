@@ -25,7 +25,7 @@ As a general rule, we'll have a longer break (30 minutes) at 16:00 and two short
 - Lab 1 - Practicalities and Set-up (Server, github repo, R, etc) and Description of Datasets [Christian]
     - [Description of Datasets](slides/Description_of_datasets.pdf)
     - [Unix Cheatsheet](slides/Unix_cheatsheet.pdf)
- - [Course Manual](slides/course_manual.pdf)
+ - [Course Manual](slides/Course_manual.pdf)
  - [GWAS Workflow](slides/GWAS_workflow.pdf)
 
 
@@ -33,19 +33,19 @@ As a general rule, we'll have a longer break (30 minutes) at 16:00 and two short
 **Day 2**
 
 - Lab 2 (Demonstration) GWAS: Basic Models (Linear and Logistic Regression) [Oscar]
-    - [R code. Exercise on Simple Linear Regression]<!--(basic_model/1.Basis_of_linear_regression.R)-->
-    - [Rmarkdown Code. Exercise on Simple Logistic Regression]<!--(basic_model/2.exercise.Basis_of_logistic_regression.Rmd)-->
+    - [R code. Exercise on Simple Linear Regression](basic_model/1.Basis_of_linear_regression.R)
+    - [Rmarkdown Code. Exercise on Simple Logistic Regression](basic_model/2.exercise.Basis_of_logistic_regression.Rmd)
 - Lecture 4 Data Types & Formats [Christian]
-    - [Common Data Types and Formats]<!--(slides/4_Data_types.pdf)-->
+    - [Common Data Types and Formats](slides/4_Data_types.pdf)
 - Lecture 5 Initial Data Analysis, Exploratory Data Analysis and Data Pre-Processing [Christian]
-    - [IDA, EDA & Data Pre-Processing]<!--(slides/5_Data_pre-processing.pdf)-->
+    - [IDA, EDA & Data Pre-Processing](slides/5_Data_pre-processing.pdf)
 - Lab 3 EDA & IDA [Christian]
 - Lab 4 Data Pre-Processing [Christian]
 - Lecture 6 The Multiple Testing Issue [Oscar]
-    - [Multiple Testing]<!--(slides/6_Multiple_testing.pdf)-->
+    - [Multiple Testing](slides/6_Multiple_testing.pdf)
 - Lecture 7 Statistical Power, Population Stratification and Experimental Design [Oscar] 
-    - [Statistical Power and Population Stratification]<!--(slides/7_Experimental_design.pdf)-->
-    - [R code. Exercise on statistical power]<!--(5.power_and_significance/StatisticalPower_exercise.R)-->
+    - [Statistical Power and Population Stratification](slides/7_Experimental_design.pdf)
+    - [R code. Exercise on statistical power](5.power_and_significance/StatisticalPower_exercise.R)
 
 
 **Day 3**
