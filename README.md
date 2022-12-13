@@ -33,7 +33,7 @@ As a general rule, we'll have a longer break (30 minutes) at 16:00 and two short
 **Day 2**
 
 - Lab 2 (Demonstration) GWAS: Basic Models (Linear and Logistic Regression) [Oscar]
-    - [R code. Exercise on Simple Linear Regression]basic_model/1.Basis_of_linear_regression.R)
+    - [R code. Exercise on Simple Linear Regression](basic_model/1.Basis_of_linear_regression.R)
     - [Rmarkdown Code. Exercise on Simple Logistic Regression](basic_model/2.exercise.Basis_of_logistic_regression.Rmd)
 - Lecture 4 Data Types & Formats [Christian]
     - [Common Data Types and Formats](slides/4_Data_types.pdf)
