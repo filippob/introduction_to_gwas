@@ -65,7 +65,7 @@ As a general rule, we'll have a longer break (30 minutes) at 16:00 and two short
     - [gwas_statgengwas.R](4.gwas/gwas_statgengwas.R)
     - [gwas_sommer.R](4.gwas/gwas_sommer.R)
 - Lab 8 Revising the Steps involved in GWAS [Filippo]
-    - [slides]<!--(slides/10.1.Revising_steps.pdf)-->
+    - [slides](slides/10.1_Revising_the_steps.pdf)
     - [1.get_data.sh](6.steps/1.get_data.sh)
     - [2.step_filtering.sh](6.steps/2.step_filtering.sh)
     - [3.step_imputation.sh](6.steps/3.step_imputation.sh)
