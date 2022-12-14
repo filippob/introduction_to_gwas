@@ -3,7 +3,7 @@
 ## (some additional packages may still be needed during the course)
 
 # Package names
-packages <- c("ggplot2", "readxl", "dplyr", "tidyr", "reshape2", 
+packages <- c("afex","ggplot2", "readxl", "dplyr", "tidyr", "reshape2", 
 	      "car", "MASS", "scales", "nlme", "psych", "ordinal", 
 	      "lmtest", "ggpubr", "stringr", "assist", "magrittr", "tidyverse",
 	      "AER", "msm", "nnet", "here", "afex", "nadiv","qqman", "plotly", 
