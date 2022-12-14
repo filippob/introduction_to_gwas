@@ -1,8 +1,28 @@
 #Demonstrating the use of KNN to impute missing SNP genotypes
 
-##############
+# INPUT CONFIGURATION MANAGEMENT ------------------------------------------
+args = commandArgs(trailingOnly=TRUE)
+if (length(args) == 1){
+  #loading the parameters
+  source(args[1])
+} else {
+  #this is the default configuration, used for development and debug
+  writeLines('Using default config')
+  
+  #this dataframe should be always present in config files, and declared
+  #as follows
+  config = NULL
+  config = rbind(config, data.frame(
+    input_data = 'file.ped',
+    k = 9
+  ))
+  
+}
+
+
+##########################################
 ## FUNCTIONS
-##############
+##########################################
 
 ### hamming distances
 Hamming <- function(ssr_data) {
@@ -146,9 +166,9 @@ impute_genotypes <- function(ped_file,dist_matrix,k=3) {
   return(M)
 }
 
+################################################################
+################################################################
 
-##################################################
-##################################################
 library("dplyr")
 library("ggplot2")#]]
 library("data.table")
