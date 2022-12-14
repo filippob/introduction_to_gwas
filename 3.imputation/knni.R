@@ -173,19 +173,8 @@ library("dplyr")
 library("ggplot2")#]]
 library("data.table")
 
-## run as: Rscript --vanilla knni.R dogs_chr25.ped
-
-## read from command line
-args = commandArgs(trailingOnly=TRUE)
-
-# test if there is at least one argument: if not, return an error
-if (length(args)==0) {
-  stop("At least one argument must be supplied (input file).n", call.=FALSE)
-}
-
-# ped_file = "dogs_chr25.ped"
-
-ped_file= args[1]
+## parameters from config file
+ped_file= config$input_data
 print(paste("ped file name:",ped_file))
 
 #"READ IN THE DATA"
@@ -226,7 +215,9 @@ plot_mds(mdsD,M0,dimA = "dim1", dimB = "dim2")
 dev.off()
 
 ## IMPUTATION
-impM <- impute_genotypes(ped_file = as.data.frame(M), dist_matrix = rescaled_D, k = 3)
-fwrite(impM,file="knn_imputed_data.csv")
+impM <- impute_genotypes(ped_file = as.data.frame(M), dist_matrix = rescaled_D, k = config$k)
+fname = "knn_imputed_data.csv"
+fwrite(impM,file=fname)
+print(paste("written to", fname))
 
 ## try out different k values
