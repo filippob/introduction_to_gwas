@@ -5,9 +5,9 @@ date: "April 25, 2021"
 output: html_document
 ---
 
-!! remember to **download the data** for this practical sessions: http://www.jackdellequerce.com/data/GenRiz44.txt !!
+<span style="color:red">!! remember to **download the data** for this practical sessions: http://www.jackdellequerce.com/data/GenRiz44.txt !!</span>
 
-!! you should download the data into the data/ folder inside the introduction_to_gwas repository !!
+<span style="color:red">!! you should download the data into the data/ folder inside the introduction_to_gwas repository !!</span>
 
 ```{r}
 # THERE ARE MULTIPLE OPTIONS TO DOWNLOAD THE DATA
@@ -75,11 +75,7 @@ In this brief practical/demonstration, we'll go through an illustration of how t
 #Demonstrating the use of KNN to impute missing SNP genotypes
 library("tidymodels") #for kNN imputation
 library("data.table")
-
-# start.time <- Sys.time()
 ```
-
-<!-- Start time was: `r start.time` -->
 
 ### The dataset
 
@@ -121,7 +117,7 @@ rm(df)
 M <- M %>% select(-m) %>% as.matrix()
 vec <- sample(x = nrow(M), size = 100)
 Mreduced <- t(M[vec,])
-head(Mreduced)
+print(Mreduced[1:10,1:12])
 ```
 
 Now, we randomly introduce 10\% artificially missing SNP genotypes. In this way, we will be able to measure the accuracy of our imputation method.
