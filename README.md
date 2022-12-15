@@ -73,6 +73,7 @@ As a general rule, we'll have a longer break (30 minutes) at 16:00 and two short
     - [4.gwas.sh](6.steps/4.gwas.sh)
 - Brief Intermission:
     - [R code PCA & Population Structure](4.gwas/PCA_screeplots.R)
+    - [Imputed rice genotypes](4.gwas/rice_imputed.raw)
 - Lab 9 Introducing the Exercise [Filippo]
     - [Collaborative Exercise](slides/10.2_Collaborative_exercise.pdf)
 - Collaborative Exercise: let's build our own GWAS workflow on new data [Filippo, Oscar, Christian]
