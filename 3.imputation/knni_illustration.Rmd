@@ -7,15 +7,23 @@ output: html_document
 
 !! remember to **download the data** for this practical sessions: http://www.jackdellequerce.com/data/GenRiz44.txt !!
 
+!! you should download the data into the data/ folder inside the introduction_to_gwas repository !!
+
 ```{r}
-## FROM THE COMMAND LINE
+# THERE ARE MULTIPLE OPTIONS TO DOWNLOAD THE DATA
+
+## 1) FROM THE COMMAND LINE (LINUX TERMINAL, WINDOWS DOS) - UNCOMMENT IF NEEDED
 ## cd ../data
 ## wget http://www.jackdellequerce.com/data/GenRiz44.txt
 
-## USING SYSTEM CALLS
-setwd("../data")
-system2("wget", "http://www.jackdellequerce.com/data/GenRiz44.txt")
-setwd("../3.imputation")
+## 2) USING SYSTEM CALLS WITHIN R - UNCOMMENT IF NEEDED
+# setwd("../data")
+# system2("wget", "http://www.jackdellequerce.com/data/GenRiz44.txt")
+# setwd("../3.imputation")
+
+## 3) FROM THE COURSE WEBSITE https://filippob.github.io/introduction_to_gwas/
+
+## 4) FROM THE SLACK CHANNEL OF THE COURSE
 ```
 
 
@@ -79,9 +87,6 @@ We'll be using SNP genotype data from 12 samples genotyped with the "**GeneChip 
 A summary of the real missing rate in the data is given below:
 
 ```{r, echo=FALSE}
-## cd ../data
-## wget http://www.jackdellequerce.com/data/GenRiz44.txt
-
 rice44 <- fread("../data/GenRiz44.txt",header=TRUE)
 oldcode <- c("AA","BB","--")
 neucode <- c(-1,1,NA)
@@ -97,7 +102,16 @@ colnames(M) <- paste("sample",seq(1:ncol(M)),sep="_")
 print(paste("n. of SNPs after filtering:",nrow(M)))
 ```
 
-All real missing data are edited out of the dataset. This leavs `r nrow(M)` SNP. For the sake of the exercise, initially a much smaller subset with 100 SNPs is extracted.
+## MEASURING THE ACCURACY OF IMPUTATION
+
+The objective of this demonstration is to show to you how the accuracy of imputing missing SNP genotypes can be measured:
+
+- we will be using the R package `tidymodels` with built-in functions for KNN imputation
+- we will remove real missing SNP genotypes from the data, so to have a starting point with 0 missing: we know the complete picture!
+- we will then "mask" some SNP genotypes by artificially turning them to missing: in this way, we will be able to compare the imputed genotypes/alleles with the known true genotypes/alleles and calculate the error rate
+
+
+All real missing data are edited out of the dataset. This leaves `r nrow(M)` SNP. For the sake of the exercise, initially a much smaller subset with 100 SNPs is extracted.
 
 ```{r}
 df <- M %>% as_tibble() %>% rowwise()
@@ -130,7 +144,7 @@ print(actualMissingRate)
 
 The actual missing rate is `r actualMissingRate`.
 
-### Imputation with the R package
+### Imputation with the R package `tidymodels`
 
 We'll now impute missing genotypes using the **tidymodels** *R package*. 
 In this package there is the *step_impute_knn()* function, which uses by default the *Gower distance*, and allows the user to specify the number of neighbors $K$. The measure of ``probability'' of belonging to any given class is the **average** (continuous variables) or the **mode** (**majority vote**, categorical variables).
@@ -138,31 +152,15 @@ In this package there is the *step_impute_knn()* function, which uses by default
 ```{r, warning=FALSE, message=FALSE}
 missing_data <- as.data.frame(injected_data)
 
-# imputation_recipe <- recipe(missing_data) %>% 
-#   update_role(all_numeric(), new_role = "predictor") %>%
-#   step_zv(all_numeric(), -all_outcomes()) %>%
-#   step_knnimpute(all_predictors(), neighbors = 3)
-# 
-# imputation_recipe_prep <- imputation_recipe %>%
-#   prep(strings_as_factors = FALSE)
-# 
-# imputed <- bake(imputation_recipe_prep, missing_data)
-# imputed2 = juice(imputation_recipe_prep)
-
-
 rec <- recipe(missing_data) %>% 
   update_role(all_numeric(), new_role = "predictor")
 
 ratio_recipe <- rec %>%
-  step_impute_knn(all_predictors(), neighbors = 3)
+  step_impute_knn(all_predictors(), neighbors = 9)
 
 ratio_recipe2 <- prep(ratio_recipe, training = missing_data, verbose = FALSE)
 imputed = juice(ratio_recipe2)
-imputed2 = bake(ratio_recipe2, missing_data)
 
-rowSums(imputed == imputed2)/ncol(imputed) ## identity between the two imputed matrices (juice and bake)
-
-#Accuracy of imputation
 results <- imputed[is.na(missing_map)]==Mreduced[is.na(missing_map)]
 accuracy <- length(results[results==TRUE])/length(results)
 print(accuracy)
@@ -170,7 +168,7 @@ print(accuracy)
 
 <span style="background-color:yellow">The accuracy of imputation with the R function *step_impute_knn()* from the *tidymodels* package is:<strong> `r accuracy`</strong></span>
 
-### Step-by-step KNN implementation
+## STEP-BY-STEP KNNI IMPLEMENTATION [optional]
 
 Let's have some fun!!
 
@@ -330,12 +328,6 @@ print(accuracy)
 
 This is expected to be higher than the accuracy obtained with the native *knnImputation()* function, since we used the Hamming distance which is more appropriate for SNP genotype data.
 
-```{r}
-# end.time <- Sys.time()
-# time.taken <- end.time - start.time
-# print("Total time taken below")
-# print(time.taken)
-```
 
 NB: important caveat: the R code shown here is intended for demonstration only, and has not been optimized nor tested for applications.
 
