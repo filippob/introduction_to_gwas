@@ -74,7 +74,7 @@ As a general rule, we'll have a longer break (30 minutes) at 16:00 and two short
 - Brief Intermission:
     - [R code PCA & Population Structure](4.gwas/PCA_screeplots.R)
 - Lab 9 Introducing the Exercise [Filippo]
-    - [Collaborative Exercise]<!--(slides/10.2.Collaborative_exercise.pdf)-->
+    - [Collaborative Exercise](slides/10.2_Collaborative_exercise.pdf)
 - Collaborative Exercise: let's build our own GWAS workflow on new data [Filippo, Oscar, Christian]
     - Part 1: Individual/Group Break-Out Sessions to give it a try independetly
     - Part 2: Whole-Group Revision of the Exercise
@@ -82,7 +82,7 @@ As a general rule, we'll have a longer break (30 minutes) at 16:00 and two short
 
 **Day 4**
 - Lecture 10 Bioinformatics Pipelines: a super-elementary Introduction [Filippo]
-    - [A bioinformatics pipeline for GWAS]<!--(slides/11.bioinformatic_pipeline_for_GWAS.pdf)-->
+    - [A bioinformatics pipeline for GWAS](slides/11_A_bioinformatic_pipeline_for_GWAS.pdf)
 - Lab 10 Building a Pipeline with Snakemake [Filippo]
 - Lab 11 The GWAS pipeline for Continuous Phenotypes [Filippo]
     - Plug-In for Mean or KNN Imputation
