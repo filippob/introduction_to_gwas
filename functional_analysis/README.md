@@ -1,4 +1,4 @@
-# Functional Analysis
+# Functional Analysis in FUMA
 
 **This tutorial explains how to extract the genes from statistically associated SNPs from the GWAS, and infer their functionality.**
 
@@ -19,3 +19,6 @@ Then, we log in [FUMA](https://fuma.ctglab.nl/gene2func).
 The results from the R program is the input file *gwas_genesCfamiliaris.txt*, that contains GENES from significant SNPs (’Gene’ column) in the *Genes of interest* option, whereas the background genes must be used as input in the corresponding option.
 Then, click submit.
 
+# Functional Analysis in DAVID
+
+Follow the steps provided in the [presentation](../slides/Functional_Analysis.pdf)

@@ -6,7 +6,7 @@ library("rrBLUP")
 library("tidyverse")
 
 ### Genoype marker matrix
-genotypes <- fread(file = "introduction_to_gwas/3.imputation/rice_imputed.raw")
+genotypes <- fread(file = "../3.imputation/rice_imputed.raw")
 genotypes[1:5, 1:10]
 
 rownames(genotypes) <- as.matrix(genotypes[,2])
@@ -17,6 +17,11 @@ genotypes[1:5, 1:10]
 ### Calculate genomic relationship matrix (rrBLUP)
 ### Requires -1, 0, 1 coding (as done above)
 grm <- A.mat(genotypes)
+
+
+## First step to get an idea of subpopulation structure based on the relationship 
+## captured in the genomic relationship matrix.
+heatmap(grm,labRow = FALSE, labCol = FALSE, col=rev(heat.colors(75)))
 
 ### Principal Component Analysis
 pca <- prcomp(grm, scale = TRUE, center = TRUE)

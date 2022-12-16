@@ -7,7 +7,7 @@ Instructors: *Filippo Biscarini, Oscar Gonzalez-Recio, Christian Werner*
 This course will introduce students, researchers and professionals to the steps needed to build an analysis pipeline for Genome-Wide Association Studies (GWAS). The course will describe all the necessary steps involved in a typical GWAS study, which will then be used to build a reusable and reproducible bioinformatics pipeline.
 
 Each day the course will start at **14:00** and end at **20:00** (CET).
-As a general rule, we'll have a longer break (30 minutes) at 16:00 and two shorter breaks (10-15 minutes) later on during the day (to be decided flexibly depending on the sessions). 
+As a general rule, we'll have a longer break (30 minutes) at 16:00 and two shorter breaks (10-15 minutes) later on during the day (to be decided flexibly depending on the sessions).  
 
 <!-- timetable: [here](https://docs.google.com/spreadsheets/d/1Cy8vBD6I_no8UPzYPU9bz7ASWyI3bc4Y9vcdr5S1TBw/edit#gid=0) -->
 
@@ -73,6 +73,7 @@ As a general rule, we'll have a longer break (30 minutes) at 16:00 and two short
     - [4.gwas.sh](6.steps/4.gwas.sh)
 - Brief Intermission:
     - [R code PCA & Population Structure](4.gwas/PCA_screeplots.R)
+    - [Imputed rice genotypes](4.gwas/rice_imputed.raw)
 - Lab 9 Introducing the Exercise [Filippo]
     - [Collaborative Exercise](slides/10.2_Collaborative_exercise.pdf)
 - Collaborative Exercise: let's build our own GWAS workflow on new data [Filippo, Oscar, Christian]
@@ -89,7 +90,7 @@ As a general rule, we'll have a longer break (30 minutes) at 16:00 and two short
     - The GWAS pipeline for Binary Phenotypes (Guided Exercise) [Filippo]
 - Q&A on building Pipelines for GWAS [Filippo, Oscar, Christian]
 - Lecture 11 A light Touch on Post-GWAS Analysis: Inferring Functionality [Oscar]
-    - [slides]<!--(slides/Functional_Analysis.FUMA.pdf)-->
+    - [slides]<!--(slides/Functional_Analysis.pdf)-->
     - [R code. Exercise on R, and FUMA]<!--(functional_analysis/getGenesFromSNP.R)-->
     
 **Day 5**
@@ -100,9 +101,9 @@ As a general rule, we'll have a longer break (30 minutes) at 16:00 and two short
     - [12.3 GWAS Model Extensions_Trait_Types]<!--(slides/13.3.GWAS_model_extensions_trait_type.pdf)-->
     - [12.4 GWAS Model Extensions_Multi-Trait-Locus, software]<!--(slides/13.4.GWAS_model_extensions_multi_trait_and_locus.pdf)-->
     - [R code GWASpoly Example for polyploid Species, optional]
-    - [R code GWAS for categorical Traits]<!--(model_extensions/1.categorical_gwas.Rmd)-->
-    - [R code GWAS for categorical Traits - Examples]<!--(model_extensions/2.categorical_gwas_example.Rmd)-->
-    - [R code GWAS for longitudinal Traits]<!--(model_extensions/3.longitudinal_gwas.Rmd)-->
+    - [R code GWAS for categorical Traits](model_extensions/1.categorical_gwas.Rmd)
+    - [R code GWAS for categorical Traits - Examples](model_extensions/2.categorical_gwas_example.Rmd)
+    - [R code GWAS for longitudinal Traits](model_extensions/3.longitudinal_gwas.Rmd)
     - [R code GWAS for multi-trait and multi-locus Models]
 
 - Lecture 13 A Glimpse on ROH-based Alternative [Filippo, optional]
