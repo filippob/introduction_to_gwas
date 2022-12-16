@@ -97,7 +97,7 @@ As a general rule, we'll have a longer break (30 minutes) at 16:00 and two short
 
 - Lecture 12 GWAS Model Extensions: [Filippo]
     - [12.1 GWAS Model Extensions_Dominance]
-    - [12.2 GWAS Model Extensions_Polyploids, optional](slides/12_2_GWAS_model_extensions_polyploids.pdf)
+    - [12.2 GWAS Model Extensions_Polyploids](slides/12_2_GWAS_model_extensions_polyploids.pdf)
     - [12.3 GWAS Model Extensions_Trait_Types]<!--(slides/13.3.GWAS_model_extensions_trait_type.pdf)-->
     - [12.4 GWAS Model Extensions_Multi-Trait-Locus, software]<!--(slides/13.4.GWAS_model_extensions_multi_trait_and_locus.pdf)-->
     - [R code GWASpoly (vignette)](slides/GWASpoly_vignette.pdf)
