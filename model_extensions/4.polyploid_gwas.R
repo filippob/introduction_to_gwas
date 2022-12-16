@@ -5,15 +5,13 @@
 
 
 ### short foreword...
-## In the polyGWAS package, missing marker data points are imputed with the 
-## population mode (most frequent genotype). This might do the job when 
-## the proportion of missing markers is low (e.g. SNP array with stringent 
-## filtering). With lots of missing information (e.g. GBS), this method
-## will not provide the required imputation accuracy for a robust GWAS.
-## Endelman said he has seen good results with random forest imputation.
-## The KNNI algorithm we used might also work. Just give it a try, there is
-## not much available in the literature so far and your published results will 
-## be interesting for others, too :)
+## In the polyGWAS package, missing marker data points are imputed with the population mode (most 
+## frequent genotype). This might do the job when the proportion of missing markers is low (e.g. 
+## SNP array with stringent filtering). With lots of missing information (e.g. GBS), this method
+## will not provide the required imputation accuracy for a robust GWAS. Jeff Endelman said he has 
+## seen good results with random forest imputation. The KNNI algorithm we used will also work for 
+## autopolyploids. Just give it a try, there is not much available in the literature so far and 
+## your published results will be interesting for others, too :)
 
 ### Library
 library(GWASpoly)
