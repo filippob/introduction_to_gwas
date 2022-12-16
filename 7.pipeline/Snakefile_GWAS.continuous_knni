@@ -1,9 +1,9 @@
 ## cp ../3.imputation/knni_tidymodels.R software/
 
-# PLINK='plink'
+PLINK='plink'
 KNNI='software/knni_tidymodels.R'
 SPECIES='rice'
-PLINK='/home/filippo/Downloads/plink'
+#PLINK='/home/filippo/Downloads/plink'
 MAF=0.05
 MISS_SAMPLE=0.2
 MISS_LOCUS=0.05

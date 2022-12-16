@@ -1,5 +1,5 @@
-#PLINK='plink'
-#BEAGLE='beagle'
+#PLINK='/home/filippo/Downloads/plink'
+#BEAGLE='<path to beagle>'
 PLINK='plink'
 BEAGLE='beagle'
 SPECIES='rice'
