@@ -100,7 +100,7 @@ As a general rule, we'll have a longer break (30 minutes) at 16:00 and two short
     - [12.2 GWAS Model Extensions_Polyploids, optional](slides/12_2_GWAS_model_extensions_polyploids.pdf)
     - [12.3 GWAS Model Extensions_Trait_Types]<!--(slides/13.3.GWAS_model_extensions_trait_type.pdf)-->
     - [12.4 GWAS Model Extensions_Multi-Trait-Locus, software]<!--(slides/13.4.GWAS_model_extensions_multi_trait_and_locus.pdf)-->
-    - [R code GWASpoly Example for polyploid Species, optional]
+    - [R code GWASpoly (vignette)](slides/GWASpoly_vignette.pdf)
     - [R code GWAS for categorical Traits](model_extensions/1.categorical_gwas.Rmd)
     - [R code GWAS for categorical Traits - Examples](model_extensions/2.categorical_gwas_example.Rmd)
     - [R code GWAS for longitudinal Traits](model_extensions/3.longitudinal_gwas.Rmd)
