@@ -83,24 +83,24 @@ As a general rule, we'll have a longer break (30 minutes) at 16:00 and two short
 
 **Day 4**
 - Lecture 10 Bioinformatics Pipelines: a super-elementary Introduction [Filippo]
-    - [A bioinformatics pipeline for GWAS](slides/11_A_bioinformatic_pipeline_for_GWAS.pdf)
+    - [A bioinformatics pipeline for GWAS]<!--(slides/11_A_bioinformatic_pipeline_for_GWAS.pdf)-->
 - Lab 10 Building a Pipeline with Snakemake [Filippo]
 - Lab 11 The GWAS pipeline for Continuous Phenotypes [Filippo]
     - Plug-In for Mean or KNN Imputation
     - The GWAS pipeline for Binary Phenotypes (Guided Exercise) [Filippo]
 - Q&A on building Pipelines for GWAS [Filippo, Oscar, Christian]
 - Lecture 11 A light Touch on Post-GWAS Analysis: Inferring Functionality [Oscar]
-    - [slides](slides/Functional_Analysis.pdf)
+    - [slides]<!--(slides/Functional_Analysis.pdf)-->
     - [R code. Exercise on R, and FUMA](functional_analysis/getGenesFromSNP.R)
     
 **Day 5**
 
 - Lecture 12 GWAS Model Extensions: [Filippo]
-    - [12.1 GWAS Model Extensions_Dominance_and_other_genotype_Codifications](slides/12.1.GWAS_model_extensions_genotype_codification.pdf)
-    - [12.2 GWAS Model Extensions_Polyploids](slides/12_2_GWAS_model_extensions_polyploids.pdf)
-    - [12.3 GWAS Model Extensions_Trait_Types](slides/13.3_GWAS_model_extensions_trait_type.pdf)
+    - [12.1 GWAS Model Extensions_Dominance_and_other_genotype_Codifications]<!--(slides/12.1.GWAS_model_extensions_genotype_codification.pdf)-->
+    - [12.2 GWAS Model Extensions_Polyploids]<!--(slides/12_2_GWAS_model_extensions_polyploids.pdf)-->
+    - [12.3 GWAS Model Extensions_Trait_Types]<!--(slides/13.3_GWAS_model_extensions_trait_type.pdf)-->
     - [12.4 GWAS Model Extensions_Multi-Trait-Locus, software]<!--(slides/13.4.GWAS_model_extensions_multi_trait_and_locus.pdf)-->
-    - [R code GWASpoly (vignette)](slides/GWASpoly_vignette.pdf)
+    - [R code GWASpoly (vignette)]<!--(slides/GWASpoly_vignette.pdf)-->
     - [R code GWAS for categorical Traits](model_extensions/1.categorical_gwas.Rmd)
     - [R code GWAS for categorical Traits - Examples](model_extensions/2.categorical_gwas_example.Rmd)
     - [R code GWAS for longitudinal Traits](model_extensions/3.longitudinal_gwas.Rmd)
