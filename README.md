@@ -24,7 +24,7 @@ As a general rule, we'll have a longer break (30 minutes) at 16:00 and two short
     - [Linux and the Shell]<!--(slides/3_Linux_intro.pdf)-->
 - Lab 1 - Practicalities and Set-up (Server, github repo, R, etc) and Description of Datasets [Christian]
     - [Description of Datasets]<!--(slides/Description_of_datasets.pdf)-->
-    - [Unix Cheatsheet](slides/Unix_cheatsheet.pdf)-->
+    - [Unix Cheatsheet]<!--(slides/Unix_cheatsheet.pdf)-->
  - [Course Manual]<!--(slides/Course_manual.pdf)-->
  - [GWAS Workflow]<!--(slides/GWAS_workflow.pdf)-->
 
@@ -36,25 +36,25 @@ As a general rule, we'll have a longer break (30 minutes) at 16:00 and two short
     - [R code. Exercise on Simple Linear Regression](basic_model/1.Basis_of_linear_regression.R)
     - [Rmarkdown Code. Exercise on Simple Logistic Regression](basic_model/2.exercise.Basis_of_logistic_regression.Rmd)
 - Lecture 4 Data Types & Formats [Christian]
-    - [Common Data Types and Formats](slides/4_Data_types.pdf)
+    - [Common Data Types and Formats]<!--(slides/4_Data_types.pdf)-->
 - Lecture 5 Initial Data Analysis, Exploratory Data Analysis and Data Pre-Processing [Christian]
-    - [IDA, EDA & Data Pre-Processing](slides/5_Data_pre-processing.pdf)
+    - [IDA, EDA & Data Pre-Processing]<!--(slides/5_Data_pre-processing.pdf)-->
 - Lab 3 EDA & IDA [Christian]
 - Lab 4 Data Pre-Processing [Christian]
 - Lecture 6 The Multiple Testing Issue [Oscar]
-    - [Multiple Testing](slides/6_Multiple_testing.pdf)
+    - [Multiple Testing]<!--(slides/6_Multiple_testing.pdf)-->
 - Lecture 7 Statistical Power, Population Stratification and Experimental Design [Oscar] 
-    - [Statistical Power and Population Stratification](slides/7_Experimental_design.pdf)
+    - [Statistical Power and Population Stratification]<!--(slides/7_Experimental_design.pdf)-->
     - [R code. Exercise on statistical power](5.power_and_significance/StatisticalPower_exercise.R)
 
 
 **Day 3**
 
 - Lecture 8	Imputation of Missing Genotypes [Christian]
-    - [Imputation](slides/8_Imputation.pdf)
+    - [Imputation]<!--(slides/8_Imputation.pdf)-->
 - Lab 5 Imputation of Missing Genotypes using Beagle [Christian]
 - Lecture 9 KNN Imputation 
-    - [KNN Imputation](slides/9_KNN_imputation.pdf)
+    - [KNN Imputation]<!--(slides/9_KNN_imputation.pdf)-->
 - Lab 6 (Demonstration) KNNI Imputation [Filippo]
     - [knni_illustration.Rmd](3.imputation/knni_illustration.Rmd)
     - [data_for_KNNI_illustration](model_extensions_data/GenRiz44.txt)
@@ -66,7 +66,7 @@ As a general rule, we'll have a longer break (30 minutes) at 16:00 and two short
     - [gwas_statgengwas.R](4.gwas/gwas_statgengwas.R)
     - [gwas_sommer.R](4.gwas/gwas_sommer.R)
 - Lab 8 Revising the Steps involved in GWAS [Filippo]
-    - [slides](slides/10.1_Revising_the_steps.pdf)
+    - [slides]<!--(slides/10.1_Revising_the_steps.pdf)-->
     - [1.get_data.sh](6.steps/1.get_data.sh)
     - [2.step_filtering.sh](6.steps/2.step_filtering.sh)
     - [3.step_imputation.sh](6.steps/3.step_imputation.sh)
@@ -75,7 +75,7 @@ As a general rule, we'll have a longer break (30 minutes) at 16:00 and two short
     - [R code PCA & Population Structure](4.gwas/PCA_screeplots.R)
     - [Imputed rice genotypes](4.gwas/rice_imputed.raw)
 - Lab 9 Introducing the Exercise [Filippo]
-    - [Collaborative Exercise](slides/10.2_Collaborative_exercise.pdf)
+    - [Collaborative Exercise]<!--(slides/10.2_Collaborative_exercise.pdf)-->
 - Collaborative Exercise: let's build our own GWAS workflow on new data [Filippo, Oscar, Christian]
     - Part 1: Individual/Group Break-Out Sessions to give it a try independetly
     - Part 2: Whole-Group Revision of the Exercise
