@@ -21,11 +21,12 @@ m = ncol(matx)
 
 ### Missing rate per sample
 missing_sample = rowSums(is.na(matx))
-hist(missing_sample)
-summary(missing_sample)
+#hist(missing_sample)
+#summary(missing_sample)
 
 missing_rate_sample = missing_sample/m
-summary(missing_rate_sample)
+print("Missing rate per sample")
+print(summary(missing_rate_sample))
 
 vec <- missing_rate_sample > max_missing_sample
 print(paste(sum(vec), "samples are above the max missing threshold of", max_missing_sample))
@@ -39,11 +40,12 @@ temp <- genotypes[!vec,c(1:6)]
 
 ### Missing rate per SNP
 missing_snp = colSums(is.na(matx))
-hist(missing_snp)
-summary(missing_snp)
+#hist(missing_snp)
+#summary(missing_snp)
 
 missing_rate_snp = missing_snp/N
-summary(missing_rate_snp)
+print("Missing rate per SNP")
+print(summary(missing_rate_snp))
 
 vec <- missing_rate_snp > max_missing_snp
 print(paste(sum(vec), "SNPs are above the max missing threshold of", max_missing_snp))
