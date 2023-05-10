@@ -3,15 +3,17 @@ library("tidyverse")
 library("data.table")
 
 basefolder = "/home/filippo/Dropbox/cursos/gwas_2023"
-genotype_file = "introduction_to_gwas/example_data/rice_reduced.raw"
-mapfile = "introduction_to_gwas/example_data/rice_reduced.map"
+prjfolder = "introduction_to_gwas"
+genotype_file = file.path(basefolder, prjfolder, "example_data/rice_reduced.raw")
+mapfile = file.path(basefolder, prjfolder, "example_data/rice_reduced.map")
+outdir = file.path(basefolder, prjfolder, "2.pre-processing")
 
 max_missing_snp = 0.05
 max_missing_sample = 0.10
 min_maf = 0.05
 
-genotypes = fread(file.path(basefolder, genotype_file))
-snpmap = fread(file.path(basefolder, mapfile))
+genotypes = fread(genotype_file)
+snpmap = fread(mapfile)
 
 matx = genotypes[,-c(1:6)]
 N = nrow(matx)
@@ -73,14 +75,18 @@ matx = matx[,vec,with=FALSE]
 snpmap = snpmap[vec,]
 
 ## WRITE OUT FILTERED FILES
+writeLines(" - writing out filtered files")
 
 ## map file
-fname = file.path(basefolder, "introduction_to_gwas/example_data/rice_reduced_filtered.map")
+fname = file.path(outdir, "rice_reduced_filtered.map")
+print(paste("writing map file to", fname))
 fwrite(x = snpmap, file = fname, row.names = FALSE, col.names = FALSE, quote = FALSE, sep = "\t")
 
 ## map file
 matx <- temp |> bind_cols(matx)
-fname = file.path(basefolder, "introduction_to_gwas/example_data/rice_reduced_filtered.raw")
-fwrite(x = matx, file = fname, row.names = FALSE, col.names = FALSE, quote = FALSE, sep = "\t")
+fname = file.path(outdir, "rice_reduced_filtered.raw")
+print(paste("writing raw file to", fname))
+fwrite(x = matx, file = fname, row.names = FALSE, col.names = FALSE, quote = FALSE, sep = "\t", na = NA)
 
+print("DONE!")
 
