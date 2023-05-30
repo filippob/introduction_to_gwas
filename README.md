@@ -17,7 +17,7 @@ As a general rule, we'll have a longer break (30 minutes) at 16:00 and two short
     - [General Introduction]<!--(slides/0_General_Introduction.pdf)-->
     - [GWAS Workflow (short)]<!--(slides/GWAS_workflow_short.pdf)-->
 - Lecture 1	GWAS Overview: Case Studies / Examples from Literature [Oscar]
-    - [GWAS Overview]<!--(slides/1_GWAS_overview.pdf)
+    - [GWAS Overview]<!--(slides/1_GWAS_overview.pdf)-->
 - Lecture 2	Introduction to GWAS: Linkage Disequilibrium and Linear Regression [Oscar]
     - [Introduction to GWAS]<!--(slides/2_Introduction_to_GWAS.pdf)-->
 - Lab 1 - Practicalities and Set-up (Server, github repo, R, etc) and Description of Datasets [Christian]
@@ -39,8 +39,10 @@ As a general rule, we'll have a longer break (30 minutes) at 16:00 and two short
     - [R code. Exercise on statistical power](5.power_and_significance/StatisticalPower_exercise.R)
 - Lecture 6 Initial Data Analysis, Exploratory Data Analysis and Data Pre-Processing [Christian]
     - [IDA, EDA & Data Pre-Processing]<!--(slides/5_Data_pre-processing.pdf)-->
-- Lab 3 EDA & IDA [Christian]
-- Lab 4 Data Pre-Processing [Christian]
+- Lab 3 Data filtering and mean/median imputation in R [Filippo]
+    - [filter_genotype_data.R](0.r_scripts/filter_genotype_data.R)
+    - [mean_imputation.R](0.r_scripts/mean_imputation.R)
+    - [median_imputation.R](0.r_scripts/median_imputation.R)
 
 
 **Day 3**
@@ -59,6 +61,8 @@ As a general rule, we'll have a longer break (30 minutes) at 16:00 and two short
 - Lecture 3 - Basic Linux and the Shell [Christian]
     - [Linux and the Shell]<!--(slides/3_Linux_intro.pdf)-->
     - [Unix Cheatsheet]<!--(slides/Unix_cheatsheet.pdf)-->
+- Lab 3 EDA & IDA [Christian]
+- Lab 4 Data Pre-Processing [Christian]
 - Lab 7 GWAS: The Stand-Alone Script(s) for the Full Model [Filippo]
     - [gwas_rrblup.R](4.gwas/gwas_rrblup.R)
     - [gwas_statgengwas.R](4.gwas/gwas_statgengwas.R)
