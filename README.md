@@ -53,7 +53,7 @@ As a general rule, we'll have a longer break (30 minutes) at 16:00 and two short
     - [gwas_statgengwas.R](4.gwas/gwas_statgengwas.R)
     - [gwas_sommer.R](4.gwas/gwas_sommer.R)
 - Lab 5 GWAS: a first simple exercise for you! [Christian, Filippo]
-    - []()  
+    - [TBD]()  
 - Lecture 7 KNN Imputation 
     - [KNN Imputation]<!--(slides/9_KNN_imputation.pdf)-->
 - Lab 6 (Demonstration) KNNI Imputation [Filippo]
@@ -72,33 +72,32 @@ As a general rule, we'll have a longer break (30 minutes) at 16:00 and two short
 
 
 **Day 4**
-- Lab 8 Revising the Steps involved in GWAS [Filippo]
+- Lecture 9 Brief Intermission:
+    - [R code PCA & Population Structure](4.gwas/PCA_screeplots.R)
+    - [Imputed rice genotypes](4.gwas/rice_imputed.raw)
+- Lab 9 Revising the Steps involved in GWAS [Filippo]
     - [slides]<!--(slides/10.1_Revising_the_steps.pdf)-->
     - [1.get_data.sh](6.steps/1.get_data.sh)
     - [2.step_filtering.sh](6.steps/2.step_filtering.sh)
     - [3.step_imputation.sh](6.steps/3.step_imputation.sh)
     - [4.gwas.sh](6.steps/4.gwas.sh)
-- Brief Intermission:
-    - [R code PCA & Population Structure](4.gwas/PCA_screeplots.R)
-    - [Imputed rice genotypes](4.gwas/rice_imputed.raw)
-- Lab 9 Introducing the Exercise [Filippo]
+- Lab 10 Introducing the Exercise [Filippo]
     - [Collaborative Exercise]<!--(slides/10.2_Collaborative_exercise.pdf)-->
 - Collaborative Exercise: let's build our own GWAS workflow on new data [Filippo, Oscar, Christian]
     - Part 1: Individual/Group Break-Out Sessions to give it a try independetly
     - Part 2: Whole-Group Revision of the Exercise
 - Lecture 10 Bioinformatics Pipelines: a super-elementary Introduction [Filippo]
     - [A bioinformatics pipeline for GWAS]<!--(slides/11_A_bioinformatic_pipeline_for_GWAS.pdf)-->
-- Lab 10 Building a Pipeline with Snakemake [Filippo]
-- Lab 11 The GWAS pipeline for Continuous Phenotypes [Filippo]
+- Lab 11 Building a Pipeline with Snakemake [Filippo]
+- Lab 12 The GWAS pipeline for Continuous Phenotypes [Filippo]
     - Plug-In for Mean or KNN Imputation
     - The GWAS pipeline for Binary Phenotypes (Guided Exercise) [Filippo]
-- Q&A on building Pipelines for GWAS [Filippo, Oscar, Christian]
-- Lecture 11 A light Touch on Post-GWAS Analysis: Inferring Functionality [Oscar]
-    - [slides]<!--(slides/Functional_Analysis.pdf)-->
-    - [R code. Exercise on R, and FUMA](functional_analysis/getGenesFromSNP.R)
     
 **Day 5**
 
+- Lecture 11 A light Touch on Post-GWAS Analysis: Inferring Functionality [Oscar]
+    - [slides]<!--(slides/Functional_Analysis.pdf)-->
+    - [R code. Exercise on R, and FUMA](functional_analysis/getGenesFromSNP.R)
 - Lecture 12 GWAS Model Extensions: [Filippo]
     - [12.1 GWAS Model Extensions_Dominance_and_other_genotype_Codifications]<!--(slides/12.1.GWAS_model_extensions_genotype_codification.pdf)-->
     - [12.2 GWAS Model Extensions_Polyploids]<!--(slides/12_2_GWAS_model_extensions_polyploids.pdf)-->
@@ -110,14 +109,15 @@ As a general rule, we'll have a longer break (30 minutes) at 16:00 and two short
     - [R code GWAS for longitudinal Traits](model_extensions/3.longitudinal_gwas.Rmd)
     - [R code GWAS for multi-trait and multi-locus Models]
 
-- Lecture 13 A Glimpse on ROH-based Alternative [Filippo, optional]
+<!-- - Lecture 13 A Glimpse on ROH-based Alternative [Filippo, optional]
     - [ROH-based and Resampling Methods as alternative Approaches]
-    - [Other gene actions]<!--(slides/13.1.GWAS_model_extensions_genotype_codification.pdf)-->
-- Kahoot Quiz on what we learned about GWAS! [Filippo, Oscar, Christian]
+    - [Other gene actions](slides/13.1.GWAS_model_extensions_genotype_codification.pdf)-->
+- Final Quiz on what we learned about GWAS! [Filippo, Oscar, Christian]
 - Conclusions and Wrap-Up Discussion on GWAS [Filippo, Oscar, Christian]
 
 ## Organization of the Code for the practical Sessions
 
+0. the GWAS workflow in R
 1. preparatory_steps: download and prepare the data
 2. preprocessing: filter the data
 3. imputation: imputing missing genotypes
