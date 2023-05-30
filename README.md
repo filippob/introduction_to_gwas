@@ -25,6 +25,7 @@ As a general rule, we'll have a longer break (30 minutes) at 16:00 and two short
  - [Course Manual]<!--(slides/Course_manual.pdf)-->
  - [GWAS Workflow]<!--(slides/GWAS_workflow.pdf)-->
 
+
 **Day 2**
 
 - Lab 2 (Demonstration) GWAS: Basic Models (Linear and Logistic Regression) [Oscar]
@@ -53,23 +54,24 @@ As a general rule, we'll have a longer break (30 minutes) at 16:00 and two short
     - [gwas_sommer.R](4.gwas/gwas_sommer.R)
 - Lab 5 GWAS: a first simple exercise for you! [Christian, Filippo]
     - []()  
-- Lecture 8	Imputation of Missing Genotypes [Christian]
-    - [Imputation]<!--(slides/8_Imputation.pdf)-->
-- Lab 5 Imputation of Missing Genotypes using Beagle [Christian]
-- Lecture 9 KNN Imputation 
+- Lecture 7 KNN Imputation 
     - [KNN Imputation]<!--(slides/9_KNN_imputation.pdf)-->
 - Lab 6 (Demonstration) KNNI Imputation [Filippo]
     - [knni_illustration.Rmd](3.imputation/knni_illustration.Rmd)
     - [data_for_KNNI_illustration](model_extensions_data/GenRiz44.txt)
-    - [02_knni.sh](3.imputation/02_knni.sh)
+    - [knni_tidymodels.R](3.imputation/knni_tidymodels.R)
+    - [02_knni.sh](3.imputation/02_knni.sh) [support script]
     - [hamming.R](3.imputation/hamming.R) [support script]
     - [knni.R](3.imputation/knni.R) [support script]
-- Lecture 3 - Basic Linux and the Shell [Christian]
+- Lab 7 EDA & IDA and preprocessing with Plink [Christian]
     - [Linux and the Shell]<!--(slides/3_Linux_intro.pdf)-->
     - [Unix Cheatsheet]<!--(slides/Unix_cheatsheet.pdf)-->
-- Lab 3 EDA & IDA [Christian]
-- Lab 4 Data Pre-Processing [Christian]
+- Lecture 8	Imputation of Missing Genotypes [Christian]
+    - [Imputation]<!--(slides/8_Imputation.pdf)-->
+- Lab 8 Imputation of Missing Genotypes using Beagle [Christian]
 
+
+**Day 4**
 - Lab 8 Revising the Steps involved in GWAS [Filippo]
     - [slides]<!--(slides/10.1_Revising_the_steps.pdf)-->
     - [1.get_data.sh](6.steps/1.get_data.sh)
@@ -84,9 +86,6 @@ As a general rule, we'll have a longer break (30 minutes) at 16:00 and two short
 - Collaborative Exercise: let's build our own GWAS workflow on new data [Filippo, Oscar, Christian]
     - Part 1: Individual/Group Break-Out Sessions to give it a try independetly
     - Part 2: Whole-Group Revision of the Exercise
-
-
-**Day 4**
 - Lecture 10 Bioinformatics Pipelines: a super-elementary Introduction [Filippo]
     - [A bioinformatics pipeline for GWAS]<!--(slides/11_A_bioinformatic_pipeline_for_GWAS.pdf)-->
 - Lab 10 Building a Pipeline with Snakemake [Filippo]
