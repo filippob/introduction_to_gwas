@@ -47,6 +47,12 @@ As a general rule, we'll have a longer break (30 minutes) at 16:00 and two short
 
 **Day 3**
 
+- Lab 4 GWAS: The Stand-Alone Script(s) for the Full Model [Filippo]
+    - [gwas_rrblup.R](4.gwas/gwas_rrblup.R)
+    - [gwas_statgengwas.R](4.gwas/gwas_statgengwas.R)
+    - [gwas_sommer.R](4.gwas/gwas_sommer.R)
+- Lab 5 GWAS: a first simple exercise for you! [Christian, Filippo]
+    - []()  
 - Lecture 8	Imputation of Missing Genotypes [Christian]
     - [Imputation]<!--(slides/8_Imputation.pdf)-->
 - Lab 5 Imputation of Missing Genotypes using Beagle [Christian]
@@ -63,10 +69,7 @@ As a general rule, we'll have a longer break (30 minutes) at 16:00 and two short
     - [Unix Cheatsheet]<!--(slides/Unix_cheatsheet.pdf)-->
 - Lab 3 EDA & IDA [Christian]
 - Lab 4 Data Pre-Processing [Christian]
-- Lab 7 GWAS: The Stand-Alone Script(s) for the Full Model [Filippo]
-    - [gwas_rrblup.R](4.gwas/gwas_rrblup.R)
-    - [gwas_statgengwas.R](4.gwas/gwas_statgengwas.R)
-    - [gwas_sommer.R](4.gwas/gwas_sommer.R)
+
 - Lab 8 Revising the Steps involved in GWAS [Filippo]
     - [slides]<!--(slides/10.1_Revising_the_steps.pdf)-->
     - [1.get_data.sh](6.steps/1.get_data.sh)
