@@ -71,6 +71,7 @@ In this brief practical/demonstration, we'll go through an illustration of how t
 ```{r,echo=FALSE,results='hide', message=FALSE}
 
 #Demonstrating the use of KNN to impute missing SNP genotypes
+library("knitr")
 library("tidymodels") #for kNN imputation
 library("data.table")
 ```
@@ -165,12 +166,12 @@ ratio_recipe <- rec %>%
 ratio_recipe2 <- prep(ratio_recipe, training = missing_data, verbose = FALSE)
 imputed = juice(ratio_recipe2)
 
-results <- imputed[is.na(missing_map)]==Mreduced[is.na(missing_map)]
+results <- round(imputed[is.na(missing_map)])==Mreduced[is.na(missing_map)]
 accuracy <- length(results[results==TRUE])/length(results)
 print(accuracy)
 ```
 
-[The accuracy of imputation with the R function *step_impute_knn()* from the *tidymodels* package is:<strong> `r accuracy`</strong>]{style="background-color:yellow"}
+[The accuracy of imputation with the R function *step_impute_knn()* from the *tidymodels* package is: <strong> `r accuracy`</strong>]{style="background-color:yellow"}
 
 ## STEP-BY-STEP KNNI IMPLEMENTATION [optional]
 
@@ -204,7 +205,7 @@ k <- 3
 
 ## take one SNP locus to impute e use the m-1 SNPs to train
 y <- 0
-while(length(y[is.na(y)])<2) {
+while(length(y[is.na(y)])<2) { ## we want to have at least two missing SNP genotypes
   
   i <- sample(1:ncol(injected_data),1)
   X <- as.matrix(injected_data[,-i]) #global matrix of features (train + test sets)
@@ -217,11 +218,14 @@ row.names(D) <- names(y)
 colnames(D) <- names(y)
 ```
 
-Let's have a look at the first elements of the matrix of Hamming distances:
+Let's have a look at the first elements of the matrix of Hamming distances (the smaller the number, the closer the samples):
 
 ```{r,echo=FALSE}
-print(D)
-print(y)
+print(kable(D))
+```
+
+```{r}
+print(kable(y))
 ```
 
 This is the vector of SNP genotypes to be imputed: `r y`.
@@ -267,7 +271,7 @@ And these are the results for one single SNP locus:
 ergebnisse <- as.data.frame(t(ergebnisse))
 names(ergebnisse) <- c("pred","prob")
 ergebnisse[ergebnisse$pred==0,]$prob <- 1-ergebnisse[ergebnisse$pred==0,]$prob
-print(ergebnisse)
+print(kable(ergebnisse))
 ```
 
 Now we can apply this code to the entire dataset, to impute missing genotypes at all SNP loci.
