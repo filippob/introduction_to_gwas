@@ -50,11 +50,11 @@ snpnames = gsub("_[A-Z0-9]{1}$","",names(matx))
 vec <- (snpmap$V2 %in% snpnames)
 snpmap <- snpmap[vec,]
 
-fname = file.path(prjfolder, repo, "example_data/rice_imputed.raw")
+fname = file.path(prjfolder, repo, "example_data/rice_median_imputed.raw")
 fwrite(x = genotypes, file = fname, quote = FALSE, sep = " ", na = "NA")
 
 
-fname = file.path(prjfolder, repo, "example_data/rice_imputed.map")
+fname = file.path(prjfolder, repo, "example_data/rice_median_imputed.map")
 fwrite(x = snpmap, file = fname, quote = FALSE, sep = "\t", col.names = FALSE)
 
 print("DONE!")
