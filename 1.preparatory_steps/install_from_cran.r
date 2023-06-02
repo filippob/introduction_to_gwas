@@ -5,21 +5,26 @@
 # Package names
 packages <- c("AER",
 	      "afex", 
+	      "car", 
+	      "data.table",
 	      # "doMC", # only needed for software/gwas.r (old code that we are probably no longer using) 
 	      "doParallel",
 	      "dplyr",
+	      "ggfortify",
 	      "ggplot2", 
 	      "ggpubr",
 	      "readxl",  
 	      "reshape2",
+	      "rrBLUP",
+	      "sommer",
 	      "tidymodels",
 	      "tidyr", 
 	      "tidyverse",
-	      "car", "MASS", "scales", "nlme", "psych", "ordinal", 
+	      "MASS", "scales", "nlme", "psych", "ordinal", 
 	      "lmtest",  "stringr", "assist", "magrittr", 
-	       "msm", "nnet", "here", "afex", "nadiv","qqman", "plotly", 
-	      "Matrix", "rrBLUP", "sommer","R.utils", "genetics", "survival",
-	      "prettydoc","patchwork","plyr","ggfortify","survminer","data.table",
+	      "msm", "nnet", "here", "afex", "nadiv","qqman", "plotly", 
+	      "Matrix", "R.utils", "genetics", "survival",
+	      "prettydoc","patchwork","plyr","survminer",
 	      "statgenGWAS","RColorBrewer"
 	     )
 
