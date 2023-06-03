@@ -35,6 +35,7 @@ As a general rule, we'll have a longer break (30 minutes) at 16:00 and two short
     - [Common Data Types and Formats]<!--(slides/4_Data_types.pdf)-->
 - Lecture 4 The Multiple Testing Issue [Oscar]
     - [Multiple Testing]<!--(slides/6_Multiple_testing.pdf)-->
+    - [R code. Exercise on multiple testing correction]<!--(5.power_and_significance/MultipleTestingCorrection.R)-->
 - Lecture 5 Statistical Power, Population Stratification and Experimental Design [Oscar] 
     - [Statistical Power and Population Stratification]<!--(slides/7_Experimental_design.pdf)-->
     - [R code. Exercise on statistical power](5.power_and_significance/StatisticalPower_exercise.R)
