@@ -81,7 +81,7 @@ rule gwas:
         map = "steps/dogs_imputed.map",
         phenotype = "data/dogs_phenotypes.txt"
     output:
-        "dogs_imputed.raw_disease_GWAS_sommer.results"
+        "dogs_imputed.raw_disease_GWAS_rrBLUP.results"
     params:
         trait = "phenotype",
         trait_label = "disease"
