@@ -41,7 +41,7 @@ installed_packages <- packages %in% rownames(installed.packages())
 
 # Install packages not yet installed (UNCOMMENT TO INSTALL!!)
 if (any(installed_packages == FALSE)) {
- install.packages(packages[!installed_packages], repos='http://cran.us.r-project.org', lib='/home/user1/Rpackages/') ## need to make sure the lib folder exists!
+ install.packages(packages[!installed_packages], repos='http://cran.us.r-project.org', lib='//home/ubuntu/miniconda3/lib/R/library') ## need to make sure the lib folder exists!
 }
 
 
