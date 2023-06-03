@@ -3,16 +3,13 @@
 ## (some additional packages may still be needed during the course)
 
 # Package names
-packages <- c("AER",
-	      "afex", 
-	      "car", 
+packages <- c(
 	      "data.table",
 	      # "doMC", # only needed for software/gwas.r (old code that we are probably no longer using) 
 	      "doParallel",
 	      "dplyr",
 	      "ggfortify",
 	      "ggplot2", 
-	      "ggpubr",
 	      "readxl",  
 	      "reshape2",
 	      "rrBLUP",
@@ -21,11 +18,22 @@ packages <- c("AER",
 	      "tidyr", 
 	      "tidyverse",
 	      "MASS", "scales", "nlme", "psych", "ordinal", 
-	      "lmtest",  "stringr", "assist", "magrittr", 
-	      "msm", "nnet", "here", "afex", "nadiv","qqman", "plotly", 
-	      "Matrix", "R.utils", "genetics", "survival",
-	      "prettydoc","patchwork","plyr","survminer",
+	      "stringr", "assist", "magrittr", 
+	      "msm", "nnet", "here", "nadiv","qqman", 
+	      "Matrix", "R.utils", "genetics",
+	      "prettydoc","patchwork","plyr",
 	      "statgenGWAS","RColorBrewer"
+	     )
+
+packages_extensions <- c("AER",
+	      "afex", 
+	      "car", 
+	      "ggfortify",
+	      "ggpubr",
+	      "lmtest", 
+	      "plotly", 
+	      "survival",
+	      "survminer"
 	     )
 
 # Packages not yet installed (UNCOMMENT TO INSTALL!!)
