@@ -31,31 +31,28 @@ As a general rule, we'll have a longer break (30 minutes) at 16:00 and two short
 - Lab 2 (Demonstration) GWAS: Basic Models (Linear and Logistic Regression) [Oscar]
     - [R code. Exercise on Simple Linear Regression](basic_model/1.Basis_of_linear_regression.R)
     - [Rmarkdown Code. Exercise on Simple Logistic Regression](basic_model/2.exercise.Basis_of_logistic_regression.Rmd)
-- Lecture 3 Data Types & Formats [Christian]
-    - [Common Data Types and Formats]<!--(slides/4_Data_types.pdf)-->
-- Lecture 4 The Multiple Testing Issue [Oscar]
+- Lecture 3 The Multiple Testing Issue [Oscar]
     - [Multiple Testing]<!--(slides/6_Multiple_testing.pdf)-->
     - [R code. Exercise on multiple testing correction]<!--(5.power_and_significance/MultipleTestingCorrection.R)-->
-- Lecture 5 Statistical Power, Population Stratification and Experimental Design [Oscar] 
+- Lecture 4 Statistical Power, Population Stratification and Experimental Design [Oscar] 
     - [Statistical Power and Population Stratification]<!--(slides/7_Experimental_design.pdf)-->
     - [R code. Exercise on statistical power](5.power_and_significance/StatisticalPower_exercise.R)
-- Lecture 6 Initial Data Analysis, Exploratory Data Analysis and Data Pre-Processing [Christian]
+- Lecture 5 Initial Data Analysis, Exploratory Data Analysis and Data Pre-Processing [Christian]
     - [IDA, EDA & Data Pre-Processing]<!--(slides/5_Data_pre-processing.pdf)-->
-- Lab 3 Data filtering and mean/median imputation in R [Filippo]
-    - [filter_genotype_data.R](0.r_scripts/filter_genotype_data.R)
-    - [mean_imputation.R](0.r_scripts/mean_imputation.R)
-    - [median_imputation.R](0.r_scripts/median_imputation.R)
-
+- Lab 3 GWAS: a first simple exercise for you! [Christian, Filippo]
+    - [TBD]()  
 
 **Day 3**
 
-- Lab 4 GWAS: The Stand-Alone Script(s) for the Full Model [Filippo]
+- Lab 4 Data filtering and mean/median imputation in R [Filippo]
+    - [filter_genotype_data.R](0.r_scripts/filter_genotype_data.R)
+    - [mean_imputation.R](0.r_scripts/mean_imputation.R)
+    - [median_imputation.R](0.r_scripts/median_imputation.R)
+- Lab 5 GWAS: The Stand-Alone Script(s) for the Full Model [Filippo]
     - [gwas_rrblup.R](4.gwas/gwas_rrblup.R)
     - [gwas_statgengwas.R](4.gwas/gwas_statgengwas.R)
     - [gwas_sommer.R](4.gwas/gwas_sommer.R)
-- Lab 5 GWAS: a first simple exercise for you! [Christian, Filippo]
-    - [TBD]()  
-- Lecture 7 KNN Imputation 
+- Lecture 6 KNN Imputation 
     - [KNN Imputation]<!--(slides/9_KNN_imputation.pdf)-->
 - Lab 6 (Demonstration) KNNI Imputation [Filippo]
     - [knni_illustration.Rmd](3.imputation/knni_illustration.Rmd)
@@ -64,6 +61,8 @@ As a general rule, we'll have a longer break (30 minutes) at 16:00 and two short
     - [02_knni.sh](3.imputation/02_knni.sh) [support script]
     - [hamming.R](3.imputation/hamming.R) [support script]
     - [knni.R](3.imputation/knni.R) [support script]
+- Lecture 7 Data Types & Formats
+    - [Common Data Types and Formats]<!--(slides/4_Data_types.pdf)-->
 - Lab 7 EDA & IDA and preprocessing with Plink [Christian]
     - [Linux and the Shell]<!--(slides/3_Linux_intro.pdf)-->
     - [Unix Cheatsheet]<!--(slides/Unix_cheatsheet.pdf)-->
