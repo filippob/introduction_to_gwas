@@ -32,8 +32,7 @@ sR<-SSE/(length(y)-2)
 t<-(b1-0)/sqrt(sR/SSxx)
 t
 #t-Student tables to calculate the cummulative probability of the parametric value (P-value)
-#http://cms.dm.uba.ar/academico/materias/1ercuat2015/probabilidades_y_estadistica_C/tabla_tstudent.pdf
-#http://www.jorgegalbiati.cl/nuevo_06/tstud.pdf
+#https://www.sjsu.edu/faculty/gerstman/StatPrimer/t-table.pdf
 
 A<- 1-pt(abs(t),df=(n-2)) #1-cummulative_probability(t,for n-2 degrees of freedom)
 pvalue<-2*A
