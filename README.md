@@ -24,7 +24,6 @@ As a general rule, we'll have a longer break (30 minutes) at 16:00 and two short
     - [R code. Exercise on Simple Linear Regression](basic_model/1.Basis_of_linear_regression.R)
     - [Rmarkdown Code. Exercise on Simple Logistic Regression](basic_model/2.exercise.Basis_of_logistic_regression.Rmd)
 - Lab 2 - Tidyverse Introduction [Christian]
-    - [Tidyverse intro (rmd)](slides/Tidyverse_Intro.Rmd)
     - [Tidyverse intro (pdf)](slides/Tidyverse_Intro.pdf)
 - Lab 3 - Description of Datasets [Christian]
     - [Description of Datasets](slides/Description_of_data.pdf)
