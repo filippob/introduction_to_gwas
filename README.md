@@ -40,7 +40,7 @@ As a general rule, we'll have a longer break (30 minutes) at 16:00 and two short
 - Lecture 5 Initial Data Analysis, Exploratory Data Analysis and Data Pre-Processing [Christian]
     - [IDA, EDA & Data Pre-Processing]<!--(slides/5_Data_pre-processing.pdf)-->
 - Lab 3 GWAS: a first simple exercise for you! [Christian, Filippo]
-    - [TBD]()  
+    - [TBD]<!--()-->
 
 **Day 3**
 
@@ -97,7 +97,7 @@ As a general rule, we'll have a longer break (30 minutes) at 16:00 and two short
 
 - Lecture 11 A light Touch on Post-GWAS Analysis: Inferring Functionality [Oscar]
     - [slides]<!--(slides/Functional_Analysis.pdf)-->
-    - [R code. Exercise on R, and FUMA](functional_analysis/getGenesFromSNP.R)
+    - [R code. Exercise on R, and FUMA]<!--(functional_analysis/getGenesFromSNP.R)-->
 - Lecture 12 GWAS Model Extensions: [Filippo]
     - [12.1 GWAS Model Extensions_Dominance_and_other_genotype_Codifications]<!--(slides/12.1.GWAS_model_extensions_genotype_codification.pdf)-->
     - [12.2 GWAS Model Extensions_Polyploids]<!--(slides/12_2_GWAS_model_extensions_polyploids.pdf)-->
