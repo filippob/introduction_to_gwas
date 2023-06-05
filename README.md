@@ -23,7 +23,10 @@ As a general rule, we'll have a longer break (30 minutes) at 16:00 and two short
 - Lab 1 (Demonstration) GWAS: Basic Models (Linear and Logistic Regression) [Oscar]
     - [R code. Exercise on Simple Linear Regression](basic_model/1.Basis_of_linear_regression.R)
     - [Rmarkdown Code. Exercise on Simple Logistic Regression](basic_model/2.exercise.Basis_of_logistic_regression.Rmd)
-- Lab 2 - Description of Datasets [Christian]
+- Lab 2 - Tidyverse Introduction [Christian]
+    - [Tidyverse intro (rmd)](slides/Tidyverse_Intro.Rmd)
+    - [Tidyverse intro (pdf)](slides/Tidyverse_Intro.pdf)
+- Lab 3 - Description of Datasets [Christian]
     - [Description of Datasets](slides/Description_of_data.pdf)
  - [Course Manual](slides/gwas_manual.pdf)
  - [GWAS Workflow](slides/GWAS_workflow.pdf)
