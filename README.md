@@ -29,8 +29,8 @@ As a general rule, we'll have a longer break (30 minutes) at 16:00 and two short
 **Day 2**
 
 - Lab 2 (Demonstration) GWAS: Basic Models (Linear and Logistic Regression) [Oscar]
-    - [R code. Exercise on Simple Linear Regression]<!--(basic_model/1.Basis_of_linear_regression.R)
-    - [Rmarkdown Code. Exercise on Simple Logistic Regression]<!--(basic_model/2.exercise.Basis_of_logistic_regression.Rmd)
+    - [R code. Exercise on Simple Linear Regression](basic_model/1.Basis_of_linear_regression.R)
+    - [Rmarkdown Code. Exercise on Simple Logistic Regression](basic_model/2.exercise.Basis_of_logistic_regression.Rmd)
 - Lecture 3 The Multiple Testing Issue [Oscar]
     - [Multiple Testing]<!--(slides/6_Multiple_testing.pdf)-->
     - [R code. Exercise on multiple testing correction]<!--(5.power_and_significance/MultipleTestingCorrection.R)-->
