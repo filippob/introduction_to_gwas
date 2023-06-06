@@ -43,7 +43,13 @@ As a general rule, we'll have a longer break (30 minutes) at 16:00 and two short
     - [Brief Genotyping overview](slides/5_1_Genotyping.pdf)
     - [IDA, EDA & Data Pre-Processing](slides/5_2_Data_pre-processing.pdf)
 - Lab 3 GWAS: a first simple exercise for you! [Christian, Filippo]
-    - [TBD]<!--()-->
+    - [GWAS demonstration in R - script]<!--(0.r_scripts/GWAS_demo.R)-->
+    - [GWAS demonstration in R - genotypes]<!--(example_data/genotypes_demo.csv)-->
+    - [GWAS demonstration in R - map]<!--(example_data/map_demo.csv)-->
+    - [GWAS demonstration in R - phenotypes]<!--(example_data/phenotypes_demo.csv)-->
+    - [GWAS exercise in R - genotypes]<!--(example_data/genotypes_fruit_sim.csv)-->
+    - [GWAS exercise in R - map]<!--(example_data/map_fruit_sim.csv)-->
+    - [GWAS exercise in R - phenotypes]<!--(example_data/phenotypes_fruit_sim.csv)-->
 
 **Day 3**
 
