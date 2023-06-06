@@ -40,7 +40,7 @@ As a general rule, we'll have a longer break (30 minutes) at 16:00 and two short
     - [Statistical Power and Population Stratification](slides/7_Experimental_design.pdf)
     - [R code. Exercise on statistical power](5.power_and_significance/StatisticalPower_exercise.R)
 - Lecture 5 Initial Data Analysis, Exploratory Data Analysis and Data Pre-Processing [Christian]
-    - [IDA, EDA & Data Pre-Processing](slides/5_Data_pre-processing.pdf)-->
+    - [IDA, EDA & Data Pre-Processing](slides/5_Data_pre-processing.pdf)
 - Lab 3 GWAS: a first simple exercise for you! [Christian, Filippo]
     - [TBD]<!--()-->
 
