@@ -42,7 +42,7 @@ As a general rule, we'll have a longer break (30 minutes) at 16:00 and two short
 - Lecture 5 Initial Data Analysis, Exploratory Data Analysis and Data Pre-Processing [Christian]
     - [Brief Genotyping overview](slides/5_1_Genotyping.pdf)
     - [IDA, EDA & Data Pre-Processing](slides/5_2_Data_pre-processing.pdf)
-- Lab 3 GWAS: a first simple exercise for you! [Christian, Filippo]
+- Lab 4 GWAS: a first simple exercise for you! [Christian, Filippo]
     - [GWAS demonstration in R - script]<!--(0.r_scripts/GWAS_demo.R)-->
     - [GWAS demonstration in R - genotypes]<!--(example_data/genotypes_demo.csv)-->
     - [GWAS demonstration in R - map]<!--(example_data/map_demo.csv)-->
