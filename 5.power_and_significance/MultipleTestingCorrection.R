@@ -1,7 +1,9 @@
 ### READ DATA ##
 ## text file with snp name/id, chromosome, position (bps)
-input_file_name="dogs_imputed.raw_cleft_lip_GWAS.results"
-results = read.table(input_file_name,sep=",",header=T,colClasses = c("character","integer","integer","numeric"))
+library(RCurl)
+x <- getURL("https://raw.githubusercontent.com/filippob/introduction_to_gwas/master/example_data/dogs_imputed.raw_cleft_lip_GWAS.results")
+
+results = read.table(text = x,sep=",",header=T,colClasses = c("character","integer","integer","numeric"))
 rownames(results) <- results$SNP
 
 ?p.adjust #Help and references for each of the methods
