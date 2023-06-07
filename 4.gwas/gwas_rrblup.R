@@ -6,7 +6,7 @@
 library("qqman")
 library("dplyr")
 library("rrBLUP")
-library("gMatrix")
+#library("gMatrix")
 library("data.table")
 
 print("GWAS using the rrBLUP package")
@@ -40,9 +40,9 @@ for (p in args){
   stop(paste('bad parameter:', pieces[1]))
 }
 
-# genotype_file = "introduction_to_gwas/3.imputation/rice_imputed.raw"
-# snp_map = "introduction_to_gwas/3.imputation/rice_imputed.map"
-# phenotype_file = "introduction_to_gwas/data/rice_phenotypes.txt"
+# genotype_file = "example_data/rice_mean_imputed.raw"
+# snp_map = "example_data/rice_mean_imputed.map"
+# phenotype_file = "example_data/rice_phenotypes.txt"
 # trait = "phenotype"
 # trait_label = "PH"
 
@@ -91,7 +91,8 @@ X <- as.matrix(snp_matrix[,-c(1:6)])
 colnames(X) <- gsub("\\_[A-Z]{1}$","",colnames(X))
 rownames(X) <- snp_matrix$IID
 
-K <- gVanRaden.2(X)
+# K <- gVanRaden.2(X)
+K <- rrBLUP::A.mat(X)
 
 vec <- colnames(K) %in% phenotypes$id
 K <- K[vec,vec]
