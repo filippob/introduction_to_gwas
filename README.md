@@ -54,19 +54,19 @@ As a general rule, we'll have a longer break (30 minutes) at 16:00 and two short
 **Day 3**
 
 - Lab 4 Data filtering and mean/median imputation in R [Filippo]
-    - [filter_genotype_data.R]<!--(0.r_scripts/filter_genotype_data.R)-->
-    - [mean_imputation.R]<!--(0.r_scripts/mean_imputation.R)-->
-    - [median_imputation.R]<!--(0.r_scripts/median_imputation.R)-->
+    - [filter_genotype_data.R](0.r_scripts/filter_genotype_data.R)
+    - [mean_imputation.R](0.r_scripts/mean_imputation.R)
+    - [median_imputation.R](0.r_scripts/median_imputation.R)
 - Lab 5 GWAS: The Stand-Alone Script(s) for the Full Model [Filippo]
-    - [gwas_rrblup.R]<!--(4.gwas/gwas_rrblup.R)-->
-    - [gwas_statgengwas.R]<!--(4.gwas/gwas_statgengwas.R)-->
-    - [gwas_sommer.R]<!--(4.gwas/gwas_sommer.R)-->
+    - [gwas_rrblup.R](4.gwas/gwas_rrblup.R)
+    - [gwas_statgengwas.R](4.gwas/gwas_statgengwas.R)
+    - [gwas_sommer.R](4.gwas/gwas_sommer.R)
 - Lecture 6 KNN Imputation 
-    - [KNN Imputation]<!--(slides/9_KNN_imputation.pdf)-->
+    - [KNN Imputation](slides/9_KNN_imputation.pdf)
 - Lab 6 (Demonstration) KNNI Imputation [Filippo]
     - [knni_illustration.Rmd]<!--(3.imputation/knni_illustration.Rmd)-->
     - [data_for_KNNI_illustration]<!--(model_extensions_data/GenRiz44.txt)-->
-    - [knni_tidymodels.R]<!--(3.imputation/knni_tidymodels.R)-->
+    - [knni_tidymodels.R](3.imputation/knni_tidymodels.R)
     - [02_knni.sh]<!--(3.imputation/02_knni.sh)--> [support script]
     - [hamming.R]<!--(3.imputation/hamming.R)--> [support script]
     - [knni.R]<!--(3.imputation/knni.R)--> [support script]
