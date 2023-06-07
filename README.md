@@ -62,7 +62,7 @@ As a general rule, we'll have a longer break (30 minutes) at 16:00 and two short
     - [gwas_statgengwas.R](4.gwas/gwas_statgengwas.R)
     - [gwas_sommer.R](4.gwas/gwas_sommer.R)
 - Lecture 6 KNN Imputation 
-    - [KNN Imputation](slides/9_KNN_imputation.pdf)
+    - [KNN Imputation](slides/6.KNN_imputation.pdf)
 - Lab 6 (Demonstration) KNNI Imputation [Filippo]
     - [knni_illustration.Rmd]<!--(3.imputation/knni_illustration.Rmd)-->
     - [data_for_KNNI_illustration]<!--(model_extensions_data/GenRiz44.txt)-->
