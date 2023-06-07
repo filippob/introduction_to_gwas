@@ -46,11 +46,16 @@ for (p in args){
 # trait = "phenotype"
 # trait_label = "PH"
 
+# gwidethre = "bonferroni"
+gwidethre = ""
+
 print(paste("genotype file name:",genotype_file))
 print(paste("SNP map:",snp_map))
 print(paste("phenotype file name:",phenotype_file))
 print(paste("trait:",trait))
 print(paste("trait label:",trait_label))
+
+print(paste("method for genome-wide significance line", gwidethre))
 
 dataset = basename(genotype_file)
 
@@ -112,6 +117,9 @@ dev.off()
 ###################
 ## Running the GWAS
 ###################
+## Set threshold for Bonferroni correction
+sign_thre <- ifelse(gwidethre == "bonferroni", -log10(0.05 / nrow(SNP_INFO)), -log10(1e-2))
+
 model1_x <- GWAS(
   pheno = phenotypes,
   geno = SNP_INFO,
@@ -129,8 +137,8 @@ gwasResults <- model1_x[,c("SNP","Chr","Pos",trait)]
 names(gwasResults) <- c("SNP","CHR","BP","P")
 
 png(paste(dataset,trait_label,"manhattan_rrBLUP.png",sep="_"))
-manhattan(gwasResults, suggestiveline = TRUE, col = c("red","blue"), 
-          genomewideline = FALSE, logp = FALSE, width = 800, height = 600, res = 100)
+qqman::manhattan(gwasResults, suggestiveline = FALSE, col = c("red","blue"), 
+          genomewideline = sign_thre, logp = FALSE, width = 800, height = 600, res = 100)
 dev.off()
 
 # convert -log(p) back to p-values
@@ -145,7 +153,7 @@ fwrite(x = gwasResults, file = fname)
 
 ## qq-plot
 png(paste(dataset,trait_label,"qqplot_rrBLUP.png",sep="_"), width = 600, height = 600)
-qq(p)
+qqman::qq(p)
 dev.off()
 
 print("#########")
