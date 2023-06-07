@@ -137,8 +137,8 @@ gwasResults <- model1_x[,c("SNP","Chr","Pos",trait)]
 names(gwasResults) <- c("SNP","CHR","BP","P")
 
 png(paste(dataset,trait_label,"manhattan_rrBLUP.png",sep="_"))
-qqman::manhattan(gwasResults, suggestiveline = FALSE, col = c("red","blue"), 
-          genomewideline = sign_thre, logp = FALSE, width = 800, height = 600, res = 100)
+qqman::manhattan(gwasResults, suggestiveline = FALSE, col = c("red","skyblue"), 
+          genomewideline = sign_thre, logp = FALSE)
 dev.off()
 
 # convert -log(p) back to p-values
