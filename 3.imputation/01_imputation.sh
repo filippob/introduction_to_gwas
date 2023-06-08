@@ -42,6 +42,6 @@ $plink --file rice_imputed --make-bed --out rice_imputed
 $plink --dog --file dogs_imputed --make-bed --out dogs_imputed
 
 
-## prepare data for GWAS (Arthur Korte)
+## prepare data for GWAS (0/1/2 coding)
 $plink --file rice_imputed --recode A --out rice_imputed
 $plink --dog --file dogs_imputed --recode A --out dogs_imputed
