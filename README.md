@@ -43,13 +43,13 @@ As a general rule, we'll have a longer break (30 minutes) at 16:00 and two short
     - [Brief Genotyping overview](slides/5_1_Genotyping.pdf)
     - [IDA, EDA & Data Pre-Processing](slides/5_2_Data_pre-processing.pdf)
 - Lab 4 GWAS: a first simple exercise for you! [Christian, Filippo]
-    - [GWAS demonstration in R - script]<!--(0.r_scripts/GWAS_demo.R)-->
-    - [GWAS demonstration in R - genotypes]<!--(example_data/genotypes_demo.csv)-->
-    - [GWAS demonstration in R - map]<!--(example_data/map_demo.csv)-->
-    - [GWAS demonstration in R - phenotypes]<!--(example_data/phenotypes_demo.csv)-->
-    - [GWAS exercise in R - genotypes]<!--(example_data/genotypes_fruit_sim.csv)-->
-    - [GWAS exercise in R - map]<!--(example_data/map_fruit_sim.csv)-->
-    - [GWAS exercise in R - phenotypes]<!--(example_data/phenotypes_fruit_sim.csv)-->
+    - [GWAS demonstration in R - script](0.r_scripts/GWAS_demo.R)
+    - [GWAS demonstration in R - genotypes](example_data/genotypes_demo.csv)
+    - [GWAS demonstration in R - map](example_data/map_demo.csv)
+    - [GWAS demonstration in R - phenotypes](example_data/phenotypes_demo.csv)
+    - [GWAS exercise in R - genotypes](example_data/genotypes_fruit_sim.csv)
+    - [GWAS exercise in R - map](example_data/map_fruit_sim.csv)
+    - [GWAS exercise in R - phenotypes](example_data/phenotypes_fruit_sim.csv)
 
 **Day 3**
 
@@ -70,11 +70,9 @@ As a general rule, we'll have a longer break (30 minutes) at 16:00 and two short
     - [02_knni.sh]<!--(3.imputation/02_knni.sh)--> [support script]
     - [hamming.R]<!--(3.imputation/hamming.R)--> [support script]
     - [knni.R]<!--(3.imputation/knni.R)--> [support script]
-- Lecture 7 Data Types & Formats
-    - [Common Data Types and Formats]<!--(slides/4_Data_types.pdf)-->
-- Lab 7 EDA & IDA and preprocessing with Plink [Christian]
-    - [Linux and the Shell]<!--(slides/3_Linux_intro.pdf)-->
-    - [Unix Cheatsheet]<!--(slides/Unix_cheatsheet.pdf)-->
+- Lecture 7 Working in the shell [Christian]
+    - [Linux and the Shell](slides/7_1_Linux_intro.pdf)
+    - [Common Data Types and Formats](slides/7_2_data_formats.pdf)
 - Lecture 8	Imputation of Missing Genotypes [Christian]
     - [Imputation]<!--(slides/8_Imputation.pdf)-->
 - Lab 8 Imputation of Missing Genotypes using Beagle [Christian]
