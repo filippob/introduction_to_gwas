@@ -8,27 +8,29 @@ BiocManager::install("biomaRt")
 library("plyr")
 library("biomaRt")
 library("ggplot2")
+library(RCurl)
 
 #############
 # PARAMETERS
 #############
 ensembl_dataset = "clfamiliaris_gene_ensembl"
 window = 100000 # number of bases to search upstream and downstream the SNP position
-input_file_name = "dogs_imputed.raw_cleft_lip_GWAS.results"
+
 
 ####################################################
 ## READ DATA AND FIND GENES CLOSE TO SNP (FROM GWAS)
 ####################################################
 ensembl=biomaRt::useMart("ensembl")
 datasets <- biomaRt::listDatasets(ensembl, verbose = TRUE) # show all the possible databases on Ensembl
-ensembl = biomaRt::useEnsembl(biomart="ensembl",dataset=ensembl_dataset)
+ensembl = biomaRt::useEnsembl(biomart="ensembl",dataset=ensembl_dataset,mirror="asia")
 
 ## listAttributes(ensembl) # show the attributes of the database
 attributes <- listAttributes(ensembl)  # show the attributes of the database
 
 ### READ DATA ##
 ## text file with snp name/id, chromosome, position (bps)
-results = read.table(input_file_name,sep=",",header=T,colClasses = c("character","integer","integer","numeric"))
+input_file_name <- getURL("https://raw.githubusercontent.com/filippob/introduction_to_gwas/master/example_data/dogs_imputed.raw_cleft_lip_GWAS.results")
+results = read.table(text=input_file_name,sep=",",header=T,colClasses = c("character","integer","integer","numeric"))
 rownames(results) <- results$SNP
 ##Calculate FDR and filter SNPs
 results$Padj<-p.adjust( results$P, method="fdr" )
@@ -64,8 +66,6 @@ for (snp_name in rownames(results)) {
 
 
 ## GET GENES
-
-
 #convert list to dataframe
 gwas_genes <- ldply(genes, function(x) {
     rbind.data.frame(x)
