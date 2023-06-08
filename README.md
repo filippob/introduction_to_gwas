@@ -74,7 +74,7 @@ As a general rule, we'll have a longer break (30 minutes) at 16:00 and two short
     - [Linux and the Shell](slides/7_1_Linux_intro.pdf)
     - [Common Data Types and Formats](slides/7_2_data_formats.pdf)
 - Lecture 8	Imputation of Missing Genotypes [Christian]
-    - [Imputation]<!--(slides/8_Imputation.pdf)-->
+    - [Imputation](slides/8_Imputation.pdf)
 - Lab 8 Imputation of Missing Genotypes using Beagle [Christian]
 
 
