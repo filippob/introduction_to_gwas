@@ -81,7 +81,7 @@ As a general rule, we'll have a longer break (30 minutes) at 16:00 and two short
 **Day 4**
 - Lecture 9 Brief Intermission:
     - [R code PCA & Population Structure](4.gwas/PCA_screeplots.R)
-    - [Imputed rice genotypes](4.gwas/rice_imputed.raw)
+    - [Imputed rice genotypes]<!--(4.gwas/rice_imputed.raw)-->
 - Lab 9 Revising the Steps involved in GWAS [Filippo]
     - [slides](slides/9.Revising_the_steps.pdf)
     - [1.get_data.sh](6.steps/1.get_data.sh)
