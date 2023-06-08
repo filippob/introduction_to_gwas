@@ -93,6 +93,7 @@ As a general rule, we'll have a longer break (30 minutes) at 16:00 and two short
 - Collaborative Exercise: let's build our own GWAS workflow on new data [Filippo, Oscar, Christian]
     - Part 1: Individual/Group Break-Out Sessions to give it a try independetly
     - Part 2: Whole-Group Revision of the Exercise
+    - [exercise solution: getting the data](8.collaborative_exercise/1.get_data.sh)
 - Lecture 10 Bioinformatics Pipelines: a super-elementary Introduction [Filippo]
     - [A bioinformatics pipeline for GWAS]<!--(slides/11_A_bioinformatic_pipeline_for_GWAS.pdf)-->
 - Lab 11 Building a Pipeline with Snakemake [Filippo]
