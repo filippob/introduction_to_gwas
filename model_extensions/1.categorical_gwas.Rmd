@@ -17,11 +17,10 @@ knitr::opts_chunk$set(echo = TRUE)
 ext_data_folder = "model_extensions_data"
 ```
 
-
 ## Categorical traits
 
-1. unordered categories $\rightarrow$ `multinomial logistic regression`
-2. ordered categories $\rightarrow$ `ordinal logistic regression`
+1.  unordered categories $\rightarrow$ `multinomial logistic regression`
+2.  ordered categories $\rightarrow$ `ordinal logistic regression`
 
 ## Multinomial logistic regression
 
@@ -35,14 +34,14 @@ $$
 log(\frac{P(Y=C)}{P(Y=A)}) = \beta_0 + \beta_1x_1 + \ldots + \beta_mx_m
 $$
 
-**Breast Tissue Dataset** (from: https://archive.ics.uci.edu/ml/datasets/Breast+Tissue)
+**Breast Tissue Dataset** (from: <https://archive.ics.uci.edu/ml/datasets/Breast+Tissue>)
 
-- 6 categories: three are grouped together $\rightarrow$ 4 categories:
-  - `adi`: adipose 
-  - `car`: carcinoma
-  - `con`: connective 
-  - `other`
-- 9 features: electrical impedance measurements of freshly excised tissue samples from the breast (all quantitative, continuous)
+-   6 categories: three are grouped together $\rightarrow$ 4 categories:
+    -   `adi`: adipose
+    -   `car`: carcinoma
+    -   `con`: connective
+    -   `other`
+-   9 features: electrical impedance measurements of freshly excised tissue samples from the breast (all quantitative, continuous)
 
 ```{r breast_data}
 # odata <- read_dta("https://stats.idre.ucla.edu/stat/data/ologit.dta")
@@ -53,6 +52,7 @@ tissue$Class <- as.factor(tissue$Class) ## convert classes to factor
 levels(tissue$Class)[levels(tissue$Class) %in% c("fad", "gla", "mas")] <- "other"
 levels(tissue$Class)
 ```
+
 Below, the barplot of the frequencies of breast tissue categories:
 
 ```{r labels, echo = FALSE}
@@ -62,14 +62,15 @@ p
 
 **Descriptive statistics**
 
-```{r descriptives, echo=FALSE}
-tissue %>%
-  select(-Class) %>%
-  gather(key = "variable", value = "value") %>%
-  group_by(variable) %>%
+```{r descriptives}
+dd <- tissue |>
+  select(-Class) |>
+  gather(key = "variable", value = "value") |>
+  group_by(variable) |>
   summarise(across(value, list(mean = mean, std = sd, min = min, max = max),
-                   .names = "{fn}")) %>%
-  kable()
+                   .names = "{fn}"))
+
+kable(dd)
 ```
 
 ### Fit the multinomial logistic regression model
@@ -82,12 +83,14 @@ library("nnet")
 tissue$Class <- relevel(tissue$Class, ref = "other")
 levels(tissue$Class)
 ```
+
 Let's first try to fit a *NULL* model (intercept only)
 
 ```{r, results='hide'}
 OIM <- multinom(Class ~ 1, data = tissue)
 summary(OIM)
 ```
+
 Let's now fit a **multinomial logistic regression model** with all the variables in the dataset:
 
 ```{r}
@@ -99,12 +102,14 @@ We see that we have different sets of coefficients for each class (the multiple 
 ```{r}
 summary(multinom_mod)
 ```
+
 The model coefficients can be interpreted as risk ratios (odds) relative to the reference class (for one unit increase of the independent variable):
 
 ```{r}
 coef_DR_car <- coef(multinom_mod)["car","DR"]
 exp(coef_DR_car)
 ```
+
 The **odds** (**relative risk**) for the tissue of being `carcinomatous` rather than `other` increase by 13.1 with one unit increase in the variable DR.
 
 #### p-values
@@ -115,8 +120,8 @@ $$
 W=\frac{(\hat{p}-p_0)^2}{Var(\hat{p})}
 $$
 
-- $p_0$: parameter value under $H_0$
-- $W$ is distributed as a `chi-square` random variable with 1 d.f. (this is equivalent to the square of a $N(0,1)$ random variable)
+-   $p_0$: parameter value under $H_0$
+-   $W$ is distributed as a `chi-square` random variable with 1 d.f. (this is equivalent to the square of a $N(0,1)$ random variable)
 
 ```{r}
 ## Wald test
@@ -134,12 +139,14 @@ z <- coefs/std_errs
 p <- (1 - pnorm(abs(z), 0, 1))*2
 p
 ```
+
 Instead of writing out all the steps on our own, we can use a R package (`AER`) to carry out the Wald test:
 
 ```{r, message=FALSE}
 library("AER")
 coeftest(multinom_mod)
 ```
+
 **Likelihood ratio test**
 
 As an alternative to the Wald test, we can use the (log)likelihood ratio test:
@@ -161,6 +168,7 @@ lrtest(multinom_mod,multinom_mod_red)
 ## alternatively, with the lrtest function we can specify the variable for which we want to run the LRT
 lrtest(multinom_mod, "P") 
 ```
+
 The function `anova` can also be used to compare models (as it is done in linear regression models):
 
 ```{r}
@@ -173,6 +181,7 @@ The R package `afex` allows to run multiple model comparisons on all the variabl
 library("afex")
 Anova(multinom_mod, type = "III")
 ```
+
 ### Adding a SNP effect
 
 In the **breast tissue** dataset we don't have any SNP data: we can add a fictitious (randomly sampled) SNP genotype column to the data, and see how we would use a **multinomial logistic regression model** to run a **GWAS** analysis for **unordered (nominal) categorical phenotypes**.
@@ -204,10 +213,10 @@ Ordinal Logistic Regression is used when there are three or more categories with
 
 Examples of ordinal responses could be:
 
-- Medical condition (e.g., good, stable, serious, critical)
-- Diseases can be graded on scales from least severe to most severe
-- Survey respondents choose answers on scales from strongly agree to strongly disagree
-- Students are graded on scales from A to F
+-   Medical condition (e.g., good, stable, serious, critical)
+-   Diseases can be graded on scales from least severe to most severe
+-   Survey respondents choose answers on scales from strongly agree to strongly disagree
+-   Students are graded on scales from A to F
 
 When response categories are ordered, the logits can utilize the ordering. You can modify the binary logistic regression model to incorporate the ordinal nature of a dependent variable by defining the probabilities differently.
 
@@ -225,8 +234,8 @@ Probit and logit models are reasonable choices when the changes in the cumulativ
 
 **proportional odds logistic regression**: highlights the proportional odds assumption in our model
 
-- $y$: ordinal outcome variable with $J$ categories
-- $P(y \leq j)$: cumulative probability of $y$ less (or equal) than a specific category $j$ ($j = 1, \ldots, J-1$)
+-   $y$: ordinal outcome variable with $J$ categories
+-   $P(y \leq j)$: cumulative probability of $y$ less (or equal) than a specific category $j$ ($j = 1, \ldots, J-1$)
 
 The **odds** of being lass than or equal to a specific category is:
 
@@ -234,8 +243,7 @@ $$
 \frac{P(y \leq j)}{P(y > j)}
 $$
 
-for $j = 1, \ldots, J-1$ (since $P>J = 0$, division by 0 is undefined).
-We can now take the **log(odds)** (the **logit**!):
+for $j = 1, \ldots, J-1$ (since $P>J = 0$, division by 0 is undefined). We can now take the **log(odds)** (the **logit**!):
 
 $$
 log\left( \frac{P(y \leq j)}{P(y > j)} \right) = logit(P(y \leq j)) = \beta_{j0} + \beta_1x_1 + \ldots + \beta_px_p
@@ -258,7 +266,7 @@ names(covid)[ncol(covid)] <- "disease_score"
 table(covid$disease_score) ## remove 0 and 7, too few
 ```
 
-We remove categories `0' and `7` because there are too few observations; then we recode the categories from 1 to 4
+We remove categories `0' and`7\` because there are too few observations; then we recode the categories from 1 to 4
 
 ```{r}
 covid <- covid %>%
@@ -298,12 +306,12 @@ By exponentiating model coefficients (on the logit scale), we get the **odds** (
 coefs <- coef(OLRmodel)
 exp(coefs) ## odds
 ```
+
 #### p-values
 
 As usual, there are multiple ways to get `p-values` from generalised linear models (GLMs):
 
-1. **Wald test**
-
+1.  **Wald test**
 
 ```{r}
 OLRestimates <- coef(summary(OLRmodel))
@@ -324,7 +332,7 @@ kable(p)
 # coeftest(OLRmodel)
 ```
 
-2. **likelihood ratio test**
+2.  **likelihood ratio test**
 
 ```{r}
 names(covid)[ncol(covid)-1] <- "peak_o2"
@@ -374,4 +382,3 @@ chisq_stats = (coefs^2)/(std_errs^2)
 p <- 1-pchisq(q = chisq_stats, df = 1)
 print(p)
 ```
-

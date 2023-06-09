@@ -18,11 +18,11 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ### sheep data
 
-Data from: "**Genome‐wide association reveals the locus responsible for four‐horned ruminant**", *Kijas et al.*, (2016) [https://onlinelibrary.wiley.com/doi/full/10.1111/age.12409]
+Data from: "**Genome‐wide association reveals the locus responsible for four‐horned ruminant**", *Kijas et al.*, (2016) [<https://onlinelibrary.wiley.com/doi/full/10.1111/age.12409>]
 
-- `0`: polled (no horns)
-- `1`: two horns
-- `2`: four horns
+-   `0`: polled (no horns)
+-   `1`: two horns
+-   `2`: four horns
 
 ```{r sheep}
 sheep <- fread("../model_extensions_data/sheep_reduced.raw")
@@ -33,12 +33,12 @@ sheep$breed <- phenotypes$Breed[match(sheep$IID,phenotypes$IID)]
 sheep$phenotype <- factor(sheep$phenotype)
 ```
 
-
 ```{r distribution, echo=FALSE}
 p <- ggplot(sheep, aes(x = phenotype)) + geom_bar(aes(fill=phenotype))
 p <- p + facet_wrap(~breed)
 p
 ```
+
 #### A little preprocessing
 
 ```{r}
@@ -69,6 +69,7 @@ sheep <- sheep[,vec,with=FALSE]
 ### Fit the ordered logistic regression model
 
 ```{r}
+
 dataset <- sheep[,c("phenotype","breed")]
 snps <- dplyr::select(sheep, -c(phenotype,breed))
 
@@ -94,10 +95,7 @@ snp_map <- dplyr::select(snp_map, -cM)
 results <- results %>% inner_join(snp_map, by = "SNP") %>% dplyr::select(SNP,CHR,BP,P)
 ```
 
-
 ```{r}
 library("qqman")
 manhattan(results, suggestiveline = FALSE, col = c("red","blue"), logp = TRUE)
 ```
-
-
