@@ -94,12 +94,6 @@ As a general rule, we'll have a longer break (30 minutes) at 16:00 and two short
     - Part 1: Individual/Group Break-Out Sessions to give it a try independetly
     - Part 2: Whole-Group Revision of the Exercise
     - [exercise solution: getting the data](8.collaborative_exercise/1.get_data.sh)
-- Lecture 10 Bioinformatics Pipelines: a super-elementary Introduction [Filippo]
-    - [A bioinformatics pipeline for GWAS]<!--(slides/11_A_bioinformatic_pipeline_for_GWAS.pdf)-->
-- Lab 11 Building a Pipeline with Snakemake [Filippo]
-- Lab 12 The GWAS pipeline for Continuous Phenotypes [Filippo]
-    - Plug-In for Mean or KNN Imputation
-    - The GWAS pipeline for Binary Phenotypes (Guided Exercise) [Filippo]
     
 **Day 5**
 
@@ -109,13 +103,15 @@ As a general rule, we'll have a longer break (30 minutes) at 16:00 and two short
 - Lecture 12 GWAS Model Extensions: [Filippo]
     - [12.1 GWAS Model Extensions_Dominance_and_other_genotype_Codifications]<!--(slides/12.1.GWAS_model_extensions_genotype_codification.pdf)-->
     - [12.2 GWAS Model Extensions_Polyploids]<!--(slides/12_2_GWAS_model_extensions_polyploids.pdf)-->
-    - [12.3 GWAS Model Extensions_Trait_Types]<!--(slides/13.3_GWAS_model_extensions_trait_type.pdf)-->
-    - [12.4 GWAS Model Extensions_Multi-Trait-Locus, software]<!--(slides/13.4.GWAS_model_extensions_multi_trait_and_locus.pdf)-->
+    - [12.3 GWAS Model Extensions_Trait_Types]<!--(slides/12.3_GWAS_model_extensions_trait_type.pdf)-->
+    - [12.4 GWAS Model Extensions_Multi-Trait-Locus, software]<!--(slides/12.4.GWAS_model_extensions_multi_trait_and_locus.pdf)-->
+    - [12.5 A bioinformatic pipeline for GWAS]<!--(slides/12.5_A_bioinformatic_pipeline_for_GWAS.pdf)-->
     - [R code GWASpoly (vignette)]<!--(slides/GWASpoly_vignette.pdf)-->
     - [R code GWAS for categorical Traits]<!--(model_extensions/1.categorical_gwas.Rmd)-->
     - [R code GWAS for categorical Traits - Examples]<!--(model_extensions/2.categorical_gwas_example.Rmd)-->
     - [R code GWAS for longitudinal Traits]<!--(model_extensions/3.longitudinal_gwas.Rmd)-->
     - [R code GWAS for multi-trait and multi-locus Models]
+    - [Snakemake pipeline for continuous phenotypes]<!--(model_extensions/3.longitudinal_gwas.Rmd)-->
 
 <!-- - Lecture 13 A Glimpse on ROH-based Alternative [Filippo, optional]
     - [ROH-based and Resampling Methods as alternative Approaches]
