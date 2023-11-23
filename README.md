@@ -64,7 +64,7 @@ As a general rule, we'll have a longer break (30 minutes) at 16:00 and two short
 - Lecture 6 KNN Imputation 
     - [KNN Imputation](slides/6.KNN_imputation.pdf)
 - Lab 6 (Demonstration) KNNI Imputation [Filippo]
-    - [knni_illustration.Rmd]<!--(3.imputation/knni_illustration.Rmd)-->
+    - [knni_illustration.Rmd](3.imputation/knni_illustration.Rmd)
     - [data_for_KNNI_illustration]<!--(model_extensions_data/GenRiz44.txt)-->
     - [knni_tidymodels.R](3.imputation/knni_tidymodels.R)
     - [02_knni.sh]<!--(3.imputation/02_knni.sh)--> [support script]
