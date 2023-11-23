@@ -123,10 +123,17 @@ All real missing data are edited out of the dataset. This leaves `r nrow(M)` SNP
 df <- M %>% as_tibble() %>% rowwise()
 M <- df %>% mutate(m = sd(c_across(everything()))) %>% filter(m > 0) ## remove monomorphic SNP
 rm(df)
+print(paste("n. of SNPs after filtering:",nrow(M)))
+```
 
-M <- M %>% select(-m) %>% as.matrix()
-vec <- sample(x = nrow(M), size = 100)
-Mreduced <- t(M[vec,])
+```{r}
+## setting seed
+seed = 777
+set.seed(seed)
+
+matrix_M <- M %>% select(-m) %>% as.matrix()
+vec <- sample(x = nrow(matrix_M), size = 100)
+Mreduced <- t(matrix_M[vec,])
 print(Mreduced[1:10,1:12])
 ```
 
@@ -154,14 +161,14 @@ The actual missing rate is `r actualMissingRate`.
 
 We'll now impute missing genotypes using the **tidymodels** *R package*. In this package there is the *step_impute_knn()* function, which uses by default the *Gower distance*, and allows the user to specify the number of neighbors $K$. The measure of \`\`probability'' of belonging to any given class is the **average** (continuous variables) or the **mode** (**majority vote**, categorical variables).
 
-```{r, warning=FALSE, message=FALSE}
+```{r, warning=TRUE, message=FALSE}
 missing_data <- as.data.frame(injected_data)
 
 rec <- recipe(missing_data) %>% 
   update_role(all_numeric(), new_role = "predictor")
 
 ratio_recipe <- rec %>%
-  step_impute_knn(all_predictors(), neighbors = 9)
+  step_impute_knn(all_predictors(), neighbors = 3)
 
 ratio_recipe2 <- prep(ratio_recipe, training = missing_data, verbose = FALSE)
 imputed = juice(ratio_recipe2)
@@ -172,6 +179,25 @@ print(accuracy)
 ```
 
 [The accuracy of imputation with the R function *step_impute_knn()* from the *tidymodels* package is: <strong> `r accuracy`</strong>]{style="background-color:yellow"}
+
+Comparison with **mean imputation** on the same data below:
+
+```{r label='mean_imputation', warning=TRUE, message=FALSE}
+missing_data <- as.data.frame(injected_data)
+
+rec <- recipe(missing_data) %>% 
+  update_role(all_numeric(), new_role = "predictor")
+
+ratio_recipe <- rec %>%
+  step_impute_mean(all_predictors())
+
+ratio_recipe2 <- prep(ratio_recipe, training = missing_data, verbose = FALSE)
+imputed = juice(ratio_recipe2)
+
+results <- round(imputed[is.na(missing_map)])==Mreduced[is.na(missing_map)]
+accuracy <- length(results[results==TRUE])/length(results)
+print(accuracy)
+```
 
 ## STEP-BY-STEP KNNI IMPLEMENTATION [optional]
 
