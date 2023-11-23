@@ -113,7 +113,7 @@ As a general rule, we'll have a longer break (30 minutes) at 16:00 and two short
     - [R code GWAS for multi-trait and multi-locus Models]
     - [Snakemake pipeline for continuous phenotypes]<!--(model_extensions/3.longitudinal_gwas.Rmd)-->
 
-- Lecture 13 Optional sessions
+- Lecture 13 Optional sessions [Filippo, Christian, Oscar]
     - [ROH-based and Resampling Methods as alternative approaches]()
     - [Other gene actions](slides/13.1.GWAS_model_extensions_genotype_codification.pdf)
     - [Applications of GWAS: Mendelian Randomization]()
