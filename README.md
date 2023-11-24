@@ -90,10 +90,12 @@ As a general rule, we'll have a longer break (30 minutes) at 16:00 and two short
     - [4.gwas.sh](6.steps/4.gwas.sh)
 - Lab 10 Introducing the Exercise [Filippo]
     - [Collaborative Exercise](slides/9.1.Collaborative_exercise.pdf)
-- Collaborative Exercise: let's build our own GWAS workflow on new data [Filippo, Oscar, Christian]
+- Collaborative Exercise: let's build our own GWAS workflow on new data. Pig (*Sus scrofa*) data. [Filippo, Oscar, Christian]
     - Part 1: Individual/Group Break-Out Sessions to give it a try independetly
-    - Part 2: Whole-Group Revision of the Exercise
-    - [exercise solution: getting the data](8.collaborative_exercise/1.get_data.sh)
+    - Part 2: Whole-Group Revision of the Exercise: step-by-step (1.get_data; 2.filter; 3.imputation; 4.GWAS)
+    - [exercise solutions: 1.getting the data](8.collaborative_exercise/1.get_data.sh)
+    - ...
+- Bonus exercise (*Parus major* data) 
     
 **Day 5**
 
