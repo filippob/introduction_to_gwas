@@ -1,9 +1,11 @@
 
 ### Library
-library("data.table")
-library("factoextra")
-library("rrBLUP")
-library("tidyverse")
+library(data.table)
+library(factoextra)
+library(plyr)
+library(rrBLUP)
+library(ggplot2)
+library(plotly)
 
 ### Genoype marker matrix
 genotypes <- fread(file = "../3.imputation/rice_imputed.raw")
@@ -23,8 +25,13 @@ grm <- A.mat(genotypes)
 ## captured in the genomic relationship matrix.
 heatmap(grm,labRow = FALSE, labCol = FALSE, col=rev(heat.colors(75)))
 
-### Principal Component Analysis
-pca <- prcomp(grm, scale = TRUE, center = TRUE)
+
+
+##### PCA - 2 Options #####
+
+### 1. Principal Component Analysis using the transpose of the genotype matrix.
+### Function prcomp creates the covariance matrix. However, this is NOT the GRM!
+pca <- prcomp(t(genotypes), center = TRUE, scale = TRUE)  # scaling required if covariates have different units.
 
 ### Extract eigenvalues from PCA
 eigenvalues <- pca$sdev^2
@@ -38,16 +45,43 @@ for(i in 1:8){
   print(paste0("Var explained by first ", i, " PCs: ", round(sum(varExp), 2), "%"))
 }
 
+### 1. Principal Component Analysis on GRM using single value decomposition ###
+svd <- svd(grm)
+
+### Extract eigenvalues and eigenvectors
+eigenvalues <- svd$d
+eigenvectors <- svd$u
+
+### Variances explained by first 8 principal components, respectively
+var_explained <- round((eigenvalues/sum(eigenvalues)*100), 2)[1:8]
+var_explained
+
+### Total variance explained by the first 1 - 8 principal components
+for(i in 1:8){
+  varExp <- (var_explained)[1:i]
+  print(paste0("Var explained by first ", i, " PCs: ", round(sum(varExp), 2), "%"))
+}
+
+
 ### Scree plot
-fviz_eig(pca, ncp = 8)
+var_df <- data.frame(PC = c(1:8),
+                     Var = var_explained)
 
-### Extract first 3 principal components which explain ~80% of the total variance
-pc <- pca$rotation[,1:3]
+var_df %>%
+  ggplot(aes(x=PC,y=var_explained, group=1))+
+  geom_point(size=2)+
+  geom_line()+
+  xlab("Principal Component") + 
+  ylab("Variance explained (%)") +
+  ggtitle("Scree Plot") +
+  ylim(0, round_any(var_explained[1], 10, f = ceiling))
+
+### Extract first 3 principal components which explain ~40% of the total variance
+pc <- eigenvectors[,1:3]
 
 
-### K-means clustering and comparison of within-cluster sum of squares
+### K-means clustering based on first 4 PC's and comparison of within-cluster sum of squares
 ### to identify sub-populations (eyeball method)
-
 clusters <- 15 # max. number of clusters to compare
 withinSS <- data.frame(nClusters = seq(1:clusters),
                        wss = NA)
@@ -64,28 +98,29 @@ withinSS %>%
   labs(title="Scree plot: within-cluster sum of squares")
 
 
-# K-means clusters showing the group of each individual
+# K-means clusters showing the group of each individual.
+# Number of clusters is set to 4 based on heatmap and scree plot results.
 kCluster <- kmeans(pc, 4, nstart = 25)
 kCluster$cluster
 
 ### Clusters based on first 2 principal components
-fviz_cluster(kCluster, data = pc[, 1:2],
-             #palette = c("#2E9FDF", "#00AFBB", "#E7B800"), 
+pc_df <- as.data.frame(pc)[1:3]
+colnames(pc_df) <- paste0("PC", 1:3)
+
+fviz_cluster(kCluster, data = pc_df[, 1:2],
              geom = "point",
              ellipse = FALSE,
-             #ellipse.type = "convex", 
              ggtheme = theme_bw()
 )
 
 
 ################# 3D PLOT ########################
-pc_3 <- as.data.frame(pc)
-pc_3$cluster <- as.factor(kCluster$cluster)
+pc_3D <- pc_df
+pc_3D$cluster <- as.factor(kCluster$cluster)
 
 ## 3D plot
-library("plotly")
 
-p <- plot_ly(data = pc_3, 
+p <- plot_ly(data = pc_3D, 
              x = ~PC1, y = ~PC2, z = ~PC3,
              type = "scatter3d",
              color = ~cluster) %>%
