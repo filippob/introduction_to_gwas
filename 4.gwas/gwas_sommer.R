@@ -5,7 +5,7 @@
 
 library("qqman")
 library("sommer")
-library("tidyverse")
+library("dplyr")
 library("data.table")
 
 trim <- function (x) gsub("^\\s+|\\s+$", "", x)
@@ -42,12 +42,12 @@ for (p in args){
   stop(paste('bad parameter:', pieces[1]))
 }
 
-# genotype_file = "introduction_to_gwas/3.imputation/rice_imputed.raw"
-# snp_map = "introduction_to_gwas/3.imputation/rice_imputed.map"
-# phenotype_file = "introduction_to_gwas/data/rice_phenotypes.txt"
-# trait = "PH"
-# trait_label = "plant_height"
-# covariates="population"
+# genotype_file = "8.collaborative_exercise/bonus_exercise/parus_imputed.raw"
+# snp_map = "8.collaborative_exercise/bonus_exercise/parus_imputed.map"
+# phenotype_file = "8.collaborative_exercise/bonus_exercise/data/parus_phenotypes.txt"
+# trait = "egg"
+# trait_label = "egg"
+# covariates="altitude"
 
 print(paste("genotype file name:",genotype_file))
 print(paste("SNP map:",snp_map))
@@ -108,7 +108,7 @@ dev.off()
 ###################
 ## Running the GWAS
 ###################
-phenotypes <- phenotypes %>% dplyr::rename(phenotype = !!as.name(trait))
+phenotypes <- phenotypes %>% dplyr::rename(phenotype = !!as.name(trait)) |> mutate(id = as.character(id))
 
 fmod <- as.formula(
   paste("phenotype",
@@ -116,7 +116,7 @@ fmod <- as.formula(
         sep = " ~ "))
 
 mix_mod <- GWAS(fmod,
-                random = ~vs(id, Gu=K),
+                random = ~vsr(id, Gu=K),
                 rcov = ~units,
                 data = phenotypes,
                 M = X,

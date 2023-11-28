@@ -8,7 +8,7 @@ library("qqman")
 library("lmtest")
 library("gMatrix")
 library("ggfortify")
-library("tidyverse")
+library("dplyr")
 library("data.table")
 
 print("GWAS using GLM for binary traits")

@@ -7,7 +7,7 @@
 memory.limit(size = 8000)
 
 library("R.utils")
-library("tidyverse")
+library("dplyr")
 library("data.table")
 library("statgenGWAS")
 
