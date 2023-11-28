@@ -2,7 +2,7 @@
 library("tidyverse")
 library("data.table")
 
-prjfolder = "~/Dropbox/cursos/gwas_2023"
+prjfolder = "~/Dropbox/cursos/gwas_2023_2"
 repo = "introduction_to_gwas"
 
 ## PARAMETERS
