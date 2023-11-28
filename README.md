@@ -14,7 +14,7 @@ As a general rule, we'll have a longer break (30 minutes) at 16:00 and two short
 **Day 1**
 
 - Lecture 0	General Introduction / Overview of the Course [Filippo, Oscar, Christian]
-    - [General Introduction](slides/0_General_introduction.pdf)
+    - [General Introduction](slides/0_General_Introduction.pdf)
     - [GWAS Workflow (short)](slides/GWAS_workflow_short.pdf)
 - Lecture 1	GWAS Overview: Case Studies / Examples from Literature [Oscar]
     - [GWAS Overview](slides/1_GWAS_overview.pdf)
@@ -23,9 +23,7 @@ As a general rule, we'll have a longer break (30 minutes) at 16:00 and two short
 - Lab 1 (Demonstration) GWAS: Basic Models (Linear and Logistic Regression) [Oscar]
     - [R code. Exercise on Simple Linear Regression](basic_model/1.Basis_of_linear_regression.R)
     - [Rmarkdown Code. Exercise on Simple Logistic Regression](basic_model/2.exercise.Basis_of_logistic_regression.Rmd)
-- Lab 2 - Tidyverse Introduction [Christian]
-    - [Tidyverse intro (pdf)](slides/Tidyverse_Intro.pdf)
-- Lab 3 - Description of Datasets [Christian]
+- Lab 2 - Description of Datasets [Christian]
     - [Description of Datasets](slides/Description_of_data.pdf)
  - [Course Manual](slides/gwas_manual.pdf)
  - [GWAS Workflow](slides/GWAS_workflow.pdf)
@@ -42,7 +40,7 @@ As a general rule, we'll have a longer break (30 minutes) at 16:00 and two short
 - Lecture 5 Initial Data Analysis, Exploratory Data Analysis and Data Pre-Processing [Christian]
     - [Brief Genotyping overview](slides/5_1_Genotyping.pdf)
     - [IDA, EDA & Data Pre-Processing](slides/5_2_Data_pre-processing.pdf)
-- Lab 4 GWAS: a first simple exercise for you! [Christian, Filippo]
+- Lab 3 GWAS: a first simple exercise for you! [Christian, Filippo]
     - [GWAS demonstration in R - script](0.r_scripts/GWAS_demo.R)
     - [GWAS demonstration in R - genotypes](example_data/genotypes_demo.csv)
     - [GWAS demonstration in R - map](example_data/map_demo.csv)
@@ -75,20 +73,20 @@ As a general rule, we'll have a longer break (30 minutes) at 16:00 and two short
     - [Common Data Types and Formats](slides/7_2_data_formats.pdf)
 - Lecture 8	Imputation of Missing Genotypes [Christian]
     - [Imputation](slides/8_Imputation.pdf)
-- Lab 8 Imputation of Missing Genotypes using Beagle [Christian]
+- Lab 7 Imputation of Missing Genotypes using Beagle [Christian]
 
 
 **Day 4**
 - Lecture 9 Brief Intermission:
     - [R code PCA & Population Structure](4.gwas/PCA_screeplots.R)
     - [Imputed rice genotypes]<!--(4.gwas/rice_imputed.raw)-->
-- Lab 9 Revising the Steps involved in GWAS [Filippo]
+- Lab 8 Revising the Steps involved in GWAS [Filippo]
     - [slides](slides/9.Revising_the_steps.pdf)
     - [1.get_data.sh](6.steps/1.get_data.sh)
     - [2.step_filtering.sh](6.steps/2.step_filtering.sh)
     - [3.step_imputation.sh](6.steps/3.step_imputation.sh)
     - [4.gwas.sh](6.steps/4.gwas.sh)
-- Lab 10 Introducing the Exercise [Filippo]
+- Lab 9 Introducing the Exercise [Filippo]
     - [Collaborative Exercise](slides/9.1.Collaborative_exercise.pdf)
 - Collaborative Exercise: let's build our own GWAS workflow on new data. Pig (*Sus scrofa*) data. [Filippo, Oscar, Christian]
     - Part 1: Individual/Group Break-Out Sessions to give it a try independetly
@@ -99,10 +97,10 @@ As a general rule, we'll have a longer break (30 minutes) at 16:00 and two short
     
 **Day 5**
 
-- Lecture 11 A light Touch on Post-GWAS Analysis: Inferring Functionality [Oscar]
+- Lecture 10 A light Touch on Post-GWAS Analysis: Inferring Functionality [Oscar]
     - [slides](slides/Functional_Analysis.pdf)
     - [R code. Exercise on R, and FUMA](functional_analysis/getGenesFromSNP.R)
-- Lecture 12 GWAS Model Extensions: [Filippo]
+- Lecture 11 GWAS Model Extensions: [Filippo]
     - [12.1 GWAS Model Extensions_Dominance_and_other_genotype_Codifications]<!--(slides/12.1.GWAS_model_extensions_genotype_codification.pdf)-->
     - [12.2 GWAS Model Extensions_Polyploids]<!--(slides/12_2_GWAS_model_extensions_polyploids.pdf)-->
     - [12.3 GWAS Model Extensions_Trait_Types](slides/12.3.GWAS_model_extensions_trait_type.pdf)
@@ -115,7 +113,7 @@ As a general rule, we'll have a longer break (30 minutes) at 16:00 and two short
     - [R code GWAS for multi-trait and multi-locus Models]
     - [Snakemake pipeline for continuous phenotypes]<!--(model_extensions/3.longitudinal_gwas.Rmd)-->
 
-- Lecture 13 Optional sessions [Filippo, Christian, Oscar]
+- Lecture 12 Optional sessions [Filippo, Christian, Oscar]
     - [ROH-based and Resampling Methods as alternative approaches]()
     - [Other gene actions](slides/13.1.GWAS_model_extensions_genotype_codification.pdf)
     - [Applications of GWAS: Mendelian Randomization]()

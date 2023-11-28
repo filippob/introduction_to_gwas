@@ -12,7 +12,7 @@ genotypes <- read.csv("genotypes_demo.csv", header = TRUE, check.names = FALSE)
 str(genotypes)
 dim(genotypes) # 187 individuals genotypes with 3500 SNP
 genotypes[1:5, 1:5] # 0, 1, 2, -9 coding
-
+unique(unlist(genotypes))
 
 ## Marker map - chromosome and location for each SNP
 map <- read.csv("map_demo.csv", header = TRUE, check.names = FALSE)
@@ -69,6 +69,7 @@ rm_snp <- 1 - rm_snp
 length(which(rm_snp < 0.85)) # number of SNP with less than 85% SNP calls.
 rm_snp <- (which(rm_snp < 0.85))
 
+
 ### Remove SNP from the genotypes AND the map object.
 dim(genotypes)
 dim(map)
@@ -118,7 +119,6 @@ mac_B <- which(mac_snp > (2 * nrow(genotypes) - mac))
 rm_snp_mac <- c(mac_A, mac_B)
 
 
-### Remove SNP from the genotypes AND the map object.
 ### Remove SNP from the genotypes AND the map object.
 dim(genotypes)
 dim(map)
