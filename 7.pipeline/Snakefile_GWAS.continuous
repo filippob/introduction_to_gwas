@@ -1,5 +1,5 @@
 #PLINK='/home/filippo/Downloads/plink'
-#BEAGLE='<path to beagle>'
+#BEAGLE=''
 PLINK='plink'
 BEAGLE='beagle'
 SPECIES='rice'
@@ -34,7 +34,7 @@ rule filter_genotypes:
 rule ped2vcf:
     input:
         "steps/rice_filtered.ped",
-	"steps/rice_filtered.map"
+        "steps/rice_filtered.map"
     output:
         "steps/rice_filtered.vcf"
     shell:
@@ -52,8 +52,8 @@ rule vcf2ped:
     input:
         "steps/rice_imputed.vcf.gz"
     output:
-        "steps/rice_imputed.ped",
-	"steps/rice_imputed.map"
+        "steps/rice_imputed.ped",	
+        "steps/rice_imputed.map"
     shell:
         "{PLINK} --vcf steps/rice_imputed.vcf.gz --recode --out steps/rice_imputed"
 
