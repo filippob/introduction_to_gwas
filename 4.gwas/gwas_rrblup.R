@@ -40,11 +40,11 @@ for (p in args){
   stop(paste('bad parameter:', pieces[1]))
 }
 
-# genotype_file = "example_data/rice_mean_imputed.raw"
-# snp_map = "example_data/rice_mean_imputed.map"
-# phenotype_file = "example_data/rice_phenotypes.txt"
-# trait = "phenotype"
-# trait_label = "PH"
+genotype_file = "../example_data/rice_mean_imputed.raw"
+snp_map = "../example_data/rice_mean_imputed.map"
+phenotype_file = "../example_data/rice_phenotypes.txt"
+trait = "phenotype"
+trait_label = "PH"
 
 # gwidethre = "bonferroni"
 gwidethre = ""
