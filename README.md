@@ -87,7 +87,7 @@ As a general rule, we'll have a longer break (30 minutes) at 16:00 and two short
     - [3.step_imputation.sh](6.steps/3.step_imputation.sh)
     - [4.gwas.sh](6.steps/4.gwas.sh)
 - Lab 9 Introducing the Exercise [Filippo]
-    - [Collaborative Exercise](slides/9.1.Collaborative_exercise.pdf)
+    - [Collaborative Exercise](<slides/9.1.Collaborative exercise.pdf>)
 - Collaborative Exercise: let's build our own GWAS workflow on new data. Pig (*Sus scrofa*) data. [Filippo, Oscar, Christian]
     - Part 1: Individual/Group Break-Out Sessions to give it a try independetly
     - Part 2: Whole-Group Revision of the Exercise: step-by-step (1.get_data; 2.filter; 3.imputation; 4.GWAS)
