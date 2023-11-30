@@ -77,6 +77,7 @@ gwas_genes <- do.call(rbind,genes)$external_gene_name
 
 View(gwas_genes)
 gwas_genes <-unique(gwas_genes)
+gwas_genes<-gwas_genes[!is.na(gwas_genes) & gwas_genes!=""]
 
 ## write out file
 write.table(gwas_genes,file = "gwas_genesCfamiliaris.csv", sep = ",", col.names = FALSE,row.names = FALSE, quote=FALSE)
