@@ -79,9 +79,9 @@ As a general rule, we'll have a longer break (30 minutes) at 16:00 and two short
 **Day 4**
 - Lecture 9 Brief Intermission:
     - [R code PCA & Population Structure](4.gwas/PCA_screeplots.R)
-    - [Imputed rice genotypes]<!--(4.gwas/rice_imputed.raw)-->
+    - [Imputed rice genotypes](4.gwas/rice_imputed.raw)
 - Lab 8 Revising the Steps involved in GWAS [Filippo]
-    - [slides](slides/9.Revising_the_steps.pdf)
+    - [slides](<slides/9.Revising the steps.pdf>)
     - [1.get_data.sh](6.steps/1.get_data.sh)
     - [2.step_filtering.sh](6.steps/2.step_filtering.sh)
     - [3.step_imputation.sh](6.steps/3.step_imputation.sh)
@@ -98,7 +98,7 @@ As a general rule, we'll have a longer break (30 minutes) at 16:00 and two short
 **Day 5**
 
 - Lecture 10 A light Touch on Post-GWAS Analysis: Inferring Functionality [Oscar]
-    - [slides](<slides/11.Exploring Functionality with FUMA & DAVID.pdf>)
+    - [slides](slides/11.Exploring_Functionality_with_FUMA_DAVID.pdf)
     - [R code. Exercise on R, and FUMA](functional_analysis/getGenesFromSNP.R)
 - Lecture 11 GWAS Model Extensions: [Filippo]
     - [12.1 GWAS Model Extensions_Dominance_and_other_genotype_Codifications]<!--(slides/12.1.GWAS_model_extensions_genotype_codification.pdf)-->

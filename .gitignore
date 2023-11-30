@@ -60,7 +60,7 @@ temp/*
 */*.gz
 */*.tped
 */*.tfam
-*/*.raw
+
 */*.hwe
 */*.frq
 */*.lmiss
