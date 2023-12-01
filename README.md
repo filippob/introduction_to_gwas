@@ -115,7 +115,6 @@ As a general rule, we'll have a longer break (30 minutes) at 16:00 and two short
 
 - Lecture 12 Optional sessions [Filippo, Christian, Oscar]
     - [ROH-based and Resampling Methods as alternative approaches]()
-    - [Other gene actions](slides/13.1.GWAS_model_extensions_genotype_codification.pdf)
     - [Applications of GWAS: Mendelian Randomization]()
 
 - Final Quiz on what we learned about GWAS! [Filippo, Oscar, Christian]
