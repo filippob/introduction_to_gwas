@@ -114,7 +114,7 @@ As a general rule, we'll have a longer break (30 minutes) at 16:00 and two short
 
 - Lecture 12 Optional sessions [Filippo, Christian, Oscar]
     - [ROH-based and Resampling Methods as alternative approaches]()
-    - [Applications of GWAS: Mendelian Randomization](<15. \[optional\] Applications of GWAS_ Mendelian Randomization.pdf>)
+    - [Applications of GWAS: Mendelian Randomization](<15.Applications of GWAS_ Mendelian Randomization.pdf>)
 
 - Final Quiz on what we learned about GWAS! [Filippo, Oscar, Christian]
 - Conclusions and Wrap-Up Discussion on GWAS [Filippo, Oscar, Christian]
