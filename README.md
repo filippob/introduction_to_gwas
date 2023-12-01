@@ -92,7 +92,6 @@ As a general rule, we'll have a longer break (30 minutes) at 16:00 and two short
     - Part 1: Individual/Group Break-Out Sessions to give it a try independetly
     - Part 2: Whole-Group Revision of the Exercise: step-by-step (1.get_data; 2.filter; 3.imputation; 4.GWAS)
     - [exercise solutions](8.collaborative_exercise/)
-    - ...
 - Bonus exercise [Optional] (*Parus major* data) 
     
 **Day 5**
