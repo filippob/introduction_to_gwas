@@ -4,10 +4,10 @@
 
 ## set paths to executables
 ## PARAMETERS
-#plink=plink
-plink=~/Downloads/plink
+plink=plink
+#plink=~/Downloads/plink
 beagle=beagle
-beagle=~/Documents/software/beagle5/beagle.28Sep18.793.jar
+#beagle=~/Documents/software/beagle5/beagle.28Sep18.793.jar
 
 ## YOUR CODE HERE
 #Imputation

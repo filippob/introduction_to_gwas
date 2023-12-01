@@ -4,8 +4,7 @@
 ###################################
 
 ## set resources
-# plink=plink
-plink=~/Downloads/plink
+plink=plink
 
 ## Download pig data
 ## download from: http://www.jackdellequerce.com/data/GWAS_cohort.tar.gz
