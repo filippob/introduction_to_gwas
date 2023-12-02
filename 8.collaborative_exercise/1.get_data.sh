@@ -15,21 +15,12 @@ echo "Downloading pigs data ..."
 
 cd data
 
-wget http://www.jackdellequerce.com/data/GWAS_cohort.tar.gz
-
-tar -xvzf GWAS_cohort.tar.gz
-
-#create ped and map files
-$plink --bfile GWAS_cohort --recode --tab --out GWAS_cohort
-
-#remove underscore from ped file
-sed -i 's/\_//g' GWAS_cohort.ped
-
-#subset original ped and map files
-$plink --file GWAS_cohort --chr 10,11,12 --double-id --recode --out pigs
-
-
 ### YOUR CODE HERE !! ###
+
+# download data
+# uncompress
+# recode/rename (if needed)
+# manipulate/preprocess if needed
 
 
 echo "DONE!"
