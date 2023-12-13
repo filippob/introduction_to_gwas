@@ -70,7 +70,7 @@ As a general rule, we'll have a longer break (30 minutes) at 16:00 and two short
     - [knni.R]<!--(3.imputation/knni.R)--> [support script]
 - Lecture 7 Working in the shell [Christian]
     - [Linux and the Shell](<slides/7.1.Linux and the Shell.pdf>)
-    - [Common Data Types and Formats](slides/7_2_data_formats.pdf)
+    - [Common Data Types and Formats](<slides/7.2 Data_formats.pdf>)
 - Lecture 8	Imputation of Missing Genotypes [Christian]
     - [Imputation](slides/8_Imputation.pdf)
 - Lab 7 Imputation of Missing Genotypes using Beagle [Christian]
