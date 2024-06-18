@@ -1,50 +1,61 @@
+# # A first GWAS demonstration
 
-library("rrBLUP")
 library("qqman")
+library("rrBLUP")
 
+# Let's set a basefolder to be able to read in data from external files in a platform-independent way:
 
-##############################################
-### I. READ IN GENOTYPE AND PHENOTYPE DATA ###
-##############################################
+basefolder = "/home/filippo/Dropbox/cursos/gwas_2024/introduction_to_gwas"
+
+# ---
+# ## SECTION I: READ IN GENOTYPE AND PHENOTYPE DATA 
+#
+# ### 1 Genotypes
+#
+# Let's read an example genotype data file:
 
 ## Genotypes
-genotypes <- read.csv("genotypes_demo.csv", header = TRUE, check.names = FALSE)
-str(genotypes)
+genotypes <- read.csv(file.path(basefolder, "example_data/genotypes_demo.csv"), header = TRUE, check.names = FALSE)
+str(genotypes) ## str() displays the internal structure of an R object
+
 dim(genotypes) # 187 individuals genotypes with 3500 SNP
+
 genotypes[1:5, 1:5] # 0, 1, 2, -9 coding
 unique(unlist(genotypes))
 
+# Together with genotype data (SNP genotypes for each sample), we usually need also a file with information of position (chromosome, bps) for each SNP (**map file**)
+
 ## Marker map - chromosome and location for each SNP
-map <- read.csv("map_demo.csv", header = TRUE, check.names = FALSE)
+map <- read.csv(file.path(basefolder, "example_data/map_demo.csv"), header = TRUE, check.names = FALSE)
 str(map)
+
+
 head(map)
 unique(map$chrom)
 
+# ### 2 Phenotypes
 
 ## Phenotype data
-phenotypes <- read.csv("phenotypes_demo.csv", header = TRUE, check.names = FALSE)
+phenotypes <- read.csv(file.path(basefolder, "example_data/phenotypes_demo.csv"), header = TRUE, check.names = FALSE)
 str(phenotypes) # Phenotypes for 363 individuals and 4 traits.
 head(phenotypes)
 
 ## Check if ID order is the same in the genotypes and phenotypes data frames
-rownames(genotypes) == phenotypes$id # all ID's match
-any(rownames(genotypes) != phenotypes$id) 
+rownames(genotypes) == phenotypes$Name # all ID's match
+sum(rownames(genotypes) != phenotypes$Name) ## count the n. of mismatches
+any(rownames(genotypes) != phenotypes$Names) 
 
-
-
-####################################################################
-### II. RECODE SNP CALLS FOR rrBLUP & FILTER INDIVIDUALS AND SNP ###
-####################################################################
+# ---
+# ## SECTION II: RECODE SNP CALLS FOR rrBLUP & FILTER INDIVIDUALS AND SNP
 
 genotypes <- as.matrix(genotypes)
 genotypes[which(genotypes == -9)] <- NA    # replace -9 by NA, and ...
 genotypes <- genotypes - 1                 # convert to -1, 0, 1 SNP coding
 genotypes[1:5, 1:5]
 
-
-
-### 1. Remove individuals with more than 20% missing marker data (80% of SNP calls are present)
-### A high fraction of missing markers might indicate a low genotyping quality.
+# ### 1. Remove individuals with more than 20% missing marker data (80% of SNP calls are present)
+#
+# A high fraction of missing markers might indicate a low genotyping quality.
 
 rm_ind <- as.matrix(rowSums(is.na(genotypes)) / ncol(genotypes)) # fraction of NA per individual
 rm_ind <- 1 - rm_ind # fraction of SNP called per individual
@@ -60,9 +71,7 @@ if (length(rm_ind) > 0) phenotypes <- phenotypes[-rm_ind, ]
 dim(genotypes) # Individuals with too many missing markers have been removed
 dim(phenotypes) # Individuals with too many missing markers have been removed
 
-
-
-### 2. Remove SNP markers with more than 15% missing SNP calls (at least 15% NA per marker)
+# ### 2. Remove SNP markers with more than 15% missing SNP calls (at least 15% NA per marker)
 
 rm_snp <- as.matrix(colSums(is.na(genotypes)) / nrow(genotypes))
 rm_snp <- 1 - rm_snp
@@ -78,15 +87,17 @@ if (length(rm_snp) > 0) map <- map[-rm_snp, ]
 dim(genotypes) # SNP with too many missing calls have been removed
 dim(map) # SNP with too many missing calls have been removed
 
+# ### 3. Remove SNP markers falling below an MAF threshold value.
 
-
-
-### 3. Remove SNP markers falling below an MAF threshold value.
 maf <- 0.03
 maf_snp <- genotypes + 1  # reconvert to 0, 1, 2 coding to calculate allele frequency
 
 maf_snp[1:5, 1:5]
+
 maf_snp <- as.matrix(colSums(maf_snp, na.rm = TRUE) / (2 * nrow(maf_snp)))
+maf_snp
+
+maf_snp
 
 range(maf_snp) # range of allele frequencies
 hist(maf_snp, breaks = 200)
@@ -105,7 +116,7 @@ dim(map)
 
 
 
-### 3.2 ALTERNATIVE TO MAF - minor allele count
+# ## 3.2 ALTERNATIVE TO MAF - minor allele count
 
 mac <- 30 # We want the minor allele to be present with at least 30 copies in the population.
 mac_snp <- genotypes + 1
@@ -129,22 +140,22 @@ dim(map)
 
 
 
-################################################################################
-### III. IMPUTE MISSING MARKERS AND GENERATE THE GENOMIC RELATIONSHIP MATRIX ###
-################################################################################
+# ###############################################################################
+# ## III. IMPUTE MISSING MARKERS AND GENERATE THE GENOMIC RELATIONSHIP MATRIX ###
+# ###############################################################################
 
-### When we use rrBLUP to generate the genomic relationship matrix, we
+# ## When we use rrBLUP to generate the genomic relationship matrix, we
 # ... can filter for MAF,
 # ... can remove markers with too many missing calls,
 # ... can choose between two imputation methods; we choose a simple mean imputation here.
 
-### Note: we included NA's (all individuals) in the calculation of allele frequencies. rrBLUP
-### only includes individuals with successful calls in the calculation of allele frequencies 
-### (NA's are excluded). This can result in different marker numbers after filtering.
+# ## Note: we included NA's (all individuals) in the calculation of allele frequencies. rrBLUP
+# ## only includes individuals with successful calls in the calculation of allele frequencies 
+# ## (NA's are excluded). This can result in different marker numbers after filtering.
 
 
 grm <- rrBLUP::A.mat(genotypes,
-                     min.MAF = 0,
+                     min.MAF = 0.05,
                      max.missing = 1,
                      impute.method = "mean",
                      return.imputed = TRUE)
@@ -162,20 +173,25 @@ dim(g_mat_imputed)
 heatmap(grm)
 
 
-################################################################################
-### IV. RUN A GWAS AND GENERATE A MANHATTAN PLOT TO IDENTIFY POTENTIAL PEAKS ###
-################################################################################
+# ###############################################################################
+# ## IV. RUN A GWAS AND GENERATE A MANHATTAN PLOT TO IDENTIFY POTENTIAL PEAKS ###
+# ###############################################################################
 
 ### Phenotypes data frame for GWAS in rrBLUP
 phe_gwas <- data.frame(id = phenotypes$Name, fruit_shape = phenotypes$fruit_shape)
 head(phe_gwas)
 
-### Genotypes data frame for GWAS in rrBLUP
-geno_gwas <- data.frame(map, t(g_mat_imputed))
+# ## Genotypes data frame for GWAS in rrBLUP
+
+### select SNPs that were not filtered out
+vec <- map$marker %in% colnames(g_mat_imputed)
+map_filtered = map[vec,]
+
+geno_gwas <- data.frame(map_filtered, t(g_mat_imputed))
 geno_gwas[1:5, 1:6]
 
 
-### 1. Run GWAS
+# ## 1. Run GWAS
 
 time_rrBLUP <- Sys.time()                          # measure computation time
 gwas_rrblup <- rrBLUP::GWAS(pheno = phe_gwas, 
@@ -208,11 +224,11 @@ qqman::qq(gwas_res$P)
 
 
 
-### 2. GWAS control scenario: no correction for population structure
+# ## 2. GWAS control scenario: no correction for population structure
 
-### rrBLUP will automatically calculate the GRM if no relationship matrix is provided.
-### We can enforce a regression without correction for population structure if we provide
-### a diagonal matrix instead of the GRM.
+# ## rrBLUP will automatically calculate the GRM if no relationship matrix is provided.
+# ## We can enforce a regression without correction for population structure if we provide
+# ## a diagonal matrix instead of the GRM.
 
 relMat_diag <- diag(nrow(grm))
 colnames(relMat_diag) <- rownames(relMat_diag) <- colnames(grm)
