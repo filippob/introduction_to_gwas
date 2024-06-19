@@ -2,14 +2,14 @@
 library("tidyverse")
 library("data.table")
 
-prjfolder = "~/Dropbox/cursos/gwas_2023"
+prjfolder = "~/Dropbox/cursos/gwas_2024"
 repo = "introduction_to_gwas"
 
 ## PARAMETERS
 genotypes_file = "example_data/rice_reduced.raw"
 map_file = "example_data/rice_reduced.map"
 snp_threshold = 0.10 ## max missing rate allowed per SNP
-sample_threshold = 0.20
+sample_threshold = 0.20 ## max missing rate per sample
 maf_threshold = 0.025 ## min allowed MAF
 
 fname = file.path(prjfolder, repo, genotypes_file)
