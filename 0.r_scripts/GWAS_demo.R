@@ -264,3 +264,54 @@ qqman::manhattan(gwas_res_2,
 
 ## qq-plot
 qqman::qq(gwas_res_2$P)
+
+# ## SECTION V: DO IT YOURSELF
+#
+# - `map_fruit_sim.csv`
+# - `genotypes_fruit_sim.csv`
+# - `phenotypes_fruit_sim.csv`
+#
+# #### Read the data
+
+# +
+# genotypes <- 
+# map <- 
+# phenotypes <- 
+# -
+
+# #### Explore and describe
+#
+# - how many?
+# - what?
+# - have a look?
+
+print(paste("N. of genotyped samples:", nrow(genotypes)))
+print(paste("N. of phenotyped samples:", nrow(phenotypes)))
+print(paste("N. of SNPs:", nrow(map)))
+
+# +
+## additional code
+# -
+
+# #### Recode and filter
+
+# +
+## your code
+# -
+
+# #### Impute missing genotypes
+
+# +
+## your code
+# -
+
+# #### Run GWAS
+
+# +
+## your code
+# -
+
+# #### Evaluate results
+
+# +
+## your code
