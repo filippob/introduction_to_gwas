@@ -97,8 +97,6 @@ maf_snp[1:5, 1:5]
 maf_snp <- as.matrix(colSums(maf_snp, na.rm = TRUE) / (2 * nrow(maf_snp)))
 maf_snp
 
-maf_snp
-
 range(maf_snp) # range of allele frequencies
 hist(maf_snp, breaks = 200)
 
@@ -114,15 +112,17 @@ if (length(rm_snp_maf) > 0) map <- map[-rm_snp_maf, ]
 dim(genotypes)
 dim(map)
 
-
-
-# ## 3.2 ALTERNATIVE TO MAF - minor allele count
+# ### 3.2 ALTERNATIVE TO MAF - minor allele count
+#
+# Before we used a $3\%$ threshold for MAF: with 178 samples, this implies a minimum of 11 copies of the minor allele in the sampled population. 
+#
+# We can be more specific and set the minimum n. of alleles we want to have for our GWAS analysis:
 
 mac <- 30 # We want the minor allele to be present with at least 30 copies in the population.
 mac_snp <- genotypes + 1
 mac_snp <- as.matrix(colSums(mac_snp, na.rm = TRUE)) # count allele copies
 
-range(mac_snp)
+range(mac_snp) ## n_samples x 2 is the maximum value possible (e.g. 178 x 2 = 356)
 hist(mac_snp, breaks = 200)
 
 mac_A <- which(mac_snp < mac)
@@ -138,20 +138,18 @@ if (length(rm_snp_mac) > 0) map <- map[-rm_snp_mac, ]
 dim(genotypes)
 dim(map)
 
+# ---
+# ## SECTION III: IMPUTE MISSING MARKERS AND GENERATE THE GENOMIC RELATIONSHIP MATRIX
 
+# When we use **rrBLUP to generate the genomic relationship matrix**, we can:
+#
+# - filter for MAF,
+# - remove markers with too many missing calls,
+# - choose between two imputation methods; we choose a simple mean imputation here.
 
-# ###############################################################################
-# ## III. IMPUTE MISSING MARKERS AND GENERATE THE GENOMIC RELATIONSHIP MATRIX ###
-# ###############################################################################
-
-# ## When we use rrBLUP to generate the genomic relationship matrix, we
-# ... can filter for MAF,
-# ... can remove markers with too many missing calls,
-# ... can choose between two imputation methods; we choose a simple mean imputation here.
-
-# ## Note: we included NA's (all individuals) in the calculation of allele frequencies. rrBLUP
-# ## only includes individuals with successful calls in the calculation of allele frequencies 
-# ## (NA's are excluded). This can result in different marker numbers after filtering.
+# Note: we included NA's (all individuals) in the calculation of allele frequencies. rrBLUP
+# only includes individuals with successful calls in the calculation of allele frequencies 
+# (NA's are excluded). This can result in different marker numbers after filtering.
 
 
 grm <- rrBLUP::A.mat(genotypes,
@@ -173,15 +171,20 @@ dim(g_mat_imputed)
 heatmap(grm)
 
 
-# ###############################################################################
-# ## IV. RUN A GWAS AND GENERATE A MANHATTAN PLOT TO IDENTIFY POTENTIAL PEAKS ###
-# ###############################################################################
+# ---
+#
+# ## SECTION IV:  RUN A GWAS AND GENERATE A MANHATTAN PLOT TO IDENTIFY POTENTIAL PEAKS
+#
+# We pick one phenotype from our dataset and use it to run the GWAS:
+#
+
+head(phenotypes)
 
 ### Phenotypes data frame for GWAS in rrBLUP
 phe_gwas <- data.frame(id = phenotypes$Name, fruit_shape = phenotypes$fruit_shape)
 head(phe_gwas)
 
-# ## Genotypes data frame for GWAS in rrBLUP
+# ### Genotypes data frame for GWAS in rrBLUP
 
 ### select SNPs that were not filtered out
 vec <- map$marker %in% colnames(g_mat_imputed)
@@ -191,7 +194,7 @@ geno_gwas <- data.frame(map_filtered, t(g_mat_imputed))
 geno_gwas[1:5, 1:6]
 
 
-# ## 1. Run GWAS
+# ### 1. Run GWAS
 
 time_rrBLUP <- Sys.time()                          # measure computation time
 gwas_rrblup <- rrBLUP::GWAS(pheno = phe_gwas, 
@@ -202,14 +205,19 @@ gwas_rrblup <- rrBLUP::GWAS(pheno = phe_gwas,
 time_rrBLUP <- Sys.time() - time_rrBLUP
 
 
+time_rrBLUP
+
 ## Set threshold for Bonferroni correction
 bonf <- -log10(0.05 / nrow(geno_gwas))
+print(bonf)
 
 gwas_res <- gwas_rrblup
 names(gwas_res) <- c("SNP","CHR","BP","P")
+head(gwas_res)
 
 ## rrBLUP calculates -log10(p) values. These are converted into p-values.
 gwas_res$P <- 10^((-gwas_res$P))
+head(gwas_res)
 
 ## Manhattan plot of -log10(p)-values
 qqman::manhattan(gwas_res, 
@@ -221,19 +229,18 @@ qqman::manhattan(gwas_res,
 ## qq-plot
 qqman::qq(gwas_res$P)
 
+# ### 2. GWAS control scenario: no correction for population structure
 
-
-
-# ## 2. GWAS control scenario: no correction for population structure
-
-# ## rrBLUP will automatically calculate the GRM if no relationship matrix is provided.
-# ## We can enforce a regression without correction for population structure if we provide
-# ## a diagonal matrix instead of the GRM.
+# !!Mind: rrBLUP will automatically calculate the GRM if no relationship matrix is provided.
+# We can enforce a regression without correction for population structure if we provide
+# a diagonal matrix instead of the GRM.
 
 relMat_diag <- diag(nrow(grm))
 colnames(relMat_diag) <- rownames(relMat_diag) <- colnames(grm)
 str(relMat_diag)
 
+
+heatmap(relMat_diag)
 
 gwas_rrblup_2 <- rrBLUP::GWAS(pheno = phe_gwas, 
                               geno = geno_gwas, 
@@ -257,5 +264,3 @@ qqman::manhattan(gwas_res_2,
 
 ## qq-plot
 qqman::qq(gwas_res_2$P)
-
-
