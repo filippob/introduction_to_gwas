@@ -21,7 +21,7 @@ output: html_document
 # system2("wget", "http://www.jackdellequerce.com/data/GenRiz44.txt")
 # setwd("../3.imputation")
 
-## 3) FROM THE COURSE WEBSITE https://filippob.github.io/introduction_to_gwas/
+## 3) FROM THE COURSE WEBSITE https://filippob.github.io/introduction_to_gwas/model_extensions_data
 
 ## 4) FROM THE SLACK CHANNEL OF THE COURSE
 ```
