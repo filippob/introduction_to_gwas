@@ -24,7 +24,7 @@ As a general rule, we'll have a longer break (30 minutes) at 16:00 and two short
     - [R code. Exercise on Simple Linear Regression](basic_model/1.Basis_of_linear_regression.R)
     - [Rmarkdown Code. Exercise on Simple Logistic Regression](basic_model/2.exercise.Basis_of_logistic_regression.Rmd)
 - Lab 2 - Description of Datasets [Christian]
-    - [Description of Datasets](slides/Description_of_data.pdf)
+    - [Description of Datasets](slides/Description_of_Data.pdf)
  - [Course Manual](slides/gwas_manual.pdf)
  - [GWAS Workflow](slides/GWAS_workflow.pdf)
 
