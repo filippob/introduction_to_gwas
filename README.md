@@ -32,7 +32,7 @@ As a general rule, we'll have a longer break (30 minutes) at 16:00 and two short
 **Day 2**
 
 - Lecture 3 The Multiple Testing Issue [Oscar]
-    - [Multiple Testing](slides/3_Multiple_testing.pdf)
+    - [Multiple Testing](slides/3.MultipleTesting.pdf)
     - [R code. Exercise on multiple testing correction](5.power_and_significance/MultipleTestingCorrection.R)
 - Lecture 4 Statistical Power, Population Stratification and Experimental Design [Oscar] 
     - [Statistical Power and Population Stratification](slides/4_Experimental_design.pdf)
