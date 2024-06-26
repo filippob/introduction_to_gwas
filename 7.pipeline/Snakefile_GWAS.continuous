@@ -1,7 +1,7 @@
 #PLINK='/home/filippo/Downloads/plink'
 #BEAGLE=''
-PLINK='plink'
-BEAGLE='beagle'
+PLINK='~/Downloads/plink'
+BEAGLE='/home/filippo/Documents/software/beagle5/beagle.28Sep18.793.jar'
 SPECIES='rice'
 
 ## remember to first set up the environment
@@ -13,7 +13,19 @@ rule targets:
 
 rule get_data:
     input:
-        script = "software/get_rice_data.sh"
+        script = "software/download_rice_data.sh"
+    output:
+        "data/GBSnew.ped",
+        "data/GBSnew.map",
+        "data/plantgrainPhenotypes.txt"
+    shell:
+        "bash {input.script}"
+
+rule prep_data:
+    input:
+        script = "software/get_rice_data.sh",
+        pedfile = "data/GBSnew.ped",
+        mapfile = "data/GBSnew.map"
     output:
         "data/rice.ped",
         "data/rice.map",
@@ -46,7 +58,7 @@ rule impute_genotypes:
     output:
         "steps/rice_imputed.vcf.gz"
     shell:
-        "{BEAGLE} gt=steps/rice_filtered.vcf out=steps/rice_imputed"
+        "java -Xmx4g -jar {BEAGLE} gt=steps/rice_filtered.vcf out=steps/rice_imputed"
 
 rule vcf2ped:
     input:
