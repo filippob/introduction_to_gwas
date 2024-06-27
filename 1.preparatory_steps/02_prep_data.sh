@@ -4,7 +4,7 @@
 ###################################
 
 ## set resources
-plink=/home/filippo/Downloads/plink  # directory with plink binary
+plink=plink  # directory with plink binary
 
 
 cd ../data
