@@ -10,4 +10,5 @@ TIPS
 - (it’s always a good thing to learn to use the internet to look for code syntax help)
 - subset the genotype files (and maybe convert to ped/map)
 - anything to be done with the phenotypes?
+- you can make more than one script: e.g. i) script to download the data; ii) script to prepare the genotype data (e.g. using Plink); iii) Rscript to prepare the phenotype data (but you can use bash or something else if you prefer)
 
