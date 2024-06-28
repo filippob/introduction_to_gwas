@@ -97,7 +97,7 @@ As a general rule, we'll have a longer break (30 minutes) at 16:00 and two short
 **Day 5**
 
 - Lecture 10 A light Touch on Post-GWAS Analysis: Inferring Functionality [Oscar]
-    - [slides](slides/11.Exploring_Functionality_with_FUMA_DAVID.pdf)
+    - [slides](<slides/11.Exploring Functionality with FUMA & DAVID.pdf>)
     - [R code. Exercise on R, and FUMA](functional_analysis/getGenesFromSNP.R)
 - Lecture 11 GWAS Model Extensions: [Filippo, Christian, Oscar]
     - [12.1 GWAS Model Extensions_Dominance_and_other_genotype_Codifications](<slides/12.1 GWAS_model_extensions_genotype_codification.pdf>)
