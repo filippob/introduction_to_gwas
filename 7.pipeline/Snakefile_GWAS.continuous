@@ -1,7 +1,7 @@
 #PLINK='/home/filippo/Downloads/plink'
-#BEAGLE=''
-PLINK='~/Downloads/plink'
-BEAGLE='/home/filippo/Documents/software/beagle5/beagle.28Sep18.793.jar'
+BEAGLE='beagle'
+PLINK='plink'
+#BEAGLE='/home/filippo/Documents/software/beagle5/beagle.28Sep18.793.jar'
 SPECIES='rice'
 
 ## remember to first set up the environment
@@ -57,8 +57,14 @@ rule impute_genotypes:
         "steps/rice_filtered.vcf"
     output:
         "steps/rice_imputed.vcf.gz"
-    shell:
-        "java -Xmx4g -jar {BEAGLE} gt=steps/rice_filtered.vcf out=steps/rice_imputed"
+    run:
+        print(f"current BEAGLE is {BEAGLE}")
+        if BEAGLE == "beagle":
+            print("BEAGLE is beagle")
+            shell("{BEAGLE} gt=steps/rice_filtered.vcf out=steps/rice_imputed")
+        else: 
+            print("BEAGLE is path to jar file")
+            shell("java -Xmx4g -jar {BEAGLE} gt=steps/rice_filtered.vcf out=steps/rice_imputed")
 
 rule vcf2ped:
     input:
