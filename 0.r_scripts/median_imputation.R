@@ -21,7 +21,7 @@ metadata = genotypes[,c(1:6)]
 
 ## MEDIAN IMPUTATION
 meds <- matx |>
-  summarise(across(everything(), median, na.rm=TRUE)) |>
+  summarise(across(everything(), \(x) median(x, na.rm=TRUE))) |>
   gather(key = "snp", value = "median") |>
   pull(median)
 
