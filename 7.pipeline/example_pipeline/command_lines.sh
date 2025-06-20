@@ -1,5 +1,5 @@
 ## activate the conda env with snakemake
-conda activate snakemake
+conda activate snakemake #(or whichever env name is used: 2025 --> gwas)
 
 ## visualize the help manual for snakemake
 snakemake --help
