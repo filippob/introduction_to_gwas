@@ -16,7 +16,7 @@ man dot ## from the graphviz package (apt install graphviz)
 snakemake --dag --dryrun --snakefile example_snakefile | dot -Tsvg > dag_example.svg
 
 ## actual run of the first example pipeline
-snakemake --snakefile example_snakefile
+snakemake --cores 1 --snakefile example_snakefile
 
 ## output data
 zless snp_sorted.map.gz
@@ -28,11 +28,11 @@ gunzip snp_sorted.map.gz
 snakemake --dag --dryrun --snakefile example_snakefile | dot -Tsvg > dag_example_unzipped.svg
 
 ## rerun the first example pipeline: actual run for DAG
-snakemake --snakefile example_snakefile
+snakemake --cores 1 --snakefile example_snakefile
 
 ## run the second example pipeline: dry run for DAG
 snakemake --dag -n --snakefile example_snakefile_2 | dot -Tsvg > dag_example_2.svg
 
 ## run the second example pipeline: actual run
-snakemake --snakefile example_snakefile_2
+snakemake --cores 1 --snakefile example_snakefile_2
 
