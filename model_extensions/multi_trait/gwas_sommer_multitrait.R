@@ -167,55 +167,48 @@ png(paste(dataset,"manhattan_SL.png",sep="_"))
 sommer::manhattan(temp, pch=20,cex=1.5, PVCN = "log_pval")
 dev.off()
 
-###########
-### RESULTS
-###########
-# print("writing out results and figures ...")
-# ms <- as.data.frame(mix_mod$scores)
-# ms$snp <-gsub("_[A-Z]{1}$","",rownames(ms))
-# 
-# mapf <-merge(SNP_INFO, ms, by="snp", all.x = TRUE);
-# mapf <- arrange(mapf, Chrom,Position)
-# 
-# ## rename P to log_p (as it is) and add the column with p-values
-# names(mapf)[4:5] <- c("SL_log_p", "SW_log_p")
-# fname <- paste(dataset,"multitrait_GWAS.results", sep="_")
-# fwrite(x = mapf, file = fname)
-# 
-# 
-# ## SL
-# # convert -log(p) back to p-values
-# p <- 10^((-ms$SL))
-# mapf$pvalue <- p
-# 
-# mapf <- filter(mapf, SL_log_p < Inf)
-# png(paste(dataset,"manhattan_SL.png",sep="_"))
-# sommer::manhattan(mapf, pch=20,cex=.75, PVCN = "SL_log_p")
-# dev.off()
-# 
-# ## qq-plot
-# png(paste(dataset,"qqplot_SL.png",sep="_"), width = 600, height = 600)
-# qqman::qq(mapf$pvalue)
-# dev.off()
-# 
-# ## SW
-# # convert -log(p) back to p-values
-# p <- 10^((-ms$SW))
-# mapf$pvalue <- p
-# 
-# mapf <- filter(mapf, SW_log_p < Inf)
-# png(paste(dataset,"manhattan_SW.png",sep="_"))
-# sommer::manhattan(mapf, pch=20,cex=.75, PVCN = "SW_log_p")
-# dev.off()
-# 
-# ## qq-plot
-# png(paste(dataset,"qqplot_SW.png",sep="_"), width = 600, height = 600)
-# qqman::qq(mapf$pvalue)
-# dev.off()
-# 
-# print("#########")
-# print("## END ##")
-# print("#########")
+png(paste(dataset,"qqplot_SL.png",sep="_"), width = 600, height = 600)
+qqman::qq(pval_1)
+dev.off()
+
+
+## second trait
+start_2 = gblup_multi$partitions[[1]][2]
+end_2 = gblup_multi$partitions[[1]][4]
+
+## choose the corresponding genetic variance; Ci is the inverse of the coefficient matrix
+var.g <- kronecker(K, gblup_multi$theta[[1]][4]) - gblup_multi$Ci[start_2:end_2,start_2:end_2]
+
+## t statistic
+var.a.from.g <- t(X) %*% Kinv %*% (var.g) %*% t(Kinv) %*% X ## variance of marker effects
+se.a.from.g <- sqrt(diag(var.a.from.g))  ## standard error of the estimates
+t.stat.from.g <- a.from.g[,2]/se.a.from.g # t-statistic
+
+n <- nrow(phenotypes) # to be used for degrees of freedom
+k <- 1 # to be used for degrees of freedom (number of levels in fixed effects)
+pval_2 <- dt(t.stat.from.g, df=n-k-1) # pvalues
+
+temp$log_pvalue_2 = -log10(pval_2)
+head(temp)
+
+png(paste(dataset,"manhattan_SW.png",sep="_"))
+sommer::manhattan(temp, pch=20,cex=1.5, PVCN = "log_pval_2")
+dev.off()
+
+## qq-plot
+png(paste(dataset,"qqplot_SW.png",sep="_"), width = 600, height = 600)
+qqman::qq(pval_2)
+dev.off()
+
+## rename P to log_p (as it is) and add the column with p-values
+names(temp)[4:5] <- c("SL_log_p", "SW_log_p")
+fname <- paste(dataset,"multitrait_GWAS.results", sep="_")
+fwrite(x = temp, file = fname)
+
+
+print("#########")
+print("## END ##")
+print("#########")
 
 
 
