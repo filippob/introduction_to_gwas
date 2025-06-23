@@ -4,8 +4,9 @@
 # run as Rscript --vanilla gwas_sommer.R genotype_file=path_to_genotypes snp_map=path_to_map phenotype_file=path_to_phenotypes trait=trait_name_in_phenotype_file trait_label=label_to_use_for_trait
 
 library("qqman")
+library("dplyr")
 library("sommer")
-library("tidyverse")
+# library("tidyverse")
 library("data.table")
 
 trim <- function (x) gsub("^\\s+|\\s+$", "", x)
@@ -41,11 +42,11 @@ for (p in args){
   stop(paste('bad parameter:', pieces[1]))
 }
 
-genotype_file = "introduction_to_gwas/6.steps/rice_imputed.raw"
-snp_map = "introduction_to_gwas/6.steps/rice_imputed.map"
-phenotype_file = "introduction_to_gwas/model_extensions/multi_trait/rice_phenotypes_multi.txt"
-traits = "SL,SW"
-covariates="population"
+# genotype_file = "introduction_to_gwas/6.steps/rice_imputed.raw"
+# snp_map = "introduction_to_gwas/6.steps/rice_imputed.map"
+# phenotype_file = "introduction_to_gwas/model_extensions/multi_trait/rice_phenotypes_multi.txt"
+# traits = "SL,SW"
+# covariates="population"
 
 print(paste("genotype file name:",genotype_file))
 print(paste("SNP map:",snp_map))
@@ -188,11 +189,11 @@ n <- nrow(phenotypes) # to be used for degrees of freedom
 k <- 1 # to be used for degrees of freedom (number of levels in fixed effects)
 pval_2 <- dt(t.stat.from.g, df=n-k-1) # pvalues
 
-temp$log_pvalue_2 = -log10(pval_2)
+temp$log_pval_2 = -log10(pval_2)
 head(temp)
 
 png(paste(dataset,"manhattan_SW.png",sep="_"))
-sommer::manhattan(temp, pch=20,cex=1.5, PVCN = "log_pval_2")
+sommer::manhattan(temp, pch=20, cex=1.5, PVCN = "log_pval_2")
 dev.off()
 
 ## qq-plot
