@@ -127,6 +127,45 @@ gblup_multi <- mmes( valueS ~ trait + population, # henderson=TRUE,
                      rcov=~ vsm(dsm(trait), ism(units)),
                      data=pheno$long)
 
+print("genetic correlations")
+print(cov2cor(gblup_multi$theta[[1]]))
+
+###########
+### RESULTS
+###########
+writeLines(" - get marker effects from GBLUP")
+
+## getting the X'(XX')^-1 matrix
+Kinv <- solve(K + diag(1e-6, ncol(K), ncol(K)))
+XKinv <- t(X)%*%Kinv
+
+## individual genetic effects
+g <- gblup_multi$uList$`vsm(usm(trait), ism(id), Gu = K)`
+a.from.g <- XKinv %*% g ## marker effects
+
+## first trait
+start_1 = gblup_multi$partitions[[1]][1]
+end_1 = gblup_multi$partitions[[1]][3]
+
+## Ci is the inverse of the coefficient matrix
+var.g <- kronecker(K, gblup_multi$theta[[1]][1]) - gblup_multi$Ci[start_1:end_1,start_1:end_1]
+
+## t statistic
+var.a.from.g <- t(X) %*% Kinv %*% (var.g) %*% t(Kinv) %*% X ## variance of marker effects
+se.a.from.g <- sqrt(diag(var.a.from.g))  ## standard error of the estimates
+t.stat.from.g <- a.from.g[,1]/se.a.from.g # t-statistic
+
+n <- nrow(phenotypes) # to be used for degrees of freedom
+k <- 1 # to be used for degrees of freedom (number of levels in fixed effects)
+pval_1 <- dt(t.stat.from.g, df=n-k-1) # pvalues
+
+temp <- SNP_INFO
+temp$log_pval = -log10(pval_1)
+head(temp)
+
+png(paste(dataset,"manhattan_SL.png",sep="_"))
+sommer::manhattan(temp, pch=20,cex=1.5, PVCN = "log_pval")
+dev.off()
 
 ###########
 ### RESULTS
