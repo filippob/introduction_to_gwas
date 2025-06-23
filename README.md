@@ -105,6 +105,7 @@ As a general rule, we'll have a longer break (30 minutes) at 16:00 and two short
     - [12.3 GWAS Model Extensions_Trait_Types]<!--(slides/12.3.GWAS_model_extensions_trait_type.pdf)-->
     - [12.4 GWAS Model Extensions_Multi-Trait-Locus, software]<!--(slides/12.4.GWAS_model_extensions_multi_trait_and_locus.pdf)-->
     - [12.5 A bioinformatic pipeline for GWAS](<slides/10.A bioinformatic pipeline for GWAS.pdf>)
+        - [Snakemake pipeline for continuous phenotypes]<!--(model_extensions/3.longitudinal_gwas.Rmd)-->
     - 12.6 Additional software for GWAS
         - [gemma](model_extensions/gemma)
         - [regenie](model_extensions/regenie)
@@ -113,7 +114,6 @@ As a general rule, we'll have a longer break (30 minutes) at 16:00 and two short
     - [R code GWAS for categorical Traits - Examples](model_extensions/2.categorical_gwas_example.Rmd)
     - [R code GWAS for longitudinal Traits]<!--(model_extensions/3.longitudinal_gwas.Rmd)-->
     - [R code GWAS for multi-trait and multi-locus Models]
-    - [Snakemake pipeline for continuous phenotypes]<!--(model_extensions/3.longitudinal_gwas.Rmd)-->
     - [ROH-based and Resampling Methods as alternative approaches]()
     - [Applications of GWAS: Mendelian Randomization](<slides/15.Applications of GWAS_ Mendelian Randomization.pdf>)
 
