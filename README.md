@@ -99,12 +99,13 @@ As a general rule, we'll have a longer break (30 minutes) at 16:00 and two short
 - Lecture 10 A light Touch on Post-GWAS Analysis: Inferring Functionality [Oscar]
     - [slides](<slides/11.Exploring Functionality with FUMA & DAVID.pdf>)
     - [R code. Exercise on R, and FUMA](functional_analysis/getGenesFromSNP.R)
-- Lecture 11 GWAS Model Extensions: [Filippo, Christian, Oscar]
+- Lecture 11 GWAS Model Extensions and Applications: [Filippo, Christian, Oscar]
     - [12.1 GWAS Model Extensions_Dominance_and_other_genotype_Codifications](<slides/12.1 GWAS_model_extensions_genotype_codification.pdf>)
     - [12.2 GWAS Model Extensions_Polyploids](slides/12.2GWAS_model_extensions_polyploids.pdf)
     - [12.3 GWAS Model Extensions_Trait_Types]<!--(slides/12.3.GWAS_model_extensions_trait_type.pdf)-->
     - [12.4 GWAS Model Extensions_Multi-Trait-Locus, software]<!--(slides/12.4.GWAS_model_extensions_multi_trait_and_locus.pdf)-->
     - [12.5 A bioinformatic pipeline for GWAS](<slides/10.A bioinformatic pipeline for GWAS.pdf>)
+        - [Snakemake pipeline for continuous phenotypes]<!--(model_extensions/3.longitudinal_gwas.Rmd)-->
     - 12.6 Additional software for GWAS
         - [gemma](model_extensions/gemma)
         - [regenie](model_extensions/regenie)
@@ -113,9 +114,6 @@ As a general rule, we'll have a longer break (30 minutes) at 16:00 and two short
     - [R code GWAS for categorical Traits - Examples](model_extensions/2.categorical_gwas_example.Rmd)
     - [R code GWAS for longitudinal Traits]<!--(model_extensions/3.longitudinal_gwas.Rmd)-->
     - [R code GWAS for multi-trait and multi-locus Models]
-    - [Snakemake pipeline for continuous phenotypes]<!--(model_extensions/3.longitudinal_gwas.Rmd)-->
-
-- Lecture 12 Optional sessions [Filippo, Christian, Oscar]
     - [ROH-based and Resampling Methods as alternative approaches]()
     - [Applications of GWAS: Mendelian Randomization](<slides/15.Applications of GWAS_ Mendelian Randomization.pdf>)
 
