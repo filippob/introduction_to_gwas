@@ -68,8 +68,8 @@ As a general rule, we'll have a longer break (30 minutes) at 16:00 and two short
     - [02_knni.sh]<!--(3.imputation/02_knni.sh)--> [support script]
     - [hamming.R]<!--(3.imputation/hamming.R)--> [support script]
     - [knni.R]<!--(3.imputation/knni.R)--> [support script]
-- Lecture 7 Working in the shell [Christian] [OPTIONAL]
-    - [Linux and the Shell](<slides/7.1.Linux and the Shell.pdf>)
+- Lecture 7 Working in the shell [Christian]
+    - [Linux and the Shell](<slides/7.1.Linux and the Shell.pdf>) [OPTIONAL]
     - [Common Data Types and Formats](<slides/7.2 Data_formats.pdf>)
 - Lecture 8	Imputation of Missing Genotypes [Christian]
     - [Imputation](slides/8_Imputation.pdf)
