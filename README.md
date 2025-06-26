@@ -61,7 +61,7 @@ As a general rule, we'll have a longer break (30 minutes) at 16:00 and two short
     - [gwas_sommer.R](4.gwas/gwas_sommer.R)
 - Lecture 6 KNN Imputation 
     - [KNN Imputation](<slides/6.KNN imputation.pdf>)
-- Lab 6 (Demonstration) KNNI Imputation [Filippo]
+- Lab 6 (Demonstration) KNNI Imputation [Filippo] [OPTIONAL]
     - [knni_illustration.Rmd](3.imputation/knni_illustration.Rmd)
     - [data_for_KNNI_illustration]<!--(model_extensions_data/GenRiz44.txt)-->
     - [knni_tidymodels.R](3.imputation/knni_tidymodels.R)
@@ -69,7 +69,7 @@ As a general rule, we'll have a longer break (30 minutes) at 16:00 and two short
     - [hamming.R]<!--(3.imputation/hamming.R)--> [support script]
     - [knni.R]<!--(3.imputation/knni.R)--> [support script]
 - Lecture 7 Working in the shell [Christian]
-    - [Linux and the Shell](<slides/7.1.Linux and the Shell.pdf>)
+    - [Linux and the Shell](<slides/7.1.Linux and the Shell.pdf>) [OPTIONAL]
     - [Common Data Types and Formats](<slides/7.2 Data_formats.pdf>)
 - Lecture 8	Imputation of Missing Genotypes [Christian]
     - [Imputation](slides/8_Imputation.pdf)
