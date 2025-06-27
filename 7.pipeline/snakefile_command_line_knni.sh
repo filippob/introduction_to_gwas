@@ -10,7 +10,7 @@ cp ../1.preparatory_steps/prep_rice_data_pipeline.R software
 cp ../cross_reference/rice_group.reference software
 cp ../3.imputation/knni_tidymodels.R software
 
-## dry run
-snakemake --dag -n -s Snakefile_GWAS.continuous_knni | dot -Tsvg > dag_knni.svg
+## make DAG
+snakemake --dag -s Snakefile_GWAS.continuous_knni | dot -Tsvg > dag_knni.svg
 ## full run
 snakemake -s Snakefile_GWAS.continuous_knni --cores 4
