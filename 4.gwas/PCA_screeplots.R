@@ -1,4 +1,11 @@
 
+### Install missing packages
+install.packages(setdiff(
+  c("data.table", "factoextra", "plyr", "rrBLUP", "ggplot2", "plotly"),
+  rownames(installed.packages())
+))
+
+
 ### Library
 library(data.table)
 library(factoextra)
@@ -8,7 +15,7 @@ library(ggplot2)
 library(plotly)
 
 ### Genoype marker matrix
-genotypes <- fread(file = "../3.imputation/rice_imputed.raw")
+genotypes <- fread(file = "rice_imputed.raw")
 genotypes[1:5, 1:10]
 
 rownames(genotypes) <- as.matrix(genotypes[,2])
@@ -30,7 +37,11 @@ heatmap(grm,labRow = FALSE, labCol = FALSE, col=rev(heat.colors(75)))
 ##### PCA - 2 Options #####
 
 ### 1. Principal Component Analysis using the transpose of the genotype matrix.
-### Function prcomp creates the covariance matrix. However, this is NOT the GRM!
+### Function prcomp creates the covariance matrix. However, this is NOT the GRM,
+### but the a simple covariance matrix between individuals based on marker genotypes.
+### The GRM we created above uses a scaling explained by VanRaden (2008), which
+### gives creates a relationship matrix with characteristics similar to the 
+### pedigree-based numerator relationship matrix (NRM).
 pca <- prcomp(t(genotypes), center = TRUE, scale = TRUE)  # scaling required if covariates have different units.
 
 ### Extract eigenvalues from PCA
@@ -46,6 +57,8 @@ for(i in 1:8){
 }
 
 ### 1. Principal Component Analysis on GRM using single value decomposition ###
+### This PCA is applied directly on the GRM, which uses the scaling by VanRaden (2008).
+### We will use this method in the following steps.
 svd <- svd(grm)
 
 ### Extract eigenvalues and eigenvectors
