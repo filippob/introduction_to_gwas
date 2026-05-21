@@ -22,7 +22,7 @@ window = 100000 # number of bases to search upstream and downstream the SNP posi
 ####################################################
 ensembl=biomaRt::useMart("ensembl")
 datasets <- biomaRt::listDatasets(ensembl, verbose = TRUE) # show all the possible databases on Ensembl
-ensembl = biomaRt::useEnsembl(biomart="ensembl",dataset=ensembl_dataset,mirror="asia")
+ensembl = biomaRt::useEnsembl(biomart="ensembl",dataset=ensembl_dataset)
 
 ## listAttributes(ensembl) # show the attributes of the database
 attributes <- listAttributes(ensembl)  # show the attributes of the database
@@ -45,6 +45,10 @@ print(paste("The significant p-value after Bonferroni correction is",Bonf,sep=" 
 #Filter significant SNPs based on FDR
 fdr<-max(results$P[which(results$Padj<0.05)])
 print(paste("The significant p-value after FDR correction is",fdr,sep=" "))
+
+plot(-log(results$P),type="l")
+abline(h=-log(Bonf),col="red")
+abline(h=-log(fdr),col="green")
 
 results <- results[results$Padj<fdr,]
 genes = list()
