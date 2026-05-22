@@ -118,20 +118,18 @@ P <- dplyr::select(phenotypes, c(id, all_of(trts), all_of(covs)))
 P <- mutate(P, across(all_of(trts), ~ scale(.) %>% as.vector()))
 
 # pheno <- stackTrait(P, traits = c("SL","SW"))
-
-# Assuming your data is in a data.frame called P
-pheno_long <- P %>%
-  pivot_longer(
-    cols = c("SL", "SW"),      # the trait columns
-    names_to = "trait",        # new column for trait names
-    values_to = "value"        # new column for trait values
-  )
+# pheno_long <- P %>%
+#   pivot_longer(
+#     cols = c("SL", "SW"),      # the trait columns
+#     names_to = "trait",        # new column for trait names
+#     values_to = "value"        # new column for trait values
+#   )
 
 # Optional: keep population as a factor
-pheno_long$population <- as.factor(pheno_long$population)
+# pheno_long$population <- as.factor(pheno_long$population)
 
 # View first rows
-head(pheno_long)
+# head(pheno_long)
 
 fit <- mmer(cbind(SL, SW) ~ population,
             random = ~ vsr(id, Gu = K, Gtc = unsm(2)),
