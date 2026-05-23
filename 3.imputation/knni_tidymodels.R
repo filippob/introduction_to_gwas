@@ -41,6 +41,7 @@ print("READING DATA ...")
 print(paste("genotype file name:",genotype_file))
 print(paste("K:",k))
 
+k = as.integer(k)
 geno = fread(genotype_file)
 matx = geno[,-c(1:6)]
 fam <- geno[,c(1:6)]
