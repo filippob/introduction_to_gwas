@@ -218,16 +218,46 @@ res <- geno_gwas[1,1:3]
 res$pvalue = p_value
 
 print("Our first 'Manhattan' plot")
-plot(res$pos, log10(res$pvalue))
+plot(res$pos, -log10(res$pvalue))
 
 
 #################################
 ##### FOR LOOP ##################
+## here we show how to run
+## the single-snp model
+## for a few snps
+#################################
 
-TODO
+X <- data.frame(t(geno_gwas[1:10,-c(1:3)]))
+names(X) <- paste("SNP", 1:10, sep="")
+X$id = row.names(X)
+
+X <- merge(phe_gwas, X, by = "id")
+head(X)
+
+pvals = c(NULL)
+for(i in 1:10) {
+  
+  print(paste("running GWAS for SNP", i, sep=""))
+  temp <- X[,c(2,i+2)]
+  fit <- lm(fruit_shape ~ ., data = temp)
+  
+  ## get the p-value from model fit
+  p_value = summary(fit)$coefficients[2,4]
+  pvals = append(pvals,p_value)
+}
+
+head(pvals)
+res <- geno_gwas[1:10,1:3]
+res$pvalue = pvals
+head(res)
+
+print("Our second 'Manhattan' plot")
+plot(res$pos, -log10(res$pvalue), col="red", pch=19)
+
 
 ###############################################################################
-# ### 1. Run GWAS
+# ### 1. Run full GWAS
 
 time_rrBLUP <- Sys.time()                          # measure computation time
 gwas_rrblup <- rrBLUP::GWAS(pheno = phe_gwas, 
