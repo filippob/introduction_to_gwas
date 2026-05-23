@@ -193,7 +193,40 @@ map_filtered = map[vec,]
 geno_gwas <- data.frame(map_filtered, t(g_mat_imputed))
 geno_gwas[1:5, 1:6]
 
+#################################
+## single SNP GWAS: one SNP model
 
+## we now run the basic model:
+## one phenotype, one SNP
+#################################
+X <- data.frame(t(geno_gwas[1,-c(1:3)]))
+X$id = row.names(X)
+names(X)[1] = "SNP1"
+
+X <- merge(phe_gwas, X, by = "id")
+
+head(X)
+
+fit <- lm(fruit_shape ~ SNP1, data = X)
+summary(fit)
+
+## get the p-value from model fit
+p_value = summary(fit)$coefficients[2,4]
+
+## plot the log(p-value) against the SNP position)
+res <- geno_gwas[1,1:3]
+res$pvalue = p_value
+
+print("Our first 'Manhattan' plot")
+plot(res$pos, log10(res$pvalue))
+
+
+#################################
+##### FOR LOOP ##################
+
+TODO
+
+###############################################################################
 # ### 1. Run GWAS
 
 time_rrBLUP <- Sys.time()                          # measure computation time
